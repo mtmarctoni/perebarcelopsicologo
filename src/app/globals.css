@@ -3,16 +3,74 @@
 @tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Core colors - unchanged */
+  --primary: #B9D8EB;
+  --primary-dark: #1C4761;
+
+  /* Background colors */
+  --background: #F8FAFC;
+  --background-alt: #EEF2F6;
+  
+  /* Enhanced primary palette */
+  --primary-light: #D4E6F3;
+  --primary-darker: #15364A;
+  
+  /* Accent colors */
+  --secondary: #FFB84D;    /* Warm orange */
+  --secondary-light: #FFD699;
+  --secondary-dark: #CC8A1F;
+  
+  /* Text colors */
+  --text: #475569;
+  --text-light: #64748B;
+  --text-dark: #1A2B3B;
+  
+  /* UI colors */
+  --success: #22C55E;
+  --warning: #F59E0B;
+  --error: #EF4444;
+  
+  /* Navigation */
+  --navbar: #1C4761;    /* Matching your primary-dark */
+  --footer: #15364A;    /* Slightly darker than primary-dark */
 }
 
-@media (prefers-color-scheme: dark) {
+.dark {
+  /* Background colors */
+  --background: #0F172A;
+  --background-alt: #1E293B;
+  
+  /* Enhanced primary palette */
+  --primary-light: #1C4761;    /* Your primary-dark becomes light in dark mode */
+  --primary-darker: #0F2537;
+  
+  /* Accent colors remain vibrant */
+  --secondary: #FFB84D;
+  --secondary-light: #CC8A1F;
+  --secondary-dark: #FFD699;
+  
+  /* Text colors */
+  --text: #E2E8F0;
+  --text-light: #CBD5E1;
+  --text-dark: #F8FAFC;
+  
+  /* UI colors - slightly muted for dark mode */
+  --success: #22C55E;
+  --warning: #F59E0B;
+  --error: #EF4444;
+  
+  /* Navigation */
+  --navbar: #0F2537;
+  --footer: #0A1A25;
+}
+
+
+/* @media (prefers-color-scheme: dark) {
   :root {
     --background: #122F41;
     --foreground: #ededed;
   }
-}
+} */
 
 /* body {
   color: var(--foreground);

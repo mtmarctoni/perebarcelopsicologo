@@ -1,5 +1,3 @@
-import { JSXElementConstructor } from "react";
-
 export type Label = string;
 export type Url = string;
 export type Name = string;

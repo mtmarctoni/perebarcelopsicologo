@@ -3,6 +3,7 @@ import Image from "next/image";
 import MainLayout from "@/components/MianLayout";
 import Link from "next/link";
 import ScrollIcon from "@/icons/scroll-indicator.svg";
+import SectionContainer from "@/components/SectionContainer";
 
 export default function Home() {
   return (
@@ -47,18 +48,19 @@ export default function Home() {
         </div>
       </section>
 
-      <main className="max-w-4xl mx-auto">
-      <section className="bg-primary py-12">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <main className="">
+      <SectionContainer bgColor="bg-background">
+        <div className="px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl font-bold text-gray-dark mb-8 text-center">¿Quién soy?</h2>
           <div className="flex flex-col md:flex-row items-center gap-8">
-            <div className="md:w-1/2">
+            <div className="relative md:w-1/2 min-w-[225px] h-[400px] rounded-lg overflow-hidden">
               <Image
                 src="/profile/pere1-transparente.webp"
-                alt="Pere Barceló Psicólogo Deportivo"
-                width={400}
-                height={500}
-                className="object-cover rounded-lg w-auto h-auto drop-shadow-2xl"
+                  alt="Pere Barceló Psicólogo Deportivo"
+                  fill
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                  
+                className="object-cover rounded-lg drop-shadow-2xl"
               />
             </div>
             <div className="md:w-1/2 space-y-6 flex flex-col items-center">
@@ -80,9 +82,9 @@ export default function Home() {
             </div>
           </div>
         </div>
-      </section>
+      </SectionContainer>
 
-      <section className="bg-primary py-16">
+      <SectionContainer bgColor="primary">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl font-bold text-gray-dark mb-12 text-center">
             ¿En qué te puedo ayudar?
@@ -130,9 +132,11 @@ export default function Home() {
             </div>
           </div>
         </div>
-      </section> 
-      <section className="bg-primary py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        </SectionContainer> 
+        
+        {/* How I Help Section - Enhanced */}
+        <SectionContainer bgColor="white">
+          
           <h2 className="text-3xl font-bold text-gray-dark mb-12 text-center">
             ¿Cómo te puedo ayudar?
           </h2>
@@ -207,8 +211,8 @@ export default function Home() {
               </Link>
             </div>
           </div>
-        </div>
-        </section>
+      </SectionContainer>
+          
       </main>
     </MainLayout>
   );

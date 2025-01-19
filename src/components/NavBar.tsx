@@ -5,6 +5,7 @@ import { useState } from "react";
 import { navbarLinks } from "../utils/data";
 import CrossIcon from "@/icons/circle-xmark-solid.svg";
 import BarsIcon from "@/icons/bars-solid.svg";
+import {ThemeToggle} from "@/components/DarkToggle";
   
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
@@ -19,8 +20,10 @@ const Navbar = () => {
             className="text-white font-semibold text-xl whitespace-nowrap hover:text-gray-light transition-colors"
           >
             Pere Barceló Psicólogo
-          </Link>
+            </Link>
+            
 
+          <ThemeToggle />
           {/* Navigation Links */}
           <div className="hidden lg:flex items-center space-x-2">
             {navbarLinks.map((item) => (

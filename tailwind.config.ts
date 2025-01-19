@@ -6,34 +6,36 @@ export default {
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
+  darkMode: "class",
   theme: {
     screens: {
       sm: '480px',
-      md: '480px',
+      md: '600px',
       lg: '890px', // 976px
       xl: '1440px',
     },
     colors:{
       primary: {
-        DEFAULT: '#B9D8EB',  // Footer background
-        light: '#3c9ebff',    // Lighter variation
-        dark: '#1C4761',     // Darker variation
+        DEFAULT: 'var(--primary)',  // Footer background
+        light: 'var(--primary-light)',    // Lighter variation #3c9ebff
+        dark: 'var(--primary-dark)',     // Darker variation #1C4761
       },
       secondary: {
-        DEFAULT: '#FFC300',  // White text
-        light: '#FFEA00',    // Lighter variation
-        dark: '#CC9C00',     // Darker variation
+        DEFAULT: 'var(--secondary)',  // White text FFC300
+        light: 'var(--secondary-light)',    // Lighter variation FFEA00
+        dark: 'var(--secondary-dark)',     // Darker variation CC9C00
       },
       text: {
-        DEFAULT: '#333333',  // Main text color
-        light: '#666666',
-        dark: '#000000', // Secondary text color
+        DEFAULT: 'var(--text)',  // Main text color
+        light: 'var(--text-light)',
+        dark: 'var(--text-dark)', // Secondary text color
       },
-      bg: {
-        DEFAULT: '#F0F0F0',  // Default background
-        navbar1: '#1E2761',   
-        navbar2: '#375E97',    
-        footer: '#122F41',
+      background: {
+        DEFAULT: 'var(--background)',  // Default background
+        alt: 'var(--background-alt)',  // Default background
+        navbar: 'var(--navbar)',   
+        navbarAlt: 'var(--navbar-alt)',    
+        footer: 'var(--footer)',
       },
       'blue': '#1fb6ff',
       'purple': '#7e5bef',

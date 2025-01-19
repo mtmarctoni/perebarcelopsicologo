@@ -9,7 +9,7 @@ import EnvelopeIcon from '@/icons/envelope.svg';
 
 const Footer = () => {
   return (
-    <footer className="bg-gray-dark text-white">
+    <footer className="bg-bg-footer text-text">
       {/* Main Footer Content */}
       <div className="max-w-6xl mx-auto py-8 px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -53,13 +53,13 @@ const Footer = () => {
             <h3 className="text-lg font-semibold mb-4">Contacto</h3>
             <div className="space-y-3 text-xs">
               <div className="flex items-center space-x-3">
-                <EnvelopeIcon className="text-gray-light" />
+                <EnvelopeIcon className="text-text-light" />
                 <a href="mailto:pere@perebarcelpsicologo.com" className="text-gray-light hover:text-white transition-colors duration-200">
                   pere@perebarcelpsicologo.com
                 </a>
               </div>
               <div className="flex items-center space-x-3">
-                <WhatsappIcon className="text-gray-light" />
+                <WhatsappIcon className="text-text-light" />
                 <a href="tel:+34600000000" className="text-gray-300 hover:text-white transition-colors duration-200">
                   +34 600 000 000
                 </a>
