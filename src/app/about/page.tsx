@@ -2,24 +2,28 @@ import Image from "next/image";
 import dynamic from "next/dynamic";
 
 import MainLayout from "@/components/MianLayout";
+import { HandshakeIcon } from "@/components/Icons";
+import { FutbolIcon } from "@/components/Icons";
+import { GraduationcapIcon } from "@/components/Icons";
+
 // import HandshakeIcon from "@/icons/handshake.svg";
 // import FutbolIcon from "@/icons/futbol.svg";
 // import GraduationcapIcon from "@/icons/graduation-cap.svg";
 
-const HandshakeIcon = dynamic(() => import('@/icons/handshake.svg'), {
-  ssr: true,
-  loading: () => <div className="text-primary-dark w-6 h-6" />
-});
+// const HandshakeIcon = dynamic(() => import('@/icons/handshake.svg'), {
+//   ssr: true,
+//   loading: () => <div className="text-primary-dark w-6 h-6" />
+// });
 
-const FutbolIcon = dynamic(() => import('@/icons/futbol.svg'), {
-  ssr: true,
-  loading: () => <div className="text-primary-dark w-6 h-6" />
-});
+// const FutbolIcon = dynamic(() => import('@/icons/futbol.svg'), {
+//   ssr: true,
+//   loading: () => <div className="text-primary-dark w-6 h-6" />
+// });
 
-const GraduationcapIcon = dynamic(() => import('@/icons/graduation-cap.svg'), {
-  ssr: true,
-  loading: () => <div className="text-primary-dark w-6 h-6" />
-});
+// const GraduationcapIcon = dynamic(() => import('@/icons/graduation-cap.svg'), {
+//   ssr: true,
+//   loading: () => <div className="text-primary-dark w-6 h-6" />
+// });
 
 export default function AboutPage() {
   return (
