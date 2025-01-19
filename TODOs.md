@@ -1,0 +1,2 @@
+- refactorizar sections en componentes
+- refactorizar todo lo que sean tarjetas en iteraciones
