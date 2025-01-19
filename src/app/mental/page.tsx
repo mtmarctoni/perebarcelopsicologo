@@ -2,10 +2,10 @@
 import Image from "next/image";
 import Link from "next/link";
 
-import HeartIcon from "@/icons/heart.svg";
-import BalanceIcon from "@/icons/balance.svg";
-import BatteryIcon from "@/icons/battery.svg";
-import StarIcon from "@/icons/star.svg";
+import {HeartIcon} from "@/components/Icons";
+import {BalanceIcon} from "@/components/Icons";
+import {BatteryIcon} from "@/components/Icons";
+import {StarIcon} from "@/components/Icons";
 import MainLayout from "@/components/MainLayout";
 
 export default function MentalHealthPage() {
