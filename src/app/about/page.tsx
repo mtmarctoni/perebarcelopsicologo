@@ -16,6 +16,7 @@ export default function AboutPage() {
               src="/stock/personas-escuchando.webp"
               alt="Pere Barceló Lambea"
               fill
+              priority
               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
               className="object-cover brightness-75"
             />

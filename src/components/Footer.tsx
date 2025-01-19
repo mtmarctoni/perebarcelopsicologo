@@ -8,6 +8,7 @@ import WhatsappIcon from '@/icons/whatsapp.svg';
 import EnvelopeIcon from '@/icons/envelope.svg';
 
 const Footer = () => {
+  //const date = '2024'
   return (
     <footer className="bg-bg-footer text-text">
       {/* Main Footer Content */}
@@ -120,45 +121,6 @@ const Footer = () => {
         </div>
       </div>
     </footer>
-    // <footer className="bg-background text-white py-12">
-    //   <div className="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-8">
-    //     <div>
-    //       <h3 className="font-bold mb-4">Menú</h3>
-    //       <ul className="space-y-2">
-    //         <li><Link href="/">Inicio</Link></li>
-    //         <li><Link href="/conociendo-a-pere-barcelo">Conociendo a Pere Barceló</Link></li>
-    //         <li><Link href="/mi-modo-de-trabajo">Mi Modo de Trabajo</Link></li>
-    //         <li><Link href="/contacto">Contacto</Link></li>
-    //       </ul>
-    //     </div>
-        
-    //     <div>
-    //       <h3 className="font-bold mb-4">Contacto</h3>
-    //       <p>pere@perebarcelpsicologo.com</p>
-    //     </div>
-        
-    //     <div>
-    //       <h3 className="font-bold mb-4">Redes sociales</h3>
-    //       <div className="flex space-x-4">
-    //         <Link href="#" className="hover:opacity-80">
-    //           <span className="sr-only">LinkedIn</span>
-    //           {/* Add LinkedIn icon */}
-    //         </Link>
-    //         <Link href="#" className="hover:opacity-80">
-    //           <span className="sr-only">Instagram</span>
-    //           {/* Add Instagram icon */}
-    //         </Link>
-    //         <Link href="#" className="hover:opacity-80">
-    //           <span className="sr-only">Twitter</span>
-    //           {/* Add Twitter icon */}
-    //         </Link>
-    //       </div>
-    //     </div>
-    //   </div>
-    //   <div className="text-center mt-8 text-sm">
-    //     <p>Pere Barceló Psicólogo © 2024</p>
-    //   </div>
-    // </footer>
   );
 };
 
