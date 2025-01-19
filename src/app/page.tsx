@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-import MainLayout from "@/components/MianLayout";
+import MainLayout from "@/components/MainLayout";
 import Link from "next/link";
 import ScrollIcon from "@/icons/scroll-indicator.svg";
 import SectionContainer from "@/components/SectionContainer";

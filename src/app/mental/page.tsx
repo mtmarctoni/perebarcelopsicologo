@@ -6,7 +6,7 @@ import HeartIcon from "@/icons/heart.svg";
 import BalanceIcon from "@/icons/balance.svg";
 import BatteryIcon from "@/icons/battery.svg";
 import StarIcon from "@/icons/star.svg";
-import MainLayout from "@/components/MianLayout";
+import MainLayout from "@/components/MainLayout";
 
 export default function MentalHealthPage() {
   return (

@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-import MainLayout from "@/components/MianLayout";
+import MainLayout from "@/components/MainLayout";
 import { HandshakeIcon } from "@/components/Icons";
 import { FutbolIcon } from "@/components/Icons";
 import { GraduationcapIcon } from "@/components/Icons";

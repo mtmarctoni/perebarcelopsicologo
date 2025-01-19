@@ -6,7 +6,7 @@ import BrainIcon from "@/icons/brain.svg";
 import ChartlineIcon from "@/icons/chartline.svg";
 import HeartbeatIcons from "@/icons/heartbeat.svg";
 import LightbulbIcon from "@/icons/lightbulb.svg";
-import MainLayout from "@/components/MianLayout";
+import MainLayout from "@/components/MainLayout";
 
 export default function PerformancePage() {
   return (

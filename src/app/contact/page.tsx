@@ -1,7 +1,7 @@
 "use client";
 import { Widget } from "@typeform/embed-react";
 
-import MainLayout from "@/components/MianLayout";
+import MainLayout from "@/components/MainLayout";
 import SocialCard from "@/components/SocialCard";
 import { socialMediaLinks } from "@/utils/data";
 

@@ -5,7 +5,7 @@ import Link from "next/link";
 import HandshakeIcon from "@/icons/handshake.svg";
 import UsersIcon from "@/icons/users.svg";
 import LaptopIcon from "@/icons/laptop.svg";
-import MainLayout from "@/components/MianLayout";
+import MainLayout from "@/components/MainLayout";
 
 export default function WorkMethodPage() {
   return (
