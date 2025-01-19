@@ -1,8 +1,8 @@
 import Image from "next/image";
+import Link from "next/link";
 
 import MainLayout from "@/components/MainLayout";
-import Link from "next/link";
-import ScrollIcon from "@/icons/scroll-indicator.svg";
+import {ScrollIcon} from "@/components/Icons";
 import SectionContainer from "@/components/SectionContainer";
 
 export default function Home() {

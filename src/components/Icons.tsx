@@ -39,3 +39,9 @@ import StarIconSvg from "@/icons/star.svg";
 export const StarIcon = (props: React.SVGProps<SVGSVGElement>) => (
     <StarIconSvg {...props} />
 );
+
+import ScrollIconSvg from "@/icons/scroll-indicator.svg";
+
+export const ScrollIcon = (props: React.SVGProps<SVGSVGElement>) => (
+    <ScrollIconSvg {...props} />
+);
