@@ -1,9 +1,25 @@
 import Image from "next/image";
+import dynamic from "next/dynamic";
 
 import MainLayout from "@/components/MianLayout";
-import HandshakeIcon from "@/icons/handshake.svg";
-import FutbolIcon from "@/icons/futbol.svg";
-import GraduationcapIcon from "@/icons/graduation-cap.svg";
+// import HandshakeIcon from "@/icons/handshake.svg";
+// import FutbolIcon from "@/icons/futbol.svg";
+// import GraduationcapIcon from "@/icons/graduation-cap.svg";
+
+const HandshakeIcon = dynamic(() => import('@/icons/handshake.svg'), {
+  ssr: true,
+  loading: () => <div className="text-primary-dark w-6 h-6" />
+});
+
+const FutbolIcon = dynamic(() => import('@/icons/futbol.svg'), {
+  ssr: true,
+  loading: () => <div className="text-primary-dark w-6 h-6" />
+});
+
+const GraduationcapIcon = dynamic(() => import('@/icons/graduation-cap.svg'), {
+  ssr: true,
+  loading: () => <div className="text-primary-dark w-6 h-6" />
+});
 
 export default function AboutPage() {
   return (
@@ -66,7 +82,8 @@ export default function AboutPage() {
             <section className="grid md:grid-cols-3 gap-6 mb-16">
               <div className="bg-white p-6 rounded-lg shadow-md">
                 <div className="w-12 h-12 bg-primary-dark/10 rounded-full flex items-center justify-center mb-4 mx-auto">
-                  <FutbolIcon className="text-primary-dark w-6 h-6" />
+                  {/* <FutbolIcon className="text-primary-dark w-6 h-6" /> */}
+                  <FutbolIcon />
                 </div>
                 <h3 className="font-semibold mb-2">Experiencia Deportiva</h3>
                 <p className="text-gray-600 text-sm">
@@ -77,7 +94,8 @@ export default function AboutPage() {
 
               <div className="bg-white p-6 rounded-lg shadow-md">
                 <div className="w-12 h-12 bg-primary-dark/10 rounded-full flex items-center justify-center mb-4 mx-auto">
-                  <GraduationcapIcon className="text-primary-dark w-6 h-6" />
+                  {/* <GraduationcapIcon className="text-primary-dark w-6 h-6" /> */}
+                  <GraduationcapIcon />
                 </div>
                 <h3 className="font-semibold mb-2">Formación Académica</h3>
                 <p className="text-gray-600 text-sm">
@@ -88,7 +106,8 @@ export default function AboutPage() {
 
               <div className="bg-white p-6 rounded-lg shadow-md">
                 <div className="w-12 h-12 bg-primary-dark/10 rounded-full flex items-center justify-center mb-4 mx-auto">
-                  <HandshakeIcon className="text-primary-dark w-6 h-6" />
+                  {/* <HandshakeIcon className="text-primary-dark w-6 h-6" /> */}
+                  <HandshakeIcon />
                 </div>
                 <h3 className="font-semibold mb-2">Compromiso</h3>
                 <p className="text-gray-600 text-sm">
