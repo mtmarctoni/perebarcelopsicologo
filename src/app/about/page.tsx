@@ -1,7 +1,8 @@
 import Image from "next/image";
 
 import MainLayout from "@/components/MainLayout";
-import { HandshakeIcon, FutbolIcon, GraduationcapIcon } from "@/components/Icons";
+// import { HandshakeIcon, FutbolIcon, GraduationcapIcon } from "@/components/Icons";
+import { FutbolIcon } from "@/components/Icons";
 
 export default function AboutPage() {
   return (
@@ -75,7 +76,7 @@ export default function AboutPage() {
 
               <div className="bg-white p-6 rounded-lg shadow-md">
                 <div className="w-12 h-12 bg-primary-dark/10 rounded-full flex items-center justify-center mb-4 mx-auto">
-                  <GraduationcapIcon />
+                  {/* <GraduationcapIcon /> */}
                 </div>
                 <h3 className="font-semibold mb-2">Formación Académica</h3>
                 <p className="text-gray-600 text-sm">
@@ -86,7 +87,7 @@ export default function AboutPage() {
 
               <div className="bg-white p-6 rounded-lg shadow-md">
                 <div className="w-12 h-12 bg-primary-dark/10 rounded-full flex items-center justify-center mb-4 mx-auto">
-                  <HandshakeIcon />
+                  {/* <HandshakeIcon /> */}
                 </div>
                 <h3 className="font-semibold mb-2">Compromiso</h3>
                 <p className="text-gray-600 text-sm">
