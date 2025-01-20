@@ -5,7 +5,7 @@ interface Props {
 
 export const IconCardContainer = ({ children, bgColor }: Props) => (
   <div
-    className={`bg-${bgColor} rounded-full flex items-center justify-center mb-6 p-4 size-16 mx-auto`}
+    className={`${bgColor} rounded-full flex items-center justify-center mb-6 p-4 size-16 mx-auto`}
   >
     {children}
   </div>

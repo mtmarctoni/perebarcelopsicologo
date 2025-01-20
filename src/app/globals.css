@@ -5,15 +5,15 @@
 :root {
   /* Core colors - unchanged */
   --primary: #B9D8EB;
+  --primary-light: #D4E6F3;
   --primary-dark: #1C4761;
 
   /* Background colors */
   --background: #F8FAFC;
-  --background-alt: #d0d3d6;
-  
-  /* Enhanced primary palette */
-  --primary-light: #D4E6F3;
-  --primary-darker: #15364A;
+  --background-alt: #eaeaeb;
+  --background-navbar: #1C4761;
+  --background-navbar-alt: #d0d3d6;
+  --background-footer: #15364A;
   
   /* Accent colors */
   --secondary: #FFB84D;    /* Warm orange */
@@ -29,20 +29,20 @@
   --success: #22C55E;
   --warning: #F59E0B;
   --error: #EF4444;
-  
-  /* Navigation */
-  --navbar: #1C4761;    /* Matching your primary-dark */
-  --footer: #15364A;    /* Slightly darker than primary-dark */
 }
 
 .dark {
+  /* Enhanced primary palette */
+  --primary: #2F4F7F;
+  --primary-light: #1C4761;    /* Your primary-dark becomes light in dark mode */
+  --primary-darker: #0F2537;
+
   /* Background colors */
   --background: #0F172A;
   --background-alt: #1E293B;
-  
-  /* Enhanced primary palette */
-  --primary-light: #1C4761;    /* Your primary-dark becomes light in dark mode */
-  --primary-darker: #0F2537;
+  --background-navbar: #0F2537;
+  --background-navbar-alt: #d0d3d6;
+  --background-footer: #0A1A25;
   
   /* Accent colors remain vibrant */
   --secondary: #FFB84D;
@@ -58,10 +58,6 @@
   --success: #22C55E;
   --warning: #F59E0B;
   --error: #EF4444;
-  
-  /* Navigation */
-  --navbar: #0F2537;
-  --footer: #0A1A25;
 }
 
 
@@ -76,4 +72,14 @@
   color: var(--foreground);
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
+} */
+
+/* Add transition to elements that use these variables */
+/* *, 
+*::before,
+*::after {
+  transition: background-color 500ms ease,
+              border-color 500ms ease,
+              color 500ms ease,
+              fill 500ms ease;
 } */

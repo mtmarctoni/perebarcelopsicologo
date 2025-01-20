@@ -1,9 +1,9 @@
 import Image from "next/image";
 import Link from "next/link";
 
-import MainLayout from "@/components/MainLayout";
-import {ScrollIcon} from "@/components/Icons";
-import SectionContainer from "@/components/SectionContainer";
+import MainLayout from "@/components/core/MainLayout";
+import {ScrollIcon} from "@/components/composables/Icons";
+import SectionContainer from "@/components/containers/SectionContainer";
 
 export default function Home() {
   return (
@@ -144,7 +144,7 @@ export default function Home() {
           <div className="grid md:grid-cols-3 gap-8">
             {/* Sesiones individuales */}
             <div className="flex flex-col items-center text-center">
-              <h3 className="text-xl font-semibold mb-4">Sesiones individuales</h3>
+              <h3 className="text-text text-xl font-semibold mb-4">Sesiones individuales</h3>
               <div className="relative w-full aspect-square mb-4">
                 <Image
                   src="/stock/sesiones-individuales.webp"

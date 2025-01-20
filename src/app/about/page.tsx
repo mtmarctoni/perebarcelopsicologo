@@ -1,9 +1,9 @@
 import Image from "next/image";
 
-import MainLayout from "@/components/MainLayout";
-import { IconCardContainer } from "@/components/IconContainer";
+import MainLayout from "@/components/core/MainLayout";
+import { IconCardContainer } from "@/components/containers/IconContainer";
 
-import { HandshakeIcon, FutbolIcon, GraduationcapIcon } from "@/components/Icons";
+import { HandshakeIcon, FutbolIcon, GraduationcapIcon } from "@/components/composables/Icons";
 
 export default function AboutPage() {
   return (
@@ -65,7 +65,7 @@ export default function AboutPage() {
             {/* Experience Cards */}
             <section className="grid md:grid-cols-3 gap-6 mb-16">
               <div className="bg-white p-6 rounded-lg shadow-md">
-                <IconCardContainer bgColor="secondary-light" >
+                <IconCardContainer bgColor="bg-secondary-light" >
                   <FutbolIcon />
                 </IconCardContainer>
                 <h3 className="font-semibold mb-2">Experiencia Deportiva</h3>

@@ -2,11 +2,11 @@
 import Link from "next/link";
 import { useState } from "react";
 
-import { navbarLinks } from "../utils/data";
-import { ThemeToggle } from "@/components/DarkToggle";
+import { navbarLinks } from "@/utils/data";
+import { ThemeToggle } from "@/components/features/DarkToggle";
 
-// import CrossIcon from "@/icons/circle-xmark-solid.svg";
-// import BarsIcon from "@/icons/bars-solid.svg";
+import { CrossIcon, BarsIcon } from "../composables/Icons";
+import { IconFooterContainer } from "../containers/IconContainer";
   
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
@@ -14,18 +14,22 @@ const Navbar = () => {
     return (
       <nav className="fixed top-0 left-0 right-0 z-50 bg-primary-dark shadow-xl">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 -my-2">
-        <div className="flex justify-between items-center h-20">
+          <div className="flex justify-between items-center h-20">
+            <div className="flex justify-center space-x-4">
+            <IconFooterContainer >
+            <ThemeToggle />
+          </IconFooterContainer>
+
           {/* Logo/Brand */}
           <Link 
             href="/" 
-            className="text-white font-semibold text-xl whitespace-nowrap hover:text-gray-light transition-colors"
-          >
+            className="content-center text-white font-semibold text-xl whitespace-nowrap hover:text-gray-light transition-colors"
+            >
             Pere Barceló Psicólogo
             </Link>
-            
+            </div>
 
-          <ThemeToggle />
-          {/* Navigation Links */}
+            {/* Navigation Links */}
           <div className="hidden lg:flex items-center space-x-2">
             {navbarLinks.map((item) => (
               <div className="relative group" key={item.url}>
@@ -68,10 +72,12 @@ const Navbar = () => {
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               className="text-white hover:text-gray-light p-2"
             >
-              {/* {isMenuOpen ? <CrossIcon className="w-6 h-6"/> : <BarsIcon className="w-6 h-6" />} */}
+              {isMenuOpen ? <CrossIcon className="w-6 h-6"/> : <BarsIcon className="w-6 h-6" />}
             </button>
+            </div>
           </div>
-        </div>
+
+          
 
         {/* Mobile Navigation */}
         <div className={`lg:hidden ${isMenuOpen ? 'block' : 'hidden'}`}>
@@ -86,6 +92,7 @@ const Navbar = () => {
                 >
                   {item.label}
                 </Link>
+                
                 
                 {/* Mobile Dropdown Items */}
                 {item.subLinks && (
@@ -107,8 +114,10 @@ const Navbar = () => {
             ))}
           </div>
 
+          </div>
+          
         </div>
-      </div>
+        
     </nav>
   );
 };

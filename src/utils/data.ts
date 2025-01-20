@@ -1,10 +1,6 @@
 import type { NavItem, SocialCardProps } from "@/types/navbar";
 
-// import EnvelopeIcon from "@/icons/envelope.svg";
-// import LinkedinIcon from "@/icons/linkedin.svg";
-// import InstagramIcon from "@/icons/instagram.svg";
-
-import { EnvelopeIcon, LinkedinIcon, InstagramIcon, TwitterIcon } from "@/components/Icons";
+import { EnvelopeIcon, LinkedinIcon, InstagramIcon, TwitterIcon } from "@/components/composables/Icons";
 
 export const navbarLinks: NavItem[] = [
     { label: 'Inicio', url: '/' },

@@ -1,19 +1,17 @@
 // components/Footer.tsx
 import Link from "next/link";
 
-import { IconFooterContainer } from "./IconContainer";
-import {
-  EnvelopeIcon,
-  WhatsappIcon,
-} from "./Icons";
+import { IconFooterContainer } from "../containers/IconContainer";
+import { EnvelopeIcon, WhatsappIcon } from "../composables/Icons";
 
-import { socialMediaLinksFooter } from "@/utils/data";
-import SocialLinkFooter from "./SocialLinkFooter";
+import { socialMediaLinksFooter, navbarLinks } from "@/utils/data";
+import SocialLinkFooter from "../containers/SocialLinkFooter";
+import QuickLinkFooter from "../containers/QuickLinkFooter";
 
 const Footer = () => {
   //const date = '2024'
   return (
-    <footer className="bg-bg-footer text-text">
+    <footer className="bg-background-footer text-white">
       {/* Main Footer Content */}
       <div className="max-w-6xl mx-auto py-8 px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -30,38 +28,11 @@ const Footer = () => {
           <div>
             <h3 className="text-sm font-semibold mb-4">Enlaces rápidos</h3>
             <ul className="space-y-2 text-xs">
-              <li>
-                <Link
-                  href="/"
-                  className="text-gray-light hover:text-white transition-colors duration-200"
-                >
-                  Inicio
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/conociendo-a-pere-barcelo"
-                  className="text-gray-light hover:text-white transition-colors duration-200"
-                >
-                  Conociendo a Pere Barceló
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/mi-modo-de-trabajo"
-                  className="text-gray-light hover:text-white transition-colors duration-200"
-                >
-                  Mi Modo de Trabajo
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/contacto"
-                  className="text-gray-light hover:text-white transition-colors duration-200"
-                >
-                  Contacto
-                </Link>
-              </li>
+              {navbarLinks.map((link) => (
+                <li key={link.url}>
+                  <QuickLinkFooter link={link} />
+                </li>
+              ))}
             </ul>
           </div>
 
@@ -86,7 +57,7 @@ const Footer = () => {
                 </IconFooterContainer>
                 <a
                   href="tel:+34600000000"
-                  className="text-gray-300 hover:text-white transition-colors duration-200"
+                  className="text-gray-light hover:text-white transition-colors duration-200"
                 >
                   +34 600 000 000
                 </a>
@@ -98,9 +69,9 @@ const Footer = () => {
           <div>
             <h3 className="text-lg font-semibold mb-4">Sígueme</h3>
             <div className="flex space-x-4">
-              {socialMediaLinksFooter.map((social) => 
-              <SocialLinkFooter key={social.name} social={social} />
-              )}
+              {socialMediaLinksFooter.map((social) => (
+                <SocialLinkFooter key={social.name} social={social} />
+              ))}
             </div>
           </div>
         </div>
@@ -108,7 +79,7 @@ const Footer = () => {
         {/* Bottom Bar */}
         <div className="mt-8 pt-2 border-t border-bg text-xs">
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-            <p className="text-gray-300">
+            <p className="text-gray-light">
               © {new Date().getFullYear()} Pere Barceló Psicólogo. Todos los
               derechos reservados.
             </p>
