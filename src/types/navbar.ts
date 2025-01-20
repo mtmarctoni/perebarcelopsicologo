@@ -2,6 +2,7 @@ export type Label = string;
 export type Url = string;
 export type Name = string;
 export type Username = string;
+// export type Icon = string;
 export type Icon = React.FC<React.SVGProps<SVGSVGElement>>;
 
 

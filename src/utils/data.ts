@@ -1,7 +1,10 @@
 import type { NavItem, SocialCardProps } from "@/types/navbar";
-import EnvelopeIcon from "@/icons/envelope.svg";
-import LinkedinIcon from "@/icons/linkedin.svg";
-import InstagramIcon from "@/icons/instagram.svg";
+
+// import EnvelopeIcon from "@/icons/envelope.svg";
+// import LinkedinIcon from "@/icons/linkedin.svg";
+// import InstagramIcon from "@/icons/instagram.svg";
+
+import { EnvelopeIcon, LinkedinIcon, InstagramIcon, TwitterIcon } from "@/components/Icons";
 
 export const navbarLinks: NavItem[] = [
     { label: 'Inicio', url: '/' },
@@ -36,4 +39,26 @@ export const socialMediaLinks: SocialCardProps[] = [
       username: '@perebarcelo'
     },
     // Easy to add more social media here
-  ];
+];
+  
+export const socialMediaLinksFooter: SocialCardProps[] = [
+  {
+    name: 'LinkedIn',
+    Icon: LinkedinIcon,
+    link: 'https://www.linkedin.com/in/pere-barcel%C3%B3-lambea-6b5255192/',
+    username: 'Pere Barceló'
+  },
+  {
+    name: 'Instagram',
+    Icon: InstagramIcon,
+    link: 'https://www.instagram.com/perebarcelopsico/',
+    username: '@perebarcelopsico'
+  },
+  {
+    name: 'Twitter',
+    Icon: TwitterIcon,
+    link: 'https://x.com/PBarceloPsico',
+    username: '@PBarceloPsico'
+  },
+  // Easy to add more social media here
+];
