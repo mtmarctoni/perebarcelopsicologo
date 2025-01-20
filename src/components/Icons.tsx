@@ -40,8 +40,31 @@ export const StarIcon = (props: React.SVGProps<SVGSVGElement>) => (
     <StarIconSvg {...props} />
 );
 
-import ScrollIconSvg from "@/icons/scroll-indicator.svg";
+// import ScrollIconSvg from "@/icons/scroll-indicator.svg";
 
-export const ScrollIcon = (props: React.SVGProps<SVGSVGElement>) => (
-    <ScrollIconSvg {...props} />
-);
+// export const ScrollIcon = (props: React.SVGProps<SVGSVGElement>) => (
+//     <ScrollIconSvg {...props} />
+// );
+
+interface Props {
+    className?: string
+}
+
+export const ScrollIcon = ({className}: Props) => {
+
+    return (
+        <svg
+            className={className}
+            width="24"
+            height="24"
+            fill="none"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth="2"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+        >
+            <path d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+        </svg>
+    )
+}

@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 import MainLayout from "@/components/MainLayout";
-// import {ScrollIcon} from "@/components/Icons";
+import {ScrollIcon} from "@/components/Icons";
 import SectionContainer from "@/components/SectionContainer";
 
 export default function Home() {
@@ -44,7 +44,7 @@ export default function Home() {
 
         {/* Scroll indicator */}
         <div className="absolute bottom-2 left-1/2 transform -translate-x-1/2 animate-bounce">
-        {/* <ScrollIcon className="w-6 h-6 text-white animate-bounce" /> */}
+        <ScrollIcon className="w-6 h-6 text-white animate-bounce" />
         </div>
       </section>
 
