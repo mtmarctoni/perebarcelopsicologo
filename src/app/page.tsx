@@ -44,7 +44,7 @@ export default function Home() {
 
         {/* Scroll indicator */}
         <div className="absolute bottom-2 left-1/2 transform -translate-x-1/2 animate-bounce">
-        <ScrollIcon className="w-6 h-6 text-white animate-bounce" />
+        <ScrollIcon className="w-12 h-12 text-primary-light animate-bounce" />
         </div>
       </section>
 
