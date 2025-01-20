@@ -1,11 +1,11 @@
 // components/Footer.tsx
 import Link from 'next/link';
 
-import TwitterIcon from '@/icons/twitter.svg';
-import InstagramIcon from '@/icons/instagram.svg';
-import LinkedinIcon from '@/icons/linkedin.svg';
-import WhatsappIcon from '@/icons/whatsapp.svg';
-import EnvelopeIcon from '@/icons/envelope.svg';
+// import TwitterIcon from '@/icons/twitter.svg';
+// import InstagramIcon from '@/icons/instagram.svg';
+// import LinkedinIcon from '@/icons/linkedin.svg';
+// import WhatsappIcon from '@/icons/whatsapp.svg';
+// import EnvelopeIcon from '@/icons/envelope.svg';
 
 const Footer = () => {
   //const date = '2024'
@@ -54,13 +54,13 @@ const Footer = () => {
             <h3 className="text-lg font-semibold mb-4">Contacto</h3>
             <div className="space-y-3 text-xs">
               <div className="flex items-center space-x-3">
-                <EnvelopeIcon className="text-text-light" />
+                {/* <EnvelopeIcon className="text-text-light" /> */}
                 <a href="mailto:pere@perebarcelpsicologo.com" className="text-gray-light hover:text-white transition-colors duration-200">
                   pere@perebarcelpsicologo.com
                 </a>
               </div>
               <div className="flex items-center space-x-3">
-                <WhatsappIcon className="text-text-light" />
+                {/* <WhatsappIcon className="text-text-light" /> */}
                 <a href="tel:+34600000000" className="text-gray-300 hover:text-white transition-colors duration-200">
                   +34 600 000 000
                 </a>
@@ -79,7 +79,7 @@ const Footer = () => {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <LinkedinIcon className="text-white" />
+                {/* <LinkedinIcon className="text-white" /> */}
               </a>
               <a 
                 href="https://www.instagram.com/perebarcelopsico/" 
@@ -88,7 +88,7 @@ const Footer = () => {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <InstagramIcon className="text-white" />
+                {/* <InstagramIcon className="text-white" /> */}
               </a>
               <a 
                 href="https://x.com/PBarceloPsico" 
@@ -97,7 +97,7 @@ const Footer = () => {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <TwitterIcon className="text-white" />
+                {/* <TwitterIcon className="text-white" /> */}
               </a>
             </div>
           </div>

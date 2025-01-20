@@ -3,9 +3,10 @@ import Link from "next/link";
 import { useState } from "react";
 
 import { navbarLinks } from "../utils/data";
-import CrossIcon from "@/icons/circle-xmark-solid.svg";
-import BarsIcon from "@/icons/bars-solid.svg";
-import {ThemeToggle} from "@/components/DarkToggle";
+import { ThemeToggle } from "@/components/DarkToggle";
+
+// import CrossIcon from "@/icons/circle-xmark-solid.svg";
+// import BarsIcon from "@/icons/bars-solid.svg";
   
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
@@ -67,7 +68,7 @@ const Navbar = () => {
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               className="text-white hover:text-gray-light p-2"
             >
-              {isMenuOpen ? <CrossIcon className="w-6 h-6"/> : <BarsIcon className="w-6 h-6" />}
+              {/* {isMenuOpen ? <CrossIcon className="w-6 h-6"/> : <BarsIcon className="w-6 h-6" />} */}
             </button>
           </div>
         </div>
