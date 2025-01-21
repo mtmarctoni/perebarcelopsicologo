@@ -48,6 +48,7 @@ const nextConfig: NextConfig = {
   images: {
     domains: ['mtmarctoni.github.io'],
   },
+  basePath: '/perebarcelopsicologo',
   reactStrictMode: true,
 };
 
