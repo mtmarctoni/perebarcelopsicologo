@@ -4,6 +4,7 @@ import Link from "next/link";
 import MainLayout from "@/components/core/MainLayout";
 import {ScrollIcon} from "@/components/composables/Icons";
 import SectionContainer from "@/components/containers/SectionContainer";
+import { baseUrl } from "@/utils/data";
 
 export default function Home() {
   return (
@@ -12,7 +13,7 @@ export default function Home() {
         {/* Full-width background image with overlay */}
         <div className="absolute inset-0">
           <Image
-            src="/stock/alcanza-tu-objetivo.webp"
+            src={`${baseUrl}/stock/alcanza-tu-objetivo.webp`}
             alt="Pista de atletismo"
             fill
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
@@ -55,7 +56,7 @@ export default function Home() {
           <div className="flex flex-col md:flex-row items-center gap-8">
             <div className="relative md:w-1/2 min-w-[225px] h-[400px] rounded-lg overflow-hidden">
               <Image
-                src="/profile/pere1-transparente.webp"
+                  src={`${baseUrl}/profile/pere1-transparente.webp`}
                   alt="Pere Barceló Psicólogo Deportivo"
                   fill
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
@@ -96,7 +97,7 @@ export default function Home() {
               <h3 className="text-xl font-semibold mb-4">Rendimiento deportivo</h3>
               <div className="relative w-full aspect-video mb-4">
                 <Image
-                  src="/stock/golf-coaching.webp"
+                    src={`${baseUrl}/stock/golf-coaching.webp`}
                   alt="Entrenamiento de golf"
                   fill
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
@@ -116,7 +117,7 @@ export default function Home() {
               <h3 className="text-xl font-semibold mb-4">Salud mental</h3>
               <div className="relative w-full aspect-video mb-4">
                 <Image
-                  src="/stock/mental-health.webp"
+                    src={`${baseUrl}/stock/mental-health.webp`}
                   alt="Salud mental"
                   fill
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
@@ -147,7 +148,7 @@ export default function Home() {
               <h3 className="text-text text-xl font-semibold mb-4">Sesiones individuales</h3>
               <div className="relative w-full aspect-square mb-4">
                 <Image
-                  src="/stock/sesiones-individuales.webp"
+                  src={`${baseUrl}/stock/sesiones-individuales.webp`}
                   alt="Sesiones individuales online"
                   fill
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
@@ -170,7 +171,7 @@ export default function Home() {
               <h3 className="text-xl font-semibold mb-4">Talleres grupales</h3>
               <div className="relative w-full aspect-square mb-4">
                 <Image
-                  src="/stock/talleres-grupales.webp"
+                  src={`${baseUrl}/stock/talleres-grupales.webp`}
                   alt="Talleres grupales"
                   fill
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
@@ -193,7 +194,7 @@ export default function Home() {
               <h3 className="text-xl font-semibold mb-4">Asesoramientos</h3>
               <div className="relative w-full aspect-square mb-4">
                 <Image
-                  src="/stock/asesoramientos-futbol.webp"
+                  src={`${baseUrl}/stock/asesoramientos-futbol.webp`}
                   alt="Asesoramiento deportivo"
                   fill
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"

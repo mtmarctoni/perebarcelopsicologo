@@ -6,7 +6,7 @@ import MainLayout from "@/components/core/MainLayout";
 import SectionContainer from "@/components/containers/SectionContainer";
 import BaseCard from "@/components/containers/BaseCard";
 
-import { methodologyCards } from "@/utils/data";
+import { baseUrl, methodologyCards } from "@/utils/data";
 import { BaseCardProps } from "@/types/navbar";
 
 export default function WorkMethodPage() {
@@ -17,7 +17,7 @@ export default function WorkMethodPage() {
           {/* Hero Section */}
           <div className="relative h-[400px] rounded-xl overflow-hidden mb-12">
             <Image
-              src="/stock/sports-psychology.webp"
+              src={`${baseUrl}/stock/sports-psychology.webp`}
               alt="Psicología deportiva"
               fill
               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"

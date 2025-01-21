@@ -6,7 +6,7 @@ import MainLayout from "@/components/core/MainLayout";
 import SectionContainer from "@/components/containers/SectionContainer";
 import { BaseCardProps } from "@/types/navbar";
 import BaseCard from "@/components/containers/BaseCard";
-import { mentalCards } from "@/utils/data";
+import { baseUrl, mentalCards } from "@/utils/data";
 
 export default function MentalHealthPage() {
   return (
@@ -16,7 +16,7 @@ export default function MentalHealthPage() {
               
           <header className="relative h-[400px] rounded-xl overflow-hidden mb-12">
             <Image
-              src="/stock/mental-health-hero.webp"
+              src={`${baseUrl}/stock/mental-health-hero.webp`}
               alt="Salud Mental"
               fill
               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"

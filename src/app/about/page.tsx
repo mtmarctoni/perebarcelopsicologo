@@ -5,6 +5,7 @@ import { IconCardContainer } from "@/components/containers/IconContainer";
 
 import { HandshakeIcon, FutbolIcon, GraduationcapIcon } from "@/components/composables/Icons";
 import SectionContainer from "@/components/containers/SectionContainer";
+import { baseUrl } from "@/utils/data";
 
 export default function AboutPage() {
   return (
@@ -14,7 +15,7 @@ export default function AboutPage() {
           {/* Hero Section */}
           <div className="relative h-[400px] rounded-xl overflow-hidden">
             <Image
-              src="/stock/personas-escuchando.webp"
+              src={`${baseUrl}/stock/personas-escuchando.webp`}
               alt="Pere Barceló Lambea"
               fill
               priority

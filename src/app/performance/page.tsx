@@ -4,7 +4,7 @@ import Link from "next/link";
 
 import MainLayout from "@/components/core/MainLayout";
 import SectionContainer from "@/components/containers/SectionContainer";
-import { performanceCards } from "@/utils/data";
+import { baseUrl, performanceCards } from "@/utils/data";
 import { BaseCardProps } from "@/types/navbar";
 import BaseCard from "@/components/containers/BaseCard";
 
@@ -16,7 +16,7 @@ export default function PerformancePage() {
               
           <header className="relative h-[400px] rounded-xl overflow-hidden">
             <Image
-              src="/stock/performance-hero.webp"
+            src={`${baseUrl}/stock/performance-hero.webp`}
               alt="Rendimiento deportivo"
               fill
               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
