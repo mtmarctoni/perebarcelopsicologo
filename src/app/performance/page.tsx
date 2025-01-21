@@ -2,10 +2,6 @@
 import Image from "next/image";
 import Link from "next/link";
 
-import BrainIcon from "@/icons/brain.svg";
-import ChartlineIcon from "@/icons/chartline.svg";
-import HeartbeatIcons from "@/icons/heartbeat.svg";
-import LightbulbIcon from "@/icons/lightbulb.svg";
 import MainLayout from "@/components/core/MainLayout";
 import SectionContainer from "@/components/containers/SectionContainer";
 import { performanceCards } from "@/utils/data";
@@ -57,6 +53,7 @@ export default function PerformancePage() {
               <div className="grid md:grid-cols-2 gap-8">
               {performanceCards.map((card: BaseCardProps) => 
                   <BaseCard
+                    key={card.name}
                     image={card.image}
                     Icon={card.Icon}
                     name={card.name}

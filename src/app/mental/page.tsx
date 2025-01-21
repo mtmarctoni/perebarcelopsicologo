@@ -2,12 +2,11 @@
 import Image from "next/image";
 import Link from "next/link";
 
-import {HeartIcon, BalanceIcon, BatteryIcon, StarIcon} from "@/components/composables/Icons";
 import MainLayout from "@/components/core/MainLayout";
 import SectionContainer from "@/components/containers/SectionContainer";
 import { BaseCardProps } from "@/types/navbar";
 import BaseCard from "@/components/containers/BaseCard";
-import { mentalCards, methodologyCards, performanceCards } from "@/utils/data";
+import { mentalCards } from "@/utils/data";
 
 export default function MentalHealthPage() {
   return (
@@ -63,6 +62,7 @@ export default function MentalHealthPage() {
               <div className="grid md:grid-cols-2 gap-8">
               {mentalCards.map((card: BaseCardProps) => 
                   <BaseCard
+                    key={card.name}
                     image={card.image}
                     Icon={card.Icon}
                     name={card.name}
