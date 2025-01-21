@@ -6,7 +6,7 @@ const SocialCard = ({ name, Icon, link, username }: SocialCardProps) => {
   
     return (
       <div className="bg-background-alt flex flex-col py-6 rounded-lg shadow-md text-center">
-        <IconCardContainer bgColor={`bg-primary-light`}>
+        <IconCardContainer className={`bg-primary-light`}>
           <Icon className="text-text"/>
         </IconCardContainer>
         <h3 className="text-text font-semibold mb-2">{name}</h3>

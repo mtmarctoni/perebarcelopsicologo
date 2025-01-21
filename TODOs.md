@@ -1,3 +1,1 @@
-- refactorizar sections en componentes
-- refactorizar todo lo que sean tarjetas en iteraciones
-- cambiar IconCardContainer -> className por bgColor
+- averiguar problema de imagenes en produccion (rutas o algo)

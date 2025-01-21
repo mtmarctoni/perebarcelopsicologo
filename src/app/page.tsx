@@ -49,9 +49,9 @@ export default function Home() {
       </section>
 
       <main className="">
-      <SectionContainer bgColor="bg-background">
+      <SectionContainer className="bg-background">
         <div className="px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold text-gray-dark mb-8 text-center">¿Quién soy?</h2>
+          <h2 className="text-3xl font-bold text-text mb-8 text-center">¿Quién soy?</h2>
           <div className="flex flex-col md:flex-row items-center gap-8">
             <div className="relative md:w-1/2 min-w-[225px] h-[400px] rounded-lg overflow-hidden">
               <Image
@@ -64,10 +64,10 @@ export default function Home() {
               />
             </div>
             <div className="md:w-1/2 space-y-6 flex flex-col items-center">
-              <p className="text-gray-dark text-lg">
+              <p className="text-text-light text-lg">
                 ¡Hola! Soy Pere Barceló, psicólogo deportivo con experiencia en mejorar el rendimiento y la salud mental de deportistas a través de sesiones online, talleres grupales y asesoramiento especializado.
               </p>
-              <p className="text-gray-dark text-lg">
+              <p className="text-text-light text-lg">
                 Juntos podemos trabajar para que mejores en los diferentes aspectos que afectan al rendimiento deportivo mientras disfrutas del proceso.
               </p>
               <Link
@@ -84,9 +84,9 @@ export default function Home() {
         </div>
       </SectionContainer>
 
-      <SectionContainer bgColor="primary">
+      <SectionContainer className="bg-background">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold text-gray-dark mb-12 text-center">
+          <h2 className="text-3xl font-bold text-text-dark mb-12 text-center">
             ¿En qué te puedo ayudar?
           </h2>
           
@@ -135,9 +135,9 @@ export default function Home() {
         </SectionContainer> 
         
         {/* How I Help Section - Enhanced */}
-        <SectionContainer bgColor="white">
+        <SectionContainer className="bg-background">
           
-          <h2 className="text-3xl font-bold text-gray-dark mb-12 text-center">
+          <h2 className="text-3xl font-bold text-text-dark mb-12 text-center">
             ¿Cómo te puedo ayudar?
           </h2>
           
@@ -154,7 +154,7 @@ export default function Home() {
                   className="object-cover rounded-lg"
                 />
               </div>
-              <p className="mb-6 text-gray-dark">
+              <p className="mb-6 text-text-dark">
                 Mejora tu rendimiento deportivo y salud mental con sesiones online personalizadas.
               </p>
               <Link 
@@ -177,7 +177,7 @@ export default function Home() {
                   className="object-cover rounded-lg"
                 />
               </div>
-              <p className="mb-6 text-gray-dark">
+              <p className="mb-6 text-text-dark">
                 Mejora el rendimiento deportivo y la salud mental de los entrenadores o atletas de tu club con talleres grupales.
               </p>
               <Link 
@@ -200,7 +200,7 @@ export default function Home() {
                   className="object-cover rounded-lg"
                 />
               </div>
-              <p className="mb-6 text-gray-dark">
+              <p className="mb-6 text-text-dark">
                 Mejora el rendimiento deportivo y la salud mental de los entrenadores o atletas de tu club con un asesoramiento personalizado.
               </p>
               <Link 

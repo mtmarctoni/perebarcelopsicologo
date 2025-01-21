@@ -1,11 +1,11 @@
 interface Props {
   children: React.ReactNode;
-  bgColor?: string;
+  className?: string;
 }
 
-export const IconCardContainer = ({ children, bgColor }: Props) => (
+export const IconCardContainer = ({ children, className }: Props) => (
   <div
-    className={`${bgColor} rounded-full flex items-center justify-center mb-6 p-4 size-16 mx-auto`}
+    className={`${className} rounded-full flex items-center justify-center mb-6 p-4 size-16 mx-auto`}
   >
     {children}
   </div>

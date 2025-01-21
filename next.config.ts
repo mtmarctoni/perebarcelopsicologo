@@ -45,9 +45,9 @@ const nextConfig: NextConfig = {
     },
   },
   // Other Next.js configurations
-  // images: {
-  //   domains: ['your-domain.com'],
-  // },
+  images: {
+    domains: ['mtmarctoni.github.io'],
+  },
   reactStrictMode: true,
 };
 
