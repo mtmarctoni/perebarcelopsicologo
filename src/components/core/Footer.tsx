@@ -85,17 +85,17 @@ const Footer = () => {
             </p>
             <div className="flex space-x-6">
               <Link
-                href="/privacidad"
+                href="https://perebarcelopsicologo.com/privacy-policy/"
                 className="text-gray-light hover:text-white transition-colors duration-200"
               >
                 Política de Privacidad
               </Link>
-              <Link
+              {/* <Link
                 href="/cookies"
                 className="text-gray-light hover:text-white transition-colors duration-200"
               >
                 Política de Cookies
-              </Link>
+              </Link> */}
             </div>
           </div>
         </div>

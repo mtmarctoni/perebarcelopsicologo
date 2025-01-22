@@ -4,9 +4,17 @@ export type Path = string;
 export type Name = string;
 export type Description = string;
 export type Username = string;
-// export type Icon = string;
+export type Id = string;
+export type QuestionSentence = string;
 export type Icon = React.FC<React.SVGProps<SVGSVGElement>>;
-
+export enum QuestionType {
+  TEXT = 'text',
+  EMAIL = 'email',
+  SELECT = 'select',
+  SUCCESS = 'success',
+  PHONE = 'phone'
+}
+export type QuestionOption = string;
 
 export type SubLink = {
     label: Label;
@@ -32,4 +40,11 @@ export interface BaseCardProps {
   name: Name;
   description: Description;
   link?: Url;
+}
+
+export interface Question {
+  id: Id;
+  question: QuestionSentence;
+  type: QuestionType;
+  options?: QuestionOption[];
 }

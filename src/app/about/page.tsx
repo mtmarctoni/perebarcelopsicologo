@@ -36,7 +36,7 @@ export default function AboutPage() {
                 <div className="md:w-1/2 min-w-[225px]">
                   <div className="relative h-[400px] rounded-lg overflow-hidden">
                     <Image
-                      src="/profile/pere2-transparente.webp"
+                      src={`${baseUrl}/profile/pere2-transparente.webp`}
                       alt="Pere Barceló"
                       fill
                       sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"

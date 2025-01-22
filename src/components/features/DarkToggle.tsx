@@ -12,7 +12,7 @@ export function ThemeToggle() {
     return () => {
       document.documentElement.classList.remove('transition-colors', 'duration-500');
     };
-  });
+  }, []);
 
   return (
     <button

@@ -1,1 +1,3 @@
-- averiguar problema de imagenes en produccion (rutas o algo)
+- añadir Blog
+- añadir Login de usuarios
+- añadir un componente para el contenido del email bonito y visual con los datos del form

@@ -1,8 +1,8 @@
-import type { NavItem, SocialCardProps, BaseCardProps } from "@/types/navbar";
+import { NavItem, SocialCardProps, BaseCardProps, Question, QuestionType } from "@/types/navbar";
 
 import { EnvelopeIcon, LinkedinIcon, InstagramIcon, TwitterIcon, HandshakeIcon, LaptopIcon, UsersIcon, HeartbeatIcon, BrainIcon, ChartlineIcon, LightbulbIcon, StarIcon, BatteryIcon, BalanceIcon, HeartIcon } from "@/components/composables/Icons";
 
-export const baseUrl: string = '/perebarcelopsicologo';
+export const baseUrl: string = '';
 
 export const navbarLinks: NavItem[] = [
     { label: 'Inicio', url: '/' },
@@ -140,4 +140,39 @@ export const mentalCards: BaseCardProps[] = [
     description: 'La autoestima es un componente esencial para la salud mental, ya que influye directamente en la forma en que te percibes a ti mismo y enfrentas los retos de la vida.',
   },
   // Easy to add more social media here
+];
+
+export const questions: Question[] = [
+  {
+    id: '1',
+    question: '¿Cuál es tu nombre?',
+    type: QuestionType.TEXT,
+  },
+  {
+    id: '2',
+    question: '¿Cuál es tu email?',
+    type: QuestionType.EMAIL
+  },
+  {
+    id: '3',
+    question: '¿Cuál es tu número de teléfono?',
+    type: QuestionType.PHONE,
+  },
+  {
+    id: '4',
+    question: '¿Por qué medio prefieres recibir una respuesta?',
+    type: QuestionType.SELECT,
+    options: ['Correo electrónico', 'WhatsApp', 'Llamada telefónica']
+  },
+  {
+    id: '5',
+    question: '¿En qué estás interesado?',
+    type: QuestionType.SELECT,
+    options: ['Sesiones online', 'Taller grupal', 'Asesoramiento psicológico']
+  },
+  {
+    id: '6',
+    question: '¡Gracias por contactar conmigo! Me pondré en contacto contigo lo antes posible.',
+    type: QuestionType.SUCCESS
+  }
 ];

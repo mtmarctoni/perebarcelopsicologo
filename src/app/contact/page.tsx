@@ -5,6 +5,7 @@ import MainLayout from "@/components/core/MainLayout";
 import SocialCard from "@/components/containers/SocialCard";
 import { socialMediaLinks } from "@/utils/data";
 import SectionContainer from "@/components/containers/SectionContainer";
+import ContactForm from "@/components/core/ContactForm";
 
 export default function ContactPage() {
   return (
@@ -23,8 +24,12 @@ export default function ContactPage() {
             </p>
           </header>
           <main>
-            {/* Typeform Widget */}
+            {/* Typefromstyle own contact form*/}
             <SectionContainer className="">
+              <ContactForm />
+            </SectionContainer>
+            {/* Typeform Widget */}
+            {/* <SectionContainer className="">
               <div className="rounded-lg overflow-hidden">
                 <Widget
                   id="NfbgnS1x"
@@ -34,7 +39,7 @@ export default function ContactPage() {
                   hideFooter
                 />
               </div>
-            </SectionContainer>
+            </SectionContainer> */}
 
             {/* Social Media Cards */}
             <SectionContainer className="">

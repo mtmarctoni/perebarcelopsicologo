@@ -46,9 +46,16 @@ const nextConfig: NextConfig = {
   },
   // Other Next.js configurations
   images: {
-    domains: ['mtmarctoni.github.io'],
+    remotePatterns: [{
+      protocol: "https",
+      hostname: "mtmarctoni.github.io",
+    },
+      {
+        protocol: "https",
+        hostname: "perebarcelopsicologo.azurewebsites.net/",
+    }],
   },
-  basePath: '/perebarcelopsicologo',
+  basePath: '',
   reactStrictMode: true,
 };
 
