@@ -26,6 +26,8 @@ export async function POST(req: Request) {
         <p><strong>Deporte:</strong> ${formData['3']}</p>
       `
     });
+      
+      
 
       if (error) {
         const resendError = error as ResendErrorResponse;
@@ -39,10 +41,13 @@ export async function POST(req: Request) {
         });
       }
   
-      return NextResponse.json({ success: true });
+      return NextResponse.json({
+          data: data,
+          success: true
+      });
     } catch (error) {
       return NextResponse.json({ 
-        error: 'Internal Server Error',
+        error: `Internal Server Error : ${error}`,
         type: 'server_error' 
       }, { 
         status: 500 
