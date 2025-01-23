@@ -53,6 +53,10 @@ jobs:
 
       - name: Unzip artifact for deployment
         run: unzip release.zip
+
+      - name: Delay deployment
+        run: sleep 60s
+        shell: bash
       
       - name: 'Deploy to Azure Web App'
         id: deploy-to-webapp

@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "gitpush": "git add . && git commit -m 'quickCommit' && git push"
+    "gitpush": "git add . && git commit -m quickCommit && git push"
   },
   "dependencies": {
     "@typeform/embed-react": "^4.3.0",
