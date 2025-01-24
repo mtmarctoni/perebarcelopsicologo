@@ -5,7 +5,7 @@ import MainLayout from "@/components/core/MainLayout";
 import SocialCard from "@/components/containers/SocialCard";
 import { socialMediaLinks } from "@/utils/data";
 import SectionContainer from "@/components/containers/SectionContainer";
-import ContactForm from "@/components/core/ContactForm";
+import ContactForm from "@/components/core/Forms/ContactForm";
 
 export default function ContactPage() {
   return (

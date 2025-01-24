@@ -2,6 +2,8 @@ export type Label = string;
 export type Url = string;
 export type Path = string;
 export type Name = string;
+export type Email = string;
+export type Phone = string;
 export type Description = string;
 export type Username = string;
 export type Id = string;
@@ -10,11 +12,33 @@ export type Icon = React.FC<React.SVGProps<SVGSVGElement>>;
 export enum QuestionType {
   TEXT = 'text',
   EMAIL = 'email',
+  PHONE = 'phone',
   SELECT = 'select',
   SUCCESS = 'success',
-  PHONE = 'phone'
 }
 export type QuestionOption = string;
+export enum QuestionOptionMediaResponse {
+  EMAIL = 'Correo electrónico',
+  WHATSAPP = 'WhatsApp',
+  PHONE = 'Llamada Telefónica',
+}
+export enum QuestionOptionInterestedIn {
+  ONLINE_SESSIONS = 'Sesiones Online',
+  GROUP_WORKSHOP = 'Taller grupal',
+  CONSULTING = 'Asesoramiento psicológico',
+}
+export enum PhoneFormats {
+  ES = 'ES',
+  OTHER = 'Otro',
+}
+
+export interface ContactFormData {
+  '1': Name;
+  '2': Email;
+  '3': Phone;
+  '4': QuestionOptionMediaResponse;
+  '5': QuestionOptionInterestedIn;
+}
 
 export type SubLink = {
     label: Label;
@@ -47,4 +71,5 @@ export interface Question {
   question: QuestionSentence;
   type: QuestionType;
   options?: QuestionOption[];
+  phoneFormat?: PhoneFormats[];
 }

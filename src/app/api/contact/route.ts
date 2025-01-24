@@ -1,56 +1,51 @@
-// app/api/contact/route.ts
-import { Resend } from 'resend';
-import { NextResponse } from 'next/server';
+import { NextResponse } from "next/server";
 
-// const resend = new Resend(process.env.RESEND_API_KEY);
-const resend = new Resend(process.env.RESEND_API_KEY);
-
-interface ResendErrorResponse {
-      message: string;
-      name: string;
-      statusCode?: number;
-  }
+import { type ContactFormData } from "@/types/navbar";
+import { ContactFormEmail } from "@/components/emails/ContactFormEmailResend";
+import { sendEmail, ResendErrorResponse } from "@/services/email.service";
 
 export async function POST(req: Request) {
   try {
-    const formData = await req.json();
-    
-    const { data, error } = await resend.emails.send({
-      from: 'Pere Barceló <onboarding@resend.dev>',
-      to: 'marctonimas@protonmail.com',
-      subject: 'Nuevo formulario de contacto',
-      html: `
-        <h2>Nuevo contacto recibido:</h2>
-        <p><strong>Nombre:</strong> ${formData['1']}</p>
-        <p><strong>Email:</strong> ${formData['2']}</p>
-        <p><strong>Deporte:</strong> ${formData['3']}</p>
-      `
-    });
-      
-      
+    const formData: ContactFormData = await req.json();
 
-      if (error) {
-        const resendError = error as ResendErrorResponse;
-        // Return the specific error from Resend
-        return NextResponse.json({ 
+    const html = ContactFormEmail({
+      name: formData[1],
+      email: formData[2],
+      phone: formData[3],
+      mediaResponse: formData[4],
+      interestedIn: formData[5],
+    });
+
+    const { data, error } = await sendEmail({ html });
+
+    if (error) {
+      const resendError = error as ResendErrorResponse;
+      // Return the specific error from Resend
+      return NextResponse.json(
+        {
           error: resendError.message,
-          type: 'resend_error',
-          statusCode: resendError.statusCode 
-        }, { 
-          status: resendError.statusCode || 400 
-        });
-      }
-  
-      return NextResponse.json({
-          data: data,
-          success: true
-      });
-    } catch (error) {
-      return NextResponse.json({ 
+          type: "resend_error",
+          statusCode: resendError.statusCode,
+        },
+        {
+          status: resendError.statusCode || 400,
+        }
+      );
+    }
+
+    return NextResponse.json({
+      data: data,
+      success: true,
+    });
+  } catch (error) {
+    return NextResponse.json(
+      {
         error: `Internal Server Error : ${error}`,
-        type: 'server_error' 
-      }, { 
-        status: 500 
-      });
+        type: "server_error",
+      },
+      {
+        status: 500,
+      }
+    );
   }
 }

@@ -1,4 +1,4 @@
-import { NavItem, SocialCardProps, BaseCardProps, Question, QuestionType } from "@/types/navbar";
+import { NavItem, SocialCardProps, BaseCardProps, Question, QuestionType, PhoneFormats } from "@/types/navbar";
 
 import { EnvelopeIcon, LinkedinIcon, InstagramIcon, TwitterIcon, HandshakeIcon, LaptopIcon, UsersIcon, HeartbeatIcon, BrainIcon, ChartlineIcon, LightbulbIcon, StarIcon, BatteryIcon, BalanceIcon, HeartIcon } from "@/components/composables/Icons";
 
@@ -157,6 +157,7 @@ export const questions: Question[] = [
     id: '3',
     question: '¿Cuál es tu número de teléfono?',
     type: QuestionType.PHONE,
+    phoneFormat: Object.entries(PhoneFormats).map(([, value]) => (value))
   },
   {
     id: '4',
