@@ -6,9 +6,10 @@ interface Props {
     phone: Phone;
     mediaResponse: QuestionOptionMediaResponse;
     interestedIn: QuestionOptionInterestedIn;
+    optionalComment?: string;
   }
   
-  export const ContactFormEmail = ({ name, email, phone, mediaResponse, interestedIn }: Props) => {
+  export const ContactFormEmail = ({ name, email, phone, mediaResponse, interestedIn, optionalComment }: Props) => {
     return `
       <!DOCTYPE html>
       <html>
@@ -69,6 +70,14 @@ interface Props {
                             <p style="margin: 0; color: #64748b; font-size: 16px;">
                               <strong style="color: #1C4761;">Medio de respuesta:</strong>
                               <span style="margin-left: 8px;">${mediaResponse}</span>
+                            </p>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td style="padding: 10px 0;">
+                            <p style="margin: 0; color: #64748b; font-size: 16px;">
+                              <strong style="color: #1C4761;">Comentario:</strong>
+                              <span style="margin-left: 8px;">${optionalComment}</span>
                             </p>
                           </td>
                         </tr>

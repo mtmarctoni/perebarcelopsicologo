@@ -2,11 +2,12 @@
 
 import { questions } from "@/utils/data";
 import { QuestionType } from "@/types/navbar";
+import { useContactFormState } from "@/hooks/useContactFormState";
 import ButtonNext from "./ButtonNext";
 import ProgressBar from "./ProgressBar";
 import QuestionContainer from "@/components/containers/QuestionFormContainer";
 import QuestionContent from "./QuestionContent";
-import { useContactFormState } from "@/hooks/useContactFormState";
+import ButtonBack from "./ButtonBack";
 
 export default function TypeformStyleForm() {
 
@@ -15,18 +16,24 @@ export default function TypeformStyleForm() {
     selectedAnswer,
     validationError,
     handleNext,
+    handleBack,
     resetForm,
     setSelectedAnswer,
-      setValidationError,
-    handleSelectOption,
+    setValidationError,
+    // handleSelectOption,
     phoneFormat,
-    setPhoneFormat
+    setPhoneFormat,
+    isLoading
   } = useContactFormState();
 
   return (
     <div className="">
       <div className="max-w-2xl mx-auto">
         <QuestionContainer currentQuestion={currentQuestion} >
+          <ButtonBack
+            show={currentQuestion > 0 && questions[currentQuestion].type !== QuestionType.SUCCESS}
+            onClick={handleBack}
+          />
           <QuestionContent
             question={questions[currentQuestion]}
             selectedAnswer={selectedAnswer}
@@ -35,9 +42,10 @@ export default function TypeformStyleForm() {
             setValidationError={setValidationError}
             phoneFormat={phoneFormat}
             setPhoneFormat={setPhoneFormat}
-            handleSelectOption={handleSelectOption}
+            // handleSelectOption={handleSelectOption}
             resetForm={resetForm}
-          />
+            isLoading={isLoading}
+            />
           {questions[currentQuestion].type !== QuestionType.SUCCESS && selectedAnswer && (
             <div className="text-sm text-text-light">
               Presiona Enter para continuar
@@ -49,7 +57,8 @@ export default function TypeformStyleForm() {
         percentage={((currentQuestion + 1) / (questions.length - 1)) * 100}
       />
       <ButtonNext
-        show={questions[currentQuestion].type !== QuestionType.SUCCESS && selectedAnswer !== ''}
+        show={(questions[currentQuestion].type !== QuestionType.SUCCESS && selectedAnswer !== '')
+          || questions[currentQuestion].type === QuestionType.TEXTAREA}
         onClick={() => handleNext(selectedAnswer)}
       />
     </div>

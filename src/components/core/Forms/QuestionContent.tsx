@@ -1,9 +1,14 @@
+import { motion } from "framer-motion";
+
 import { PhoneFormats, Question, QuestionType } from "@/types/navbar";
 import EmailQuestion from "./EmailQuestion";
 import PhoneQuestion from "./PhoneQuestion";
 import SelectQuestion from "./SelectQuestion";
 import SuccessQuestion from "./SuccessQuestion";
 import { assertNever } from "@/utils/validation";
+import TextQuestion from "./TextQuestion";
+import TextareaQuestion from "./TextareaQuestion";
+import SumbitLoader from "./SubmitLoader";
 
 interface Props {
   question: Question;
@@ -13,8 +18,9 @@ interface Props {
   setValidationError: (error: string | null) => void;
   phoneFormat: PhoneFormats | null;
   setPhoneFormat: (format: PhoneFormats | null) => void;
-  handleSelectOption: (option: string) => void;
-  resetForm: () => void;
+//   handleSelectOption: (option: string) => void;
+    resetForm: () => void;
+    isLoading: boolean;
 }
 
 const QuestionContent = ({
@@ -25,41 +31,32 @@ const QuestionContent = ({
   setValidationError,
   phoneFormat,
   setPhoneFormat,
-  handleSelectOption,
-  resetForm,
+//   handleSelectOption,
+    resetForm,
+  isLoading,
 }: Props) => {
-    // // type narrowing
-    // switch (question.type) {
-    //     case QuestionType.TEXT:
-    //         return <div></div>
-    //     case QuestionType.EMAIL:
-    //         return <div></div>
-    //     case QuestionType.PHONE:
-    //         return <div></div>
-    //     case QuestionType.SELECT:
-    //         return <div></div>
-    //     case QuestionType.SUCCESS:
-    //         return <div></div>
-    //     default:
-    //         assertNever(question.type)
-    // }
-
-  return (
-    <div>
-      <h2 className="text-3xl font-bold text-text-dark mb-8">
-        {question.question}
-      </h2>
-          
-        
-
-      {question.type === QuestionType.EMAIL ? (
+    if (isLoading) return <SumbitLoader />;
+  //type narrowing
+  switch (question.type) {
+    case QuestionType.TEXT:
+      return (
+        <TextQuestion
+          type={question.type}
+          selectedAnswer={selectedAnswer}
+              setSelectedAnswer={setSelectedAnswer}
+        />
+      );
+    case QuestionType.EMAIL:
+      return (
         <EmailQuestion
           selectedAnswer={selectedAnswer}
           setSelectedAnswer={setSelectedAnswer}
           validationError={validationError}
           setValidationError={setValidationError}
         />
-      ) : question.type === QuestionType.PHONE ? (
+      );
+    case QuestionType.PHONE:
+      return (
         <PhoneQuestion
           phoneFormat={phoneFormat}
           question={question}
@@ -69,28 +66,30 @@ const QuestionContent = ({
           selectedAnswer={selectedAnswer}
           setSelectedAnswer={setSelectedAnswer}
         />
-      ) : question.type === QuestionType.SELECT ? (
+      );
+    case QuestionType.SELECT:
+      return (
         <SelectQuestion
           question={question}
-          selectedAnswer={selectedAnswer}
-          handleSelectOption={handleSelectOption}
+              selectedAnswer={selectedAnswer}
+              setSelectedAnswer={setSelectedAnswer}
+        //   handleSelectOption={handleSelectOption}
         />
-      ) : question.type === QuestionType.SUCCESS ? (
-        <SuccessQuestion resetForm={resetForm} />
-      ) : (
-        <>
-          <input
-            autoFocus
-            type={question.type}
-            className="w-full p-4 text-xl border-b-2 border-secondary rounded-xl bg-transparent focus:outline-none"
-            placeholder="Escribe tu respuesta aquí"
-            onChange={(e) => setSelectedAnswer(e.target.value)}
-            value={selectedAnswer}
-          />
-        </>
-      )}
-    </div>
-  );
+          );
+      case QuestionType.TEXTAREA:
+          return (
+              <TextareaQuestion
+              selectedAnswer={selectedAnswer}
+              setSelectedAnswer={setSelectedAnswer}
+              />
+          )
+    case QuestionType.SUCCESS:
+          return (
+              <SuccessQuestion resetForm={resetForm} />
+          )
+    default:
+      assertNever(question.type);
+  }
 };
 
 export default QuestionContent;

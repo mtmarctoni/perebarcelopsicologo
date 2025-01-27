@@ -53,6 +53,10 @@ const nextConfig: NextConfig = {
       {
         protocol: "https",
         hostname: "perebarcelopsicologo.azurewebsites.net/",
+      },
+      {
+        protocol: "http",
+        hostname: "100.84.193.47"
     }],
   },
   basePath: '',

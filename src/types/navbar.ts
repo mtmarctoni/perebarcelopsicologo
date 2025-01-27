@@ -14,6 +14,7 @@ export enum QuestionType {
   EMAIL = 'email',
   PHONE = 'phone',
   SELECT = 'select',
+  TEXTAREA = 'textarea',
   SUCCESS = 'success',
 }
 export type QuestionOption = string;
@@ -38,6 +39,7 @@ export interface ContactFormData {
   '3': Phone;
   '4': QuestionOptionMediaResponse;
   '5': QuestionOptionInterestedIn;
+  '6': Description;
 }
 
 export type SubLink = {

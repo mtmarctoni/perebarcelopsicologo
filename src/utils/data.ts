@@ -173,6 +173,11 @@ export const questions: Question[] = [
   },
   {
     id: '6',
+    question: '¿Hay algo más que quieras comentarme?',
+    type: QuestionType.TEXTAREA,
+  },
+  {
+    id: '7',
     question: '¡Gracias por contactar conmigo! Me pondré en contacto contigo lo antes posible.',
     type: QuestionType.SUCCESS
   }
