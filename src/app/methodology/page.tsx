@@ -13,7 +13,7 @@ export default function WorkMethodPage() {
   return (
     <MainLayout>
       <div className="min-h-screen">
-        <div className="max-w-4xl mx-auto px-4 py-12">
+        <div className="max-w-4xl mx-auto px py-12">
           {/* Hero Section */}
           <div className="relative h-[400px] rounded-xl overflow-hidden mb-12">
             <Image

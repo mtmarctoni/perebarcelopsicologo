@@ -33,14 +33,15 @@ export default function Home() {
           <p className="text-xl md:text-2xl text-white my-12 max-w-2xl">
             Psicología deportiva para acercarte a tus objetivos
           </p>
-
-          <button 
+          <Link href="/contact">
+          <button
             className="bg-primary-dark text-white text-lg px-8 py-3 rounded-md 
-                      hover:bg-secondary transform hover:scale-105 
-                      transition-all duration-300 shadow-lg"
-          >
+            hover:bg-secondary transform hover:scale-105 
+            transition-all duration-300 shadow-lg"
+            >
             ¡Empieza ya!
           </button>
+            </Link>
         </div>
 
         {/* Scroll indicator */}
@@ -105,7 +106,7 @@ export default function Home() {
                 />
               </div>
               <Link 
-                href="/rendimiento"
+                href="/performance"
                 className="bg-primary-dark text-white px-6 py-2 rounded-md hover:bg-secondary transition-colors"
               >
                 Mejora tu rendimiento deportivo
@@ -125,7 +126,7 @@ export default function Home() {
                 />
               </div>
               <Link 
-                href="/salud-mental"
+                href="/mental"
                 className="bg-primary-dark text-white px-6 py-2 rounded-md hover:bg-secondary transition-colors"
               >
                 Mejora tu salud mental
@@ -159,7 +160,7 @@ export default function Home() {
                 Mejora tu rendimiento deportivo y salud mental con sesiones online personalizadas.
               </p>
               <Link 
-                href="/sesiones-individuales"
+                href="/about"
                 className="bg-primary-dark text-white px-6 py-2 rounded-md hover:bg-secondary transition-colors mt-auto"
               >
                 Sesiones individuales
@@ -182,7 +183,7 @@ export default function Home() {
                 Mejora el rendimiento deportivo y la salud mental de los entrenadores o atletas de tu club con talleres grupales.
               </p>
               <Link 
-                href="/talleres-grupales"
+                href="/about"
                 className="bg-primary-dark text-white px-6 py-2 rounded-md hover:bg-secondary transition-colors mt-auto"
               >
                 Talleres grupales
@@ -205,7 +206,7 @@ export default function Home() {
                 Mejora el rendimiento deportivo y la salud mental de los entrenadores o atletas de tu club con un asesoramiento personalizado.
               </p>
               <Link 
-                href="/asesoramiento"
+                href="/about"
                 className="bg-primary-dark text-white px-6 py-2 rounded-md hover:bg-secondary transition-colors mt-auto"
               >
                 Asesoramiento

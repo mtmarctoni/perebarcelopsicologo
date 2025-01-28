@@ -11,7 +11,7 @@ export default function AboutPage() {
   return (
     <MainLayout>
       <div className="min-h-screen">
-        <div className="max-w-4xl mx-auto px-4 py-6">
+        <div className="max-w-4xl mx-auto py-6">
           {/* Hero Section */}
           <div className="relative h-[400px] rounded-xl overflow-hidden">
             <Image
@@ -29,7 +29,7 @@ export default function AboutPage() {
               </h1>
             </div>
           </div>
-          <main className="p-6">
+          <main className="">
             {/* About Section */}
             <SectionContainer className="">
               <div className="flex flex-col md:flex-row gap-8 items-center">

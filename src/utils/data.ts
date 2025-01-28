@@ -2,6 +2,8 @@ import { NavItem, SocialCardProps, BaseCardProps, Question, QuestionType, PhoneF
 
 import { EnvelopeIcon, LinkedinIcon, InstagramIcon, TwitterIcon, HandshakeIcon, LaptopIcon, UsersIcon, HeartbeatIcon, BrainIcon, ChartlineIcon, LightbulbIcon, StarIcon, BatteryIcon, BalanceIcon, HeartIcon } from "@/components/composables/Icons";
 
+export const domain: string = 'perebarcelopsicologo.com';
+export const wordpressBlogsJson = `https://${domain}/wp-json/wp/v2/posts`;
 export const baseUrl: string = '';
 
 export const navbarLinks: NavItem[] = [
@@ -13,7 +15,8 @@ export const navbarLinks: NavItem[] = [
                 { label: 'Mejora tu rendimiento', url: '/performance' },
                 { label: 'Mejora tu salud', url: '/mental' },
             ]
-    },
+  },
+    { label: 'Blog', url: '/blog' },
     { label: 'Contacto', url: '/contact' },
 ];
 

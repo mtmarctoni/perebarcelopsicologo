@@ -1,5 +1,3 @@
-import { motion } from "framer-motion";
-
 import { PhoneFormats, Question, QuestionType } from "@/types/navbar";
 import EmailQuestion from "./EmailQuestion";
 import PhoneQuestion from "./PhoneQuestion";
