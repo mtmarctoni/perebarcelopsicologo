@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import Link from "next/link";
 import { useState } from "react";
 
@@ -7,33 +7,29 @@ import { ThemeToggle } from "@/components/features/DarkToggle";
 
 import { CrossIcon, BarsIcon } from "../composables/Icons";
 import { IconFooterContainer } from "../containers/IconContainer";
-  
+
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
 
-    return (
-      <nav className="fixed top-0 left-0 right-0 z-50 bg-background-navbar shadow-xl">
+  return (
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-background-navbar shadow-xl">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 -my-2">
-          <div className="flex justify-between items-center h-20">
-            <div className="flex justify-center space-x-4">
-            <IconFooterContainer >
-            <ThemeToggle />
-          </IconFooterContainer>
-
-          {/* Logo/Brand */}
-          <Link 
-            href="/" 
-            className="content-center text-white font-semibold text-xl whitespace-nowrap hover:text-gray-light transition-colors"
+        <div className="flex justify-between items-center h-20">
+          <div className="flex justify-center space-x-4">
+            {/* Logo/Brand */}
+            <Link
+              href="/"
+              className="content-center text-white font-semibold text-xl whitespace-nowrap hover:text-gray-light transition-colors"
             >
-            Pere Barceló Psicólogo
+              Pere Barceló Psicólogo
             </Link>
-            </div>
+          </div>
 
-            {/* Navigation Links */}
+          {/* Navigation Links */}
           <div className="hidden lg:flex items-center space-x-2">
             {navbarLinks.map((item) => (
               <div className="relative group" key={item.url}>
-                <Link 
+                <Link
                   href={item.url}
                   className="text-gray-light whitespace-nowrap px-3 py-2 text-sm font-medium
                            hover:text-white transition-colors duration-200
@@ -44,12 +40,14 @@ const Navbar = () => {
 
                 {/* Dropdown Menu */}
                 {item.subLinks && (
-                  <div className="absolute invisible group-hover:visible opacity-0 
+                  <div
+                    className="absolute invisible group-hover:visible opacity-0 
                                 group-hover:opacity-100 left-0 pt-2 w-56 
-                                transition-all duration-200 ease-in-out">
+                                transition-all duration-200 ease-in-out"
+                  >
                     <div className="bg-white rounded-md shadow-xl ring-1 ring-black ring-opacity-5">
                       {item.subLinks.map((subLink) => (
-                        <Link 
+                        <Link
                           key={subLink.url}
                           href={subLink.url}
                           className="block px-4 py-3 text-sm text-gray-dark whitespace-nowrap
@@ -64,27 +62,34 @@ const Navbar = () => {
                 )}
               </div>
             ))}
-            </div>
-            
-          {/* Mobile Menu Button */}
-          <div className="lg:hidden">
-            <button
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="text-white hover:text-gray-light p-2"
-            >
-              {isMenuOpen ? <CrossIcon className="w-6 h-6"/> : <BarsIcon className="w-6 h-6" />}
-            </button>
-            </div>
           </div>
 
-          
+          <div className="flex flex-row">
+            {/* Mobile Menu Button */}
+            <div className="lg:hidden">
+              <button
+                onClick={() => setIsMenuOpen(!isMenuOpen)}
+                className="text-white hover:text-gray-light p-2"
+              >
+                {isMenuOpen ? (
+                  <CrossIcon className="w-6 h-6" />
+                ) : (
+                  <BarsIcon className="w-6 h-6" />
+                )}
+              </button>
+            </div>
+          <IconFooterContainer>
+            <ThemeToggle />
+          </IconFooterContainer>
+          </div>
+        </div>
 
         {/* Mobile Navigation */}
-        <div className={`lg:hidden ${isMenuOpen ? 'block' : 'hidden'}`}>
+        <div className={`lg:hidden ${isMenuOpen ? "block" : "hidden"}`}>
           <div className="px-2 pb-3 space-y-1">
             {navbarLinks.map((item) => (
               <div key={item.url}>
-                <Link 
+                <Link
                   href={item.url}
                   className="text-gray-light block px-3 py-2 text-base font-medium
                            hover:text-secondary transition-colors duration-200"
@@ -92,13 +97,12 @@ const Navbar = () => {
                 >
                   {item.label}
                 </Link>
-                
-                
+
                 {/* Mobile Dropdown Items */}
                 {item.subLinks && (
                   <div className="pl-4 space-y-1">
                     {item.subLinks.map((subLink) => (
-                      <Link 
+                      <Link
                         key={subLink.url}
                         href={subLink.url}
                         className="text-gray-light block px-3 py-2 text-sm font-medium
@@ -113,14 +117,10 @@ const Navbar = () => {
               </div>
             ))}
           </div>
-
-          </div>
-          
         </div>
-        
+      </div>
     </nav>
   );
 };
-  
-  export default Navbar;
-  
+
+export default Navbar;

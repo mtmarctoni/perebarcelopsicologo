@@ -17,7 +17,7 @@ export function ThemeToggle() {
   return (
     <button
       onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-      className="p-2 rounded-full hover:bg-gray-dark transition-colors duration-500 hover:animate-spin"
+      className="p-2 rounded-full hover:bg-gray-dark transition-colors duration-500"
     >
       {theme === 'dark' ? (
         <SunIcon className="text-text w-5 h-5" />
