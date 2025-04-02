@@ -33,10 +33,13 @@ export default {
       background: {
         DEFAULT: 'var(--background)',  // Default background
         alt: 'var(--background-alt)',  // Default background
-        navbar: 'var(--navbar)',   
-        navbarAlt: 'var(--navbar-alt)',    
-        footer: 'var(--footer)',
+        navbar: 'var(--background-navbar)',   
+        navbarAlt: 'var(--background-navbar-alt)',    
+        footer: 'var(--background-footer)',
       },
+      success: 'var(--success)',  // Success color
+      warning: 'var(--warning)',  // Warning color
+      error: 'var(--error)',  // Error color
       'blue': '#1fb6ff',
       'purple': '#7e5bef',
       'pink': '#ff49db',
@@ -54,8 +57,8 @@ export default {
     },
     extend: {
       colors: {
-        background: "var(--background)",
-        foreground: "var(--foreground)",
+        // background: "var(--background)",
+        // foreground: "var(--foreground)",
       },
       spacing: {
         '128': '32rem',

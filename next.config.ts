@@ -45,9 +45,14 @@ const nextConfig: NextConfig = {
     },
   },
   // Other Next.js configurations
-  // images: {
-  //   domains: ['your-domain.com'],
-  // },
+  images: {
+    remotePatterns: [
+      {
+        protocol: "http",
+        hostname: "100.84.193.47"
+    }],
+  },
+  basePath: '',
   reactStrictMode: true,
 };
 

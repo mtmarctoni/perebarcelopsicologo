@@ -1,17 +1,21 @@
 import Image from "next/image";
 
-import MainLayout from "@/components/MainLayout";
-import { HandshakeIcon, FutbolIcon, GraduationcapIcon } from "@/components/Icons";
+import MainLayout from "@/components/core/MainLayout";
+import { IconCardContainer } from "@/components/containers/IconContainer";
+
+import { HandshakeIcon, FutbolIcon, GraduationcapIcon } from "@/components/composables/Icons";
+import SectionContainer from "@/components/containers/SectionContainer";
+import { baseUrl } from "@/utils/data";
 
 export default function AboutPage() {
   return (
     <MainLayout>
       <div className="min-h-screen">
-        <div className="max-w-4xl mx-auto px-4 py-6">
+        <div className="max-w-4xl mx-auto py-6">
           {/* Hero Section */}
           <div className="relative h-[400px] rounded-xl overflow-hidden">
             <Image
-              src="/stock/personas-escuchando.webp"
+              src={`${baseUrl}/stock/personas-escuchando.webp`}
               alt="Pere Barceló Lambea"
               fill
               priority
@@ -25,14 +29,14 @@ export default function AboutPage() {
               </h1>
             </div>
           </div>
-          <main className="p-6">
+          <main className="">
             {/* About Section */}
-            <section className="mb-16">
+            <SectionContainer className="">
               <div className="flex flex-col md:flex-row gap-8 items-center">
                 <div className="md:w-1/2 min-w-[225px]">
                   <div className="relative h-[400px] rounded-lg overflow-hidden">
                     <Image
-                      src="/profile/pere2-transparente.webp"
+                      src={`${baseUrl}/profile/pere2-transparente.webp`}
                       alt="Pere Barceló"
                       fill
                       sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
@@ -41,16 +45,16 @@ export default function AboutPage() {
                   </div>
                 </div>
                 <div className="md:w-1/2">
-                  <h2 className="text-2xl font-bold text-primary-dark mb-4 text-center">
+                  <h2 className="text-2xl font-bold text-gray-700 mb-4 text-center">
                     ¿Quién soy?
                   </h2>
-                  <p className="text-gray-dark leading-relaxed">
+                  <p className="text-gray-600 leading-relaxed">
                     ¡Hola! Soy Pere Barceló Lambea, un amante del deporte,
                     especialmente del fútbol. Desde pequeño, mi infancia ha
                     estado marcada por esta pasión, lo que me llevó a estudiar
                     Psicología en la Universitat de les Illes Balears.
                   </p>
-                  <p className="text-gray-700 leading-relaxed mt-4">
+                  <p className="text-gray-600 leading-relaxed mt-4">
                     Posteriormente, mi deseo de entender la mente humana y
                     ayudar a otros a rendir al máximo nivel me llevó a completar
                     un máster en Psicología de la Actividad Física y del Deporte
@@ -58,14 +62,16 @@ export default function AboutPage() {
                   </p>
                 </div>
               </div>
-            </section>
+            </SectionContainer>
+              
 
             {/* Experience Cards */}
-            <section className="grid md:grid-cols-3 gap-6 mb-16">
-              <div className="bg-white p-6 rounded-lg shadow-md">
-                <div className="w-12 h-12 bg-primary-dark/10 rounded-full flex items-center justify-center mb-4 mx-auto">
+            <SectionContainer className="bg-primary">
+            <div className="grid md:grid-cols-3 gap-6">
+              <div className="bg-background p-6 rounded-lg shadow-md">
+                <IconCardContainer className="bg-secondary-light" >
                   <FutbolIcon />
-                </div>
+                </IconCardContainer>
                 <h3 className="font-semibold mb-2">Experiencia Deportiva</h3>
                 <p className="text-gray-600 text-sm">
                   Amplia experiencia en diversos deportes: fútbol, baloncesto,
@@ -73,10 +79,10 @@ export default function AboutPage() {
                 </p>
               </div>
 
-              <div className="bg-white p-6 rounded-lg shadow-md">
-                <div className="w-12 h-12 bg-primary-dark/10 rounded-full flex items-center justify-center mb-4 mx-auto">
-                  <GraduationcapIcon />
-                </div>
+              <div className="bg-background p-6 rounded-lg shadow-md">
+              <IconCardContainer className="bg-secondary-light" >
+                <GraduationcapIcon />
+                </IconCardContainer>
                 <h3 className="font-semibold mb-2">Formación Académica</h3>
                 <p className="text-gray-600 text-sm">
                   Graduado en Psicología y Máster en Psicología de la Actividad
@@ -84,21 +90,25 @@ export default function AboutPage() {
                 </p>
               </div>
 
-              <div className="bg-white p-6 rounded-lg shadow-md">
-                <div className="w-12 h-12 bg-primary-dark/10 rounded-full flex items-center justify-center mb-4 mx-auto">
-                  <HandshakeIcon />
-                </div>
+              <div className="bg-background p-6 rounded-lg shadow-md">
+              <IconCardContainer className="bg-secondary-light" >
+                <HandshakeIcon />
+                </IconCardContainer>
                 <h3 className="font-semibold mb-2">Compromiso</h3>
                 <p className="text-gray-600 text-sm">
                   Dedicado a ayudar a deportistas a alcanzar su máximo
                   rendimiento mientras disfrutan del proceso.
                 </p>
               </div>
-            </section>
+              </div>
+            </SectionContainer>
+              
 
             {/* Professional Experience */}
-            <section className="bg-white rounded-lg shadow-md p-8 mb-16">
-              <h2 className="text-2xl font-bold text-primary-dark mb-6">
+            <SectionContainer className="">
+
+            <div className="bg-background rounded-lg shadow-md p-8">
+              <h2 className="text-2xl font-bold text-gray-700 mb-6">
                 Mi trayectoria profesional
               </h2>
               <div className="space-y-4 text-gray-700">
@@ -133,10 +143,12 @@ export default function AboutPage() {
                   </ul>
                 </div>
               </div>
-            </section>
+              </div>
+              </SectionContainer>
 
             {/* Commitment Section */}
-            <section className="bg-primary-dark text-white rounded-lg p-8">
+            <SectionContainer className="">
+            <section className="bg-background text-gray-600 rounded-lg p-8">
               <h2 className="text-2xl font-bold mb-4">Mi compromiso</h2>
               <p className="leading-relaxed">
                 Como profesional en el campo de la psicología deportiva, mi
@@ -146,7 +158,9 @@ export default function AboutPage() {
                 jóvenes talentos. Estoy aquí para apoyar, guiar y compartir mi
                 pasión por el deporte con aquellos que buscan mejorar y crecer.
               </p>
-            </section>
+              </section>
+            </SectionContainer>
+              
           </main>
         </div>
       </div>

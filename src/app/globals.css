@@ -5,15 +5,15 @@
 :root {
   /* Core colors - unchanged */
   --primary: #B9D8EB;
+  --primary-light: #D4E6F3;
   --primary-dark: #1C4761;
 
   /* Background colors */
   --background: #F8FAFC;
-  --background-alt: #EEF2F6;
-  
-  /* Enhanced primary palette */
-  --primary-light: #D4E6F3;
-  --primary-darker: #15364A;
+  --background-alt: #eaeaeb;
+  --background-navbar: #1C4761;
+  --background-navbar-alt: #d0d3d6;
+  --background-footer: #15364A;
   
   /* Accent colors */
   --secondary: #FFB84D;    /* Warm orange */
@@ -29,20 +29,20 @@
   --success: #22C55E;
   --warning: #F59E0B;
   --error: #EF4444;
-  
-  /* Navigation */
-  --navbar: #1C4761;    /* Matching your primary-dark */
-  --footer: #15364A;    /* Slightly darker than primary-dark */
 }
 
 .dark {
+  /* Enhanced primary palette */
+  --primary: #2F4F7F;
+  --primary-light: #1C4761;    /* Your primary-dark becomes light in dark mode */
+  --primary-darker: #0F2537;
+
   /* Background colors */
   --background: #0F172A;
   --background-alt: #1E293B;
-  
-  /* Enhanced primary palette */
-  --primary-light: #1C4761;    /* Your primary-dark becomes light in dark mode */
-  --primary-darker: #0F2537;
+  --background-navbar: #0F2537;
+  --background-navbar-alt: #d0d3d6;
+  --background-footer: #0A1A25;
   
   /* Accent colors remain vibrant */
   --secondary: #FFB84D;
@@ -58,11 +58,62 @@
   --success: #22C55E;
   --warning: #F59E0B;
   --error: #EF4444;
-  
-  /* Navigation */
-  --navbar: #0F2537;
-  --footer: #0A1A25;
 }
+
+/* Style for blog post from wordpress*/
+/* Add to your global.css */
+.blog-title {
+  @apply text-4xl font-bold text-text-dark mt-12 mb-12;
+}
+
+.blog-content {
+  @apply text-text;
+}
+
+.blog-content h2 {
+  @apply text-3xl font-bold text-text-dark mt-12 mb-6;
+}
+
+.blog-content h3 {
+  @apply text-2xl font-bold text-text-dark mt-10 mb-4;
+}
+
+.blog-content p {
+  @apply mb-6 text-lg leading-relaxed;
+}
+
+.blog-content ul, .blog-content ol {
+  @apply my-6 ml-6 space-y-2;
+}
+
+.blog-content li {
+  @apply text-lg leading-relaxed;
+}
+
+.blog-content img {
+  @apply rounded-lg my-8;
+}
+
+.blog-content blockquote {
+  @apply pl-4 border-l-4 border-primary italic my-8;
+}
+
+/* dividers */
+.blog-content .elementor-divider-separator {
+  @apply block w-full border-b-2 border-secondary-dark pt-6; /* Creates visible line */
+}
+
+/* title and subtitle */
+/* blog.module.css */
+.blog-content .elementor-element:first-of-type .elementor-widget-text-editor p {
+  @apply text-xl md:text-2xl leading-relaxed text-text-light 
+         border-l-4 border-primary pl-6 py-4 my-8
+         italic font-light;
+}
+
+
+
+
 
 
 /* @media (prefers-color-scheme: dark) {
@@ -76,4 +127,14 @@
   color: var(--foreground);
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
+} */
+
+/* Add transition to elements that use these variables */
+/* *, 
+*::before,
+*::after {
+  transition: background-color 500ms ease,
+              border-color 500ms ease,
+              color 500ms ease,
+              fill 500ms ease;
 } */
