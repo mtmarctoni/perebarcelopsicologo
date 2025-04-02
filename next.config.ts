@@ -46,14 +46,7 @@ const nextConfig: NextConfig = {
   },
   // Other Next.js configurations
   images: {
-    remotePatterns: [{
-      protocol: "https",
-      hostname: "mtmarctoni.github.io",
-    },
-      {
-        protocol: "https",
-        hostname: "perebarcelopsicologo.azurewebsites.net/",
-      },
+    remotePatterns: [
       {
         protocol: "http",
         hostname: "100.84.193.47"
