@@ -4,7 +4,7 @@ import Link from "next/link";
 import { IconFooterContainer } from "../containers/IconContainer";
 import { EnvelopeIcon, WhatsappIcon } from "../composables/Icons";
 
-import { socialMediaLinksFooter, navbarLinks } from "@/utils/data";
+import { socialMediaLinksFooter, navbarLinks, phone, email } from "@/utils/data";
 import SocialLinkFooter from "../containers/SocialLinkFooter";
 import QuickLinkFooter from "../containers/QuickLinkFooter";
 
@@ -45,10 +45,10 @@ const Footer = () => {
                   <EnvelopeIcon />
                 </IconFooterContainer>
                 <a
-                  href="mailto:pere@perebarcelpsicologo.com"
+                  href={`mailto:${email}`}
                   className="text-gray-light hover:text-white transition-colors duration-200"
                 >
-                  pere@perebarcelpsicologo.com
+                  {email}
                 </a>
               </div>
               <div className="flex items-center space-x-3">
@@ -56,10 +56,10 @@ const Footer = () => {
                   <WhatsappIcon />
                 </IconFooterContainer>
                 <a
-                  href="tel:+34600000000"
+                  href={`tel:${phone}`}
                   className="text-gray-light hover:text-white transition-colors duration-200"
                 >
-                  +34 600 000 000
+                  {phone}
                 </a>
               </div>
             </div>

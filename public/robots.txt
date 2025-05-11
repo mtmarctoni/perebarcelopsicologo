@@ -1,0 +1,17 @@
+# https://www.robotstxt.org/robotstxt.html
+User-agent: *
+Allow: /
+Sitemap: https://perebarcelopsicologo.com/sitemap.xml
+
+# Disallow admin and API routes
+Disallow: /admin/
+Disallow: /api/
+
+# Allow all other pages
+Allow: /*
+
+# Crawl-delay: 10
+
+# Block specific pages if needed
+# Disallow: /private/
+# Disallow: /temporary/

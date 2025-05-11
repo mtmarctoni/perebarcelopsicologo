@@ -17,7 +17,7 @@ const nextConfig: NextConfig = {
       {
         test: /\.svg$/i,
         issuer: fileLoaderRule.issuer,
-        resourceQuery: { not: [...fileLoaderRule.resourceQuery.not, /url/] }, // exclude if *.svg?url
+        resourceQuery: { not: [...(fileLoaderRule.resourceQuery?.not || []), /url/] }, // exclude if *.svg?url
         use: ['@svgr/webpack']
       }
     );
@@ -27,20 +27,12 @@ const nextConfig: NextConfig = {
 
     return config;
   },
-  // webpack: (config) => {
-  //   config.module.rules.push({
-  //     test: /\.svg$/,
-  //     use: ['@svgr/webpack'],
-  //   });
-  //   return config;
-  // },
-  experimental: {
-    turbo: {
-      rules: {
-        '*.svg': {
-          loaders: ['@svgr/webpack'],
-          as: '*.js',
-        },
+  // Turbopack configuration
+  turbopack: {
+    rules: {
+      '*.svg': {
+        loaders: ['@svgr/webpack'],
+        as: '*.js',
       },
     },
   },
@@ -50,7 +42,49 @@ const nextConfig: NextConfig = {
       {
         protocol: "http",
         hostname: "100.84.193.47"
-    }],
+      },
+      {
+        protocol: "https",
+        hostname: "perebarcelopsicologo.com"
+      }
+    ],
+  },
+  async headers() {
+    return [
+      {
+        source: '/(.*)',
+        headers: [
+          {
+            key: 'X-Content-Type-Options',
+            value: 'nosniff',
+          },
+          {
+            key: 'X-Frame-Options',
+            value: 'DENY',
+          },
+          {
+            key: 'X-XSS-Protection',
+            value: '1; mode=block',
+          },
+          {
+            key: 'Referrer-Policy',
+            value: 'strict-origin-when-cross-origin',
+          },
+          {
+            key: 'Permissions-Policy',
+            value: 'camera=(), microphone=(), geolocation=()',
+          },
+        ],
+      },
+    ];
+  },
+  async rewrites() {
+    return [
+      {
+        source: '/sitemap.xml',
+        destination: '/api/sitemap',
+      },
+    ];
   },
   basePath: '',
   reactStrictMode: true,

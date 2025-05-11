@@ -75,3 +75,8 @@ export interface Question {
   options?: QuestionOption[];
   phoneFormat?: PhoneFormats[];
 }
+
+export interface Club {
+  name: Name;
+  imgUrl: string;
+}

@@ -1,10 +1,13 @@
-import { NavItem, SocialCardProps, BaseCardProps, Question, QuestionType, PhoneFormats } from "@/types/navbar";
+import { NavItem, SocialCardProps, BaseCardProps, Question, QuestionType, PhoneFormats, Club } from "@/types/navbar";
 
 import { EnvelopeIcon, LinkedinIcon, InstagramIcon, TwitterIcon, HandshakeIcon, LaptopIcon, UsersIcon, HeartbeatIcon, BrainIcon, ChartlineIcon, LightbulbIcon, StarIcon, BatteryIcon, BalanceIcon, HeartIcon } from "@/components/composables/Icons";
 
 export const domain: string = 'perebarcelopsicologo.com';
+export const phone: string = '+34 636 67 47 59';
+export const email: string = 'pere@perebarcelpsicologo.com';
 export const wordpressBlogsJson = `https://${domain}/wp-json/wp/v2/posts`;
 export const baseUrl: string = '';
+export const wordpressUrl: string = 'https://perebarcelopsicologo.com';
 
 export const navbarLinks: NavItem[] = [
     { label: 'Inicio', url: '/' },
@@ -183,5 +186,56 @@ export const questions: Question[] = [
     id: '7',
     question: '¡Gracias por contactar conmigo! Me pondré en contacto contigo lo antes posible.',
     type: QuestionType.SUCCESS
+  }
+];
+
+export const clubs: Club[] = [
+  {
+    name: 'CE Constància',
+    imgUrl: `${wordpressUrl}/wp-content/uploads/2025/04/CE-Constancia.png`,
+  },
+  {
+    name: 'CDC Moscardó',
+    imgUrl: `${wordpressUrl}/wp-content/uploads/2025/04/CDC-Moscardo.png`,
+  },
+  {
+    name: 'CF Fuenlabrada',
+    imgUrl: `${wordpressUrl}/wp-content/uploads/2025/04/CF-Fuenlabrada.png`,
+  },
+  {
+    name: 'CF Playa de Palma',
+    imgUrl: `${wordpressUrl}/wp-content/uploads/2025/04/Playa-de-Palma.png`,
+  },
+  {
+    name: 'UE Petra',
+    imgUrl: `${wordpressUrl}/wp-content/uploads/2025/04/UE-Petra.png`,
+  },
+  {
+    name: 'CE Sineu',
+    imgUrl: `${wordpressUrl}/wp-content/uploads/2025/04/CE-Sineu.png`,
+  },
+  {
+    name: 'Joventut Mariana',
+    imgUrl: `${wordpressUrl}/wp-content/uploads/2025/04/Joventut-Mariana.png`,
+  },
+  {
+    name: 'Entreculturas Montesión',
+    imgUrl: `${wordpressUrl}/wp-content/uploads/2025/04/Montesion.png`,
+  },
+  {
+    name: 'CB Colonya Pollença',
+    imgUrl: `${wordpressUrl}/wp-content/uploads/2025/04/CB-Pollenca.png`,
+  },
+  {
+    name: 'CG Alcúdia',
+    imgUrl: `${wordpressUrl}/wp-content/uploads/2025/04/GC-Alcudia.png`,
+  },
+  {
+    name: 'Federación de Golf de las Islas Baleares',
+    imgUrl: `${wordpressUrl}/wp-content/uploads/2025/04/FBG.png`,
+  },
+  {
+    name: 'Federación de Baloncesto de las Islas Baleares',
+    imgUrl: `${wordpressUrl}/wp-content/uploads/2025/04/FBIB.png`,
   }
 ];
