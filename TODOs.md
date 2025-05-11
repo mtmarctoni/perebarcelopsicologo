@@ -1,5 +1,6 @@
 - commit de nuevas funcionalidades, lintear y pasar a produccion
 - añadir favicon
+- cambiar email resend con cuenta de perebarcelopsicologo (o algo que no me afecte a mi cuenta gratuita)
 
   - añadir social sharing buttons
   - incluir CTA a contacto
