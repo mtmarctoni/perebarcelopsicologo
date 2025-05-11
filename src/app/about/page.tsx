@@ -3,15 +3,15 @@ import Image from "next/image";
 import MainLayout from "@/components/core/MainLayout";
 import { IconCardContainer } from "@/components/containers/IconContainer";
 import ClubCard from '@/components/containers/ClubCard';
-import Seo from '@/components/seo/Seo';
+// import Seo from '@/components/seo/Seo';
 import { clubs } from '@/utils/data';
 
 import { HandshakeIcon, FutbolIcon, GraduationcapIcon } from "@/components/composables/Icons";
 import SectionContainer from "@/components/containers/SectionContainer";
 import { baseUrl } from "@/utils/data";
 
-const title = 'Sobre mí - Pere Barceló | Psicólogo Deportivo en Mallorca';
-const description = 'Conoce a Pere Barceló Lambea, psicólogo deportivo especializado en ayudar a deportistas y equipos a alcanzar su máximo rendimiento. Más de 10 años de experiencia.';
+// const title = 'Sobre mí - Pere Barceló | Psicólogo Deportivo en Mallorca';
+// const description = 'Conoce a Pere Barceló Lambea, psicólogo deportivo especializado en ayudar a deportistas y equipos a alcanzar su máximo rendimiento. Más de 10 años de experiencia.';
 
 export default function AboutPage() {
   return (

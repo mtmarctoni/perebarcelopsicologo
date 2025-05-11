@@ -36,9 +36,9 @@ declare module 'next-seo' {
 
   export const NextSeo: React.FC<NextSeoProps>;
   
-  export interface JsonLdProps {
-    [key: string]: any;
-  }
+  // export interface JsonLdProps {
+  //   [key: string]: any;
+  // }
   
   export const JsonLd: React.FC<JsonLdProps>;
 }
