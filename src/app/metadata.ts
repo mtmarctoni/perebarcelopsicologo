@@ -1,4 +1,4 @@
-import { Metadata } from 'next';
+import { Metadata } from "next";
 
 const siteUrl = 'https://perebarcelopsicologo.com';
 const siteName = 'Pere Barceló - Psicólogo Deportivo';
@@ -7,10 +7,7 @@ const keywords = 'psicología deportiva, psicólogo deportivo mallorca, rendimie
 
 export const defaultMetadata: Metadata = {
   metadataBase: new URL(siteUrl),
-  title: {
-    default: siteName,
-    template: `%s | ${siteName}`
-  },
+  title: siteName,
   description: description,
   keywords: keywords,
   authors: [{ name: 'Pere Barceló Lambea' }],
@@ -65,22 +62,21 @@ export const defaultMetadata: Metadata = {
 
 // Helper function to generate page-specific metadata
 export function getPageMetadata(metadata: Partial<Metadata> = {}): Metadata {
+  
   return {
     ...defaultMetadata,
     ...metadata,
-    title: metadata.title ? 
-      { ...defaultMetadata.title, ...(typeof metadata.title === 'string' ? { default: metadata.title } : metadata.title) } : 
-      defaultMetadata.title,
+    title: metadata.title || defaultMetadata.title,
     openGraph: {
       ...defaultMetadata.openGraph,
       ...metadata.openGraph,
-      title: metadata.title ? (typeof metadata.title === 'string' ? metadata.title : metadata.title.default) : defaultMetadata.openGraph?.title,
+      title: metadata.title || defaultMetadata.openGraph?.title,
       description: metadata.description || defaultMetadata.openGraph?.description,
     },
     twitter: {
       ...defaultMetadata.twitter,
       ...metadata.twitter,
-      title: metadata.title ? (typeof metadata.title === 'string' ? metadata.title : metadata.title.default) : defaultMetadata.twitter?.title,
+      title: metadata.title || defaultMetadata.twitter?.title,
       description: metadata.description || defaultMetadata.twitter?.description,
     },
   };
