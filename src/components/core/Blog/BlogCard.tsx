@@ -8,14 +8,36 @@ interface Props {
 }
 
 const BlogCard = ({ post }: Props) => {
+
+  function getFirstImageSrc(htmlContent: string) {
+    // Parse the HTML string into a document
+    const parser = new DOMParser();
+    const doc = parser.parseFromString(htmlContent, 'text/html');
+    // Find the first <img> tag
+    const img = doc.querySelector('img');
+    // Return the src attribute if found
+    return img ? img.src : '';
+  }
+
     return (
       <article className="bg-background-alt rounded-lg shadow-md overflow-hidden transition-transform hover:scale-105">
-        {post._embedded?.['wp:featuredmedia'] && (
+        {/* 
+        {post._embedded?.['wp:featuredmedia'] && ( 
+                  <Image
+                  src={post._embedded['wp:featuredmedia'][0].source_url}
+                  alt={post.title.rendered}
+                  width={800}
+                  height={400}
+                  className="w-full h-48 object-cover"
+                  />
+        )}
+        */}
+        {getFirstImageSrc(post.content.rendered) && (
           <Image
-            src={post._embedded['wp:featuredmedia'][0].source_url}
+            src={getFirstImageSrc(post.content.rendered)}
             alt={post.title.rendered}
             width={800}
-            height={400}
+            height={600}
             className="w-full h-48 object-cover"
           />
         )}

@@ -2,14 +2,28 @@ import Image from "next/image";
 
 import MainLayout from "@/components/core/MainLayout";
 import { IconCardContainer } from "@/components/containers/IconContainer";
+import ClubCard from '@/components/containers/ClubCard';
+// import Seo from '@/components/seo/Seo';
+import { clubs } from '@/utils/data';
 
 import { HandshakeIcon, FutbolIcon, GraduationcapIcon } from "@/components/composables/Icons";
 import SectionContainer from "@/components/containers/SectionContainer";
 import { baseUrl } from "@/utils/data";
 
+// const title = 'Sobre mí - Pere Barceló | Psicólogo Deportivo en Mallorca';
+// const description = 'Conoce a Pere Barceló Lambea, psicólogo deportivo especializado en ayudar a deportistas y equipos a alcanzar su máximo rendimiento. Más de 10 años de experiencia.';
+
 export default function AboutPage() {
   return (
     <MainLayout>
+      {/* <Seo
+        title={title}
+        description={description}
+        url="/sobre-mi"
+        breadcrumbs={[
+          { name: 'Sobre mí', item: '/sobre-mi' },
+        ]}
+      /> */}
       <div className="min-h-screen">
         <div className="max-w-4xl mx-auto py-6">
           {/* Hero Section */}
@@ -124,23 +138,13 @@ export default function AboutPage() {
                   niveles. Desde prebenjamines hasta el primer equipo, tanto
                   masculinos como femeninos.
                 </p>
-                <div className="mt-6">
-                  <h3 className="font-semibold mb-3">Clubes y Federaciones:</h3>
-                  <ul className="list-disc pl-5 space-y-2">
-                    <li>CE Constància</li>
-                    <li>CDC Moscardó</li>
-                    <li>CF Fuenlabrada</li>
-                    <li>CF Playa de Palma</li>
-                    <li>CE Petra</li>
-                    <li>CE Sineu</li>
-                    <li>Joventut Mariana</li>
-                    <li>Entreculturas Montesión</li>
-                    <li>CB Colonya Pollença</li>
-                    <li>CG Alcúdia</li>
-                    <li>Palmer Basket Mallorca</li>
-                    <li>Federación de Golf de las Islas Baleares</li>
-                    <li>Federación de Baloncesto de las Islas Baleares</li>
-                  </ul>
+                <div className="mt-8">
+                  <h3 className="font-semibold text-lg mb-4">Clubes y Federaciones:</h3>
+                  <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
+                    {clubs.map((club, index) => (
+                      <ClubCard key={index} club={club} />
+                    ))}
+                  </div>
                 </div>
               </div>
               </div>
