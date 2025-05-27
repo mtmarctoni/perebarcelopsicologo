@@ -46,6 +46,10 @@ const nextConfig: NextConfig = {
       {
         protocol: "https",
         hostname: "perebarcelopsicologo.com"
+      },
+      {
+        protocol: "https",
+        hostname: "blog.perebarcelopsicologo.com"
       }
     ],
   },
