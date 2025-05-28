@@ -35,7 +35,6 @@ npm install
 
 3. Create a `.env` file with the following variables:
 ```
-NEXT_PUBLIC_TYPEFORM_ID=your_typeform_id
 RESEND_API_KEY=your_resend_api_key
 ```
 
