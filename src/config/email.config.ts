@@ -1,6 +1,6 @@
 // config/email.config.ts
 export const emailConfig = {
-    adminEmail: 'marctonimas@protonmail.com',
+    adminEmail: 'pere@perebarcelopsicologo.com',
     fromEmail: 'Pere Barceló Psicólogo <pere@perebarcelopsicologo.com>',
     subjects: {
       contactForm: 'Nuevo formulario de contacto',
