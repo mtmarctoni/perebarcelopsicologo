@@ -4,6 +4,7 @@ import BlogCard from './BlogCard';
 
   const BlogList = () => {
     const { posts, loading } = useBlogList();
+    console.log('posts', posts);
   
     if (loading) return <Loading />;
   

@@ -11,8 +11,8 @@ export const useBlogList = () => {
     useEffect(() => {
         const fetchPosts = async () => {
             try {
-                // Fetching max 6 posts with embedded content (images...)
-                const response = await fetch(`${wordpressBlogsJson}/?_embed&per_page=6`);
+                // Fetching max 6 posts from Next.js API route (list endpoint)
+                const response = await fetch('/api/blog');
                 const data = await response.json();
                 setPosts(data);
             } catch (error) {
