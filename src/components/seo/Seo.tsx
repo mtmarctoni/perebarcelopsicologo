@@ -85,7 +85,7 @@ export default function Seo({
           },
           {
             name: 'twitter:creator',
-            content: '@perebarcelpsico',
+            content: '@PBarceloPsico',
           },
         ]}
         {...props}

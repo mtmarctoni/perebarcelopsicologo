@@ -53,8 +53,8 @@ export const LocalBusinessSchema = () => {
       closes: '20:00',
     },
     sameAs: [
-      'https://www.linkedin.com/in/pere-barcelo-lambea/',
-      'https://www.instagram.com/perebarcelpsicologo/',
+      'https://www.linkedin.com/in/pere-barceló-lambea-6b5255192/',
+      'https://www.instagram.com/perebarcelopsico/',
     ],
   };
 
