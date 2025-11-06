@@ -1,32 +1,30 @@
 import { useEffect, useState } from "react";
 
 import { Post } from "@/types/blog";
-import { wordpressBlogsJson } from "@/utils/data";
 
 export const useBlogList = () => {
+  const [posts, setPosts] = useState<Post[]>([]);
+  const [loading, setLoading] = useState(true);
 
-    const [posts, setPosts] = useState<Post[]>([]);
-    const [loading, setLoading] = useState(true);
-  
-    useEffect(() => {
-        const fetchPosts = async () => {
-            try {
-                // Fetching max 6 posts from Next.js API route (list endpoint)
-                const response = await fetch('/api/blog');
-                const data = await response.json();
-                setPosts(data);
-            } catch (error) {
-                console.error('Error fetching posts:', error);
-            } finally {
-                setLoading(false);
-            }
-        };
-  
-        fetchPosts();
-    }, []);
+  useEffect(() => {
+    const fetchPosts = async () => {
+      try {
+        // Fetching max 6 posts from Next.js API route (list endpoint)
+        const response = await fetch("/api/blog");
+        const data = await response.json();
+        setPosts(data);
+      } catch (error) {
+        console.error("Error fetching posts:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
 
-    return {
-        posts,
-        loading
-    }
-}
+    fetchPosts();
+  }, []);
+
+  return {
+    posts,
+    loading,
+  };
+};

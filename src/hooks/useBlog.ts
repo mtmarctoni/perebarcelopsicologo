@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { useParams } from "next/navigation";
 
 import { Post } from "@/types/blog";
-import { wordpressBlogsJson } from "@/utils/data";
 
 export const useBlog = () => {
   const { blogId } = useParams();

@@ -13,6 +13,7 @@ export async function GET() {
     const data = await res.json();
     return NextResponse.json(data);
   } catch (error) {
+    console.error("Error fetching posts:", error);
     return NextResponse.json(
       { error: "Internal server error" },
       { status: 500 }
