@@ -23,8 +23,8 @@ export default {
     ],
   },
   twitter: {
-    handle: '@perebarcelpsico',
-    site: '@perebarcelpsico',
+    handle: '@PBarceloPsico',
+    site: '@PBarceloPsico',
     cardType: 'summary_large_image',
   },
   additionalMetaTags: [
