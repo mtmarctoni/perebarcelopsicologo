@@ -11,28 +11,26 @@ import { baseUrl, mentalCards } from "@/utils/data";
 export default function MentalHealthPage() {
   return (
     <MainLayout>
-          {/* Hero Section */}
-          <SectionContainer className="">
-              
-          <header className="relative h-[400px] rounded-xl overflow-hidden mb-12">
-            <Image
-              src={`${baseUrl}/stock/mental-health-hero.webp`}
-              alt="Salud Mental"
-              fill
-              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-              priority
-              className="object-cover brightness-75"
-              />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-            <div className="absolute bottom-0 left-0 p-8 text-white">
-              <h1 className="text-4xl font-bold mb-2">
-                Mejora tu salud mental
-              </h1>
-            </div>
-          </header>
-              </SectionContainer>
+      {/* Hero Section */}
+      <header className="relative h-[400px] rounded-xl overflow-hidden mx-4 sm:mx-6 lg:mx-8 mt-6">
+        <Image
+          src={`${baseUrl}/stock/mental-health-hero.webp`}
+          alt="Salud Mental"
+          fill
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+          priority
+          className="object-cover brightness-75"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+        <div className="absolute bottom-0 left-0 p-8 text-white">
+          <h1 className="text-4xl font-bold mb-2">
+            Mejora tu salud mental
+          </h1>
+        </div>
+      </header>
 
-          {/* What is Mental Health Section */}
+      <main className="pb-12">
+        {/* What is Mental Health Section */}
           <SectionContainer className="">
               
           <div className="bg-background rounded-lg shadow-md p-8">
@@ -76,7 +74,7 @@ export default function MentalHealthPage() {
           <SectionContainer className="">
               
           <div className="bg-background text-text rounded-lg p-8">
-            <h2 className="text-2xl text-dark font-bold mb-4">Por lo tanto…</h2>
+            <h2 className="text-2xl text-text-dark font-bold mb-4">Por lo tanto…</h2>
             <p className="leading-relaxed mb-4">
               La psicología del deporte puede contribuir significativamente a la
               salud mental al proporcionar herramientas para manejar el estrés,
@@ -102,8 +100,9 @@ export default function MentalHealthPage() {
               >
               ¡Pide más información!
             </Link>
-          </div>
-                </SectionContainer>
+        </div>
+      </SectionContainer>
+    </main>
     </MainLayout>
   );
 }

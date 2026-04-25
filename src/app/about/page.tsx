@@ -24,10 +24,9 @@ export default function AboutPage() {
           { name: 'Sobre mí', item: '/sobre-mi' },
         ]}
       /> */}
-      <div className="min-h-screen">
-        <div className="max-w-4xl mx-auto py-6">
-          {/* Hero Section */}
-          <div className="relative h-[400px] rounded-xl overflow-hidden">
+      <>
+        {/* Hero Section */}
+        <div className="relative h-[400px] rounded-xl overflow-hidden mx-4 sm:mx-6 lg:mx-8 mt-6">
             <Image
               src={`${baseUrl}/stock/personas-escuchando.webp`}
               alt="Pere Barceló Lambea"
@@ -43,8 +42,8 @@ export default function AboutPage() {
               </h1>
             </div>
           </div>
-          <main className="">
-            {/* About Section */}
+        <main className="pb-12">
+          {/* About Section */}
             <SectionContainer className="">
               <div className="flex flex-col md:flex-row gap-8 items-center">
                 <div className="md:w-1/2 min-w-[225px]">
@@ -59,16 +58,16 @@ export default function AboutPage() {
                   </div>
                 </div>
                 <div className="md:w-1/2">
-                  <h2 className="text-2xl font-bold text-gray-700 mb-4 text-center">
+                  <h2 className="text-2xl font-bold text-text-dark mb-4 text-center">
                     ¿Quién soy?
                   </h2>
-                  <p className="text-gray-600 leading-relaxed">
+                  <p className="text-text leading-relaxed">
                     ¡Hola! Soy Pere Barceló Lambea, un amante del deporte,
                     especialmente del fútbol. Desde pequeño, mi infancia ha
                     estado marcada por esta pasión, lo que me llevó a estudiar
                     Psicología en la Universitat de les Illes Balears.
                   </p>
-                  <p className="text-gray-600 leading-relaxed mt-4">
+                  <p className="text-text leading-relaxed mt-4">
                     Posteriormente, mi deseo de entender la mente humana y
                     ayudar a otros a rendir al máximo nivel me llevó a completar
                     un máster en Psicología de la Actividad Física y del Deporte
@@ -87,7 +86,7 @@ export default function AboutPage() {
                   <FutbolIcon />
                 </IconCardContainer>
                 <h3 className="font-semibold mb-2">Experiencia Deportiva</h3>
-                <p className="text-gray-600 text-sm">
+                <p className="text-text text-sm">
                   Amplia experiencia en diversos deportes: fútbol, baloncesto,
                   golf, gimnasia artística y más.
                 </p>
@@ -98,7 +97,7 @@ export default function AboutPage() {
                 <GraduationcapIcon />
                 </IconCardContainer>
                 <h3 className="font-semibold mb-2">Formación Académica</h3>
-                <p className="text-gray-600 text-sm">
+                <p className="text-text text-sm">
                   Graduado en Psicología y Máster en Psicología de la Actividad
                   Física y del Deporte.
                 </p>
@@ -109,7 +108,7 @@ export default function AboutPage() {
                 <HandshakeIcon />
                 </IconCardContainer>
                 <h3 className="font-semibold mb-2">Compromiso</h3>
-                <p className="text-gray-600 text-sm">
+                <p className="text-text text-sm">
                   Dedicado a ayudar a deportistas a alcanzar su máximo
                   rendimiento mientras disfrutan del proceso.
                 </p>
@@ -122,10 +121,10 @@ export default function AboutPage() {
             <SectionContainer className="">
 
             <div className="bg-background rounded-lg shadow-md p-8">
-              <h2 className="text-2xl font-bold text-gray-700 mb-6">
+              <h2 className="text-2xl font-bold text-text-dark mb-6">
                 Mi trayectoria profesional
               </h2>
-              <div className="space-y-4 text-gray-700">
+              <div className="space-y-4 text-text-dark">
                 <p className="leading-relaxed">
                   He tenido la suerte de trabajar con muchos deportistas en
                   clubes de diferentes deportes a lo largo de mi carrera. He
@@ -152,7 +151,7 @@ export default function AboutPage() {
 
             {/* Commitment Section */}
             <SectionContainer className="">
-            <section className="bg-background text-gray-600 rounded-lg p-8">
+            <section className="bg-background text-text rounded-lg p-8">
               <h2 className="text-2xl font-bold mb-4">Mi compromiso</h2>
               <p className="leading-relaxed">
                 Como profesional en el campo de la psicología deportiva, mi
@@ -165,9 +164,8 @@ export default function AboutPage() {
               </section>
             </SectionContainer>
               
-          </main>
-        </div>
-      </div>
+        </main>
+      </>
     </MainLayout>
   );
 }

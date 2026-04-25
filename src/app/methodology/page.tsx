@@ -12,25 +12,24 @@ import { BaseCardProps } from "@/types/navbar";
 export default function WorkMethodPage() {
   return (
     <MainLayout>
-      <div className="min-h-screen">
-        <div className="max-w-4xl mx-auto px py-12">
-          {/* Hero Section */}
-          <div className="relative h-[400px] rounded-xl overflow-hidden mb-12">
-            <Image
-              src={`${baseUrl}/stock/sports-psychology.webp`}
-              alt="Psicología deportiva"
-              fill
-              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-              className="object-cover brightness-75"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-            <div className="absolute bottom-0 left-0 p-8 text-white">
-              <h1 className="text-4xl font-bold mb-2">Mi modo de trabajo</h1>
-              <p className="text-xl">¿Cómo puedo ayudarte en tu deporte?</p>
-            </div>
-          </div>
+      {/* Hero Section */}
+      <div className="relative h-[400px] rounded-xl overflow-hidden mx-4 sm:mx-6 lg:mx-8 mt-6 mb-8">
+        <Image
+          src={`${baseUrl}/stock/sports-psychology.webp`}
+          alt="Psicología deportiva"
+          fill
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+          className="object-cover brightness-75"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+        <div className="absolute bottom-0 left-0 p-8 text-white">
+          <h1 className="text-4xl font-bold mb-2">Mi modo de trabajo</h1>
+          <p className="text-xl">¿Cómo puedo ayudarte en tu deporte?</p>
+        </div>
+      </div>
 
-                  {/* Approach Section */}
+      <main className="pb-12">
+        {/* Approach Section */}
                   <SectionContainer className="">
             <div className="bg-background rounded-lg shadow-md p-8">
               <h2 className="text-2xl font-bold text-text-dark mb-6">
@@ -74,7 +73,7 @@ export default function WorkMethodPage() {
             <div className="space-y-8">
               {/* Online Sessions Detail */}
               <div className="bg-background rounded-lg shadow-md p-8">
-                <h3 className="text-2xl font-bold text-text-dark mb-4">
+                <h3 className="text-xl font-bold text-text-dark mb-4">
                   Sesiones Online en Detalle
                 </h3>
                 <div className="space-y-4 text-text">
@@ -101,10 +100,10 @@ export default function WorkMethodPage() {
 
               {/* Club Services Detail */}
               <div className="bg-background rounded-lg shadow-md p-8">
-                <h3 className="text-2xl font-bold text-text-dark mb-4">
+                <h3 className="text-xl font-bold text-text-dark mb-4">
                   Servicios para Clubes
                 </h3>
-                <div className="space-y-4 text-gray-700">
+                <div className="space-y-4 text-text">
                   <p className="leading-relaxed">
                     Los talleres diseñados para los clubes están orientados a
                     fortalecer las habilidades tanto de los deportistas como de
@@ -118,9 +117,8 @@ export default function WorkMethodPage() {
                 </div>
               </div>
             </div>
-          </SectionContainer>
-        </div>
-      </div>
+        </SectionContainer>
+      </main>
     </MainLayout>
   );
 }
