@@ -20,7 +20,7 @@ const Footer = () => {
               Pere Barceló
               <span className="text-secondary">.</span>
             </h3>
-            <p className="text-text-light text-sm leading-relaxed">
+            <p className="text-white/75 text-sm leading-relaxed">
               Psicólogo deportivo especializado en mejorar el rendimiento y la
               salud mental de deportistas a través de sesiones online, talleres y asesoramiento.
             </p>
@@ -48,22 +48,22 @@ const Footer = () => {
             <div className="space-y-4 text-sm">
               <div className="flex items-center space-x-3 group">
                 <IconFooterContainer>
-                  <EnvelopeIcon />
+                  <EnvelopeIcon className="w-5 h-5 text-white" />
                 </IconFooterContainer>
                 <a
                   href={`mailto:${email}`}
-                  className="text-text-light hover:text-secondary transition-colors duration-300"
+                  className="text-white/80 hover:text-white transition-colors duration-300"
                 >
                   {email}
                 </a>
               </div>
               <div className="flex items-center space-x-3 group">
                 <IconFooterContainer>
-                  <WhatsappIcon />
+                  <WhatsappIcon className="w-5 h-5 text-white" />
                 </IconFooterContainer>
                 <a
                   href={`tel:${phone}`}
-                  className="text-text-light hover:text-secondary transition-colors duration-300"
+                  className="text-white/80 hover:text-white transition-colors duration-300"
                 >
                   {phone}
                 </a>
@@ -87,14 +87,14 @@ const Footer = () => {
         {/* Bottom Bar */}
         <div className="mt-16 pt-8 border-t border-white/10">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-            <p className="text-text-light text-sm">
+            <p className="text-white/65 text-sm">
               &copy; {new Date().getFullYear()} Pere Barceló Psicólogo. Todos los
               derechos reservados.
             </p>
             <div className="flex space-x-6">
               <Link
                 href="https://perebarcelopsicologo.com/privacy-policy/"
-                className="text-text-light hover:text-secondary text-sm transition-colors duration-300"
+                className="text-white/80 hover:text-white text-sm transition-colors duration-300"
               >
                 Política de Privacidad
               </Link>

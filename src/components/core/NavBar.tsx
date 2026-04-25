@@ -27,14 +27,14 @@ const Navbar = () => {
           </div>
 
           {/* Navigation Links */}
-          <div className="hidden lg:flex items-center space-x-1">
+          <div className="hidden lg:flex items-center space-x-2">
             {navbarLinks.map((item) => (
               <div className="relative group" key={item.url}>
                 <Link
                   href={item.url}
-                  className="text-white/80 whitespace-nowrap px-4 py-2 text-sm font-medium
-                           hover:text-white transition-all duration-300
-                           rounded-full hover:bg-white/10"
+                  className="text-white/80 whitespace-nowrap px-3 py-2 text-sm font-medium tracking-[0.01em]
+                           border-b-2 border-transparent hover:border-secondary hover:text-white
+                           transition-colors duration-200"
                 >
                   {item.label}
                 </Link>
@@ -46,15 +46,15 @@ const Navbar = () => {
                                 group-hover:opacity-100 left-0 pt-2 w-56 
                                 transition-all duration-300 ease-smooth"
                   >
-                    <div className="bg-background-alt/95 backdrop-blur-xl rounded-2xl shadow-2xl border border-white/10 overflow-hidden">
-                      {item.subLinks.map((subLink) => (
-                        <Link
-                          key={subLink.url}
-                          href={subLink.url}
-                          className="block px-5 py-3 text-sm text-text-dark whitespace-nowrap
-                                   hover:bg-secondary/10 hover:text-primary-dark
+                      <div className="bg-background-alt/95 backdrop-blur-xl rounded-2xl shadow-2xl border border-white/10 overflow-hidden">
+                        {item.subLinks.map((subLink) => (
+                          <Link
+                            key={subLink.url}
+                            href={subLink.url}
+                            className="block px-5 py-3 text-sm text-text-dark whitespace-nowrap
+                                   hover:bg-secondary/10 hover:text-secondary
                                    transition-colors duration-200"
-                        >
+                         >
                           {subLink.label}
                         </Link>
                       ))}

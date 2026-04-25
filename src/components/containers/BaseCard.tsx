@@ -24,9 +24,9 @@ const BaseCard = ({
       </div>
       <div className="p-6 sm:p-8 flex flex-col flex-grow">
         <IconCardContainer className="bg-secondary/10 group-hover:bg-secondary/20 transition-colors duration-500">
-          <Icon />
+          <Icon className="w-7 h-7 text-secondary" />
         </IconCardContainer>
-        <h3 className="text-xl font-bold text-text-dark mb-3 group-hover:text-primary-dark transition-colors duration-300">{name}</h3>
+        <h3 className="text-xl font-bold text-text-dark mb-3 group-hover:text-secondary transition-colors duration-300">{name}</h3>
         <p className="mb-6 text-text leading-relaxed">
           {description}
         </p>
