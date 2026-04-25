@@ -6,13 +6,12 @@ interface Props {
 }
 
 const QuickLinkFooter = ({ link }: Props) => (
-
-        <Link
-            href={link.url}
-            className="text-gray-light hover:text-white transition-colors duration-200"
-        >
-            {link.label}
-        </Link>
+    <Link
+        href={link.url}
+        className="text-text-light hover:text-secondary transition-colors duration-300 text-sm"
+    >
+        {link.label}
+    </Link>
 )
-    
+
 export default QuickLinkFooter;

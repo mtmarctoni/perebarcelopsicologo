@@ -6,21 +6,24 @@ import BlogList from "@/components/core/Blog/BlogList";
 export default function BlogListPage() {
   return (
     <MainLayout>
-      <SectionContainer className="">
-        <div className="text-center">
-          <h1 className="text-4xl md:text-5xl font-bold text-text-dark mb-4">
-            Blog de Psicología Deportiva
-          </h1>
-          <p className="text-xl font-semibold text-text-light max-w-2xl mx-auto">
-            Descubre consejos, estrategias y reflexiones para mejorar tu
-            rendimiento mental en el deporte
-          </p>
-        </div>
-      </SectionContainer>
+      <main className="pb-12">
+        <SectionContainer className="">
+          <div className="text-center max-w-3xl mx-auto">
+            <span className="text-secondary text-sm font-semibold uppercase tracking-widest">Blog</span>
+            <h1 className="text-4xl sm:text-5xl font-bold text-text-dark mt-3 mb-6 tracking-tight">
+              Blog de Psicología Deportiva
+            </h1>
+            <p className="text-text text-lg leading-relaxed">
+              Descubre consejos, estrategias y reflexiones para mejorar tu
+              rendimiento mental en el deporte
+            </p>
+          </div>
+        </SectionContainer>
 
-      <SectionContainer className="">
-        <BlogList />
-      </SectionContainer>
+        <SectionContainer className="bg-background-alt/50">
+          <BlogList />
+        </SectionContainer>
+      </main>
     </MainLayout>
   );
 }

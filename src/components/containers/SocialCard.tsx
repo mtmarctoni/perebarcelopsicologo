@@ -1,28 +1,23 @@
 import { SocialCardProps } from "@/types/navbar";
 import { IconCardContainer } from "./IconContainer";
 
-
 const SocialCard = ({ name, Icon, link, username }: SocialCardProps) => {
-  
     return (
-      <div className="bg-background-alt flex flex-col py-6 rounded-lg shadow-md text-center">
-        <IconCardContainer className={`bg-primary-light`}>
-          <Icon className="text-text"/>
+      <a
+        href={link}
+        target={link.startsWith('mailto') ? undefined : '_blank'}
+        rel={link.startsWith('mailto') ? undefined : 'noopener noreferrer'}
+        className="group bg-background flex flex-col py-8 rounded-2xl shadow-card hover:shadow-card-hover transition-all duration-500 ease-smooth hover:-translate-y-2 text-center border border-transparent hover:border-secondary/20"
+      >
+        <IconCardContainer className="bg-primary/10 group-hover:bg-secondary/10 transition-colors duration-500">
+          <Icon className="w-7 h-7 text-primary-dark group-hover:text-secondary transition-colors duration-300"/>
         </IconCardContainer>
-        <h3 className="text-text font-semibold mb-2">{name}</h3>
-        <a 
-          href={link}
-          target={link.startsWith('mailto') ? undefined : '_blank'}
-          rel={link.startsWith('mailto') ? undefined : 'noopener noreferrer'}
-          className="text-text-light hover:text-secondary-dark transition-colors text-sm"
-        >
+        <h3 className="text-text-dark font-bold text-lg mb-1">{name}</h3>
+        <span className="text-text-light group-hover:text-secondary transition-colors duration-300 text-sm">
           {username}
-        </a>
-      </div>
+        </span>
+      </a>
     );
   };
-  
+
 export default SocialCard;
-  
-{/* <div className="w-12 h-12 bg-primary-dark/10 rounded-full flex items-center justify-center mx-auto mb-4">
-          </div> */}
