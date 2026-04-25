@@ -140,7 +140,7 @@ export default function AboutPage() {
                 </p>
                 <div className="mt-8">
                   <h3 className="font-semibold text-lg mb-4">Clubes y Federaciones:</h3>
-                  <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
+                  <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3 sm:gap-4 items-stretch">
                     {clubs.map((club, index) => (
                       <ClubCard key={index} club={club} />
                     ))}
