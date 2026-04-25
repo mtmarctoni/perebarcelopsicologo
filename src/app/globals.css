@@ -32,17 +32,17 @@
 }
 
 .dark {
-  /* Enhanced primary palette */
-  --primary: #3B82F6;
+  /* Restore the previous dark-mode blue palette */
+  --primary: #2F4F7F;
   --primary-light: #1C4761;
   --primary-darker: #0F2537;
 
   /* Background colors */
-  --background: #0B1120;
-  --background-alt: #151E32;
-  --background-navbar: rgba(15, 37, 55, 0.85);
+  --background: #0F172A;
+  --background-alt: #1E293B;
+  --background-navbar: rgba(15, 37, 55, 0.92);
   --background-navbar-alt: #d0d3d6;
-  --background-footer: #070F1A;
+  --background-footer: #0A1A25;
 
   /* Accent colors */
   --secondary: #F59E0B;
@@ -51,7 +51,7 @@
 
   /* Text colors */
   --text: #E2E8F0;
-  --text-light: #94A3B8;
+  --text-light: #CBD5E1;
   --text-dark: #F8FAFC;
 
   /* UI colors */
