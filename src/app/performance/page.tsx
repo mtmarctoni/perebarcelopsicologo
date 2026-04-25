@@ -11,25 +11,23 @@ import BaseCard from "@/components/containers/BaseCard";
 export default function PerformancePage() {
   return (
     <MainLayout>
-          {/* Hero Section */}
-          <SectionContainer className="">
-              
-          <header className="relative h-[400px] rounded-xl overflow-hidden">
-            <Image
-            src={`${baseUrl}/stock/performance-hero.webp`}
-              alt="Rendimiento deportivo"
-              fill
-              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-              className="object-cover brightness-75"
-              />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-            <div className="absolute bottom-0 left-0 p-8 text-white">
-              <h1 className="text-4xl font-bold mb-2">Mejora tu rendimiento</h1>
-            </div>
-          </header>
-              </SectionContainer>
+      {/* Hero Section */}
+      <header className="relative h-[400px] rounded-xl overflow-hidden mx-4 sm:mx-6 lg:mx-8 mt-6">
+        <Image
+          src={`${baseUrl}/stock/performance-hero.webp`}
+          alt="Rendimiento deportivo"
+          fill
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+          className="object-cover brightness-75"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+        <div className="absolute bottom-0 left-0 p-8 text-white">
+          <h1 className="text-4xl font-bold mb-2">Mejora tu rendimiento</h1>
+        </div>
+      </header>
 
-          {/* What is Performance Section */}
+      <main className="pb-12">
+        {/* What is Performance Section */}
           <SectionContainer className="">
               
           <div className="bg-background rounded-lg shadow-md p-8">
@@ -47,7 +45,7 @@ export default function PerformancePage() {
 
           {/* Performance Aspects Grid */}
           <SectionContainer className="">
-          <h2 className="text-2xl font-bold text-primary-dark mb-8">
+          <h2 className="text-2xl font-bold text-text-dark mb-8">
               ¿Qué aspectos te harán mejorar tu rendimiento deportivo?
               </h2>
               <div className="grid md:grid-cols-2 gap-8">
@@ -67,7 +65,7 @@ export default function PerformancePage() {
           <SectionContainer className="">
               
           <div className="bg-background text-text rounded-lg p-8">
-            <h2 className="text-2xl text-dark font-bold mb-4">Por lo tanto…</h2>
+            <h2 className="text-2xl text-text-dark font-bold mb-4">Por lo tanto…</h2>
             <p className="leading-relaxed mb-6">
               La psicología deportiva desempeña un papel crucial en el
               rendimiento deportivo, ya que aborda los aspectos mentales y
@@ -93,8 +91,9 @@ export default function PerformancePage() {
               >
               ¡Pide más información!
             </Link>
-          </div>
-                </SectionContainer>
+        </div>
+      </SectionContainer>
+    </main>
     </MainLayout>
   );
 }
