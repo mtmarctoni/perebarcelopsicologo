@@ -46,13 +46,13 @@ const Navbar = () => {
                                 group-hover:opacity-100 left-0 pt-2 w-56 
                                 transition-all duration-300 ease-smooth"
                   >
-                      <div className="bg-background-alt/95 backdrop-blur-xl rounded-2xl shadow-2xl border border-white/10 overflow-hidden">
+                      <div className="bg-background/98 backdrop-blur-2xl rounded-2xl shadow-2xl border border-white/15 overflow-hidden ring-1 ring-black/5">
                         {item.subLinks.map((subLink) => (
                           <Link
                             key={subLink.url}
                             href={subLink.url}
-                            className="block px-5 py-3 text-sm text-text-dark whitespace-nowrap
-                                   hover:bg-secondary/10 hover:text-secondary
+                            className="block px-5 py-3 text-sm font-medium text-text-dark whitespace-nowrap
+                                   hover:bg-secondary/16 hover:text-secondary
                                    transition-colors duration-200"
                          >
                           {subLink.label}
