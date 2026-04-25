@@ -17,10 +17,10 @@ export default function Home() {
             alt="Pista de atletismo"
             fill
             sizes="100vw"
-            className="object-cover"
+            className="object-cover brightness-[0.72]"
             priority
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-black/78 via-black/50 to-black/72" />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/90 via-black/60 to-transparent" />
         </div>
 
         <div className="relative h-full flex flex-col items-center justify-center text-center px-4 sm:px-6 lg:px-8">
