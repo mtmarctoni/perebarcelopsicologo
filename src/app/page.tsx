@@ -73,7 +73,7 @@ export default function Home() {
                 Juntos podemos trabajar para que mejores en los diferentes aspectos que afectan al rendimiento deportivo mientras disfrutas del proceso.
               </p>
               <Link
-                href="/about"
+                href="/methodology"
                 >
                 <button className="font-semibold relative flex h-[50px] w-40 items-center justify-center rounded-md overflow-hidden bg-primary-dark text-white shadow-2xl transition-all duration-300 before:absolute before:inset-0 before:border-0 before:border-secondary before:duration-100 before:ease-linear hover:bg-secondary hover:text-primary-dark hover:shadow-secondary hover:before:border-[25px]">
                   <span className="relative z-10">
@@ -160,7 +160,7 @@ export default function Home() {
                 Mejora tu rendimiento deportivo y salud mental con sesiones online personalizadas.
               </p>
               <Link 
-                href="/about"
+                href="/methodology"
                 className="bg-primary-dark text-white px-6 py-2 rounded-md hover:bg-secondary transition-colors mt-auto"
               >
                 Sesiones individuales
@@ -183,7 +183,7 @@ export default function Home() {
                 Mejora el rendimiento deportivo y la salud mental de los entrenadores o atletas de tu club con talleres grupales.
               </p>
               <Link 
-                href="/about"
+                href="/methodology"
                 className="bg-primary-dark text-white px-6 py-2 rounded-md hover:bg-secondary transition-colors mt-auto"
               >
                 Talleres grupales
@@ -206,7 +206,7 @@ export default function Home() {
                 Mejora el rendimiento deportivo y la salud mental de los entrenadores o atletas de tu club con un asesoramiento personalizado.
               </p>
               <Link 
-                href="/about"
+                href="/methodology"
                 className="bg-primary-dark text-white px-6 py-2 rounded-md hover:bg-secondary transition-colors mt-auto"
               >
                 Asesoramiento

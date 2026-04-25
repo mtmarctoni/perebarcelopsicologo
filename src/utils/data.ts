@@ -99,7 +99,7 @@ export const methodologyCards: BaseCardProps[] = [
     Icon: LaptopIcon,
     description:
       "Sesiones personalizadas adaptadas a las características y requisitos particulares de cada atleta y su deporte.",
-    link: "contact",
+    link: "/contact",
   },
   {
     image: `${baseUrl}/stock/group-workshop.webp`,
@@ -107,7 +107,7 @@ export const methodologyCards: BaseCardProps[] = [
     Icon: UsersIcon,
     description:
       "Diseñados para fomentar el aprendizaje colaborativo y fortalecer las habilidades interpersonales.",
-    link: "contact",
+    link: "/contact",
   },
   {
     image: `${baseUrl}/stock/club-consulting.webp`,
@@ -127,6 +127,7 @@ export const performanceCards: BaseCardProps[] = [
     Icon: HeartbeatIcon,
     description:
       "A la hora de competir siempre vas a tener que lidiar con muchas emociones. La gestión que hagas de las diferentes emociones que aparezcan marcarán en gran parte tus resultados.",
+    link: "/contact",
   },
   {
     image: `${baseUrl}/stock/concentration.webp`,
@@ -134,6 +135,7 @@ export const performanceCards: BaseCardProps[] = [
     Icon: BrainIcon,
     description:
       "La concentración es esencial para el rendimiento deportivo, ya que te permitirá enfocarte en el presente, bloquear distracciones y ejecutar habilidades con precisión.",
+    link: "/contact",
   },
   {
     image: `${baseUrl}/stock/self-confidence.webp`,
@@ -141,6 +143,7 @@ export const performanceCards: BaseCardProps[] = [
     Icon: ChartlineIcon,
     description:
       "La autoconfianza es un pilar fundamental en el rendimiento deportivo, ya que influye directamente en tu capacidad para enfrentar desafíos y mantener la motivación.",
+    link: "/contact",
   },
   {
     image: `${baseUrl}/stock/motivation.webp`,
@@ -148,6 +151,7 @@ export const performanceCards: BaseCardProps[] = [
     Icon: LightbulbIcon,
     description:
       "La motivación es el motor esencial en el rendimiento deportivo, ya que te impulsa a fijarte metas, perseverar en el entrenamiento y superar desafíos.",
+    link: "/contact",
   },
   // Easy to add more social media here
 ];
@@ -159,6 +163,7 @@ export const mentalCards: BaseCardProps[] = [
     Icon: HeartIcon,
     description:
       "La gestión emocional es fundamental para la salud mental, ya que te permite comprender, regular y expresar las emociones de manera adecuada, promoviendo el equilibrio psicológico.",
+    link: "/contact",
   },
   {
     image: `${baseUrl}/stock/stress-management.webp`,
@@ -166,6 +171,7 @@ export const mentalCards: BaseCardProps[] = [
     Icon: BalanceIcon,
     description:
       "El manejo del estrés es crucial para preservar la salud mental, ya que el estrés crónico puede desencadenar problemas como ansiedad, depresión y agotamiento emocional.",
+    link: "/contact",
   },
   {
     image: `${baseUrl}/stock/burnout-prevention.webp`,
@@ -173,6 +179,7 @@ export const mentalCards: BaseCardProps[] = [
     Icon: BatteryIcon,
     description:
       "La prevención del burnout es esencial para proteger tu salud mental, ya que este síndrome afecta la capacidad de una persona para desempeñarse en su vida diaria y laboral.",
+    link: "/contact",
   },
   {
     image: `${baseUrl}/stock/self-esteem.webp`,
@@ -180,6 +187,7 @@ export const mentalCards: BaseCardProps[] = [
     Icon: StarIcon,
     description:
       "La autoestima es un componente esencial para la salud mental, ya que influye directamente en la forma en que te percibes a ti mismo y enfrentas los retos de la vida.",
+    link: "/contact",
   },
   // Easy to add more social media here
 ];
