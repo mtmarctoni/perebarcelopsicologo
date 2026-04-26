@@ -1,12 +1,22 @@
+import { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 
+import { createPageMetadata } from "@/app/metadata";
 import MainLayout from "@/components/core/MainLayout";
 import SectionContainer from "@/components/containers/SectionContainer";
 import BaseCard from "@/components/containers/BaseCard";
 
 import { baseUrl, methodologyCards } from "@/utils/data";
 import { BaseCardProps } from "@/types/navbar";
+
+export const metadata: Metadata = createPageMetadata({
+  title: "Metodologia y modo de trabajo | Pere Barceló",
+  description:
+    "Descubre como trabaja Pere Barceló con sesiones online, talleres grupales y asesoramiento a clubes desde la psicologia deportiva.",
+  path: "/methodology",
+  imagePath: "/stock/sports-psychology.webp",
+});
 
 export default function WorkMethodPage() {
   return (

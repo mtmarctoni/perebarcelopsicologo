@@ -1,11 +1,21 @@
+import { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 
+import { createPageMetadata } from "@/app/metadata";
 import MainLayout from "@/components/core/MainLayout";
 import SectionContainer from "@/components/containers/SectionContainer";
 import { BaseCardProps } from "@/types/navbar";
 import BaseCard from "@/components/containers/BaseCard";
 import { baseUrl, mentalCards } from "@/utils/data";
+
+export const metadata: Metadata = createPageMetadata({
+  title: "Salud mental en el deporte | Pere Barceló",
+  description:
+    "Mejora tu bienestar emocional con psicologia deportiva aplicada a ansiedad, estres, agotamiento y regulacion emocional.",
+  path: "/mental",
+  imagePath: "/stock/mental-health-hero.webp",
+});
 
 export default function MentalHealthPage() {
   return (

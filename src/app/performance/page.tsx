@@ -1,11 +1,21 @@
+import { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 
+import { createPageMetadata } from "@/app/metadata";
 import MainLayout from "@/components/core/MainLayout";
 import SectionContainer from "@/components/containers/SectionContainer";
 import { baseUrl, performanceCards } from "@/utils/data";
 import { BaseCardProps } from "@/types/navbar";
 import BaseCard from "@/components/containers/BaseCard";
+
+export const metadata: Metadata = createPageMetadata({
+  title: "Mejora tu rendimiento deportivo | Pere Barceló",
+  description:
+    "Trabaja concentracion, motivacion, autoconfianza y gestion emocional para rendir mejor en competicion y entrenamiento.",
+  path: "/performance",
+  imagePath: "/stock/performance-hero.webp",
+});
 
 export default function PerformancePage() {
   return (

@@ -1,10 +1,20 @@
+import { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 
+import { createPageMetadata } from "@/app/metadata";
 import MainLayout from "@/components/core/MainLayout";
 import {ScrollIcon} from "@/components/composables/Icons";
 import SectionContainer from "@/components/containers/SectionContainer";
 import { baseUrl } from "@/utils/data";
+
+export const metadata: Metadata = createPageMetadata({
+  title: "Psicólogo deportivo en Mallorca | Pere Barceló",
+  description:
+    "Psicología deportiva para mejorar el rendimiento, la salud mental y el bienestar de deportistas, equipos y clubes en Mallorca.",
+  path: "/",
+  imagePath: "/stock/alcanza-tu-objetivo.webp",
+});
 
 export default function Home() {
   return (

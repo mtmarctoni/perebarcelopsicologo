@@ -8,20 +8,14 @@ interface Props {
 }
 
 const BlogCard = ({ post }: Props) => {
-
-  function getFirstImageSrc(htmlContent: string) {
-    const parser = new DOMParser();
-    const doc = parser.parseFromString(htmlContent, 'text/html');
-    const img = doc.querySelector('img');
-    return img ? img.src : '';
-  }
+  const featuredImage = post._embedded?.["wp:featuredmedia"]?.[0]?.source_url;
 
     return (
       <article className="group bg-background rounded-2xl shadow-card overflow-hidden border border-transparent hover:border-secondary/20 transition-all duration-500 ease-smooth hover:-translate-y-2 hover:shadow-card-hover">
-        {getFirstImageSrc(post.content.rendered) && (
+        {featuredImage && (
           <div className="relative h-56 overflow-hidden">
             <Image
-              src={getFirstImageSrc(post.content.rendered)}
+              src={featuredImage}
               alt={post.title.rendered}
               width={800}
               height={600}
