@@ -5,6 +5,7 @@ import SocialCard from "@/components/containers/SocialCard";
 import { socialMediaLinks } from "@/utils/data";
 import SectionContainer from "@/components/containers/SectionContainer";
 import ContactForm from "@/components/core/Forms/ContactForm";
+import CalendlyBookingCard from "@/components/core/CalendlyBookingCard";
 
 export default function ContactPage() {
   return (
@@ -27,9 +28,19 @@ export default function ContactPage() {
 
         {/* Contact Form */}
         <SectionContainer className="bg-background-alt/50">
-          <div className="max-w-3xl mx-auto">
-            <div className="bg-background rounded-3xl shadow-card p-8 sm:p-12">
-              <ContactForm />
+          <div className="max-w-7xl mx-auto">
+            <div className="grid xl:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)] gap-8 items-start">
+              <div className="bg-background rounded-3xl shadow-card p-8 sm:p-12">
+                <span className="text-secondary text-sm font-semibold uppercase tracking-widest">Formulario</span>
+                <h2 className="text-3xl font-bold text-text-dark mt-3 mb-4 tracking-tight">
+                  Cuentame tu caso
+                </h2>
+                <p className="text-text-light mb-8 leading-relaxed">
+                  Si prefieres explicarme primero tu situacion, completa el formulario y te respondere personalmente.
+                </p>
+                <ContactForm />
+              </div>
+              <CalendlyBookingCard />
             </div>
           </div>
         </SectionContainer>
