@@ -5,6 +5,7 @@ export interface Post {
     content: { rendered: string };
     excerpt: { rendered: string };
     date: string;
+    modified?: string;
     link: string;
     _embedded?: {
       'wp:featuredmedia'?: Array<{

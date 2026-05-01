@@ -36,6 +36,7 @@ npm install
 3. Create a `.env` file with the following variables:
 ```
 RESEND_API_KEY=your_resend_api_key
+NEXT_PUBLIC_CALENDLY_URL=https://calendly.com/your-handle/your-event
 ```
 
 ## 🏃‍♂️ Development

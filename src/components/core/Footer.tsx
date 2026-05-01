@@ -9,25 +9,29 @@ import SocialLinkFooter from "../containers/SocialLinkFooter";
 import QuickLinkFooter from "../containers/QuickLinkFooter";
 
 const Footer = () => {
-  //const date = '2024'
   return (
-    <footer className="bg-background-footer text-white">
+    <footer className="bg-background-footer border-t border-white/5">
       {/* Main Footer Content */}
-      <div className="max-w-6xl mx-auto py-8 px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div className="max-w-7xl mx-auto py-16 px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
           {/* Brand Section */}
-          <div className="space-y-4">
-            <h3 className="text-lg font-bold">Pere Barceló</h3>
-            <p className="text-gray-light text-xs leading-relaxed">
+          <div className="space-y-5">
+            <h3 className="text-xl font-bold text-white tracking-tight">
+              Pere Barceló
+              <span className="text-secondary">.</span>
+            </h3>
+            <p className="text-white/75 text-sm leading-relaxed">
               Psicólogo deportivo especializado en mejorar el rendimiento y la
-              salud mental de deportistas.
+              salud mental de deportistas a través de sesiones online, talleres y asesoramiento.
             </p>
           </div>
 
           {/* Quick Links */}
           <div>
-            <h3 className="text-sm font-semibold mb-4">Enlaces rápidos</h3>
-            <ul className="space-y-2 text-xs">
+            <h3 className="text-sm font-semibold text-white uppercase tracking-wider mb-5">
+              Enlaces rápidos
+            </h3>
+            <ul className="space-y-3 text-sm">
               {navbarLinks.map((link) => (
                 <li key={link.url}>
                   <QuickLinkFooter link={link} />
@@ -38,26 +42,28 @@ const Footer = () => {
 
           {/* Contact Info */}
           <div>
-            <h3 className="text-lg font-semibold mb-4">Contacto</h3>
-            <div className="space-y-3 text-xs">
-              <div className="flex items-center space-x-3">
+            <h3 className="text-sm font-semibold text-white uppercase tracking-wider mb-5">
+              Contacto
+            </h3>
+            <div className="space-y-4 text-sm">
+              <div className="flex items-center space-x-3 group">
                 <IconFooterContainer>
-                  <EnvelopeIcon />
+                  <EnvelopeIcon className="w-5 h-5 text-white" />
                 </IconFooterContainer>
                 <a
                   href={`mailto:${email}`}
-                  className="text-gray-light hover:text-white transition-colors duration-200"
+                  className="text-white/80 hover:text-white transition-colors duration-300"
                 >
                   {email}
                 </a>
               </div>
-              <div className="flex items-center space-x-3">
+              <div className="flex items-center space-x-3 group">
                 <IconFooterContainer>
-                  <WhatsappIcon />
+                  <WhatsappIcon className="w-5 h-5 text-white" />
                 </IconFooterContainer>
                 <a
                   href={`tel:${phone}`}
-                  className="text-gray-light hover:text-white transition-colors duration-200"
+                  className="text-white/80 hover:text-white transition-colors duration-300"
                 >
                   {phone}
                 </a>
@@ -67,8 +73,10 @@ const Footer = () => {
 
           {/* Social Links */}
           <div>
-            <h3 className="text-lg font-semibold mb-4">Sígueme</h3>
-            <div className="flex space-x-4">
+            <h3 className="text-sm font-semibold text-white uppercase tracking-wider mb-5">
+              Sígueme
+            </h3>
+            <div className="flex space-x-3">
               {socialMediaLinksFooter.map((social) => (
                 <SocialLinkFooter key={social.name} social={social} />
               ))}
@@ -77,25 +85,19 @@ const Footer = () => {
         </div>
 
         {/* Bottom Bar */}
-        <div className="mt-8 pt-2 border-t border-bg text-xs">
-          <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-            <p className="text-gray-light">
-              © {new Date().getFullYear()} Pere Barceló Psicólogo. Todos los
+        <div className="mt-16 pt-8 border-t border-white/10">
+          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
+            <p className="text-white/65 text-sm">
+              &copy; {new Date().getFullYear()} Pere Barceló Psicólogo. Todos los
               derechos reservados.
             </p>
             <div className="flex space-x-6">
               <Link
                 href="https://perebarcelopsicologo.com/privacy-policy/"
-                className="text-gray-light hover:text-white transition-colors duration-200"
+                className="text-white/80 hover:text-white text-sm transition-colors duration-300"
               >
                 Política de Privacidad
               </Link>
-              {/* <Link
-                href="/cookies"
-                className="text-gray-light hover:text-white transition-colors duration-200"
-              >
-                Política de Cookies
-              </Link> */}
             </div>
           </div>
         </div>

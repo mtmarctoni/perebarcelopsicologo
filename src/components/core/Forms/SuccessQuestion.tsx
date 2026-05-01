@@ -15,7 +15,7 @@ const SuccessQuestion = ({ resetForm }: Props) => {
                 animate={{ scale: 1.5 }}
                 className="w-16 h-16 mx-auto mb-4 bg-success rounded-full flex items-center justify-center"
             >
-                <CheckIcon className="w-8 h-8 text-text" />
+                <CheckIcon className="w-8 h-8 text-white" />
             </motion.div>
             {/* Add restart button */}
             <motion.button

@@ -34,7 +34,6 @@ export const baseUrl: string = "";
 export const wordpressUrl: string = `https://blog.${domain}`;
 
 export const navbarLinks: NavItem[] = [
-  { label: "Inicio", url: "/" },
   { label: "Conociendo a Pere Barceló", url: "/about" },
   {
     label: "Mi Modo de trabajo",
