@@ -1,64 +1,50 @@
-import Link from "next/link";
 import Image from "next/image";
+import Link from "next/link";
 
-import { Post } from "@/types/blog";
+import type { Post } from "@/types/blog";
 
 interface Props {
-    post: Post
+  post: Post;
 }
 
 const BlogCard = ({ post }: Props) => {
+  const featuredImage = post._embedded?.["wp:featuredmedia"]?.[0]?.source_url;
 
-  function getFirstImageSrc(htmlContent: string) {
-    // Parse the HTML string into a document
-    const parser = new DOMParser();
-    const doc = parser.parseFromString(htmlContent, 'text/html');
-    // Find the first <img> tag
-    const img = doc.querySelector('img');
-    // Return the src attribute if found
-    return img ? img.src : '';
-  }
-
-    return (
-      <article className="bg-background-alt rounded-lg shadow-md overflow-hidden transition-transform hover:scale-105">
-        {/* 
-        {post._embedded?.['wp:featuredmedia'] && ( 
-                  <Image
-                  src={post._embedded['wp:featuredmedia'][0].source_url}
-                  alt={post.title.rendered}
-                  width={800}
-                  height={400}
-                  className="w-full h-48 object-cover"
-                  />
-        )}
-        */}
-        {getFirstImageSrc(post.content.rendered) && (
+  return (
+    <article className="group bg-background rounded-2xl shadow-card overflow-hidden border border-transparent hover:border-secondary/20 transition-all duration-500 ease-smooth hover:-translate-y-2 hover:shadow-card-hover">
+      {featuredImage && (
+        <div className="relative h-56 overflow-hidden">
           <Image
-            src={getFirstImageSrc(post.content.rendered)}
+            src={featuredImage}
             alt={post.title.rendered}
             width={800}
             height={600}
-            className="w-full h-48 object-cover"
+            className="w-full h-full object-cover transition-transform duration-700 ease-smooth group-hover:scale-105"
           />
-        )}
-        <div className="p-6">
-          <h2 
-            className="text-xl font-bold text-text-dark mb-3 line-clamp-2" 
-            dangerouslySetInnerHTML={{ __html: post.title.rendered }} 
-          />
-          <div 
-            className="text-text-light mb-4 line-clamp-3"
-            dangerouslySetInnerHTML={{ __html: post.excerpt.rendered }} 
-          />
-          <Link 
-            href={`/blog/${post.id}`}
-            className="inline-block px-4 py-2 bg-primary-dark text-white rounded-lg hover:bg-secondary transition-colors"
-          >
-            Leer más
-          </Link>
+          <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
         </div>
-      </article>
-    );
+      )}
+      <div className="p-6 sm:p-8">
+        <h2
+          className="text-xl font-bold text-text-dark mb-3 line-clamp-2 group-hover:text-secondary transition-colors duration-300"
+          dangerouslySetInnerHTML={{ __html: post.title.rendered }}
+        />
+        <div
+          className="text-text-light mb-6 line-clamp-3 leading-relaxed"
+          dangerouslySetInnerHTML={{ __html: post.excerpt.rendered }}
+        />
+        <Link
+          href={`/blog/${post.id}`}
+          className="inline-flex items-center text-sm font-semibold text-secondary hover:text-secondary-light transition-colors duration-300"
+        >
+          Leer más{" "}
+          <span className="ml-1 group-hover:translate-x-1 transition-transform duration-300">
+            →
+          </span>
+        </Link>
+      </div>
+    </article>
+  );
 };
-  
+
 export default BlogCard;

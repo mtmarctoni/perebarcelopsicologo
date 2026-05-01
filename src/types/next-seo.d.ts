@@ -1,6 +1,6 @@
-declare module 'next-seo' {
-  import { MetaProps } from 'next/head';
-  
+declare module "next-seo" {
+  import { MetaProps } from "next/head";
+
   export interface NextSeoProps {
     title?: string;
     description?: string;
@@ -35,10 +35,10 @@ declare module 'next-seo' {
   }
 
   export const NextSeo: React.FC<NextSeoProps>;
-  
+
   // export interface JsonLdProps {
   //   [key: string]: any;
   // }
-  
+
   export const JsonLd: React.FC<JsonLdProps>;
 }

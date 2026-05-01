@@ -1,16 +1,15 @@
 "use client";
 
-import { questions } from "@/utils/data";
-import { QuestionType } from "@/types/navbar";
+import QuestionContainer from "@/components/containers/QuestionFormContainer";
 import { useContactFormState } from "@/hooks/useContactFormState";
+import { QuestionType } from "@/types/navbar";
+import { questions } from "@/utils/data";
+import ButtonBack from "./ButtonBack";
 import ButtonNext from "./ButtonNext";
 import ProgressBar from "./ProgressBar";
-import QuestionContainer from "@/components/containers/QuestionFormContainer";
 import QuestionContent from "./QuestionContent";
-import ButtonBack from "./ButtonBack";
 
 export default function TypeformStyleForm() {
-
   const {
     currentQuestion,
     selectedAnswer,
@@ -23,13 +22,13 @@ export default function TypeformStyleForm() {
     // handleSelectOption,
     phoneFormat,
     setPhoneFormat,
-    isLoading
+    isLoading,
   } = useContactFormState();
 
   return (
     <div className="">
       <div className="max-w-2xl mx-auto">
-        <QuestionContainer currentQuestion={currentQuestion} >
+        <QuestionContainer currentQuestion={currentQuestion}>
           <ButtonBack
             show={currentQuestion > 0 && questions[currentQuestion].type !== QuestionType.SUCCESS}
             onClick={handleBack}
@@ -45,20 +44,18 @@ export default function TypeformStyleForm() {
             // handleSelectOption={handleSelectOption}
             resetForm={resetForm}
             isLoading={isLoading}
-            />
+          />
           {questions[currentQuestion].type !== QuestionType.SUCCESS && selectedAnswer && (
-            <div className="text-sm text-text-light">
-              Presiona Enter para continuar
-            </div>
+            <div className="text-sm text-text-light">Presiona Enter para continuar</div>
           )}
         </QuestionContainer>
       </div>
-      <ProgressBar
-        percentage={((currentQuestion + 1) / (questions.length - 1)) * 100}
-      />
+      <ProgressBar percentage={((currentQuestion + 1) / (questions.length - 1)) * 100} />
       <ButtonNext
-        show={(questions[currentQuestion].type !== QuestionType.SUCCESS && selectedAnswer !== '')
-          || questions[currentQuestion].type === QuestionType.TEXTAREA}
+        show={
+          (questions[currentQuestion].type !== QuestionType.SUCCESS && selectedAnswer !== "") ||
+          questions[currentQuestion].type === QuestionType.TEXTAREA
+        }
         onClick={() => handleNext(selectedAnswer)}
       />
     </div>

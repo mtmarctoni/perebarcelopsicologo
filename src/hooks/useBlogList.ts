@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-import { Post } from "@/types/blog";
+import type { Post } from "@/types/blog";
 
 export const useBlogList = () => {
   const [posts, setPosts] = useState<Post[]>([]);
@@ -13,8 +13,7 @@ export const useBlogList = () => {
         const response = await fetch("/api/blog");
         const data = await response.json();
         setPosts(data);
-      } catch (error) {
-        console.error("Error fetching posts:", error);
+      } catch (_error) {
       } finally {
         setLoading(false);
       }

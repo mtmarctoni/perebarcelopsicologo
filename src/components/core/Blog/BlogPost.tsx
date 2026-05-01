@@ -1,34 +1,32 @@
 import Image from "next/image";
 
-import { Post } from "@/types/blog";
+import type { Post } from "@/types/blog";
 
 interface Props {
-    post: Post;
+  post: Post;
 }
 
 const BlogPost = ({ post }: Props) => {
-    return (
-        <article className="">
-            {post._embedded?.["wp:featuredmedia"] && (
-                <Image
-                    className="w-full h-96 object-cover rounded-lg mb-8"
-                    src={post._embedded["wp:featuredmedia"][0].source_url}
-                    alt={post.title.rendered}
-                    width={800}
-                    height={600}
-                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                />
-            )}
-            <h1
-                className="blog-title text-4xl font-bold mb-6"
-                dangerouslySetInnerHTML={{ __html: post.title.rendered }}
-            />
-            <div
-                className="blog-content max-w-none"
-                dangerouslySetInnerHTML={{ __html: post.content.rendered }}
-            />
-        </article>
-    )
+  return (
+    <article className="max-w-4xl mx-auto">
+      {post._embedded?.["wp:featuredmedia"] && (
+        <div className="relative h-80 sm:h-96 rounded-3xl overflow-hidden mb-10 shadow-card">
+          <Image
+            className="object-cover"
+            src={post._embedded["wp:featuredmedia"][0].source_url}
+            alt={post.title.rendered}
+            fill
+            sizes="100vw"
+          />
+        </div>
+      )}
+      <h1 className="blog-title" dangerouslySetInnerHTML={{ __html: post.title.rendered }} />
+      <div
+        className="blog-content max-w-none"
+        dangerouslySetInnerHTML={{ __html: post.content.rendered }}
+      />
+    </article>
+  );
 };
 
 export default BlogPost;

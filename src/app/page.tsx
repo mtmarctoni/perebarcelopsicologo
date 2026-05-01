@@ -1,220 +1,245 @@
+import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 
-import MainLayout from "@/components/core/MainLayout";
-import {ScrollIcon} from "@/components/composables/Icons";
+import { createPageMetadata } from "@/app/metadata";
+import { ScrollIcon } from "@/components/composables/Icons";
 import SectionContainer from "@/components/containers/SectionContainer";
+import MainLayout from "@/components/core/MainLayout";
 import { baseUrl } from "@/utils/data";
+
+export const metadata: Metadata = createPageMetadata({
+  title: "Psicólogo deportivo en Mallorca | Pere Barceló",
+  description:
+    "Psicología deportiva para mejorar el rendimiento, la salud mental y el bienestar de deportistas, equipos y clubes en Mallorca.",
+  path: "/",
+  imagePath: "/stock/alcanza-tu-objetivo.webp",
+});
 
 export default function Home() {
   return (
-    <MainLayout >
-      <section className="relative h-screen min-h-144 w-full">
-        {/* Full-width background image with overlay */}
+    <MainLayout>
+      {/* Hero Section */}
+      <section className="relative h-screen min-h-[600px] w-full overflow-hidden">
         <div className="absolute inset-0">
           <Image
             src={`${baseUrl}/stock/alcanza-tu-objetivo.webp`}
             alt="Pista de atletismo"
             fill
-            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-            className="object-cover brightness-75"
+            sizes="100vw"
+            className="object-cover brightness-[0.72]"
             priority
           />
-          {/* Gradient overlay for better text readability */}
-          <div className="absolute inset-0 bg-gradient-to-b from-black/30 to-black/50" />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/90 via-black/60 to-transparent" />
         </div>
 
-        {/* Content container */}
         <div className="relative h-full flex flex-col items-center justify-center text-center px-4 sm:px-6 lg:px-8">
-          <h1 className="text-4xl md:text-6xl font-bold text-white my-4 mt-20 animate-fade-in">
-            ¡Alcanza tu máximo potencial!
-          </h1>
-          
-          <p className="text-xl md:text-2xl text-white my-12 max-w-2xl">
-            Psicología deportiva para acercarte a tus objetivos
-          </p>
-          <Link href="/contact">
-          <button
-            className="bg-primary-dark text-white text-lg px-8 py-3 rounded-md 
-            hover:bg-secondary transform hover:scale-105 
-            transition-all duration-300 shadow-lg"
-            >
-            ¡Empieza ya!
-          </button>
-            </Link>
+          <div className="max-w-4xl mx-auto space-y-8">
+            <h1 className="text-5xl sm:text-6xl lg:text-7xl font-extrabold text-white tracking-tight leading-tight">
+              ¡Alcanza tu <span className="text-secondary">máximo potencial</span>!
+            </h1>
+            <p className="text-xl sm:text-2xl text-white/90 max-w-2xl mx-auto font-light">
+              Psicología deportiva para acercarte a tus objetivos
+            </p>
+            <div className="pt-4">
+              <Link href="/contact">
+                <button
+                  type="button"
+                  className="bg-secondary text-primary-dark text-lg font-bold px-10 py-4 rounded-full hover:bg-secondary-light hover:shadow-glow hover:scale-105 transition-all duration-300"
+                >
+                  ¡Empieza ya!
+                </button>
+              </Link>
+            </div>
+          </div>
         </div>
 
-        {/* Scroll indicator */}
-        <div className="absolute bottom-2 left-1/2 transform -translate-x-1/2 animate-bounce">
-        <ScrollIcon className="w-12 h-12 text-primary-light animate-bounce" />
+        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
+          <ScrollIcon className="w-10 h-10 text-white/70" />
         </div>
       </section>
 
-      <main className="">
-      <SectionContainer className="bg-background">
-        <div className="px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold text-text mb-8 text-center">¿Quién soy?</h2>
-          <div className="flex flex-col md:flex-row items-center gap-8">
-            <div className="relative md:w-1/2 min-w-[225px] h-[400px] rounded-lg overflow-hidden">
+      <main>
+        {/* About Preview Section */}
+        <SectionContainer className="bg-background">
+          <div className="text-center mb-16">
+            <span className="text-secondary text-sm font-semibold uppercase tracking-widest">
+              Sobre mí
+            </span>
+            <h2 className="text-4xl sm:text-5xl font-bold text-text-dark mt-3 tracking-tight">
+              ¿Quién soy?
+            </h2>
+          </div>
+          <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
+            <div className="relative w-full lg:w-1/2 h-[450px] lg:h-[500px] rounded-3xl overflow-hidden shadow-2xl">
               <Image
-                  src={`${baseUrl}/profile/pere1-transparente.webp`}
-                  alt="Pere Barceló Psicólogo Deportivo"
-                  fill
-                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                  
-                className="object-cover rounded-lg drop-shadow-2xl"
+                src={`${baseUrl}/profile/pere1-transparente.webp`}
+                alt="Pere Barceló Psicólogo Deportivo"
+                fill
+                sizes="(max-width: 1024px) 100vw, 50vw"
+                className="object-cover object-top"
               />
             </div>
-            <div className="md:w-1/2 space-y-6 flex flex-col items-center">
-              <p className="text-text-light text-lg">
-                ¡Hola! Soy Pere Barceló, psicólogo deportivo con experiencia en mejorar el rendimiento y la salud mental de deportistas a través de sesiones online, talleres grupales y asesoramiento especializado.
+            <div className="lg:w-1/2 space-y-6 text-center lg:text-left">
+              <p className="text-text text-lg leading-relaxed">
+                ¡Hola! Soy Pere Barceló, psicólogo deportivo con experiencia en mejorar el
+                rendimiento y la salud mental de deportistas a través de sesiones online, talleres
+                grupales y asesoramiento especializado.
               </p>
-              <p className="text-text-light text-lg">
-                Juntos podemos trabajar para que mejores en los diferentes aspectos que afectan al rendimiento deportivo mientras disfrutas del proceso.
+              <p className="text-text-light text-lg leading-relaxed">
+                Juntos podemos trabajar para que mejores en los diferentes aspectos que afectan al
+                rendimiento deportivo mientras disfrutas del proceso.
               </p>
-              <Link
-                href="/methodology"
+              <div className="pt-4">
+                <Link
+                  href="/about"
+                  className="inline-flex items-center justify-center bg-primary-dark text-white font-semibold px-8 py-3 rounded-full hover:bg-secondary hover:text-primary-dark hover:shadow-glow transition-all duration-300"
                 >
-                <button className="font-semibold relative flex h-[50px] w-40 items-center justify-center rounded-md overflow-hidden bg-primary-dark text-white shadow-2xl transition-all duration-300 before:absolute before:inset-0 before:border-0 before:border-secondary before:duration-100 before:ease-linear hover:bg-secondary hover:text-primary-dark hover:shadow-secondary hover:before:border-[25px]">
-                  <span className="relative z-10">
-                    ¿Quién soy?
-                  </span>
-                 </button>
-              </Link>
+                  ¿Quién soy?
+                </Link>
+              </div>
             </div>
           </div>
-        </div>
-      </SectionContainer>
+        </SectionContainer>
 
-      <SectionContainer className="bg-background">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold text-text-dark mb-12 text-center">
-            ¿En qué te puedo ayudar?
-          </h2>
-          
-          <div className="grid md:grid-cols-2 gap-8">
-            {/* Rendimiento deportivo card */}
-            <div className="flex flex-col items-center">
-              <h3 className="text-xl font-semibold mb-4">Rendimiento deportivo</h3>
-              <div className="relative w-full aspect-video mb-4">
+        {/* Services Overview Section */}
+        <SectionContainer className="bg-background-alt/50">
+          <div className="text-center mb-16">
+            <span className="text-secondary text-sm font-semibold uppercase tracking-widest">
+              Servicios
+            </span>
+            <h2 className="text-4xl sm:text-5xl font-bold text-text-dark mt-3 tracking-tight">
+              ¿En qué te puedo ayudar?
+            </h2>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-8 lg:gap-10">
+            {/* Rendimiento deportivo */}
+            <Link href="/performance" className="group block">
+              <div className="relative h-80 rounded-3xl overflow-hidden shadow-card hover:shadow-card-hover transition-all duration-500 ease-smooth hover:-translate-y-2">
                 <Image
-                    src={`${baseUrl}/stock/golf-coaching.webp`}
+                  src={`${baseUrl}/stock/golf-coaching.webp`}
                   alt="Entrenamiento de golf"
                   fill
-                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                  className="object-cover rounded-lg"
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                  className="object-cover transition-transform duration-700 ease-smooth group-hover:scale-105"
                 />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+                <div className="absolute bottom-0 left-0 right-0 p-8">
+                  <h3 className="text-2xl font-bold text-white mb-2">Rendimiento deportivo</h3>
+                  <span className="inline-flex items-center text-secondary font-semibold text-sm group-hover:translate-x-1 transition-transform duration-300">
+                    Mejora tu rendimiento deportivo →
+                  </span>
+                </div>
               </div>
-              <Link 
-                href="/performance"
-                className="bg-primary-dark text-white px-6 py-2 rounded-md hover:bg-secondary transition-colors"
-              >
-                Mejora tu rendimiento deportivo
-              </Link>
-            </div>
+            </Link>
 
-            {/* Salud mental card */}
-            <div className="flex flex-col items-center">
-              <h3 className="text-xl font-semibold mb-4">Salud mental</h3>
-              <div className="relative w-full aspect-video mb-4">
+            {/* Salud mental */}
+            <Link href="/mental" className="group block">
+              <div className="relative h-80 rounded-3xl overflow-hidden shadow-card hover:shadow-card-hover transition-all duration-500 ease-smooth hover:-translate-y-2">
                 <Image
-                    src={`${baseUrl}/stock/mental-health.webp`}
+                  src={`${baseUrl}/stock/mental-health.webp`}
                   alt="Salud mental"
                   fill
-                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                  className="object-cover rounded-lg"
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                  className="object-cover transition-transform duration-700 ease-smooth group-hover:scale-105"
                 />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+                <div className="absolute bottom-0 left-0 right-0 p-8">
+                  <h3 className="text-2xl font-bold text-white mb-2">Salud mental</h3>
+                  <span className="inline-flex items-center text-secondary font-semibold text-sm group-hover:translate-x-1 transition-transform duration-300">
+                    Mejora tu salud mental →
+                  </span>
+                </div>
               </div>
-              <Link 
-                href="/mental"
-                className="bg-primary-dark text-white px-6 py-2 rounded-md hover:bg-secondary transition-colors"
-              >
-                Mejora tu salud mental
-              </Link>
-            </div>
+            </Link>
           </div>
-        </div>
-        </SectionContainer> 
-        
-        {/* How I Help Section - Enhanced */}
+        </SectionContainer>
+
+        {/* How I Help Section */}
         <SectionContainer className="bg-background">
-          
-          <h2 className="text-3xl font-bold text-text-dark mb-12 text-center">
-            ¿Cómo te puedo ayudar?
-          </h2>
-          
+          <div className="text-center mb-16">
+            <span className="text-secondary text-sm font-semibold uppercase tracking-widest">
+              Modalidades
+            </span>
+            <h2 className="text-4xl sm:text-5xl font-bold text-text-dark mt-3 tracking-tight">
+              ¿Cómo te puedo ayudar?
+            </h2>
+          </div>
+
           <div className="grid md:grid-cols-3 gap-8">
             {/* Sesiones individuales */}
-            <div className="flex flex-col items-center text-center">
-              <h3 className="text-text text-xl font-semibold mb-4">Sesiones individuales</h3>
-              <div className="relative w-full aspect-square mb-4">
+            <div className="group flex flex-col items-center text-center">
+              <div className="relative w-full aspect-square mb-6 rounded-3xl overflow-hidden shadow-card hover:shadow-card-hover transition-all duration-500 ease-smooth hover:-translate-y-2">
                 <Image
                   src={`${baseUrl}/stock/sesiones-individuales.webp`}
                   alt="Sesiones individuales online"
                   fill
-                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                  className="object-cover rounded-lg"
+                  sizes="(max-width: 768px) 100vw, 33vw"
+                  className="object-cover transition-transform duration-700 ease-smooth group-hover:scale-105"
                 />
               </div>
-              <p className="mb-6 text-text-dark">
+              <h3 className="text-xl font-bold text-text-dark mb-3">Sesiones individuales</h3>
+              <p className="mb-6 text-text leading-relaxed">
                 Mejora tu rendimiento deportivo y salud mental con sesiones online personalizadas.
               </p>
-              <Link 
+              <Link
                 href="/methodology"
-                className="bg-primary-dark text-white px-6 py-2 rounded-md hover:bg-secondary transition-colors mt-auto"
+                className="mt-auto inline-flex items-center justify-center bg-primary-dark text-white font-semibold px-6 py-2.5 rounded-full hover:bg-secondary hover:text-primary-dark hover:shadow-glow transition-all duration-300 text-sm"
               >
                 Sesiones individuales
               </Link>
             </div>
 
             {/* Talleres grupales */}
-            <div className="flex flex-col items-center text-center">
-              <h3 className="text-xl font-semibold mb-4">Talleres grupales</h3>
-              <div className="relative w-full aspect-square mb-4">
+            <div className="group flex flex-col items-center text-center">
+              <div className="relative w-full aspect-square mb-6 rounded-3xl overflow-hidden shadow-card hover:shadow-card-hover transition-all duration-500 ease-smooth hover:-translate-y-2">
                 <Image
                   src={`${baseUrl}/stock/talleres-grupales.webp`}
                   alt="Talleres grupales"
                   fill
-                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                  className="object-cover rounded-lg"
+                  sizes="(max-width: 768px) 100vw, 33vw"
+                  className="object-cover transition-transform duration-700 ease-smooth group-hover:scale-105"
                 />
               </div>
-              <p className="mb-6 text-text-dark">
-                Mejora el rendimiento deportivo y la salud mental de los entrenadores o atletas de tu club con talleres grupales.
+              <h3 className="text-xl font-bold text-text-dark mb-3">Talleres grupales</h3>
+              <p className="mb-6 text-text leading-relaxed">
+                Mejora el rendimiento deportivo y la salud mental de los entrenadores o atletas de
+                tu club con talleres grupales.
               </p>
-              <Link 
+              <Link
                 href="/methodology"
-                className="bg-primary-dark text-white px-6 py-2 rounded-md hover:bg-secondary transition-colors mt-auto"
+                className="mt-auto inline-flex items-center justify-center bg-primary-dark text-white font-semibold px-6 py-2.5 rounded-full hover:bg-secondary hover:text-primary-dark hover:shadow-glow transition-all duration-300 text-sm"
               >
                 Talleres grupales
               </Link>
             </div>
 
             {/* Asesoramientos */}
-            <div className="flex flex-col items-center text-center">
-              <h3 className="text-xl font-semibold mb-4">Asesoramientos</h3>
-              <div className="relative w-full aspect-square mb-4">
+            <div className="group flex flex-col items-center text-center">
+              <div className="relative w-full aspect-square mb-6 rounded-3xl overflow-hidden shadow-card hover:shadow-card-hover transition-all duration-500 ease-smooth hover:-translate-y-2">
                 <Image
                   src={`${baseUrl}/stock/asesoramientos-futbol.webp`}
                   alt="Asesoramiento deportivo"
                   fill
-                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                  className="object-cover rounded-lg"
+                  sizes="(max-width: 768px) 100vw, 33vw"
+                  className="object-cover transition-transform duration-700 ease-smooth group-hover:scale-105"
                 />
               </div>
-              <p className="mb-6 text-text-dark">
-                Mejora el rendimiento deportivo y la salud mental de los entrenadores o atletas de tu club con un asesoramiento personalizado.
+              <h3 className="text-xl font-bold text-text-dark mb-3">Asesoramientos</h3>
+              <p className="mb-6 text-text leading-relaxed">
+                Mejora el rendimiento deportivo y la salud mental de los entrenadores o atletas de
+                tu club con un asesoramiento personalizado.
               </p>
-              <Link 
+              <Link
                 href="/methodology"
-                className="bg-primary-dark text-white px-6 py-2 rounded-md hover:bg-secondary transition-colors mt-auto"
+                className="mt-auto inline-flex items-center justify-center bg-primary-dark text-white font-semibold px-6 py-2.5 rounded-full hover:bg-secondary hover:text-primary-dark hover:shadow-glow transition-all duration-300 text-sm"
               >
                 Asesoramiento
               </Link>
             </div>
           </div>
-      </SectionContainer>
-          
+        </SectionContainer>
       </main>
     </MainLayout>
   );

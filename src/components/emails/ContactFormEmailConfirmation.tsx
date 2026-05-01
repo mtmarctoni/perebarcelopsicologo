@@ -1,9 +1,9 @@
 interface Props {
-    name: string;
-  }
-  
-  export const ConfirmationEmail = ({ name }: Props) => {
-    return `
+  name: string;
+}
+
+export const ConfirmationEmail = ({ name }: Props) => {
+  return `
       <!DOCTYPE html>
       <html>
         <head>
@@ -55,5 +55,4 @@ interface Props {
         </body>
       </html>
     `;
-  };
-  
+};

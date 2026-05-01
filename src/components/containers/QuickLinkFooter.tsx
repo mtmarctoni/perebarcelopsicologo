@@ -1,18 +1,17 @@
 import Link from "next/link";
-import { NavItem } from "@/types/navbar";
+import type { NavItem } from "@/types/navbar";
 
 interface Props {
-    link: NavItem;
+  link: NavItem;
 }
 
 const QuickLinkFooter = ({ link }: Props) => (
+  <Link
+    href={link.url}
+    className="text-white/80 hover:text-white transition-colors duration-300 text-sm"
+  >
+    {link.label}
+  </Link>
+);
 
-        <Link
-            href={link.url}
-            className="text-gray-light hover:text-white transition-colors duration-200"
-        >
-            {link.label}
-        </Link>
-)
-    
 export default QuickLinkFooter;

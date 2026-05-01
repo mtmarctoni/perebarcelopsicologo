@@ -1,26 +1,48 @@
-"use client";
-import MainLayout from "@/components/core/MainLayout";
-import SectionContainer from "@/components/containers/SectionContainer";
-import BlogList from "@/components/core/Blog/BlogList";
+import type { Metadata } from "next";
 
-export default function BlogListPage() {
+import { createPageMetadata } from "@/app/metadata";
+import SectionContainer from "@/components/containers/SectionContainer";
+import BlogCard from "@/components/core/Blog/BlogCard";
+import MainLayout from "@/components/core/MainLayout";
+import { fetchBlogPosts } from "@/lib/blog";
+
+export const metadata: Metadata = createPageMetadata({
+  title: "Blog de psicologia deportiva | Pere Barceló",
+  description:
+    "Articulos y recursos sobre psicologia deportiva, rendimiento, salud mental y entrenamiento mental aplicados al deporte.",
+  path: "/blog",
+  imagePath: "/stock/alcanza-tu-objetivo.webp",
+});
+
+export default async function BlogListPage() {
+  const posts = await fetchBlogPosts();
+
   return (
     <MainLayout>
-      <SectionContainer className="">
-        <div className="text-center">
-          <h1 className="text-4xl md:text-5xl font-bold text-text-dark mb-4">
-            Blog de Psicología Deportiva
-          </h1>
-          <p className="text-xl font-semibold text-text-light max-w-2xl mx-auto">
-            Descubre consejos, estrategias y reflexiones para mejorar tu
-            rendimiento mental en el deporte
-          </p>
-        </div>
-      </SectionContainer>
+      <main className="pb-12">
+        <SectionContainer className="">
+          <div className="text-center max-w-3xl mx-auto">
+            <span className="text-secondary text-sm font-semibold uppercase tracking-widest">
+              Blog
+            </span>
+            <h1 className="text-4xl sm:text-5xl font-bold text-text-dark mt-3 mb-6 tracking-tight">
+              Blog de Psicología Deportiva
+            </h1>
+            <p className="text-text text-lg leading-relaxed">
+              Descubre consejos, estrategias y reflexiones para mejorar tu rendimiento mental en el
+              deporte
+            </p>
+          </div>
+        </SectionContainer>
 
-      <SectionContainer className="">
-        <BlogList />
-      </SectionContainer>
+        <SectionContainer className="bg-background-alt/50">
+          <div className="grid grid-cols-1 gap-8">
+            {posts.map((post) => (
+              <BlogCard key={post.id} post={post} />
+            ))}
+          </div>
+        </SectionContainer>
+      </main>
     </MainLayout>
   );
 }

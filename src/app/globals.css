@@ -3,87 +3,87 @@
 @tailwind utilities;
 
 :root {
-  /* Core colors - unchanged */
-  --primary: #B9D8EB;
-  --primary-light: #D4E6F3;
-  --primary-dark: #1C4761;
+  /* Core colors */
+  --primary: #b9d8eb;
+  --primary-light: #d4e6f3;
+  --primary-dark: #1c4761;
 
   /* Background colors */
-  --background: #F8FAFC;
-  --background-alt: #eaeaeb;
-  --background-navbar: #1C4761;
+  --background: #f8fafc;
+  --background-alt: #f1f5f9;
+  --background-navbar: rgba(28, 71, 97, 0.95);
   --background-navbar-alt: #d0d3d6;
-  --background-footer: #15364A;
-  
+  --background-footer: #0f2537;
+
   /* Accent colors */
-  --secondary: #FFB84D;    /* Warm orange */
-  --secondary-light: #FFD699;
-  --secondary-dark: #CC8A1F;
-  
+  --secondary: #f59e0b;
+  --secondary-light: #fcd34d;
+  --secondary-dark: #d97706;
+
   /* Text colors */
   --text: #475569;
-  --text-light: #64748B;
-  --text-dark: #1A2B3B;
-  
+  --text-light: #64748b;
+  --text-dark: #0f172a;
+
   /* UI colors */
-  --success: #22C55E;
-  --warning: #F59E0B;
-  --error: #EF4444;
+  --success: #22c55e;
+  --warning: #f59e0b;
+  --error: #ef4444;
 }
 
 .dark {
-  /* Enhanced primary palette */
-  --primary: #2F4F7F;
-  --primary-light: #1C4761;    /* Your primary-dark becomes light in dark mode */
-  --primary-darker: #0F2537;
+  /* Restore the previous dark-mode blue palette */
+  --primary: #2f4f7f;
+  --primary-light: #1c4761;
+  --primary-darker: #0f2537;
 
   /* Background colors */
-  --background: #0F172A;
-  --background-alt: #1E293B;
-  --background-navbar: #0F2537;
+  --background: #0f172a;
+  --background-alt: #1e293b;
+  --background-navbar: rgba(15, 37, 55, 0.92);
   --background-navbar-alt: #d0d3d6;
-  --background-footer: #0A1A25;
-  
-  /* Accent colors remain vibrant */
-  --secondary: #FFB84D;
-  --secondary-light: #CC8A1F;
-  --secondary-dark: #FFD699;
-  
+  --background-footer: #0a1a25;
+
+  /* Accent colors */
+  --secondary: #f59e0b;
+  --secondary-light: #fcd34d;
+  --secondary-dark: #fbbf24;
+
   /* Text colors */
-  --text: #E2E8F0;
-  --text-light: #CBD5E1;
-  --text-dark: #F8FAFC;
-  
-  /* UI colors - slightly muted for dark mode */
-  --success: #22C55E;
-  --warning: #F59E0B;
-  --error: #EF4444;
+  --text: #e2e8f0;
+  --text-light: #cbd5e1;
+  --text-dark: #f8fafc;
+
+  /* UI colors */
+  --success: #22c55e;
+  --warning: #f59e0b;
+  --error: #ef4444;
 }
 
 /* Style for blog post from wordpress*/
-/* Add to your global.css */
 .blog-title {
-  @apply text-4xl font-bold text-text-dark mt-12 mb-12;
+  @apply text-4xl sm:text-5xl font-extrabold text-text-dark tracking-tight mb-8;
 }
 
 .blog-content {
-  @apply text-text;
+  @apply text-text text-lg leading-relaxed;
 }
 
 .blog-content h2 {
-  @apply text-3xl font-bold text-text-dark mt-12 mb-6;
+  @apply text-3xl font-bold text-text-dark mt-16 mb-6 tracking-tight;
 }
 
 .blog-content h3 {
-  @apply text-2xl font-bold text-text-dark mt-10 mb-4;
+  @apply text-2xl font-bold text-text-dark mt-12 mb-4 tracking-tight;
 }
 
 .blog-content p {
   @apply mb-6 text-lg leading-relaxed;
 }
 
-.blog-content ul, .blog-content ol {
-  @apply my-6 ml-6 space-y-2;
+.blog-content ul,
+.blog-content ol {
+  @apply my-6 ml-6 space-y-3;
 }
 
 .blog-content li {
@@ -91,50 +91,33 @@
 }
 
 .blog-content img {
-  @apply rounded-lg my-8;
+  @apply rounded-2xl my-10 shadow-card;
 }
 
 .blog-content blockquote {
-  @apply pl-4 border-l-4 border-primary italic my-8;
+  @apply pl-6 border-l-4 border-secondary italic my-10 text-text-light;
 }
 
 /* dividers */
 .blog-content .elementor-divider-separator {
-  @apply block w-full border-b-2 border-secondary-dark pt-6; /* Creates visible line */
+  @apply block w-full border-b-2 border-secondary pt-6;
+  opacity: 0.5;
 }
 
 /* title and subtitle */
-/* blog.module.css */
 .blog-content .elementor-element:first-of-type .elementor-widget-text-editor p {
-  @apply text-xl md:text-2xl leading-relaxed text-text-light 
-         border-l-4 border-primary pl-6 py-4 my-8
+  @apply text-xl md:text-2xl leading-relaxed text-text-light
+         border-l-4 border-secondary pl-6 py-4 my-8
          italic font-light;
 }
 
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
 
-
-
-
-
-/* @media (prefers-color-scheme: dark) {
-  :root {
-    --background: #122F41;
-    --foreground: #ededed;
-  }
-} */
-
-/* body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
-} */
-
-/* Add transition to elements that use these variables */
-/* *, 
-*::before,
-*::after {
-  transition: background-color 500ms ease,
-              border-color 500ms ease,
-              color 500ms ease,
-              fill 500ms ease;
-} */
+/* Selection styling */
+::selection {
+  background-color: rgba(245, 158, 11, 0.3);
+  color: inherit;
+}

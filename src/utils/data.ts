@@ -1,30 +1,29 @@
 import {
-  NavItem,
-  SocialCardProps,
-  BaseCardProps,
-  Question,
-  QuestionType,
-  PhoneFormats,
-  Club,
-} from "@/types/navbar";
-
-import {
-  EnvelopeIcon,
-  LinkedinIcon,
-  InstagramIcon,
-  TwitterIcon,
-  HandshakeIcon,
-  LaptopIcon,
-  UsersIcon,
-  HeartbeatIcon,
+  BalanceIcon,
+  BatteryIcon,
   BrainIcon,
   ChartlineIcon,
-  LightbulbIcon,
-  StarIcon,
-  BatteryIcon,
-  BalanceIcon,
+  EnvelopeIcon,
+  HandshakeIcon,
+  HeartbeatIcon,
   HeartIcon,
+  InstagramIcon,
+  LaptopIcon,
+  LightbulbIcon,
+  LinkedinIcon,
+  StarIcon,
+  TwitterIcon,
+  UsersIcon,
 } from "@/components/composables/Icons";
+import {
+  type BaseCardProps,
+  type Club,
+  type NavItem,
+  PhoneFormats,
+  type Question,
+  QuestionType,
+  type SocialCardProps,
+} from "@/types/navbar";
 
 export const domain: string = "perebarcelopsicologo.com";
 export const phone: string = "+34 636 67 47 59";
@@ -34,7 +33,6 @@ export const baseUrl: string = "";
 export const wordpressUrl: string = `https://blog.${domain}`;
 
 export const navbarLinks: NavItem[] = [
-  { label: "Inicio", url: "/" },
   { label: "Conociendo a Pere Barceló", url: "/about" },
   {
     label: "Mi Modo de trabajo",
@@ -228,8 +226,7 @@ export const questions: Question[] = [
   },
   {
     id: "7",
-    question:
-      "¡Gracias por contactar conmigo! Me pondré en contacto contigo lo antes posible.",
+    question: "¡Gracias por contactar conmigo! Me pondré en contacto contigo lo antes posible.",
     type: QuestionType.SUCCESS,
   },
 ];

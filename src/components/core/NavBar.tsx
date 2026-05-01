@@ -1,27 +1,27 @@
 "use client";
 import Link from "next/link";
 import { useState } from "react";
-
-import { navbarLinks } from "@/utils/data";
 import { ThemeToggle } from "@/components/features/DarkToggle";
+import { navbarLinks } from "@/utils/data";
 
-import { CrossIcon, BarsIcon } from "../composables/Icons";
+import { BarsIcon, CrossIcon } from "../composables/Icons";
 import { IconFooterContainer } from "../containers/IconContainer";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-background-navbar shadow-xl">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 -my-2">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-background-navbar backdrop-blur-xl border-b border-white/10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
           <div className="flex justify-center space-x-4">
             {/* Logo/Brand */}
             <Link
               href="/"
-              className="content-center text-white font-semibold text-xl whitespace-nowrap hover:text-gray-light transition-colors"
+              className="content-center text-white font-bold text-lg tracking-tight whitespace-nowrap hover:text-secondary transition-colors duration-300"
             >
-              Pere Barceló Psicólogo
+              Pere Barceló
+              <span className="font-normal text-white/70 ml-1">Psicólogo</span>
             </Link>
           </div>
 
@@ -31,9 +31,9 @@ const Navbar = () => {
               <div className="relative group" key={item.url}>
                 <Link
                   href={item.url}
-                  className="text-gray-light whitespace-nowrap px-3 py-2 text-sm font-medium
-                           hover:text-white transition-colors duration-200
-                           border-b-2 border-transparent hover:border-secondary"
+                  className="text-white/80 whitespace-nowrap px-3 py-2 text-sm font-medium tracking-[0.01em]
+                           border-b-2 border-transparent hover:border-secondary hover:text-white
+                           transition-colors duration-200"
                 >
                   {item.label}
                 </Link>
@@ -42,17 +42,17 @@ const Navbar = () => {
                 {item.subLinks && (
                   <div
                     className="absolute invisible group-hover:visible opacity-0 
-                                group-hover:opacity-100 left-0 pt-2 w-56 
-                                transition-all duration-200 ease-in-out"
+                                group-hover:opacity-100 left-0 pt-2 w-60 
+                                transition-all duration-300 ease-smooth"
                   >
-                    <div className="bg-white rounded-md shadow-xl ring-1 ring-black ring-opacity-5">
+                    <div className="bg-background-navbar/95 backdrop-blur-2xl rounded-2xl shadow-[0_24px_60px_rgba(2,6,23,0.38)] border border-white/20 overflow-hidden ring-1 ring-white/10 p-2">
                       {item.subLinks.map((subLink) => (
                         <Link
                           key={subLink.url}
                           href={subLink.url}
-                          className="block px-4 py-3 text-sm text-gray-dark whitespace-nowrap
-                                   hover:bg-secondary hover:text-primary-dark
-                                   transition-colors duration-150 first:rounded-t-md last:rounded-b-md"
+                          className="block px-4 py-3 rounded-xl text-sm font-semibold text-white/92 whitespace-nowrap
+                                   hover:bg-white/14 hover:text-white hover:shadow-[inset_0_0_0_1px_rgba(255,255,255,0.08)]
+                                   transition-all duration-200"
                         >
                           {subLink.label}
                         </Link>
@@ -64,35 +64,32 @@ const Navbar = () => {
             ))}
           </div>
 
-          <div className="flex flex-row">
+          <div className="flex flex-row items-center gap-3">
             {/* Mobile Menu Button */}
             <div className="lg:hidden">
               <button
+                type="button"
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
-                className="text-white hover:text-gray-light p-2"
+                className="text-white hover:text-secondary p-2 rounded-full hover:bg-white/10 transition-all duration-300"
               >
-                {isMenuOpen ? (
-                  <CrossIcon className="w-6 h-6" />
-                ) : (
-                  <BarsIcon className="w-6 h-6" />
-                )}
+                {isMenuOpen ? <CrossIcon className="w-6 h-6" /> : <BarsIcon className="w-6 h-6" />}
               </button>
             </div>
-          <IconFooterContainer>
-            <ThemeToggle />
-          </IconFooterContainer>
+            <IconFooterContainer>
+              <ThemeToggle />
+            </IconFooterContainer>
           </div>
         </div>
 
         {/* Mobile Navigation */}
         <div className={`lg:hidden ${isMenuOpen ? "block" : "hidden"}`}>
-          <div className="px-2 pb-3 space-y-1">
+          <div className="px-2 pb-4 space-y-1">
             {navbarLinks.map((item) => (
               <div key={item.url}>
                 <Link
                   href={item.url}
-                  className="text-gray-light block px-3 py-2 text-base font-medium
-                           hover:text-secondary transition-colors duration-200"
+                  className="text-white/80 block px-4 py-3 text-base font-medium rounded-xl
+                           hover:text-white hover:bg-white/10 transition-all duration-300"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   {item.label}
@@ -105,8 +102,8 @@ const Navbar = () => {
                       <Link
                         key={subLink.url}
                         href={subLink.url}
-                        className="text-gray-light block px-3 py-2 text-sm font-medium
-                                 hover:text-secondary transition-colors duration-200"
+                        className="text-white/60 block px-4 py-2 text-sm font-medium rounded-xl
+                                 hover:text-secondary hover:bg-white/5 transition-all duration-300"
                         onClick={() => setIsMenuOpen(false)}
                       >
                         {subLink.label}

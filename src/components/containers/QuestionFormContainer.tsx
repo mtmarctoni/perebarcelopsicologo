@@ -17,9 +17,7 @@ const QuestionContainer = ({ children, currentQuestion }: Props) => (
       transition={{ duration: 0.3 }}
       className="space-y-8"
     >
-      <h2 className="text-3xl font-bold text-text-dark">
-        {questions[currentQuestion].question}
-      </h2>
+      <h2 className="text-3xl font-bold text-text-dark">{questions[currentQuestion].question}</h2>
       {children}
     </motion.div>
   </AnimatePresence>
