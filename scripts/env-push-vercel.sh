@@ -108,16 +108,6 @@ fi
 echo "🔍 Pre-flight checks..."
 echo ""
 
-# Check if logged in
-if ! vercel whoami &>/dev/null; then
-  echo "❌ You are not logged in to Vercel."
-  echo "   Run: vercel login"
-  exit 1
-fi
-
-USER=$(vercel whoami 2>/dev/null)
-echo "✅ Logged in as: $USER"
-
 # Check if project is linked
 if [ ! -f ".vercel/project.json" ]; then
   echo "❌ Project not linked to Vercel."
