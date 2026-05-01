@@ -13,15 +13,14 @@ set -uo pipefail
 # Usage:
 #   ./scripts/env-push-vercel.sh --env production .env.production
 #   ./scripts/env-push-vercel.sh --env preview .env.preview
-#   ./scripts/env-push-vercel.sh --env development .env.develop
 #
 # Options:
 #   --insecure    Skip SSL certificate validation (use behind corporate proxies)
+#   --debug       Show verbose output from Vercel CLI commands
 #
 # Mapping:
 #   .env.production  →  Vercel production
 #   .env.preview     →  Vercel preview
-#   .env.develop     →  Vercel development
 #
 # Requirements:
 #   - Vercel CLI installed (npm i -g vercel)
@@ -32,6 +31,7 @@ set -uo pipefail
 ENV_NAME=""
 ENV_FILE=""
 INSECURE=false
+DEBUG=false
 
 # Parse arguments
 while [[ $# -gt 0 ]]; do
@@ -44,15 +44,19 @@ while [[ $# -gt 0 ]]; do
       INSECURE=true
       shift
       ;;
+    --debug)
+      DEBUG=true
+      shift
+      ;;
     -*)
       echo "❌ Unknown option: $1"
       echo ""
-      echo "Usage: $0 --env <vercel-env> <.env-file> [--insecure]"
+      echo "Usage: $0 --env <vercel-env> <.env-file> [--insecure] [--debug]"
       echo ""
       echo "Examples:"
       echo "  $0 --env production .env.production"
       echo "  $0 --env preview .env.preview"
-      echo "  $0 --env production .env.production --insecure"
+      echo "  $0 --env production .env.production --insecure --debug"
       exit 1
       ;;
     *)
@@ -65,7 +69,7 @@ done
 if [ -z "$ENV_NAME" ] || [ -z "$ENV_FILE" ]; then
   echo "❌ Missing required arguments."
   echo ""
-  echo "Usage: $0 --env <vercel-env> <.env-file> [--insecure]"
+  echo "Usage: $0 --env <vercel-env> <.env-file> [--insecure] [--debug]"
   echo ""
   echo "Examples:"
   echo "  $0 --env production .env.production"
@@ -100,6 +104,36 @@ if [ "$INSECURE" = true ]; then
   export NODE_TLS_REJECT_UNAUTHORIZED=0
 fi
 
+# Pre-flight checks
+echo "🔍 Pre-flight checks..."
+echo ""
+
+# Check if logged in
+if ! vercel whoami &>/dev/null; then
+  echo "❌ You are not logged in to Vercel."
+  echo "   Run: vercel login"
+  exit 1
+fi
+
+USER=$(vercel whoami 2>/dev/null)
+echo "✅ Logged in as: $USER"
+
+# Check if project is linked
+if [ ! -f ".vercel/project.json" ]; then
+  echo "❌ Project not linked to Vercel."
+  echo "   Run: vercel link"
+  exit 1
+fi
+
+PROJECT_ID=$(grep -o '"projectId"[^}]*' .vercel/project.json | cut -d'"' -f4)
+echo "✅ Project linked: $PROJECT_ID"
+echo ""
+
+REDIRECT="/dev/null"
+if [ "$DEBUG" = true ]; then
+  REDIRECT="/dev/tty"
+fi
+
 echo "🔄 Pushing secrets from $ENV_FILE → Vercel '$ENV_NAME'..."
 echo ""
 
@@ -125,46 +159,65 @@ while IFS='=' read -r key value || [ -n "$key" ]; do
 
   echo "🔄 Syncing $key → $ENV_NAME"
 
-  # Remove existing var (ignore errors if it doesn't exist)
-  if ! vercel env rm "$key" "$ENV_NAME" --yes &>/dev/null; then
-    # Ignore "not found" errors
-    true
+  # Remove existing var (show error in debug mode)
+  if [ "$DEBUG" = true ]; then
+    echo "   Running: vercel env rm $key $ENV_NAME --yes"
+    vercel env rm "$key" "$ENV_NAME" --yes || true
+  else
+    vercel env rm "$key" "$ENV_NAME" --yes &>/dev/null || true
   fi
 
   # Add new var via stdin
-  if ! printf '%s' "$value" | vercel env add "$key" "$ENV_NAME" --yes; then
-    echo "❌ Failed to sync $key"
-    ((errors++)) || true
+  if [ "$DEBUG" = true ]; then
+    echo "   Running: echo '$value' | vercel env add $key $ENV_NAME --yes"
+    if echo "$value" | vercel env add "$key" "$ENV_NAME" --yes; then
+      ((synced++)) || true
+    else
+      echo "❌ Failed to sync $key"
+      ((errors++)) || true
+    fi
   else
-    ((synced++)) || true
+    if echo "$value" | vercel env add "$key" "$ENV_NAME" --yes &>/dev/null; then
+      ((synced++)) || true
+    else
+      echo "❌ Failed to sync $key"
+      ((errors++)) || true
+    fi
   fi
 done < "$ENV_FILE"
 
 echo ""
 
 if [ "$errors" -gt 0 ]; then
-  echo "❌ Sync completed with errors."
+  echo "❌ Sync completed with $errors error(s)."
   echo "   Synced: $synced  |  Skipped: $skipped  |  Errors: $errors"
   echo ""
   echo "────────────────────────────────────────────────────────────"
-  echo "🔧 If you see 'unable to get local issuer certificate':"
+  echo "🔧 Troubleshooting:"
   echo ""
-  echo "   You are likely behind a corporate proxy or VPN that"
-  echo "   intercepts SSL traffic. Try running with --insecure:"
+  echo "   1. Run with --debug to see full CLI output:"
+  echo "      npm run env:push:vercel -- --env $ENV_NAME $ENV_FILE --debug"
   echo ""
-  echo "   npm run env:push:vercel -- --env $ENV_NAME $ENV_FILE --insecure"
+  echo "   2. If you see 'unable to get local issuer certificate':"
+  echo "      npm run env:push:vercel -- --env $ENV_NAME $ENV_FILE --insecure"
   echo ""
-  echo "   Or permanently disable SSL checks for the Vercel CLI:"
-  echo "   export NODE_TLS_REJECT_UNAUTHORIZED=0"
-  echo ""
-  echo "   (This is insecure — only use on trusted networks.)"
+  echo "   3. Verify you are in the project root and linked:"
+  echo "      ls .vercel/project.json"
+  echo "      vercel status"
   echo "────────────────────────────────────────────────────────────"
   exit 1
 fi
 
-echo "✅ Vercel sync complete!"
+echo "✅ Sync complete!"
 echo "   Synced: $synced  |  Skipped: $skipped"
 echo ""
+
+# Verification: list env vars for this environment
+echo "🔍 Verifying variables in Vercel '$ENV_NAME'..."
+echo ""
+vercel env ls "$ENV_NAME"
+echo ""
+
 echo "────────────────────────────────────────────────────────────"
 
 if [[ "$ENV_NAME" == "production" ]]; then
