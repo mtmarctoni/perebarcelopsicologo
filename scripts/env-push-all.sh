@@ -20,7 +20,6 @@ set -euo pipefail
 # Environments pushed (if local files exist):
 #   .env.production  →  Production / production
 #   .env.preview     →  Preview / preview
-#   .env.develop     →  Development / development
 #
 # Requirements:
 #   - gh CLI installed and authenticated (for GitHub)
@@ -75,7 +74,6 @@ done
 declare -a ENVS=(
   "Production:production:.env.production"
   "Preview:preview:.env.preview"
-  "Development:development:.env.develop"
 )
 
 gh_pushed=0

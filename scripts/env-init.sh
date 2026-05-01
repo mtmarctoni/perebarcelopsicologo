@@ -13,7 +13,6 @@ set -euo pipefail
 #   .env              → local development
 #   .env.production   → production values
 #   .env.preview      → preview / staging values
-#   .env.develop      → Development / branch values
 # =============================================================================
 
 if [ ! -f ".env.example" ]; then
@@ -24,7 +23,7 @@ fi
 generated=0
 skipped=0
 
-for env_file in .env .env.production .env.preview .env.develop; do
+for env_file in .env .env.production .env.preview; do
   if [ -f "$env_file" ]; then
     echo "⚠️  $env_file already exists — skipping."
     ((skipped++)) || true

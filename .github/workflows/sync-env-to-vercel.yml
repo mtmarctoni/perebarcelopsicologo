@@ -15,7 +15,6 @@ on:
         options:
           - Production
           - Preview
-          - Development
 
 jobs:
   sync:
