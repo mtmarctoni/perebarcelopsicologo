@@ -8,6 +8,9 @@
     "start": "next start",
     "lint": "next lint",
     "type-check": "tsc --noEmit",
+    "env:init": "./scripts/env-init.sh",
+    "env:list": "./scripts/env-list.sh",
+    "env:push": "./scripts/env-push.sh",
     "gitpush": "git add . && git commit -m quickCommit && git push"
   },
   "dependencies": {
