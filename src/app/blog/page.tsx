@@ -1,9 +1,9 @@
-import { Metadata } from "next";
+import type { Metadata } from "next";
 
 import { createPageMetadata } from "@/app/metadata";
-import MainLayout from "@/components/core/MainLayout";
-import BlogCard from "@/components/core/Blog/BlogCard";
 import SectionContainer from "@/components/containers/SectionContainer";
+import BlogCard from "@/components/core/Blog/BlogCard";
+import MainLayout from "@/components/core/MainLayout";
 import { fetchBlogPosts } from "@/lib/blog";
 
 export const metadata: Metadata = createPageMetadata({
@@ -22,13 +22,15 @@ export default async function BlogListPage() {
       <main className="pb-12">
         <SectionContainer className="">
           <div className="text-center max-w-3xl mx-auto">
-            <span className="text-secondary text-sm font-semibold uppercase tracking-widest">Blog</span>
+            <span className="text-secondary text-sm font-semibold uppercase tracking-widest">
+              Blog
+            </span>
             <h1 className="text-4xl sm:text-5xl font-bold text-text-dark mt-3 mb-6 tracking-tight">
               Blog de Psicología Deportiva
             </h1>
             <p className="text-text text-lg leading-relaxed">
-              Descubre consejos, estrategias y reflexiones para mejorar tu
-              rendimiento mental en el deporte
+              Descubre consejos, estrategias y reflexiones para mejorar tu rendimiento mental en el
+              deporte
             </p>
           </div>
         </SectionContainer>

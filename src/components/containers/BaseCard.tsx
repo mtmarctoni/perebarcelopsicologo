@@ -1,15 +1,9 @@
 import Image from "next/image";
 import Link from "next/link";
-import { BaseCardProps } from "@/types/navbar";
+import type { BaseCardProps } from "@/types/navbar";
 import { IconCardContainer } from "./IconContainer";
 
-const BaseCard = ({
-  image,
-  Icon,
-  name,
-  description,
-  link,
-}: BaseCardProps) => {
+const BaseCard = ({ image, Icon, name, description, link }: BaseCardProps) => {
   return (
     <div className="group bg-background rounded-2xl shadow-card overflow-hidden flex flex-col border border-transparent hover:border-secondary/20 transition-all duration-500 ease-smooth hover:-translate-y-2 hover:shadow-card-hover">
       <div className="relative h-56 overflow-hidden">
@@ -26,10 +20,10 @@ const BaseCard = ({
         <IconCardContainer className="bg-secondary/10 group-hover:bg-secondary/20 transition-colors duration-500">
           <Icon className="w-7 h-7 text-secondary" />
         </IconCardContainer>
-        <h3 className="text-xl font-bold text-text-dark mb-3 group-hover:text-secondary transition-colors duration-300">{name}</h3>
-        <p className="mb-6 text-text leading-relaxed">
-          {description}
-        </p>
+        <h3 className="text-xl font-bold text-text-dark mb-3 group-hover:text-secondary transition-colors duration-300">
+          {name}
+        </h3>
+        <p className="mb-6 text-text leading-relaxed">{description}</p>
         {link && (
           <div className="text-center mt-auto">
             <Link

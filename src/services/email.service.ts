@@ -1,25 +1,24 @@
-import { Resend } from 'resend';
+import { Resend } from "resend";
+import { emailConfig } from "@/config/email.config";
+import { serverEnv } from "@/config/server-env.config";
 
-import { envConfig } from '@/config/env.config';
-import { emailConfig } from '@/config/email.config';
-
-const resend = new Resend(envConfig.email.resendApiKey);
+const resend = new Resend(serverEnv.RESEND_API_KEY);
 //const resend = new Resend(process.env.RESEND_API_KEY);
 
 interface SendEmailProps {
-    from: string;
-    to: string;
-    subject: string;
-    html: string;
+  from: string;
+  to: string;
+  subject: string;
+  html: string;
 }
 
 interface SendAdminEmailProps {
-    html: string
+  html: string;
 }
 
 interface SendUserEmailProps {
-    to: string;
-    html: string
+  to: string;
+  html: string;
 }
 
 export interface ResendErrorResponse {
@@ -38,20 +37,19 @@ export const sendAdminEmail = async ({ html }: SendAdminEmailProps) => {
 };
 
 export const sendUserConfirmationEmail = async ({ to, html }: SendUserEmailProps) => {
-    return await resend.emails.send({
-      from: emailConfig.fromEmail,
-      to,
-      subject: emailConfig.subjects.formConfirmation,
-      html,
-    });
+  return await resend.emails.send({
+    from: emailConfig.fromEmail,
+    to,
+    subject: emailConfig.subjects.formConfirmation,
+    html,
+  });
 };
-  
+
 export const sendEmail = async ({ from, to, subject, html }: SendEmailProps) => {
-    return await resend.emails.send({
-        from,
-        to,
-        subject,
-        html,
-    });
+  return await resend.emails.send({
+    from,
+    to,
+    subject,
+    html,
+  });
 };
-    

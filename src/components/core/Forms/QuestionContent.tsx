@@ -1,12 +1,12 @@
-import { PhoneFormats, Question, QuestionType } from "@/types/navbar";
+import { type PhoneFormats, type Question, QuestionType } from "@/types/navbar";
+import { assertNever } from "@/utils/validation";
 import EmailQuestion from "./EmailQuestion";
 import PhoneQuestion from "./PhoneQuestion";
 import SelectQuestion from "./SelectQuestion";
-import SuccessQuestion from "./SuccessQuestion";
-import { assertNever } from "@/utils/validation";
-import TextQuestion from "./TextQuestion";
-import TextareaQuestion from "./TextareaQuestion";
 import SumbitLoader from "./SubmitLoader";
+import SuccessQuestion from "./SuccessQuestion";
+import TextareaQuestion from "./TextareaQuestion";
+import TextQuestion from "./TextQuestion";
 
 interface Props {
   question: Question;
@@ -16,9 +16,9 @@ interface Props {
   setValidationError: (error: string | null) => void;
   phoneFormat: PhoneFormats | null;
   setPhoneFormat: (format: PhoneFormats | null) => void;
-//   handleSelectOption: (option: string) => void;
-    resetForm: () => void;
-    isLoading: boolean;
+  //   handleSelectOption: (option: string) => void;
+  resetForm: () => void;
+  isLoading: boolean;
 }
 
 const QuestionContent = ({
@@ -29,11 +29,11 @@ const QuestionContent = ({
   setValidationError,
   phoneFormat,
   setPhoneFormat,
-//   handleSelectOption,
-    resetForm,
+  //   handleSelectOption,
+  resetForm,
   isLoading,
 }: Props) => {
-    if (isLoading) return <SumbitLoader />;
+  if (isLoading) return <SumbitLoader />;
   //type narrowing
   switch (question.type) {
     case QuestionType.TEXT:
@@ -41,7 +41,7 @@ const QuestionContent = ({
         <TextQuestion
           type={question.type}
           selectedAnswer={selectedAnswer}
-              setSelectedAnswer={setSelectedAnswer}
+          setSelectedAnswer={setSelectedAnswer}
         />
       );
     case QuestionType.EMAIL:
@@ -69,22 +69,17 @@ const QuestionContent = ({
       return (
         <SelectQuestion
           question={question}
-              selectedAnswer={selectedAnswer}
-              setSelectedAnswer={setSelectedAnswer}
-        //   handleSelectOption={handleSelectOption}
+          selectedAnswer={selectedAnswer}
+          setSelectedAnswer={setSelectedAnswer}
+          //   handleSelectOption={handleSelectOption}
         />
-          );
-      case QuestionType.TEXTAREA:
-          return (
-              <TextareaQuestion
-              selectedAnswer={selectedAnswer}
-              setSelectedAnswer={setSelectedAnswer}
-              />
-          )
+      );
+    case QuestionType.TEXTAREA:
+      return (
+        <TextareaQuestion selectedAnswer={selectedAnswer} setSelectedAnswer={setSelectedAnswer} />
+      );
     case QuestionType.SUCCESS:
-          return (
-              <SuccessQuestion resetForm={resetForm} />
-          )
+      return <SuccessQuestion resetForm={resetForm} />;
     default:
       assertNever(question.type);
   }

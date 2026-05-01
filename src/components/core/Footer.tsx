@@ -1,12 +1,10 @@
 // components/Footer.tsx
 import Link from "next/link";
-
-import { IconFooterContainer } from "../containers/IconContainer";
+import { email, navbarLinks, phone, socialMediaLinksFooter } from "@/utils/data";
 import { EnvelopeIcon, WhatsappIcon } from "../composables/Icons";
-
-import { socialMediaLinksFooter, navbarLinks, phone, email } from "@/utils/data";
-import SocialLinkFooter from "../containers/SocialLinkFooter";
+import { IconFooterContainer } from "../containers/IconContainer";
 import QuickLinkFooter from "../containers/QuickLinkFooter";
+import SocialLinkFooter from "../containers/SocialLinkFooter";
 
 const Footer = () => {
   return (
@@ -21,8 +19,8 @@ const Footer = () => {
               <span className="text-secondary">.</span>
             </h3>
             <p className="text-white/75 text-sm leading-relaxed">
-              Psicólogo deportivo especializado en mejorar el rendimiento y la
-              salud mental de deportistas a través de sesiones online, talleres y asesoramiento.
+              Psicólogo deportivo especializado en mejorar el rendimiento y la salud mental de
+              deportistas a través de sesiones online, talleres y asesoramiento.
             </p>
           </div>
 
@@ -88,8 +86,8 @@ const Footer = () => {
         <div className="mt-16 pt-8 border-t border-white/10">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-white/65 text-sm">
-              &copy; {new Date().getFullYear()} Pere Barceló Psicólogo. Todos los
-              derechos reservados.
+              &copy; {new Date().getFullYear()} Pere Barceló Psicólogo. Todos los derechos
+              reservados.
             </p>
             <div className="flex space-x-6">
               <Link

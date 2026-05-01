@@ -1,6 +1,6 @@
-declare module '*.svg' {
-    import React from 'react';
-    const SVG: React.FC<React.SVGProps<SVGSVGElement>>;
-    export const SVG;
+declare module "*.svg" {
+  import type React from "react";
+
+  const SVG: React.FC<React.SVGProps<SVGSVGElement>>;
+  export default SVG;
 }
-  

@@ -1,9 +1,12 @@
 import { NextResponse } from "next/server";
-
-import { type ContactFormData } from "@/types/navbar";
-import { ContactFormEmail } from "@/components/emails/ContactFormEmailResend";
-import { sendAdminEmail, ResendErrorResponse, sendUserConfirmationEmail } from "@/services/email.service";
 import { ConfirmationEmail } from "@/components/emails/ContactFormEmailConfirmation";
+import { ContactFormEmail } from "@/components/emails/ContactFormEmailResend";
+import {
+  type ResendErrorResponse,
+  sendAdminEmail,
+  sendUserConfirmationEmail,
+} from "@/services/email.service";
+import type { ContactFormData } from "@/types/navbar";
 
 export async function POST(req: Request) {
   try {
@@ -16,13 +19,13 @@ export async function POST(req: Request) {
       mediaResponse: formData[4],
       interestedIn: formData[5],
       optionalComment: formData[6],
-    }
+    };
 
     const adminHtml = ContactFormEmail(userData);
 
     const userHtml = ConfirmationEmail({ name: userData.name });
 
-    const adminEmail = await sendAdminEmail({ html: adminHtml})
+    const adminEmail = await sendAdminEmail({ html: adminHtml });
 
     if (adminEmail.error) {
       const resendError = adminEmail.error as ResendErrorResponse;
@@ -35,12 +38,12 @@ export async function POST(req: Request) {
         },
         {
           status: resendError.statusCode || 400,
-        }
+        },
       );
     }
 
     const userEmail = await sendUserConfirmationEmail({ to: userData.email, html: userHtml });
-    
+
     if (userEmail.error) {
       const resendError = userEmail.error as ResendErrorResponse;
       // Return the specific error from Resend
@@ -52,7 +55,7 @@ export async function POST(req: Request) {
         },
         {
           status: resendError.statusCode || 400,
-        }
+        },
       );
     }
 
@@ -71,7 +74,7 @@ export async function POST(req: Request) {
       },
       {
         status: 500,
-      }
+      },
     );
   }
 }
