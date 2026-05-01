@@ -4,26 +4,32 @@ set -euo pipefail
 # =============================================================================
 # env-push-all.sh
 # =============================================================================
-# Pushes all per-environment .env files to their corresponding GitHub
-# Environments in one go.
+# Pushes all per-environment .env files to GitHub Environments and/or
+# Vercel in one go.
 #
 # Usage:
-#   ./scripts/env-push-all.sh
+#   ./scripts/env-push-all.sh                # push to GitHub only
+#   ./scripts/env-push-all.sh --vercel       # push to Vercel only
+#   ./scripts/env-push-all.sh --both         # push to GitHub AND Vercel
 #
 # Optional flags:
 #   --dry-run    Show what would be pushed without uploading anything.
+#   --vercel     Push to Vercel instead of GitHub.
+#   --both       Push to both GitHub and Vercel.
 #
 # Environments pushed (if local files exist):
-#   .env.production  →  GitHub Environment "Production"
-#   .env.preview     →  GitHub Environment "Preview"
-#   .env.develop     →  GitHub Environment "Development"
+#   .env.production  →  Production / production
+#   .env.preview     →  Preview / preview
+#   .env.develop     →  Development / development
 #
 # Requirements:
-#   - gh CLI installed and authenticated
-#   - You have write access to the repository
+#   - gh CLI installed and authenticated (for GitHub)
+#   - Vercel CLI installed and authenticated (for Vercel)
 # =============================================================================
 
 DRY_RUN=false
+VERCEL_MODE=false
+BOTH_MODE=false
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 # Parse optional flags
@@ -33,10 +39,24 @@ while [[ $# -gt 0 ]]; do
       DRY_RUN=true
       shift
       ;;
+    --vercel)
+      VERCEL_MODE=true
+      shift
+      ;;
+    --both)
+      BOTH_MODE=true
+      shift
+      ;;
     -*)
       echo "❌ Unknown option: $1"
       echo ""
-      echo "Usage: $0 [--dry-run]"
+      echo "Usage: $0 [--dry-run] [--vercel | --both]"
+      echo ""
+      echo "Options:"
+      echo "  (no flag)   Push to GitHub Environments only"
+      echo "  --vercel    Push to Vercel only"
+      echo "  --both      Push to both GitHub and Vercel"
+      echo "  --dry-run   Preview without uploading"
       exit 1
       ;;
     *)
@@ -45,49 +65,78 @@ while [[ $# -gt 0 ]]; do
   esac
 done
 
-# Mapping: local file → GitHub Environment name
+# Mapping: local file → GitHub Environment → Vercel env
 declare -a ENVS=(
-  "Production:.env.production"
-  "Preview:.env.preview"
-  "Development:.env.develop"
+  "Production:production:.env.production"
+  "Preview:preview:.env.preview"
+  "Development:development:.env.develop"
 )
 
-pushed=0
+gh_pushed=0
+vercel_pushed=0
 skipped=0
 errors=0
 
-echo "🚀 Bulk push to GitHub Environments"
-echo "===================================="
+echo "🚀 Bulk push"
+echo "============"
 
 if [ "$DRY_RUN" = true ]; then
   echo "🔍 DRY RUN — no secrets will be uploaded."
   echo ""
 fi
 
-for pair in "${ENVS[@]}"; do
-  ENV_NAME="${pair%%:*}"
-  ENV_FILE="${pair##*:}"
+if [ "$VERCEL_MODE" = true ] || [ "$BOTH_MODE" = true ]; then
+  # Check Vercel CLI
+  if ! command -v vercel &> /dev/null; then
+    echo "❌ Vercel CLI not found. Install it with: npm install -g vercel"
+    exit 1
+  fi
+fi
+
+for triple in "${ENVS[@]}"; do
+  GH_ENV="${triple%%:*}"
+  REST="${triple#*:}"
+  VC_ENV="${REST%%:*}"
+  ENV_FILE="${REST##*:}"
 
   echo ""
   echo "────────────────────────────────────────────────────────────"
 
   if [ ! -f "$ENV_FILE" ]; then
-    echo "⏭️  Skipping $ENV_NAME — $ENV_FILE not found."
+    echo "⏭️  Skipping $GH_ENV / $VC_ENV — $ENV_FILE not found."
     ((skipped++)) || true
     continue
   fi
 
-  if [ "$DRY_RUN" = true ]; then
-    echo "🔍 Would push $ENV_FILE → GitHub Environment '$ENV_NAME'"
-    echo "   ($(grep -c '=' "$ENV_FILE") variable(s) found)"
-    ((pushed++)) || true
-  else
-    echo "🔄 Pushing $ENV_FILE → GitHub Environment '$ENV_NAME'..."
-    if "$SCRIPT_DIR/env-push.sh" --env "$ENV_NAME" "$ENV_FILE"; then
-      ((pushed++)) || true
+  # GitHub push
+  if [ "$VERCEL_MODE" = false ] || [ "$BOTH_MODE" = true ]; then
+    if [ "$DRY_RUN" = true ]; then
+      echo "🔍 Would push $ENV_FILE → GitHub '$GH_ENV'"
+      ((gh_pushed++)) || true
     else
-      echo "❌ Failed to push $ENV_NAME"
-      ((errors++)) || true
+      echo "🔄 Pushing $ENV_FILE → GitHub '$GH_ENV'..."
+      if "$SCRIPT_DIR/env-push.sh" --env "$GH_ENV" "$ENV_FILE"; then
+        ((gh_pushed++)) || true
+      else
+        echo "❌ Failed to push $GH_ENV to GitHub"
+        ((errors++)) || true
+      fi
+    fi
+  fi
+
+  # Vercel push
+  if [ "$VERCEL_MODE" = true ] || [ "$BOTH_MODE" = true ]; then
+    if [ "$DRY_RUN" = true ]; then
+      echo "🔍 Would push $ENV_FILE → Vercel '$VC_ENV'"
+      ((vercel_pushed++)) || true
+    else
+      echo "🔄 Pushing $ENV_FILE → Vercel '$VC_ENV'..."
+      if "$SCRIPT_DIR/env-push-vercel.sh" --env "$VC_ENV" "$ENV_FILE"; then
+        ((vercel_pushed++)) || true
+      else
+        echo "❌ Failed to push $VC_ENV to Vercel"
+        ((errors++)) || true
+      fi
     fi
   fi
 done
@@ -97,7 +146,14 @@ echo "════════════════════════�
 if [ "$DRY_RUN" = true ]; then
   echo "🔍 DRY RUN complete."
 fi
-echo "✅ Pushed: $pushed  |  ⏭️  Skipped: $skipped  |  ❌ Errors: $errors"
+
+if [ "$VERCEL_MODE" = false ] || [ "$BOTH_MODE" = true ]; then
+  echo "✅ GitHub:  $gh_pushed pushed"
+fi
+if [ "$VERCEL_MODE" = true ] || [ "$BOTH_MODE" = true ]; then
+  echo "✅ Vercel:  $vercel_pushed pushed"
+fi
+echo "⏭️  Skipped: $skipped  |  ❌ Errors: $errors"
 echo "════════════════════════════════════════════════════════════"
 
 if [ "$errors" -gt 0 ]; then
@@ -106,7 +162,7 @@ if [ "$errors" -gt 0 ]; then
   exit 1
 fi
 
-if [ "$pushed" -eq 0 ]; then
+if [ "$gh_pushed" -eq 0 ] && [ "$vercel_pushed" -eq 0 ]; then
   echo ""
   echo "💡 No environments were pushed. Did you run 'npm run env:init' first?"
 fi
