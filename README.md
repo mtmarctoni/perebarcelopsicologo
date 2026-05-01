@@ -137,6 +137,12 @@ npm run env:push -- --env Development .env.develop
 
 # Push to repository-level secrets (fallback, all environments)
 npm run env:push -- .env
+
+# Push ALL environments at once
+npm run env:push:all
+
+# Preview what would be pushed (dry run)
+npm run env:push:all -- --dry-run
 ```
 
 > 🔒 **Safety guarantee:** `gh secret set -f` only creates/updates the keys **present in your file**. Existing secrets in GitHub that are **not** in the file are **left untouched** (never deleted). This means you can safely push a partial file to add just one new variable without worrying about the others.
