@@ -1,9 +1,9 @@
 import { Resend } from 'resend';
 
-import { envConfig } from '@/config/env.config';
+import { serverEnv } from '@/config/server-env.config';
 import { emailConfig } from '@/config/email.config';
 
-const resend = new Resend(envConfig.email.resendApiKey);
+const resend = new Resend(serverEnv.RESEND_API_KEY);
 //const resend = new Resend(process.env.RESEND_API_KEY);
 
 interface SendEmailProps {

@@ -1,4 +1,6 @@
-const calendlyUrl = process.env.NEXT_PUBLIC_CALENDLY_URL;
+import { clientEnv } from "@/config/client-env.config";
+
+const calendlyUrl = clientEnv.NEXT_PUBLIC_CALENDLY_URL;
 
 const CalendlyBookingCard = () => {
   const hasCalendly = Boolean(calendlyUrl);

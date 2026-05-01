@@ -1,12 +1,14 @@
 import { Metadata } from "next";
 
+import { serverEnv } from "@/config/server-env.config";
+
 export const siteUrl = "https://perebarcelopsicologo.com";
 export const siteName = "Pere Barceló - Psicólogo Deportivo";
 const description =
   "Pere Barceló Lambea - Psicólogo Deportivo en Mallorca. Especializado en psicología del deporte para deportistas, equipos y clubes deportivos.";
 const keywords =
   "psicología deportiva, psicólogo deportivo mallorca, rendimiento deportivo, psicología del deporte, entrenamiento mental, deporte mallorca, psicología deportiva baleares";
-const googleVerification = process.env.GOOGLE_SITE_VERIFICATION;
+const googleVerification = serverEnv.GOOGLE_SITE_VERIFICATION;
 
 const defaultOgImage = {
   url: `${siteUrl}/stock/alcanza-tu-objetivo.webp`,

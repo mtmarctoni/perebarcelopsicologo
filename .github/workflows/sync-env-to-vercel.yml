@@ -1,0 +1,80 @@
+name: Sync Env to Vercel
+
+on:
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: "Vercel environment target"
+        required: true
+        default: "production"
+        type: choice
+        options:
+          - production
+          - preview
+          - development
+
+jobs:
+  sync:
+    name: Sync GitHub Secrets → Vercel
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: "npm"
+
+      - name: Install Vercel CLI
+        run: npm install -g vercel@latest
+
+      - name: Sync environment variables to Vercel
+        env:
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+          VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+          VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+          TARGET_ENV: ${{ github.event.inputs.environment }}
+        run: |
+          set -euo pipefail
+
+          echo "🔗 Logging into Vercel..."
+          vercel login --token "$VERCEL_TOKEN" --yes
+
+          # Helper to upsert an env var
+          sync_var() {
+            local name="$1"
+            local value="$2"
+            local target="$3"
+
+            if [ -z "$value" ]; then
+              echo "⚠️  Skipping $name (empty value)"
+              return
+            fi
+
+            echo "🔄 Syncing $name → $target"
+
+            # Remove existing var (ignore errors if it doesn't exist)
+            vercel env rm "$name" "$target" --yes --token "$VERCEL_TOKEN" 2>/dev/null || true
+
+            # Add new var via stdin
+            printf '%s' "$value" | vercel env add "$name" "$target" --token "$VERCEL_TOKEN"
+          }
+
+          # Server secrets
+          sync_var "RESEND_API_KEY" "${{ secrets.RESEND_API_KEY }}" "$TARGET_ENV"
+          sync_var "GOOGLE_SITE_VERIFICATION" "${{ secrets.GOOGLE_SITE_VERIFICATION }}" "$TARGET_ENV"
+
+          # Client public vars (also needed in the target environment)
+          sync_var "NEXT_PUBLIC_CALENDLY_URL" "${{ secrets.NEXT_PUBLIC_CALENDLY_URL }}" "$TARGET_ENV"
+
+          echo ""
+          echo "✅ Sync complete!"
+          echo ""
+          echo "⚠️  IMPORTANT: NEXT_PUBLIC_ variables are baked at build time."
+          echo "   Trigger a new deploy (push an empty commit or use Vercel dashboard)"
+          echo "   so the new values are picked up."
+          echo ""
+          echo "   git commit --allow-empty -m 'chore: trigger rebuild after env sync' && git push"
