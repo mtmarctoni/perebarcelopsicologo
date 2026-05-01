@@ -1,5 +1,5 @@
-import Image from 'next/image';
-import { Club } from '@/types/navbar';
+import Image from "next/image";
+import type { Club } from "@/types/navbar";
 
 interface ClubCardProps {
   club: Club;

@@ -1,4 +1,4 @@
-import { Metadata } from "next";
+import type { Metadata } from "next";
 
 import { serverEnv } from "@/config/server-env.config";
 
@@ -126,8 +126,7 @@ export function getPageMetadata(metadata: Partial<Metadata> = {}): Metadata {
       ...defaultMetadata.openGraph,
       ...metadata.openGraph,
       title: metadata.title || defaultMetadata.openGraph?.title,
-      description:
-        metadata.description || defaultMetadata.openGraph?.description,
+      description: metadata.description || defaultMetadata.openGraph?.description,
     },
     twitter: {
       ...defaultMetadata.twitter,

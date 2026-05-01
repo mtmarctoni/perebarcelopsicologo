@@ -1,10 +1,10 @@
-import { Metadata } from "next";
+import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
 import { createPageMetadata } from "@/app/metadata";
 import SectionContainer from "@/components/containers/SectionContainer";
-import MainLayout from "@/components/core/MainLayout";
 import BlogPost from "@/components/core/Blog/BlogPost";
+import MainLayout from "@/components/core/MainLayout";
 import { fetchBlogPost, stripHtml } from "@/lib/blog";
 
 interface BlogPageProps {

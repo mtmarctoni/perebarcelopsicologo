@@ -11,10 +11,6 @@ export const IconCardContainer = ({ children, className }: Props) => (
   </div>
 );
 
-export const IconFooterContainer = ({ children}: Props) => (
-    <div
-      className={`min-w-6 min-h-6 flex items-center justify-center`}
-    >
-      {children}
-    </div>
-  );
+export const IconFooterContainer = ({ children }: Props) => (
+  <div className={`min-w-6 min-h-6 flex items-center justify-center`}>{children}</div>
+);

@@ -10,9 +10,7 @@ const CalendlyBookingCard = () => {
       <span className="text-secondary text-sm font-semibold uppercase tracking-widest">
         Reserva directa
       </span>
-      <h2 className="text-3xl font-bold text-text-dark mt-3 tracking-tight">
-        Reserva una llamada
-      </h2>
+      <h2 className="text-3xl font-bold text-text-dark mt-3 tracking-tight">Reserva una llamada</h2>
       <p className="text-text mt-4 leading-relaxed">
         Si prefieres elegir hora directamente, puedes reservar una cita desde el calendario.
       </p>
@@ -29,7 +27,8 @@ const CalendlyBookingCard = () => {
       ) : (
         <div className="mt-8 rounded-2xl border border-dashed border-secondary/30 bg-background-alt/60 p-8 flex flex-col justify-center items-start gap-4 min-h-[320px]">
           <p className="text-text leading-relaxed">
-            El bloque de reserva estara disponible en cuanto se configure la URL publica de Calendly.
+            El bloque de reserva estara disponible en cuanto se configure la URL publica de
+            Calendly.
           </p>
           <p className="text-text-light text-sm leading-relaxed">
             Configuracion requerida: <code>NEXT_PUBLIC_CALENDLY_URL</code>

@@ -1,7 +1,7 @@
-import { useEffect, useState } from "react";
 import { useParams } from "next/navigation";
+import { useEffect, useState } from "react";
 
-import { Post } from "@/types/blog";
+import type { Post } from "@/types/blog";
 
 export const useBlog = () => {
   const { blogId } = useParams();
@@ -14,10 +14,8 @@ export const useBlog = () => {
         // Fetching post from Next.js API route (single post endpoint)
         const response = await fetch(`/api/blog/${blogId}`);
         const data = await response.json();
-        console.log("data", data);
         setPost(data);
-      } catch (error) {
-        console.error("Error fetching post:", error);
+      } catch (_error) {
       } finally {
         setLoading(false);
       }

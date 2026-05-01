@@ -1,11 +1,10 @@
 "use client";
 import Link from "next/link";
 import { useState } from "react";
-
-import { navbarLinks } from "@/utils/data";
 import { ThemeToggle } from "@/components/features/DarkToggle";
+import { navbarLinks } from "@/utils/data";
 
-import { CrossIcon, BarsIcon } from "../composables/Icons";
+import { BarsIcon, CrossIcon } from "../composables/Icons";
 import { IconFooterContainer } from "../containers/IconContainer";
 
 const Navbar = () => {
@@ -46,15 +45,15 @@ const Navbar = () => {
                                 group-hover:opacity-100 left-0 pt-2 w-60 
                                 transition-all duration-300 ease-smooth"
                   >
-                      <div className="bg-background-navbar/95 backdrop-blur-2xl rounded-2xl shadow-[0_24px_60px_rgba(2,6,23,0.38)] border border-white/20 overflow-hidden ring-1 ring-white/10 p-2">
-                        {item.subLinks.map((subLink) => (
-                          <Link
-                            key={subLink.url}
-                            href={subLink.url}
-                            className="block px-4 py-3 rounded-xl text-sm font-semibold text-white/92 whitespace-nowrap
+                    <div className="bg-background-navbar/95 backdrop-blur-2xl rounded-2xl shadow-[0_24px_60px_rgba(2,6,23,0.38)] border border-white/20 overflow-hidden ring-1 ring-white/10 p-2">
+                      {item.subLinks.map((subLink) => (
+                        <Link
+                          key={subLink.url}
+                          href={subLink.url}
+                          className="block px-4 py-3 rounded-xl text-sm font-semibold text-white/92 whitespace-nowrap
                                    hover:bg-white/14 hover:text-white hover:shadow-[inset_0_0_0_1px_rgba(255,255,255,0.08)]
                                    transition-all duration-200"
-                         >
+                        >
                           {subLink.label}
                         </Link>
                       ))}
@@ -69,14 +68,11 @@ const Navbar = () => {
             {/* Mobile Menu Button */}
             <div className="lg:hidden">
               <button
+                type="button"
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
                 className="text-white hover:text-secondary p-2 rounded-full hover:bg-white/10 transition-all duration-300"
               >
-                {isMenuOpen ? (
-                  <CrossIcon className="w-6 h-6" />
-                ) : (
-                  <BarsIcon className="w-6 h-6" />
-                )}
+                {isMenuOpen ? <CrossIcon className="w-6 h-6" /> : <BarsIcon className="w-6 h-6" />}
               </button>
             </div>
             <IconFooterContainer>

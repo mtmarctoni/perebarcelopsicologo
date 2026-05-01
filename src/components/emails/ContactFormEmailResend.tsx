@@ -1,16 +1,29 @@
-import { type Name, type Email, type Phone ,QuestionOptionMediaResponse, QuestionOptionInterestedIn } from "@/types/navbar";
+import type {
+  Email,
+  Name,
+  Phone,
+  QuestionOptionInterestedIn,
+  QuestionOptionMediaResponse,
+} from "@/types/navbar";
 
 interface Props {
-    name: Name;
-    email: Email;
-    phone: Phone;
-    mediaResponse: QuestionOptionMediaResponse;
-    interestedIn: QuestionOptionInterestedIn;
-    optionalComment?: string;
-  }
-  
-  export const ContactFormEmail = ({ name, email, phone, mediaResponse, interestedIn, optionalComment }: Props) => {
-    return `
+  name: Name;
+  email: Email;
+  phone: Phone;
+  mediaResponse: QuestionOptionMediaResponse;
+  interestedIn: QuestionOptionInterestedIn;
+  optionalComment?: string;
+}
+
+export const ContactFormEmail = ({
+  name,
+  email,
+  phone,
+  mediaResponse,
+  interestedIn,
+  optionalComment,
+}: Props) => {
+  return `
       <!DOCTYPE html>
       <html>
         <head>
@@ -100,6 +113,4 @@ interface Props {
         </body>
       </html>
     `;
-  };
-  
-  
+};

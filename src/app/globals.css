@@ -4,60 +4,60 @@
 
 :root {
   /* Core colors */
-  --primary: #B9D8EB;
-  --primary-light: #D4E6F3;
-  --primary-dark: #1C4761;
+  --primary: #b9d8eb;
+  --primary-light: #d4e6f3;
+  --primary-dark: #1c4761;
 
   /* Background colors */
-  --background: #F8FAFC;
-  --background-alt: #F1F5F9;
+  --background: #f8fafc;
+  --background-alt: #f1f5f9;
   --background-navbar: rgba(28, 71, 97, 0.95);
   --background-navbar-alt: #d0d3d6;
-  --background-footer: #0F2537;
+  --background-footer: #0f2537;
 
   /* Accent colors */
-  --secondary: #F59E0B;
-  --secondary-light: #FCD34D;
-  --secondary-dark: #D97706;
+  --secondary: #f59e0b;
+  --secondary-light: #fcd34d;
+  --secondary-dark: #d97706;
 
   /* Text colors */
   --text: #475569;
-  --text-light: #64748B;
-  --text-dark: #0F172A;
+  --text-light: #64748b;
+  --text-dark: #0f172a;
 
   /* UI colors */
-  --success: #22C55E;
-  --warning: #F59E0B;
-  --error: #EF4444;
+  --success: #22c55e;
+  --warning: #f59e0b;
+  --error: #ef4444;
 }
 
 .dark {
   /* Restore the previous dark-mode blue palette */
-  --primary: #2F4F7F;
-  --primary-light: #1C4761;
-  --primary-darker: #0F2537;
+  --primary: #2f4f7f;
+  --primary-light: #1c4761;
+  --primary-darker: #0f2537;
 
   /* Background colors */
-  --background: #0F172A;
-  --background-alt: #1E293B;
+  --background: #0f172a;
+  --background-alt: #1e293b;
   --background-navbar: rgba(15, 37, 55, 0.92);
   --background-navbar-alt: #d0d3d6;
-  --background-footer: #0A1A25;
+  --background-footer: #0a1a25;
 
   /* Accent colors */
-  --secondary: #F59E0B;
-  --secondary-light: #FCD34D;
-  --secondary-dark: #FBBF24;
+  --secondary: #f59e0b;
+  --secondary-light: #fcd34d;
+  --secondary-dark: #fbbf24;
 
   /* Text colors */
-  --text: #E2E8F0;
-  --text-light: #CBD5E1;
-  --text-dark: #F8FAFC;
+  --text: #e2e8f0;
+  --text-light: #cbd5e1;
+  --text-dark: #f8fafc;
 
   /* UI colors */
-  --success: #22C55E;
-  --warning: #F59E0B;
-  --error: #EF4444;
+  --success: #22c55e;
+  --warning: #f59e0b;
+  --error: #ef4444;
 }
 
 /* Style for blog post from wordpress*/
@@ -81,7 +81,8 @@
   @apply mb-6 text-lg leading-relaxed;
 }
 
-.blog-content ul, .blog-content ol {
+.blog-content ul,
+.blog-content ol {
   @apply my-6 ml-6 space-y-3;
 }
 
@@ -109,11 +110,6 @@
          border-l-4 border-secondary pl-6 py-4 my-8
          italic font-light;
 }
-
-
-
-
-
 
 /* Smooth scrolling */
 html {

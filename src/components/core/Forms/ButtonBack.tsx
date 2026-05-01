@@ -8,6 +8,7 @@ const BackButton = ({ show, onClick }: BackButtonProps) => {
 
   return (
     <button
+      type="button"
       onClick={onClick}
       className="text-sm text-text-light hover:text-secondary transition-colors"
     >

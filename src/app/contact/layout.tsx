@@ -1,4 +1,4 @@
-import { Metadata } from "next";
+import type { Metadata } from "next";
 
 import { createPageMetadata } from "@/app/metadata";
 
@@ -11,13 +11,9 @@ export const metadata: Metadata = createPageMetadata({
 });
 
 export default function RootLayout({
-    children,
-  }: Readonly<{
-    children: React.ReactNode;
-  }>) {
-    return (
-    <div className="pt-20">
-      {children}
-    </div>
-  );
-};
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
+  return <div className="pt-20">{children}</div>;
+}

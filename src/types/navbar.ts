@@ -10,48 +10,48 @@ export type Id = string;
 export type QuestionSentence = string;
 export type Icon = React.FC<React.SVGProps<SVGSVGElement>>;
 export enum QuestionType {
-  TEXT = 'text',
-  EMAIL = 'email',
-  PHONE = 'phone',
-  SELECT = 'select',
-  TEXTAREA = 'textarea',
-  SUCCESS = 'success',
+  TEXT = "text",
+  EMAIL = "email",
+  PHONE = "phone",
+  SELECT = "select",
+  TEXTAREA = "textarea",
+  SUCCESS = "success",
 }
 export type QuestionOption = string;
 export enum QuestionOptionMediaResponse {
-  EMAIL = 'Correo electrónico',
-  WHATSAPP = 'WhatsApp',
-  PHONE = 'Llamada Telefónica',
+  EMAIL = "Correo electrónico",
+  WHATSAPP = "WhatsApp",
+  PHONE = "Llamada Telefónica",
 }
 export enum QuestionOptionInterestedIn {
-  ONLINE_SESSIONS = 'Sesiones Online',
-  GROUP_WORKSHOP = 'Taller grupal',
-  CONSULTING = 'Asesoramiento psicológico',
+  ONLINE_SESSIONS = "Sesiones Online",
+  GROUP_WORKSHOP = "Taller grupal",
+  CONSULTING = "Asesoramiento psicológico",
 }
 export enum PhoneFormats {
-  ES = 'ES',
-  OTHER = 'Otro',
+  ES = "ES",
+  OTHER = "Otro",
 }
 
 export interface ContactFormData {
-  '1': Name;
-  '2': Email;
-  '3': Phone;
-  '4': QuestionOptionMediaResponse;
-  '5': QuestionOptionInterestedIn;
-  '6': Description;
+  "1": Name;
+  "2": Email;
+  "3": Phone;
+  "4": QuestionOptionMediaResponse;
+  "5": QuestionOptionInterestedIn;
+  "6": Description;
 }
 
 export type SubLink = {
-    label: Label;
-    url: Url;
-  };
-  
+  label: Label;
+  url: Url;
+};
+
 export interface NavItem {
   label: Label;
   url: Url;
   subLinks?: SubLink[];
-};
+}
 
 export interface SocialCardProps {
   name: Name;

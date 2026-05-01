@@ -1,5 +1,5 @@
-import { motion } from 'framer-motion';
-import { CrossIcon } from '../../composables/Icons';
+import { motion } from "framer-motion";
+import { CrossIcon } from "../../composables/Icons";
 
 interface Props {
   selectedAnswer: string;
@@ -17,12 +17,13 @@ const EmailQuestion = ({
   return (
     <>
       <input
-        autoFocus
         type="email"
         className={`w-full p-4 text-xl border-b-2 rounded-xl bg-transparent focus:outline-none
-                  ${validationError 
-                    ? "border-error focus:border-error" 
-                    : "border-secondary focus:border-primary"}`}
+                  ${
+                    validationError
+                      ? "border-error focus:border-error"
+                      : "border-secondary focus:border-primary"
+                  }`}
         placeholder="ejemplo@correo.com"
         onChange={(e) => {
           setSelectedAnswer(e.target.value);

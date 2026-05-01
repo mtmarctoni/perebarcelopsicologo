@@ -27,7 +27,7 @@ if (!parsed.success) {
 
   throw new Error(
     `❌ Invalid server environment variables:\n${issues}\n\n` +
-      `Please check your .env file or deployment settings and try again.`
+      `Please check your .env file or deployment settings and try again.`,
   );
 }
 
