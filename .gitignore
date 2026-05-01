@@ -36,6 +36,7 @@ yarn-error.log*
 .env.local
 .env.production
 .env.preview
+.env.develop
 .env.development
 .env.test
 !.env.example

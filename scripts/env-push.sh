@@ -5,7 +5,11 @@ set -euo pipefail
 # env-push.sh
 # =============================================================================
 # Reads a local .env file and uploads every key-value pair to GitHub Secrets.
-# Existing secrets with the same name will be overwritten.
+#
+# ⚠️  SAFETY BEHAVIOR:
+#     - Keys present in the file → created or updated in GitHub.
+#     - Keys already in GitHub but NOT in the file → left untouched (NOT deleted).
+#     This means you can safely push a file with only the new/changed vars.
 #
 # Supports GitHub Environments (preview, develop, production).
 #
@@ -14,6 +18,11 @@ set -euo pipefail
 #   ./scripts/env-push.sh --env preview .env.preview
 #   ./scripts/env-push.sh --env develop .env.develop
 #   ./scripts/env-push.sh .env                      # repository-level (default)
+#
+# Examples (safe partial updates):
+#   # Only add/update NEXT_PUBLIC_CALENDLY_URL, leave RESEND_API_KEY alone
+#   echo "NEXT_PUBLIC_CALENDLY_URL=https://calendly.com/foo" > /tmp/calendly-only.env
+#   ./scripts/env-push.sh --env production /tmp/calendly-only.env
 #
 # Requirements:
 #   - gh CLI installed and authenticated

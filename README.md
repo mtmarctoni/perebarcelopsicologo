@@ -139,6 +139,15 @@ npm run env:push -- --env develop .env.develop
 npm run env:push -- .env
 ```
 
+> 🔒 **Safety guarantee:** `gh secret set -f` only creates/updates the keys **present in your file**. Existing secrets in GitHub that are **not** in the file are **left untouched** (never deleted). This means you can safely push a partial file to add just one new variable without worrying about the others.
+>
+> Example: if `RESEND_API_KEY` already exists in GitHub and you only want to add `NEXT_PUBLIC_CALENDLY_URL`:
+> ```bash
+> echo "NEXT_PUBLIC_CALENDLY_URL=https://calendly.com/your-name/30min" > /tmp/calendly-only.env
+> npm run env:push -- --env production /tmp/calendly-only.env
+> ```
+> `RESEND_API_KEY` will remain exactly as it was.
+
 > 💡 **Is this a good practice?** Yes — for a solo-maintained client project, keeping env files locally and syncing to GitHub via CLI is fast and safe. The `gh secret set -f --env` command is GitHub's official way to bulk-upload environment-scoped secrets. Just remember: **never commit `.env` files to git**, and keep your machine secure.
 
 ### Listing current GitHub secrets
