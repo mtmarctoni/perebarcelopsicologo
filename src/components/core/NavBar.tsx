@@ -43,17 +43,17 @@ const Navbar = () => {
                 {item.subLinks && (
                   <div
                     className="absolute invisible group-hover:visible opacity-0 
-                                group-hover:opacity-100 left-0 pt-2 w-56 
+                                group-hover:opacity-100 left-0 pt-2 w-60 
                                 transition-all duration-300 ease-smooth"
                   >
-                      <div className="bg-background/98 backdrop-blur-2xl rounded-2xl shadow-2xl border border-white/15 overflow-hidden ring-1 ring-black/5">
+                      <div className="bg-background-navbar/95 backdrop-blur-2xl rounded-2xl shadow-[0_24px_60px_rgba(2,6,23,0.38)] border border-white/20 overflow-hidden ring-1 ring-white/10 p-2">
                         {item.subLinks.map((subLink) => (
                           <Link
                             key={subLink.url}
                             href={subLink.url}
-                            className="block px-5 py-3 text-sm font-medium text-text-dark whitespace-nowrap
-                                   hover:bg-secondary/16 hover:text-secondary
-                                   transition-colors duration-200"
+                            className="block px-4 py-3 rounded-xl text-sm font-semibold text-white/92 whitespace-nowrap
+                                   hover:bg-white/14 hover:text-white hover:shadow-[inset_0_0_0_1px_rgba(255,255,255,0.08)]
+                                   transition-all duration-200"
                          >
                           {subLink.label}
                         </Link>
