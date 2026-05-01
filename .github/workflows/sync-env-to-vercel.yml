@@ -1,6 +1,10 @@
 name: Sync Env to Vercel
 
 on:
+  # Auto-sync on every push to main (Production)
+  push:
+    branches: [main]
+  # Manual sync for any environment
   workflow_dispatch:
     inputs:
       environment:
@@ -17,9 +21,8 @@ jobs:
   sync:
     name: Sync GitHub Secrets → Vercel
     runs-on: ubuntu-latest
-    # This links the job to the GitHub Environment, giving it access
-    # to environment-scoped secrets (Preview, Development, or Production).
-    environment: ${{ github.event.inputs.environment }}
+    # For auto-run (push to main), hardcode Production. For manual, use input.
+    environment: ${{ github.event_name == 'push' && 'Production' || github.event.inputs.environment }}
 
     steps:
       - name: Checkout repository
@@ -34,12 +37,27 @@ jobs:
       - name: Install Vercel CLI
         run: npm install -g vercel@latest
 
+      - name: Determine target environment
+        id: env
+        run: |
+          if [ "${{ github.event_name }}" = "push" ]; then
+            echo "target=Production" >> "$GITHUB_OUTPUT"
+            echo "prod_flag=--prod" >> "$GITHUB_OUTPUT"
+          else
+            echo "target=${{ github.event.inputs.environment }}" >> "$GITHUB_OUTPUT"
+            if [ "${{ github.event.inputs.environment }}" = "Production" ]; then
+              echo "prod_flag=--prod" >> "$GITHUB_OUTPUT"
+            else
+              echo "prod_flag=" >> "$GITHUB_OUTPUT"
+            fi
+          fi
+
       - name: Sync environment variables to Vercel
         env:
           VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
           VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
           VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
-          TARGET_ENV: ${{ github.event.inputs.environment }}
+          TARGET_ENV: ${{ steps.env.outputs.target }}
         run: |
           set -euo pipefail
 
@@ -75,12 +93,13 @@ jobs:
 
           echo ""
           echo "✅ Sync complete!"
-          echo ""
-          echo "🌍 GitHub Environment: $TARGET_ENV"
-          echo "🚀 Vercel Target: $TARGET_ENV"
-          echo ""
-          echo "⚠️  IMPORTANT: NEXT_PUBLIC_ variables are baked at build time."
-          echo "   Trigger a new deploy (push an empty commit or use Vercel dashboard)"
-          echo "   so the new values are picked up."
-          echo ""
-          echo "   git commit --allow-empty -m 'chore: trigger rebuild after env sync' && git push"
+
+      - name: Deploy to Vercel
+        env:
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+          VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+          VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+          PROD_FLAG: ${{ steps.env.outputs.prod_flag }}
+        run: |
+          echo "🚀 Triggering Vercel deployment..."
+          vercel deploy --yes --token "$VERCEL_TOKEN" $PROD_FLAG
