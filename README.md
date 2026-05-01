@@ -93,8 +93,8 @@ We use a **three-environment** workflow aligned with your GitHub Environments:
 
 | GitHub Environment | Branch | Vercel Target | Local File |
 |-------------------|--------|--------------|------------|
-| `production` | `main` | Production | `.env.production` |
-| `preview` | PRs | Preview | `.env.preview` |
+| `Production` | `main` | Production | `.env.production` |
+| `Preview` | PRs | Preview | `.env.preview` |
 | `Development` | `Development` | Preview (dev branch) | `.env.develop` |
 
 The flow is always:
@@ -126,11 +126,11 @@ This creates four files from `.env.example`:
 ### Pushing local env vars to GitHub (per environment)
 
 ```bash
-# Push to the production environment
-npm run env:push -- --env production .env.production
+# Push to the Production environment
+npm run env:push -- --env Production .env.production
 
-# Push to the preview environment
-npm run env:push -- --env preview .env.preview
+# Push to the Preview environment
+npm run env:push -- --env Preview .env.preview
 
 # Push to the Development environment
 npm run env:push -- --env Development .env.develop
@@ -144,7 +144,7 @@ npm run env:push -- .env
 > Example: if `RESEND_API_KEY` already exists in GitHub and you only want to add `NEXT_PUBLIC_CALENDLY_URL`:
 > ```bash
 > echo "NEXT_PUBLIC_CALENDLY_URL=https://calendly.com/your-name/30min" > /tmp/calendly-only.env
-> npm run env:push -- --env production /tmp/calendly-only.env
+> npm run env:push -- --env Production /tmp/calendly-only.env
 > ```
 > `RESEND_API_KEY` will remain exactly as it was.
 
@@ -162,7 +162,7 @@ This lists secrets for every environment you have configured. GitHub never revea
 
 1. Go to **Actions → Sync Env to Vercel**
 2. Click **Run workflow**
-3. Choose the target environment (`production`, `preview`, or `Development`)
+3. Choose the target environment (`Production`, `Preview`, or `Development`)
 4. Click **Run**
 
 The workflow reads secrets from the selected **GitHub Environment** and pushes them to the matching **Vercel environment**.

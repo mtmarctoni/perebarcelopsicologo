@@ -11,18 +11,18 @@ set -euo pipefail
 #     - Keys already in GitHub but NOT in the file → left untouched (NOT deleted).
 #     This means you can safely push a file with only the new/changed vars.
 #
-# Supports GitHub Environments (preview, Development, production).
+# Supports GitHub Environments (Preview, Development, Production).
 #
 # Usage:
-#   ./scripts/env-push.sh --env production .env.production
-#   ./scripts/env-push.sh --env preview .env.preview
+#   ./scripts/env-push.sh --env Production .env.production
+#   ./scripts/env-push.sh --env Preview .env.preview
 #   ./scripts/env-push.sh --env Development .env.develop
 #   ./scripts/env-push.sh .env                      # repository-level (default)
 #
 # Examples (safe partial updates):
 #   # Only add/update NEXT_PUBLIC_CALENDLY_URL, leave RESEND_API_KEY alone
 #   echo "NEXT_PUBLIC_CALENDLY_URL=https://calendly.com/foo" > /tmp/calendly-only.env
-#   ./scripts/env-push.sh --env production /tmp/calendly-only.env
+#   ./scripts/env-push.sh --env Production /tmp/calendly-only.env
 #
 # Requirements:
 #   - gh CLI installed and authenticated
@@ -45,8 +45,8 @@ while [[ $# -gt 0 ]]; do
       echo "Usage: $0 [--env <environment>] <.env-file>"
       echo ""
       echo "Examples:"
-      echo "  $0 --env production .env.production"
-      echo "  $0 --env preview .env.preview"
+      echo "  $0 --env Production .env.production"
+      echo "  $0 --env Preview .env.preview"
       echo "  $0 --env Development .env.develop"
       echo "  $0 .env                                    # repository-level"
       exit 1
@@ -64,8 +64,8 @@ if [ -z "$ENV_FILE" ]; then
   echo "Usage: $0 [--env <environment>] <.env-file>"
   echo ""
   echo "Examples:"
-  echo "  $0 --env production .env.production"
-  echo "  $0 --env preview .env.preview"
+  echo "  $0 --env Production .env.production"
+  echo "  $0 --env Preview .env.preview"
   echo "  $0 --env Development .env.develop"
   echo "  $0 .env                                    # repository-level"
   exit 1

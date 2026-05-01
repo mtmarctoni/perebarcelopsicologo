@@ -6,11 +6,11 @@ on:
       environment:
         description: "GitHub Environment (and Vercel target)"
         required: true
-        default: "production"
+        default: "Production"
         type: choice
         options:
-          - production
-          - preview
+          - Production
+          - Preview
           - Development
 
 jobs:
@@ -18,7 +18,7 @@ jobs:
     name: Sync GitHub Secrets → Vercel
     runs-on: ubuntu-latest
     # This links the job to the GitHub Environment, giving it access
-    # to environment-scoped secrets (preview, Development, or production).
+    # to environment-scoped secrets (Preview, Development, or Production).
     environment: ${{ github.event.inputs.environment }}
 
     steps:
