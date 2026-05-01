@@ -17,29 +17,6 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   ...defaultMetadata,
-  metadataBase: new URL('https://perebarcelopsicologo.com'),
-  alternates: {
-    canonical: '/',
-  },
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      'max-video-preview': -1,
-      'max-image-preview': 'large',
-      'max-snippet': -1,
-    },
-  },
-  icons: {
-    icon: '/favicon.ico',
-    shortcut: '/favicon-16x16.png',
-    apple: '/apple-touch-icon.png',
-  },
-  verification: {
-    google: 'YOUR_GOOGLE_VERIFICATION_CODE', // Replace with actual verification code
-  },
 };
 
 export const viewport: Viewport = {

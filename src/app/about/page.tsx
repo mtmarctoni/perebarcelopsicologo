@@ -1,5 +1,7 @@
+import { Metadata } from "next";
 import Image from "next/image";
 
+import { createPageMetadata } from "@/app/metadata";
 import MainLayout from "@/components/core/MainLayout";
 import { IconCardContainer } from "@/components/containers/IconContainer";
 import ClubCard from '@/components/containers/ClubCard';
@@ -8,6 +10,14 @@ import { clubs } from '@/utils/data';
 import { HandshakeIcon, FutbolIcon, GraduationcapIcon } from "@/components/composables/Icons";
 import SectionContainer from "@/components/containers/SectionContainer";
 import { baseUrl } from "@/utils/data";
+
+export const metadata: Metadata = createPageMetadata({
+  title: "Sobre Pere Barceló Lambea | Psicólogo deportivo",
+  description:
+    "Conoce la trayectoria, formación y enfoque de Pere Barceló Lambea como psicólogo deportivo especializado en deportistas, equipos y clubes.",
+  path: "/about",
+  imagePath: "/stock/personas-escuchando.webp",
+});
 
 export default function AboutPage() {
   return (

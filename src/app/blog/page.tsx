@@ -1,9 +1,22 @@
-"use client";
-import MainLayout from "@/components/core/MainLayout";
-import SectionContainer from "@/components/containers/SectionContainer";
-import BlogList from "@/components/core/Blog/BlogList";
+import { Metadata } from "next";
 
-export default function BlogListPage() {
+import { createPageMetadata } from "@/app/metadata";
+import MainLayout from "@/components/core/MainLayout";
+import BlogCard from "@/components/core/Blog/BlogCard";
+import SectionContainer from "@/components/containers/SectionContainer";
+import { fetchBlogPosts } from "@/lib/blog";
+
+export const metadata: Metadata = createPageMetadata({
+  title: "Blog de psicologia deportiva | Pere Barceló",
+  description:
+    "Articulos y recursos sobre psicologia deportiva, rendimiento, salud mental y entrenamiento mental aplicados al deporte.",
+  path: "/blog",
+  imagePath: "/stock/alcanza-tu-objetivo.webp",
+});
+
+export default async function BlogListPage() {
+  const posts = await fetchBlogPosts();
+
   return (
     <MainLayout>
       <main className="pb-12">
@@ -21,7 +34,11 @@ export default function BlogListPage() {
         </SectionContainer>
 
         <SectionContainer className="bg-background-alt/50">
-          <BlogList />
+          <div className="grid grid-cols-1 gap-8">
+            {posts.map((post) => (
+              <BlogCard key={post.id} post={post} />
+            ))}
+          </div>
         </SectionContainer>
       </main>
     </MainLayout>
