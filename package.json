@@ -13,6 +13,7 @@
     "env:init": "./scripts/env-init.sh",
     "env:list": "./scripts/env-list.sh",
     "env:push": "./scripts/env-push.sh",
+    "env:push:vercel": "./scripts/env-push-vercel.sh",
     "env:push:all": "./scripts/env-push-all.sh",
     "gitpush": "git add . && git commit -m quickCommit && git push"
   },

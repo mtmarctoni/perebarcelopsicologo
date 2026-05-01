@@ -137,24 +137,53 @@ npm run env:push -- --env Development .env.develop
 
 # Push to repository-level secrets (fallback, all environments)
 npm run env:push -- .env
+```
 
-# Push ALL environments at once
+### Pushing local env vars directly to Vercel (skip GitHub)
+
+If you want to bypass GitHub and push straight to Vercel (useful for quick local iteration):
+
+```bash
+# Push to Vercel Production
+npm run env:push:vercel -- --env production .env.production
+
+# Push to Vercel Preview
+npm run env:push:vercel -- --env preview .env.preview
+
+# Push to Vercel Development (for local vercel dev)
+npm run env:push:vercel -- --env development .env.develop
+```
+
+> ⚠️ **Requires Vercel CLI:** `npm install -g vercel` and `vercel login`
+
+### Push ALL environments at once
+
+```bash
+# Push to GitHub Environments only (default)
 npm run env:push:all
+
+# Push to Vercel only
+npm run env:push:all -- --vercel
+
+# Push to BOTH GitHub AND Vercel
+npm run env:push:all -- --both
 
 # Preview what would be pushed (dry run)
 npm run env:push:all -- --dry-run
+npm run env:push:all -- --both --dry-run
 ```
 
-> 🔒 **Safety guarantee:** `gh secret set -f` only creates/updates the keys **present in your file**. Existing secrets in GitHub that are **not** in the file are **left untouched** (never deleted). This means you can safely push a partial file to add just one new variable without worrying about the others.
+> 🔒 **Safety guarantee:** All scripts only create/update keys **present in your file**. Existing secrets that are **not** in the file are **left untouched** (never deleted).
 >
-> Example: if `RESEND_API_KEY` already exists in GitHub and you only want to add `NEXT_PUBLIC_CALENDLY_URL`:
+> Example: if `RESEND_API_KEY` already exists and you only want to add `NEXT_PUBLIC_CALENDLY_URL`:
 > ```bash
 > echo "NEXT_PUBLIC_CALENDLY_URL=https://calendly.com/your-name/30min" > /tmp/calendly-only.env
 > npm run env:push -- --env Production /tmp/calendly-only.env
+> npm run env:push:vercel -- --env production /tmp/calendly-only.env
 > ```
 > `RESEND_API_KEY` will remain exactly as it was.
 
-> 💡 **Is this a good practice?** Yes — for a solo-maintained client project, keeping env files locally and syncing to GitHub via CLI is fast and safe. The `gh secret set -f --env` command is GitHub's official way to bulk-upload environment-scoped secrets. Just remember: **never commit `.env` files to git**, and keep your machine secure.
+> 💡 **Is this a good practice?** Yes — for a solo-maintained client project, keeping env files locally and syncing via CLI is fast and safe. Just remember: **never commit `.env` files to git**, and keep your machine secure.
 
 ### Listing current GitHub secrets
 

@@ -100,9 +100,13 @@ echo "────────────────────────�
 echo "Next steps:"
 echo "   1. Verify with: ./scripts/env-list.sh"
 if [ -n "$ENV_NAME" ]; then
-  echo "   2. Sync to Vercel: GitHub Actions → 'Sync Env to Vercel'"
-  echo "      (select environment: $ENV_NAME)"
+  echo "   2. Sync to Vercel via GitHub Action:"
+  echo "      Actions → 'Sync Env to Vercel' (select: $ENV_NAME)"
+  echo "   3. Or push directly from local:"
+  # Convert GitHub env name to Vercel env name
+  VC_ENV=$(echo "$ENV_NAME" | tr '[:upper:]' '[:lower:]')
+  echo "      npm run env:push:vercel -- --env $VC_ENV $ENV_FILE"
 fi
-echo "   3. Trigger a redeploy if you changed NEXT_PUBLIC_* vars:"
+echo "   4. Trigger a redeploy if you changed NEXT_PUBLIC_* vars:"
 echo "      git commit --allow-empty -m 'chore: trigger rebuild' && git push"
 echo "────────────────────────────────────────────────────────────"
