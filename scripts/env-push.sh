@@ -7,35 +7,82 @@ set -euo pipefail
 # Reads a local .env file and uploads every key-value pair to GitHub Secrets.
 # Existing secrets with the same name will be overwritten.
 #
+# Supports GitHub Environments (preview, develop, production).
+#
 # Usage:
-#   ./scripts/env-push.sh .env              # push local dev values
-#   ./scripts/env-push.sh .env.production   # push production values
-#   ./scripts/env-push.sh .env.preview      # push preview values
+#   ./scripts/env-push.sh --env production .env.production
+#   ./scripts/env-push.sh --env preview .env.preview
+#   ./scripts/env-push.sh --env develop .env.develop
+#   ./scripts/env-push.sh .env                      # repository-level (default)
 #
 # Requirements:
 #   - gh CLI installed and authenticated
 #   - You have write access to the repository
 # =============================================================================
 
-ENV_FILE="${1:-.env}"
+ENV_NAME=""
+ENV_FILE=""
 
-if [ ! -f "$ENV_FILE" ]; then
-  echo "❌ File not found: $ENV_FILE"
+# Parse arguments
+while [[ $# -gt 0 ]]; do
+  case "$1" in
+    --env)
+      ENV_NAME="$2"
+      shift 2
+      ;;
+    -*)
+      echo "❌ Unknown option: $1"
+      echo ""
+      echo "Usage: $0 [--env <environment>] <.env-file>"
+      echo ""
+      echo "Examples:"
+      echo "  $0 --env production .env.production"
+      echo "  $0 --env preview .env.preview"
+      echo "  $0 --env develop .env.develop"
+      echo "  $0 .env                                    # repository-level"
+      exit 1
+      ;;
+    *)
+      ENV_FILE="$1"
+      shift
+      ;;
+  esac
+done
+
+if [ -z "$ENV_FILE" ]; then
+  echo "❌ Missing .env file argument."
   echo ""
-  echo "Usage: $0 <.env-file>"
+  echo "Usage: $0 [--env <environment>] <.env-file>"
   echo ""
   echo "Examples:"
-  echo "  $0 .env              # push local dev env"
-  echo "  $0 .env.production   # push production env"
-  echo "  $0 .env.preview      # push preview env"
+  echo "  $0 --env production .env.production"
+  echo "  $0 --env preview .env.preview"
+  echo "  $0 --env develop .env.develop"
+  echo "  $0 .env                                    # repository-level"
   exit 1
 fi
 
-echo "🔄 Pushing secrets from $ENV_FILE → GitHub..."
+if [ ! -f "$ENV_FILE" ]; then
+  echo "❌ File not found: $ENV_FILE"
+  exit 1
+fi
+
+if [ -n "$ENV_NAME" ]; then
+  echo "🔄 Pushing secrets from $ENV_FILE → GitHub Environment '$ENV_NAME'..."
+  GH_FLAGS="--env $ENV_NAME"
+else
+  echo "🔄 Pushing secrets from $ENV_FILE → GitHub (repository-level)..."
+  GH_FLAGS=""
+fi
+
 echo ""
 
 # gh secret set -f reads the file and sets every key automatically
-gh secret set -f "$ENV_FILE"
+if [ -n "$GH_FLAGS" ]; then
+  gh secret set -f "$ENV_FILE" $GH_FLAGS
+else
+  gh secret set -f "$ENV_FILE"
+fi
 
 echo ""
 echo "✅ Sync complete!"
@@ -43,7 +90,10 @@ echo ""
 echo "────────────────────────────────────────────────────────────"
 echo "Next steps:"
 echo "   1. Verify with: ./scripts/env-list.sh"
-echo "   2. Sync to Vercel: GitHub Actions → 'Sync Env to Vercel'"
+if [ -n "$ENV_NAME" ]; then
+  echo "   2. Sync to Vercel: GitHub Actions → 'Sync Env to Vercel'"
+  echo "      (select environment: $ENV_NAME)"
+fi
 echo "   3. Trigger a redeploy if you changed NEXT_PUBLIC_* vars:"
 echo "      git commit --allow-empty -m 'chore: trigger rebuild' && git push"
 echo "────────────────────────────────────────────────────────────"

@@ -4,19 +4,22 @@ on:
   workflow_dispatch:
     inputs:
       environment:
-        description: "Vercel environment target"
+        description: "GitHub Environment (and Vercel target)"
         required: true
         default: "production"
         type: choice
         options:
           - production
           - preview
-          - development
+          - develop
 
 jobs:
   sync:
     name: Sync GitHub Secrets → Vercel
     runs-on: ubuntu-latest
+    # This links the job to the GitHub Environment, giving it access
+    # to environment-scoped secrets (preview, develop, or production).
+    environment: ${{ github.event.inputs.environment }}
 
     steps:
       - name: Checkout repository
@@ -63,7 +66,7 @@ jobs:
             printf '%s' "$value" | vercel env add "$name" "$target" --token "$VERCEL_TOKEN"
           }
 
-          # Server secrets
+          # Server secrets (read from the current GitHub Environment)
           sync_var "RESEND_API_KEY" "${{ secrets.RESEND_API_KEY }}" "$TARGET_ENV"
           sync_var "GOOGLE_SITE_VERIFICATION" "${{ secrets.GOOGLE_SITE_VERIFICATION }}" "$TARGET_ENV"
 
@@ -72,6 +75,9 @@ jobs:
 
           echo ""
           echo "✅ Sync complete!"
+          echo ""
+          echo "🌍 GitHub Environment: $TARGET_ENV"
+          echo "🚀 Vercel Target: $TARGET_ENV"
           echo ""
           echo "⚠️  IMPORTANT: NEXT_PUBLIC_ variables are baked at build time."
           echo "   Trigger a new deploy (push an empty commit or use Vercel dashboard)"

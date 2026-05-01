@@ -89,47 +89,57 @@ You can see the status of these checks in the PR checks section on GitHub.
 
 ## 🔐 Environment Variables
 
-We use a **single source of truth** workflow:
+We use a **three-environment** workflow aligned with your GitHub Environments:
+
+| GitHub Environment | Branch | Vercel Target | Local File |
+|-------------------|--------|--------------|------------|
+| `production` | `main` | Production | `.env.production` |
+| `preview` | PRs | Preview | `.env.preview` |
+| `develop` | `develop` | Preview (dev branch) | `.env.develop` |
+
+The flow is always:
 
 ```
-Your local .env files  →  GitHub Secrets  →  Vercel
-        (source)            (vault)         (runtime)
+Your local .env.<env>  →  GitHub Environment Secrets  →  Vercel
+        (source)              (vault)                 (runtime)
 ```
-
-You edit env vars locally, push them to GitHub, then sync GitHub → Vercel via a one-click Action.
 
 ### Local env files (per environment)
 
-Run this once to generate your local env files:
+Run this once to generate all local env files:
 
 ```bash
 npm run env:init
 ```
 
-This creates three files from `.env.example`:
+This creates four files from `.env.example`:
 
 | File | Purpose |
 |------|---------|
-| `.env` | Local development |
-| `.env.production` | Production values (kept locally, never committed) |
-| `.env.preview` | Preview / staging values |
+| `.env` | Local development (fallback / personal values) |
+| `.env.production` | Production values |
+| `.env.preview` | Preview / PR values |
+| `.env.develop` | Develop branch values |
 
 > 💡 All `.env*` files are gitignored. Only `.env.example` is tracked in git.
 
-### Pushing local env vars to GitHub
+### Pushing local env vars to GitHub (per environment)
 
 ```bash
-# Push your local dev values
+# Push to the production environment
+npm run env:push -- --env production .env.production
+
+# Push to the preview environment
+npm run env:push -- --env preview .env.preview
+
+# Push to the develop environment
+npm run env:push -- --env develop .env.develop
+
+# Push to repository-level secrets (fallback, all environments)
 npm run env:push -- .env
-
-# Push production values
-npm run env:push -- .env.production
-
-# Push preview values
-npm run env:push -- .env.preview
 ```
 
-> 💡 **Is this a good practice?** Yes — for a solo-maintained client project, keeping env files locally and syncing to GitHub via CLI is fast and safe. The `gh secret set -f` command is GitHub's official way to bulk-upload secrets. Just remember: **never commit `.env` files to git**, and keep your machine secure.
+> 💡 **Is this a good practice?** Yes — for a solo-maintained client project, keeping env files locally and syncing to GitHub via CLI is fast and safe. The `gh secret set -f --env` command is GitHub's official way to bulk-upload environment-scoped secrets. Just remember: **never commit `.env` files to git**, and keep your machine secure.
 
 ### Listing current GitHub secrets
 
@@ -137,23 +147,26 @@ npm run env:push -- .env.preview
 npm run env:list
 ```
 
-> ⚠️ GitHub never reveals secret values (not even to repo owners). This only shows the names of configured secrets.
+This lists secrets for every environment you have configured. GitHub never reveals values (not even to repo owners).
 
 ### Syncing GitHub → Vercel (no dashboard!)
 
 1. Go to **Actions → Sync Env to Vercel**
 2. Click **Run workflow**
-3. Choose the target environment (`production`, `preview`, or `development`)
+3. Choose the target environment (`production`, `preview`, or `develop`)
 4. Click **Run**
 
-The workflow pushes all secrets from GitHub to Vercel automatically.
+The workflow reads secrets from the selected **GitHub Environment** and pushes them to the matching **Vercel environment**.
 
 > ⚠️ **Important:** `NEXT_PUBLIC_*` variables are baked into the client bundle at build time. After syncing them, trigger a new deploy so Vercel picks up the changes:
 > ```bash
 > git commit --allow-empty -m "chore: trigger rebuild after env sync" && git push
 > ```
 
-### Required GitHub Secrets
+### Required GitHub Secrets (per environment)
+
+Store these in each GitHub Environment (Settings → Environments → `<env>` → Environment secrets):
+
 | Secret | Description |
 |--------|-------------|
 | `RESEND_API_KEY` | Resend API key for email sending |
@@ -161,6 +174,9 @@ The workflow pushes all secrets from GitHub to Vercel automatically.
 | `NEXT_PUBLIC_CALENDLY_URL` | Public Calendly scheduling URL |
 
 ### Optional GitHub Secrets (for Vercel sync)
+
+These can live at the **repository level** (all environments share the same Vercel project):
+
 | Secret | Description |
 |--------|-------------|
 | `VERCEL_TOKEN` | Vercel personal access token |

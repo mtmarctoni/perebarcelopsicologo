@@ -13,6 +13,7 @@ set -euo pipefail
 #   .env              → local development
 #   .env.production   → production values
 #   .env.preview      → preview / staging values
+#   .env.develop      → develop / branch values
 # =============================================================================
 
 if [ ! -f ".env.example" ]; then
@@ -23,7 +24,7 @@ fi
 generated=0
 skipped=0
 
-for env_file in .env .env.production .env.preview; do
+for env_file in .env .env.production .env.preview .env.develop; do
   if [ -f "$env_file" ]; then
     echo "⚠️  $env_file already exists — skipping."
     ((skipped++)) || true
@@ -39,7 +40,7 @@ echo "────────────────────────�
 if [ "$generated" -gt 0 ]; then
   echo "📝 $generated file(s) generated. Next steps:"
   echo "   1. Edit each file and replace the placeholder values."
-  echo "   2. Run ./scripts/env-push.sh <file> to sync to GitHub."
+  echo "   2. Run ./scripts/env-push.sh --env <env> <file> to sync to GitHub."
 fi
 if [ "$skipped" -gt 0 ]; then
   echo "⏭️  $skipped file(s) skipped (already exist)."
