@@ -95,7 +95,7 @@ We use a **three-environment** workflow aligned with your GitHub Environments:
 |-------------------|--------|--------------|------------|
 | `production` | `main` | Production | `.env.production` |
 | `preview` | PRs | Preview | `.env.preview` |
-| `develop` | `develop` | Preview (dev branch) | `.env.develop` |
+| `Development` | `Development` | Preview (dev branch) | `.env.develop` |
 
 The flow is always:
 
@@ -119,7 +119,7 @@ This creates four files from `.env.example`:
 | `.env` | Local development (fallback / personal values) |
 | `.env.production` | Production values |
 | `.env.preview` | Preview / PR values |
-| `.env.develop` | Develop branch values |
+| `.env.develop` | Development branch values |
 
 > 💡 All `.env*` files are gitignored. Only `.env.example` is tracked in git.
 
@@ -132,8 +132,8 @@ npm run env:push -- --env production .env.production
 # Push to the preview environment
 npm run env:push -- --env preview .env.preview
 
-# Push to the develop environment
-npm run env:push -- --env develop .env.develop
+# Push to the Development environment
+npm run env:push -- --env Development .env.develop
 
 # Push to repository-level secrets (fallback, all environments)
 npm run env:push -- .env
@@ -162,7 +162,7 @@ This lists secrets for every environment you have configured. GitHub never revea
 
 1. Go to **Actions → Sync Env to Vercel**
 2. Click **Run workflow**
-3. Choose the target environment (`production`, `preview`, or `develop`)
+3. Choose the target environment (`production`, `preview`, or `Development`)
 4. Click **Run**
 
 The workflow reads secrets from the selected **GitHub Environment** and pushes them to the matching **Vercel environment**.

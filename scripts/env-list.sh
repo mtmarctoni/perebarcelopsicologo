@@ -24,7 +24,7 @@ gh secret list
 echo ""
 
 # Per-environment secrets
-for env in production preview develop; do
+for env in production preview Development; do
   # Check if environment exists by trying to list secrets
   if gh secret list --env "$env" &>/dev/null; then
     echo "🌍 Environment '$env' secrets:"

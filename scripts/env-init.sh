@@ -13,7 +13,7 @@ set -euo pipefail
 #   .env              → local development
 #   .env.production   → production values
 #   .env.preview      → preview / staging values
-#   .env.develop      → develop / branch values
+#   .env.develop      → Development / branch values
 # =============================================================================
 
 if [ ! -f ".env.example" ]; then

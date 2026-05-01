@@ -11,12 +11,12 @@ set -euo pipefail
 #     - Keys already in GitHub but NOT in the file → left untouched (NOT deleted).
 #     This means you can safely push a file with only the new/changed vars.
 #
-# Supports GitHub Environments (preview, develop, production).
+# Supports GitHub Environments (preview, Development, production).
 #
 # Usage:
 #   ./scripts/env-push.sh --env production .env.production
 #   ./scripts/env-push.sh --env preview .env.preview
-#   ./scripts/env-push.sh --env develop .env.develop
+#   ./scripts/env-push.sh --env Development .env.develop
 #   ./scripts/env-push.sh .env                      # repository-level (default)
 #
 # Examples (safe partial updates):
@@ -47,7 +47,7 @@ while [[ $# -gt 0 ]]; do
       echo "Examples:"
       echo "  $0 --env production .env.production"
       echo "  $0 --env preview .env.preview"
-      echo "  $0 --env develop .env.develop"
+      echo "  $0 --env Development .env.develop"
       echo "  $0 .env                                    # repository-level"
       exit 1
       ;;
@@ -66,7 +66,7 @@ if [ -z "$ENV_FILE" ]; then
   echo "Examples:"
   echo "  $0 --env production .env.production"
   echo "  $0 --env preview .env.preview"
-  echo "  $0 --env develop .env.develop"
+  echo "  $0 --env Development .env.develop"
   echo "  $0 .env                                    # repository-level"
   exit 1
 fi
