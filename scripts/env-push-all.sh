@@ -30,6 +30,7 @@ set -euo pipefail
 DRY_RUN=false
 VERCEL_MODE=false
 BOTH_MODE=false
+INSECURE=false
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 # Parse optional flags
@@ -47,16 +48,21 @@ while [[ $# -gt 0 ]]; do
       BOTH_MODE=true
       shift
       ;;
+    --insecure)
+      INSECURE=true
+      shift
+      ;;
     -*)
       echo "❌ Unknown option: $1"
       echo ""
-      echo "Usage: $0 [--dry-run] [--vercel | --both]"
+      echo "Usage: $0 [--dry-run] [--vercel | --both] [--insecure]"
       echo ""
       echo "Options:"
       echo "  (no flag)   Push to GitHub Environments only"
       echo "  --vercel    Push to Vercel only"
       echo "  --both      Push to both GitHub and Vercel"
       echo "  --dry-run   Preview without uploading"
+      echo "  --insecure  Skip SSL cert validation (corporate proxies)"
       exit 1
       ;;
     *)
@@ -131,7 +137,11 @@ for triple in "${ENVS[@]}"; do
       ((vercel_pushed++)) || true
     else
       echo "🔄 Pushing $ENV_FILE → Vercel '$VC_ENV'..."
-      if "$SCRIPT_DIR/env-push-vercel.sh" --env "$VC_ENV" "$ENV_FILE"; then
+      VC_FLAGS=""
+      if [ "$INSECURE" = true ]; then
+        VC_FLAGS="--insecure"
+      fi
+      if "$SCRIPT_DIR/env-push-vercel.sh" --env "$VC_ENV" "$ENV_FILE" $VC_FLAGS; then
         ((vercel_pushed++)) || true
       else
         echo "❌ Failed to push $VC_ENV to Vercel"

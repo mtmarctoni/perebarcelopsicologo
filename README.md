@@ -156,6 +156,23 @@ npm run env:push:vercel -- --env development .env.develop
 
 > ⚠️ **Requires Vercel CLI:** `npm install -g vercel` and `vercel login`
 
+#### Troubleshooting: SSL certificate errors
+
+If you see `unable to get local issuer certificate`, you are likely behind a corporate proxy or VPN. Use the `--insecure` flag:
+
+```bash
+# Single environment
+npm run env:push:vercel -- --env production .env.production --insecure
+
+# All environments to Vercel
+npm run env:push:all -- --vercel --insecure
+
+# Both GitHub and Vercel
+npm run env:push:all -- --both --insecure
+```
+
+> ⚠️ `--insecure` disables SSL certificate validation. Only use this on trusted networks.
+
 ### Push ALL environments at once
 
 ```bash
