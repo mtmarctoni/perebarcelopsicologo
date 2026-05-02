@@ -14,7 +14,9 @@ const clientEnvSchema = z.object({
     .transform((val) => val?.trim() || undefined),
 });
 
-const parsed = clientEnvSchema.safeParse(process.env);
+const parsed = clientEnvSchema.safeParse({
+  NEXT_PUBLIC_CALENDLY_URL: process.env.NEXT_PUBLIC_CALENDLY_URL,
+});
 
 if (!parsed.success) {
   const issues = parsed.error.issues

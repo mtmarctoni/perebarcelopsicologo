@@ -22,6 +22,8 @@ const CalendlyBookingCard = () => {
             title="Calendly booking"
             className="w-full h-[720px]"
             loading="lazy"
+            allow="camera; microphone; autoplay; fullscreen; display-capture"
+            referrerPolicy="no-referrer-when-downgrade"
           />
         </div>
       ) : (
