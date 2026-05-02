@@ -10,11 +10,8 @@
     "lint:fix": "biome check --write src/",
     "format": "biome format --write src/",
     "type-check": "tsc --noEmit",
-    "env:init": "./scripts/env-init.sh",
-    "env:list": "./scripts/env-list.sh",
-    "env:push": "./scripts/env-push.sh",
-    "env:push:vercel": "./scripts/env-push-vercel.sh",
-    "env:push:all": "./scripts/env-push-all.sh",
+    "env:pull": "vercel env pull .env.local",
+    "env:push": "./scripts/vercel-env-push.sh",
     "gitpush": "git add . && git commit -m quickCommit && git push"
   },
   "dependencies": {
@@ -36,8 +33,7 @@
     "@types/react-dom": "19.2.2",
     "postcss": "^8",
     "tailwindcss": "^3.4.1",
-    "typescript": "^5",
-    "vercel": "^53.0.1"
+    "typescript": "^5"
   },
   "overrides": {
     "@types/react": "19.2.2",
