@@ -1,49 +1,99 @@
 import type { NextRequest } from "next/server";
 import { NextResponse } from "next/server";
 
-// This function can be marked `async` if using `await` inside
+const STAGING_HOST = process.env.STAGING_HOST || "app.perebarcelopsicologo.com";
+
+function isStaging(request: NextRequest): boolean {
+  const host = request.headers.get("host") || request.nextUrl.host;
+  return host.includes(STAGING_HOST);
+}
+
+function getUnauthorizedResponse(): NextResponse {
+  return new NextResponse("Authentication required", {
+    status: 401,
+    headers: {
+      "WWW-Authenticate": 'Basic realm="Staging Environment"',
+      "X-Robots-Tag": "noindex, nofollow",
+    },
+  });
+}
+
 export function proxy(request: NextRequest) {
-  const response = NextResponse.next();
-
-  // Security headers
-  response.headers.set("X-Content-Type-Options", "nosniff");
-  response.headers.set("X-Frame-Options", "DENY");
-  response.headers.set("X-XSS-Protection", "1; mode=block");
-  response.headers.set("Referrer-Policy", "strict-origin-when-cross-origin");
-  response.headers.set("Permissions-Policy", "camera=(), microphone=(), geolocation=()");
-
-  // Handle www to non-www redirect
+  const host = request.headers.get("host") || request.nextUrl.host;
   const url = request.nextUrl;
-  const hostname = request.headers.get("host") || "perebarcelopsicologo.com";
 
-  if (hostname.startsWith("www.")) {
-    const newHostname = hostname.replace("www.", "");
-    return NextResponse.redirect(new URL(`${url.pathname}${url.search}`, `https://${newHostname}`));
+  // === STAGING PROTECTION ===
+  if (isStaging(request)) {
+    const authHeader = request.headers.get("authorization");
+
+    if (!authHeader?.startsWith("Basic ")) {
+      return getUnauthorizedResponse();
+    }
+
+    try {
+      const credentials = atob(authHeader.split(" ")[1]);
+      const [username, password] = credentials.split(":");
+
+      const expectedUsername = process.env.STAGING_USERNAME;
+      const expectedPassword = process.env.STAGING_PASSWORD;
+
+      if (
+        expectedUsername &&
+        expectedPassword &&
+        username === expectedUsername &&
+        password === expectedPassword
+      ) {
+        const response = NextResponse.next();
+        response.headers.set("X-Robots-Tag", "noindex, nofollow");
+        return response;
+      }
+    } catch {
+      // Malformed auth header
+    }
+
+    return getUnauthorizedResponse();
   }
 
-  // Handle HTTP to HTTPS redirect (only in production)
-  if (process.env.NODE_ENV === "production") {
-    const proto = request.headers.get("x-forwarded-proto");
-    if (proto === "http") {
-      return NextResponse.redirect(new URL(url.toString().replace("http://", "https://")));
+  // === PRODUCTION REDIRECTS ===
+  // Skip API routes and static files for redirect logic
+  const pathname = url.pathname;
+  const isSkippedPath =
+    pathname.startsWith("/api") ||
+    pathname.startsWith("/_next/static") ||
+    pathname.startsWith("/_next/image") ||
+    pathname === "/favicon.ico" ||
+    pathname === "/sitemap.xml" ||
+    pathname === "/robots.txt";
+
+  if (!isSkippedPath) {
+    // www → non-www redirect
+    if (host.startsWith("www.")) {
+      const newHostname = host.replace("www.", "");
+      return NextResponse.redirect(
+        new URL(`${url.pathname}${url.search}`, `https://${newHostname}`),
+      );
+    }
+
+    // HTTP → HTTPS redirect in production
+    if (process.env.NODE_ENV === "production") {
+      const proto = request.headers.get("x-forwarded-proto");
+      if (proto === "http") {
+        return NextResponse.redirect(new URL(url.toString().replace("http://", "https://")));
+      }
     }
   }
 
-  return response;
+  return NextResponse.next();
 }
 
-// See "Matching Paths" below to learn more
 export const config = {
   matcher: [
     /*
      * Match all request paths except for the ones starting with:
-     * - api (API routes)
      * - _next/static (static files)
      * - _next/image (image optimization files)
      * - favicon.ico (favicon file)
-     * - sitemap.xml (sitemap)
-     * - robots.txt (robots file)
      */
-    "/((?!api|_next/static|_next/image|favicon.ico|sitemap.xml|robots.txt).*)",
+    "/((?!_next/static|_next/image|favicon.ico).*)",
   ],
 };

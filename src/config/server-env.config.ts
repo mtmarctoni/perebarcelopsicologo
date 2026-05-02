@@ -16,6 +16,11 @@ const serverEnvSchema = z.object({
     .transform((val) => val?.trim() || undefined),
 
   PORT: z.coerce.number().default(3000),
+
+  STAGING_HOST: z
+    .string()
+    .optional()
+    .transform((val) => val?.trim() || undefined),
 });
 
 const parsed = serverEnvSchema.safeParse(process.env);
