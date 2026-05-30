@@ -234,50 +234,50 @@ export const questions: Question[] = [
 export const clubs: Club[] = [
   {
     name: "CE Constància",
-    imgUrl: `/clubs/CE-Constancia.png`,
+    imgUrl: `/clubs/CE-Constancia.webp`,
   },
   {
     name: "CDC Moscardó",
-    imgUrl: `/clubs/CDC-Moscardo.png`,
+    imgUrl: `/clubs/CDC-Moscardo.webp`,
   },
   {
     name: "CF Fuenlabrada",
-    imgUrl: `/clubs/CF-Fuenlabrada.png`,
+    imgUrl: `/clubs/CF-Fuenlabrada.webp`,
   },
   {
     name: "CF Playa de Palma",
-    imgUrl: `/clubs/Playa-de-Palma.png`,
+    imgUrl: `/clubs/Playa-de-Palma.webp`,
   },
   {
     name: "UE Petra",
-    imgUrl: `/clubs/UE-Petra.png`,
+    imgUrl: `/clubs/UE-Petra.webp`,
   },
   {
     name: "CE Sineu",
-    imgUrl: `/clubs/CE-Sineu.png`,
+    imgUrl: `/clubs/CE-Sineu.webp`,
   },
   {
     name: "Joventut Mariana",
-    imgUrl: `/clubs/Joventut-Mariana.png`,
+    imgUrl: `/clubs/Joventut-Mariana.webp`,
   },
   {
     name: "Entreculturas Montesión",
-    imgUrl: `/clubs/Montesion.png`,
+    imgUrl: `/clubs/Montesion.webp`,
   },
   {
     name: "CB Colonya Pollença",
-    imgUrl: `/clubs/CB-Pollenca.png`,
+    imgUrl: `/clubs/CB-Pollenca.webp`,
   },
   {
     name: "CG Alcúdia",
-    imgUrl: `/clubs/GC-Alcudia.png`,
+    imgUrl: `/clubs/GC-Alcudia.webp`,
   },
   {
     name: "Federación de Golf de las Islas Baleares",
-    imgUrl: `/clubs/FBG.png`,
+    imgUrl: `/clubs/FBG.webp`,
   },
   {
     name: "Federación de Baloncesto de las Islas Baleares",
-    imgUrl: `/clubs/FBIB.png`,
+    imgUrl: `/clubs/FBIB.webp`,
   },
 ];
