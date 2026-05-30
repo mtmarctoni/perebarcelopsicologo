@@ -9,7 +9,7 @@ const MainLayout = ({ children }: Props) => {
   return (
     <>
       <Navbar />
-      <div className="flex flex-col min-h-screen flex-grow bg-primary">{children}</div>
+      <div className="flex flex-col min-h-screen flex-grow">{children}</div>
       <Footer />
     </>
   );
