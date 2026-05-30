@@ -3,15 +3,7 @@ import type { MetadataRoute } from "next";
 const siteUrl = "https://perebarcelopsicologo.com";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const routes = [
-    "",
-    "/about",
-    "/methodology",
-    "/performance",
-    "/mental",
-    "/contact",
-    "/privacy",
-  ].map((route) => ({
+  const routes = ["", "/about", "/servicios", "/contact", "/privacy"].map((route) => ({
     url: `${siteUrl}${route}`,
     lastModified: new Date().toISOString().split("T")[0],
     changeFrequency: "monthly" as const,
