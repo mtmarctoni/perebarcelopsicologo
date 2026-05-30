@@ -7,7 +7,7 @@ import BaseCard from "@/components/containers/BaseCard";
 import SectionContainer from "@/components/containers/SectionContainer";
 import MainLayout from "@/components/core/MainLayout";
 import type { BaseCardProps } from "@/types/navbar";
-import { baseUrl, performanceCards } from "@/utils/data";
+import { performanceCards } from "@/utils/data";
 
 export const metadata: Metadata = createPageMetadata({
   title: "Mejora tu rendimiento deportivo | Pere Barceló",
@@ -23,7 +23,7 @@ export default function PerformancePage() {
       {/* Hero Section */}
       <header className="relative h-[500px] rounded-none sm:rounded-3xl overflow-hidden mx-0 sm:mx-6 lg:mx-8 mt-0 sm:mt-6">
         <Image
-          src={`${baseUrl}/stock/performance-hero.webp`}
+          src={`/stock/performance-hero.webp`}
           alt="Rendimiento deportivo"
           fill
           sizes="100vw"

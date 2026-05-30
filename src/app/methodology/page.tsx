@@ -7,7 +7,7 @@ import BaseCard from "@/components/containers/BaseCard";
 import SectionContainer from "@/components/containers/SectionContainer";
 import MainLayout from "@/components/core/MainLayout";
 import type { BaseCardProps } from "@/types/navbar";
-import { baseUrl, methodologyCards } from "@/utils/data";
+import { methodologyCards } from "@/utils/data";
 
 export const metadata: Metadata = createPageMetadata({
   title: "Metodologia y modo de trabajo | Pere Barceló",
@@ -23,7 +23,7 @@ export default function WorkMethodPage() {
       {/* Hero Section */}
       <div className="relative h-[500px] rounded-none sm:rounded-3xl overflow-hidden mx-0 sm:mx-6 lg:mx-8 mt-0 sm:mt-6">
         <Image
-          src={`${baseUrl}/stock/sports-psychology.webp`}
+          src={`/stock/sports-psychology.webp`}
           alt="Psicología deportiva"
           fill
           sizes="100vw"

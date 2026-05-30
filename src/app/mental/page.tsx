@@ -7,7 +7,7 @@ import BaseCard from "@/components/containers/BaseCard";
 import SectionContainer from "@/components/containers/SectionContainer";
 import MainLayout from "@/components/core/MainLayout";
 import type { BaseCardProps } from "@/types/navbar";
-import { baseUrl, mentalCards } from "@/utils/data";
+import { mentalCards } from "@/utils/data";
 
 export const metadata: Metadata = createPageMetadata({
   title: "Salud mental en el deporte | Pere Barceló",
@@ -23,7 +23,7 @@ export default function MentalHealthPage() {
       {/* Hero Section */}
       <header className="relative h-[500px] rounded-none sm:rounded-3xl overflow-hidden mx-0 sm:mx-6 lg:mx-8 mt-0 sm:mt-6">
         <Image
-          src={`${baseUrl}/stock/mental-health-hero.webp`}
+          src={`/stock/mental-health-hero.webp`}
           alt="Salud Mental"
           fill
           sizes="100vw"

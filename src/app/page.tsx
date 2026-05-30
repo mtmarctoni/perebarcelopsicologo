@@ -6,7 +6,6 @@ import { createPageMetadata } from "@/app/metadata";
 import { ScrollIcon } from "@/components/composables/Icons";
 import SectionContainer from "@/components/containers/SectionContainer";
 import MainLayout from "@/components/core/MainLayout";
-import { baseUrl } from "@/utils/data";
 
 export const metadata: Metadata = createPageMetadata({
   title: "Psicólogo deportivo en Mallorca | Pere Barceló",
@@ -23,7 +22,7 @@ export default function Home() {
       <section className="relative h-screen min-h-[600px] w-full overflow-hidden">
         <div className="absolute inset-0">
           <Image
-            src={`${baseUrl}/stock/alcanza-tu-objetivo.webp`}
+            src={`/stock/alcanza-tu-objetivo.webp`}
             alt="Pista de atletismo"
             fill
             sizes="100vw"
@@ -73,7 +72,7 @@ export default function Home() {
           <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
             <div className="relative w-full lg:w-1/2 h-[450px] lg:h-[500px] rounded-3xl overflow-hidden shadow-2xl">
               <Image
-                src={`${baseUrl}/profile/pere1-transparente.webp`}
+                src={`/profile/pere1-transparente.webp`}
                 alt="Pere Barceló Psicólogo Deportivo"
                 fill
                 sizes="(max-width: 1024px) 100vw, 50vw"
@@ -118,7 +117,7 @@ export default function Home() {
             <Link href="/performance" className="group block">
               <div className="relative h-80 rounded-3xl overflow-hidden shadow-card hover:shadow-card-hover transition-all duration-500 ease-smooth hover:-translate-y-2">
                 <Image
-                  src={`${baseUrl}/stock/golf-coaching.webp`}
+                  src={`/stock/golf-coaching.webp`}
                   alt="Entrenamiento de golf"
                   fill
                   sizes="(max-width: 768px) 100vw, 50vw"
@@ -138,7 +137,7 @@ export default function Home() {
             <Link href="/mental" className="group block">
               <div className="relative h-80 rounded-3xl overflow-hidden shadow-card hover:shadow-card-hover transition-all duration-500 ease-smooth hover:-translate-y-2">
                 <Image
-                  src={`${baseUrl}/stock/mental-health.webp`}
+                  src={`/stock/mental-health.webp`}
                   alt="Salud mental"
                   fill
                   sizes="(max-width: 768px) 100vw, 50vw"
@@ -172,7 +171,7 @@ export default function Home() {
             <div className="group flex flex-col items-center text-center">
               <div className="relative w-full aspect-square mb-6 rounded-3xl overflow-hidden shadow-card hover:shadow-card-hover transition-all duration-500 ease-smooth hover:-translate-y-2">
                 <Image
-                  src={`${baseUrl}/stock/sesiones-individuales.webp`}
+                  src={`/stock/sesiones-individuales.webp`}
                   alt="Sesiones individuales online"
                   fill
                   sizes="(max-width: 768px) 100vw, 33vw"
@@ -195,7 +194,7 @@ export default function Home() {
             <div className="group flex flex-col items-center text-center">
               <div className="relative w-full aspect-square mb-6 rounded-3xl overflow-hidden shadow-card hover:shadow-card-hover transition-all duration-500 ease-smooth hover:-translate-y-2">
                 <Image
-                  src={`${baseUrl}/stock/talleres-grupales.webp`}
+                  src={`/stock/talleres-grupales.webp`}
                   alt="Talleres grupales"
                   fill
                   sizes="(max-width: 768px) 100vw, 33vw"
@@ -219,7 +218,7 @@ export default function Home() {
             <div className="group flex flex-col items-center text-center">
               <div className="relative w-full aspect-square mb-6 rounded-3xl overflow-hidden shadow-card hover:shadow-card-hover transition-all duration-500 ease-smooth hover:-translate-y-2">
                 <Image
-                  src={`${baseUrl}/stock/asesoramientos-futbol.webp`}
+                  src={`/stock/asesoramientos-futbol.webp`}
                   alt="Asesoramiento deportivo"
                   fill
                   sizes="(max-width: 768px) 100vw, 33vw"

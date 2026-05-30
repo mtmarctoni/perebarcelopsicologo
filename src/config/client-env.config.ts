@@ -12,10 +12,16 @@ const clientEnvSchema = z.object({
     .string()
     .optional()
     .transform((val) => val?.trim() || undefined),
+
+  NEXT_PUBLIC_GTM_ID: z
+    .string()
+    .optional()
+    .transform((val) => val?.trim() || undefined),
 });
 
 const parsed = clientEnvSchema.safeParse({
   NEXT_PUBLIC_CALENDLY_URL: process.env.NEXT_PUBLIC_CALENDLY_URL,
+  NEXT_PUBLIC_GTM_ID: process.env.NEXT_PUBLIC_GTM_ID,
 });
 
 if (!parsed.success) {
