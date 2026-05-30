@@ -24,10 +24,7 @@ export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
   maximumScale: 5,
-  themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#ffffff" },
-    { media: "(prefers-color-scheme: dark)", color: "#0a0a0a" },
-  ],
+  themeColor: "#070b14",
 };
 
 const GTMHead = ({ gtmId }: { gtmId: string }) => (
@@ -88,7 +85,7 @@ export default function RootLayout({
         {/* <link rel="preload" href="/stock/alcanza-tu-objetivo.webp" as="image" /> */}
       </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} min-h-screen bg-white dark:bg-gray-900 font-sans antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} min-h-screen bg-[#070b14] font-sans antialiased`}
       >
         {gtmId && <GTMBody gtmId={gtmId} />}
         <Providers>{children}</Providers>
