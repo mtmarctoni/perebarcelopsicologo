@@ -40,16 +40,8 @@ const nextConfig: NextConfig = {
   images: {
     remotePatterns: [
       {
-        protocol: "http",
-        hostname: "100.84.193.47"
-      },
-      {
         protocol: "https",
         hostname: "perebarcelopsicologo.com"
-      },
-      {
-        protocol: "https",
-        hostname: "blog.perebarcelopsicologo.com"
       }
     ],
   },
