@@ -42,7 +42,6 @@ export const navbarLinks: NavItem[] = [
       { label: "Mejora tu salud", url: "/mental" },
     ],
   },
-  { label: "Blog", url: "/blog" },
   { label: "Contacto", url: "/contact" },
 ];
 
