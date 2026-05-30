@@ -91,7 +91,7 @@ const Footer = () => {
             </p>
             <div className="flex space-x-6">
               <Link
-                href="https://perebarcelopsicologo.com/privacy-policy/"
+                href="/privacy"
                 className="text-white/80 hover:text-white text-sm transition-colors duration-300"
               >
                 Política de Privacidad
