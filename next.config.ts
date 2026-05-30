@@ -86,6 +86,36 @@ const nextConfig: NextConfig = {
         destination: '/',
         permanent: true,
       },
+      {
+        source: '/methodology',
+        destination: '/',
+        permanent: true,
+      },
+      {
+        source: '/methodology/:path*',
+        destination: '/',
+        permanent: true,
+      },
+      {
+        source: '/performance',
+        destination: '/',
+        permanent: true,
+      },
+      {
+        source: '/performance/:path*',
+        destination: '/',
+        permanent: true,
+      },
+      {
+        source: '/mental',
+        destination: '/',
+        permanent: true,
+      },
+      {
+        source: '/mental/:path*',
+        destination: '/',
+        permanent: true,
+      },
     ];
   },
   async rewrites() {
