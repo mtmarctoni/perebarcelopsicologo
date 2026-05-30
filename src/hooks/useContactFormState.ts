@@ -38,6 +38,14 @@ export const useContactFormState = () => {
           throw new Error(data.error.message);
         }
 
+        // Push GTM event for Google Ads conversion tracking
+        if (typeof window !== "undefined" && window.dataLayer) {
+          window.dataLayer.push({
+            event: "generate_lead",
+            leadSource: "contact_form",
+          });
+        }
+
         // Move to success screen
         setCurrentQuestion(questions.length - 1);
       } catch (_error) {
