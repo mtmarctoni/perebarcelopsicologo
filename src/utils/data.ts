@@ -92,7 +92,7 @@ export const socialMediaLinksFooter: SocialCardProps[] = [
 
 export const methodologyCards: BaseCardProps[] = [
   {
-    image: `${baseUrl}/stock/online-session.webp`,
+    image: `/stock/online-session.webp`,
     name: "Sesiones Online",
     Icon: LaptopIcon,
     description:
@@ -100,7 +100,7 @@ export const methodologyCards: BaseCardProps[] = [
     link: "/contact",
   },
   {
-    image: `${baseUrl}/stock/group-workshop.webp`,
+    image: `/stock/group-workshop.webp`,
     name: "Talleres Grupales",
     Icon: UsersIcon,
     description:
@@ -108,7 +108,7 @@ export const methodologyCards: BaseCardProps[] = [
     link: "/contact",
   },
   {
-    image: `${baseUrl}/stock/club-consulting.webp`,
+    image: `/stock/club-consulting.webp`,
     name: "Asesoramiento a Clubes",
     Icon: HandshakeIcon,
     description:
@@ -120,7 +120,7 @@ export const methodologyCards: BaseCardProps[] = [
 
 export const performanceCards: BaseCardProps[] = [
   {
-    image: `${baseUrl}/stock/emotional-management.webp`,
+    image: `/stock/emotional-management.webp`,
     name: "Gestión emocional",
     Icon: HeartbeatIcon,
     description:
@@ -128,7 +128,7 @@ export const performanceCards: BaseCardProps[] = [
     link: "/contact",
   },
   {
-    image: `${baseUrl}/stock/concentration.webp`,
+    image: `/stock/concentration.webp`,
     name: "Concentración",
     Icon: BrainIcon,
     description:
@@ -136,7 +136,7 @@ export const performanceCards: BaseCardProps[] = [
     link: "/contact",
   },
   {
-    image: `${baseUrl}/stock/self-confidence.webp`,
+    image: `/stock/self-confidence.webp`,
     name: "Autoconfianza",
     Icon: ChartlineIcon,
     description:
@@ -144,7 +144,7 @@ export const performanceCards: BaseCardProps[] = [
     link: "/contact",
   },
   {
-    image: `${baseUrl}/stock/motivation.webp`,
+    image: `/stock/motivation.webp`,
     name: "Motivación",
     Icon: LightbulbIcon,
     description:
@@ -156,7 +156,7 @@ export const performanceCards: BaseCardProps[] = [
 
 export const mentalCards: BaseCardProps[] = [
   {
-    image: `${baseUrl}/stock/emotional-health.webp`,
+    image: `/stock/emotional-health.webp`,
     name: "Gestión emocional",
     Icon: HeartIcon,
     description:
@@ -164,7 +164,7 @@ export const mentalCards: BaseCardProps[] = [
     link: "/contact",
   },
   {
-    image: `${baseUrl}/stock/stress-management.webp`,
+    image: `/stock/stress-management.webp`,
     name: "Manejo del estrés",
     Icon: BalanceIcon,
     description:
@@ -172,7 +172,7 @@ export const mentalCards: BaseCardProps[] = [
     link: "/contact",
   },
   {
-    image: `${baseUrl}/stock/burnout-prevention.webp`,
+    image: `/stock/burnout-prevention.webp`,
     name: "Prevención del burnout",
     Icon: BatteryIcon,
     description:
@@ -180,7 +180,7 @@ export const mentalCards: BaseCardProps[] = [
     link: "/contact",
   },
   {
-    image: `${baseUrl}/stock/self-esteem.webp`,
+    image: `/stock/self-esteem.webp`,
     name: "Mejora de la autoestima",
     Icon: StarIcon,
     description:
@@ -234,50 +234,50 @@ export const questions: Question[] = [
 export const clubs: Club[] = [
   {
     name: "CE Constància",
-    imgUrl: `${wordpressUrl}/wp-content/uploads/2025/04/CE-Constancia.png`,
+    imgUrl: `/clubs/CE-Constancia.webp`,
   },
   {
     name: "CDC Moscardó",
-    imgUrl: `${wordpressUrl}/wp-content/uploads/2025/04/CDC-Moscardo.png`,
+    imgUrl: `/clubs/CDC-Moscardo.webp`,
   },
   {
     name: "CF Fuenlabrada",
-    imgUrl: `${wordpressUrl}/wp-content/uploads/2025/04/CF-Fuenlabrada.png`,
+    imgUrl: `/clubs/CF-Fuenlabrada.webp`,
   },
   {
     name: "CF Playa de Palma",
-    imgUrl: `${wordpressUrl}/wp-content/uploads/2025/04/Playa-de-Palma.png`,
+    imgUrl: `/clubs/Playa-de-Palma.webp`,
   },
   {
     name: "UE Petra",
-    imgUrl: `${wordpressUrl}/wp-content/uploads/2025/04/UE-Petra.png`,
+    imgUrl: `/clubs/UE-Petra.webp`,
   },
   {
     name: "CE Sineu",
-    imgUrl: `${wordpressUrl}/wp-content/uploads/2025/04/CE-Sineu.png`,
+    imgUrl: `/clubs/CE-Sineu.webp`,
   },
   {
     name: "Joventut Mariana",
-    imgUrl: `${wordpressUrl}/wp-content/uploads/2025/04/Joventut-Mariana.png`,
+    imgUrl: `/clubs/Joventut-Mariana.webp`,
   },
   {
     name: "Entreculturas Montesión",
-    imgUrl: `${wordpressUrl}/wp-content/uploads/2025/04/Montesion.png`,
+    imgUrl: `/clubs/Montesion.webp`,
   },
   {
     name: "CB Colonya Pollença",
-    imgUrl: `${wordpressUrl}/wp-content/uploads/2025/04/CB-Pollenca.png`,
+    imgUrl: `/clubs/CB-Pollenca.webp`,
   },
   {
     name: "CG Alcúdia",
-    imgUrl: `${wordpressUrl}/wp-content/uploads/2025/04/GC-Alcudia.png`,
+    imgUrl: `/clubs/GC-Alcudia.webp`,
   },
   {
     name: "Federación de Golf de las Islas Baleares",
-    imgUrl: `${wordpressUrl}/wp-content/uploads/2025/04/FBG.png`,
+    imgUrl: `/clubs/FBG.webp`,
   },
   {
     name: "Federación de Baloncesto de las Islas Baleares",
-    imgUrl: `${wordpressUrl}/wp-content/uploads/2025/04/FBIB.png`,
+    imgUrl: `/clubs/FBIB.webp`,
   },
 ];
