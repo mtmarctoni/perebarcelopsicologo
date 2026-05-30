@@ -1,9 +1,11 @@
-// Global type declaration for Google Tag Manager dataLayer
-// Used by GTM, GA4, Google Ads, and Cookiebot Consent Mode
+type DataLayerEvent = {
+  event: "generate_lead";
+  leadSource?: string;
+};
 
 declare global {
   interface Window {
-    dataLayer: Array<Record<string, unknown>>;
+    dataLayer: Array<DataLayerEvent>;
   }
 }
 
