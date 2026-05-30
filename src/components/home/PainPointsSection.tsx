@@ -1,0 +1,65 @@
+"use client";
+
+import { motion } from "framer-motion";
+
+import AnimatedSection from "@/components/composables/AnimatedSection";
+import SectionLabel from "@/components/composables/SectionLabel";
+import { scaleIn, staggerContainer } from "@/components/home/animations";
+
+const painPoints = [
+  { num: "01", text: "Empiezas bien, pero tras un error te vienes abajo" },
+  { num: "02", text: "Aparecen dudas que no tienes entrenando" },
+  { num: "03", text: "Te notas mas tenso y menos fluido" },
+  { num: "04", text: "Piensas demasiado en lugar de competir" },
+  { num: "05", text: "Sientes que podrias rendir mas, pero algo falla" },
+];
+
+export default function PainPointsSection() {
+  return (
+    <section className="relative bg-[#0f172a] overflow-hidden">
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_0%,_rgba(245,158,11,0.06)_0%,_transparent_60%)]" />
+
+      <div className="relative z-10 max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 py-24 lg:py-32">
+        <AnimatedSection className="max-w-2xl mb-16">
+          <SectionLabel text="Para ti" />
+          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white tracking-tight">
+            Esto es para ti si al competir...
+          </h2>
+        </AnimatedSection>
+
+        <motion.div
+          className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-6"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-60px" }}
+          variants={staggerContainer}
+        >
+          {painPoints.map((item) => (
+            <motion.div
+              key={item.num}
+              variants={scaleIn}
+              className="group relative bg-white/[0.03] border border-white/[0.06] rounded-2xl p-7 lg:p-8 hover:bg-white/[0.06] hover:border-secondary/30 hover:-translate-y-1 transition-all duration-500"
+            >
+              <span className="text-secondary/40 text-5xl font-bold absolute top-6 right-6 select-none">
+                {item.num}
+              </span>
+              <div className="w-10 h-10 rounded-full bg-secondary/10 flex items-center justify-center mb-5">
+                <span className="text-secondary font-bold text-sm">{item.num}</span>
+              </div>
+              <p className="text-white/80 text-lg leading-relaxed relative z-10">{item.text}</p>
+            </motion.div>
+          ))}
+        </motion.div>
+
+        <AnimatedSection className="mt-16 max-w-2xl">
+          <p className="text-xl text-white/50 leading-relaxed">
+            No es falta de nivel.{" "}
+            <strong className="text-white/90">
+              Es como gestionas lo que pasa en tu cabeza cuando compites.
+            </strong>
+          </p>
+        </AnimatedSection>
+      </div>
+    </section>
+  );
+}
