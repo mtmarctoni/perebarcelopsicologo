@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Script from "next/script";
+import { clientEnv } from "@/config/client-env.config";
 import { defaultMetadata } from "./metadata";
 import { Providers } from "./providers";
 
@@ -29,28 +30,31 @@ export const viewport: Viewport = {
   ],
 };
 
-const PrivacySettings = () => (
-  <>
-    <Script
-      id="humanity-options"
-      strategy="afterInteractive"
-      dangerouslySetInnerHTML={{
-        __html: `
-          var huOptions = {
-            'appID': 'perebarcelopsicologocom-5e860ea',
-            'currentLanguage': 'en',
-            'blocking': true,
-            'globalCookie': false
-          }
-        `,
-      }}
-    />
-    <Script
-      id="humanity-banner"
-      src="https://cdn.hu-manity.co/hu-banner.min.js"
-      strategy="afterInteractive"
-    />
-  </>
+const GTMHead = ({ gtmId }: { gtmId: string }) => (
+  <Script
+    id="gtm-script"
+    strategy="afterInteractive"
+    dangerouslySetInnerHTML={{
+      __html: `
+        (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','${gtmId}');
+      `,
+    }}
+  />
+);
+
+const GTMBody = ({ gtmId }: { gtmId: string }) => (
+  <noscript
+    dangerouslySetInnerHTML={{
+      __html: `
+        <iframe src="https://www.googletagmanager.com/ns.html?id=${gtmId}"
+        height="0" width="0" style="display:none;visibility:hidden"></iframe>
+      `,
+    }}
+  />
 );
 
 export default function RootLayout({
@@ -58,10 +62,13 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const gtmId = clientEnv.NEXT_PUBLIC_GTM_ID;
+
   return (
     <html lang="es" suppressHydrationWarning className="scroll-smooth">
       <head>
-        <PrivacySettings />
+        {gtmId && <GTMHead gtmId={gtmId} />}
+
         {/* Preconnect to external domains */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
@@ -83,6 +90,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} min-h-screen bg-white dark:bg-gray-900 font-sans antialiased`}
       >
+        {gtmId && <GTMBody gtmId={gtmId} />}
         <Providers>{children}</Providers>
       </body>
     </html>
