@@ -7,7 +7,7 @@ import ClubCard from "@/components/containers/ClubCard";
 import { IconCardContainer } from "@/components/containers/IconContainer";
 import SectionContainer from "@/components/containers/SectionContainer";
 import MainLayout from "@/components/core/MainLayout";
-import { baseUrl, clubs } from "@/utils/data";
+import { clubs } from "@/utils/data";
 
 export const metadata: Metadata = createPageMetadata({
   title: "Sobre Pere Barceló Lambea | Psicólogo deportivo",
@@ -23,7 +23,7 @@ export default function AboutPage() {
       {/* Hero Section */}
       <div className="relative h-[500px] rounded-none sm:rounded-3xl overflow-hidden mx-0 sm:mx-6 lg:mx-8 mt-0 sm:mt-6">
         <Image
-          src={`${baseUrl}/stock/personas-escuchando.webp`}
+          src={`/stock/personas-escuchando.webp`}
           alt="Pere Barceló Lambea"
           fill
           priority
@@ -48,7 +48,7 @@ export default function AboutPage() {
             <div className="lg:w-1/2 w-full">
               <div className="relative h-[450px] lg:h-[550px] rounded-3xl overflow-hidden shadow-2xl">
                 <Image
-                  src={`${baseUrl}/profile/pere2-transparente.webp`}
+                  src={`/profile/pere2-transparente.webp`}
                   alt="Pere Barceló"
                   fill
                   sizes="(max-width: 1024px) 100vw, 50vw"
