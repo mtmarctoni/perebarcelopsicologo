@@ -15,7 +15,7 @@ const items = [
 
 export default function ServiciosProblemSection() {
   return (
-    <section className="relative bg-[#0f172a] overflow-hidden">
+    <section className="relative bg-background-alt overflow-hidden">
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_30%,_rgba(245,158,11,0.05)_0%,_transparent_60%)]" />
 
       <div className="relative z-10 max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 py-24 lg:py-32">
@@ -27,13 +27,13 @@ export default function ServiciosProblemSection() {
             transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
           >
             <SectionLabel text="El enfoque" />
-            <h2 className="text-4xl sm:text-5xl font-bold text-white tracking-tight leading-[1.1]">
+            <h2 className="text-4xl sm:text-5xl font-bold text-text-dark tracking-tight leading-[1.1]">
               El problema no es lo que te ocurre, sino como lo gestionas
             </h2>
-            <p className="mt-6 text-lg text-white/60 leading-relaxed">
+            <p className="mt-6 text-lg text-text-light leading-relaxed">
               No necesitas eliminar los nervios ni controlar todos tus pensamientos.
             </p>
-            <p className="mt-2 text-lg text-white font-bold leading-relaxed">
+            <p className="mt-2 text-lg text-text-dark font-bold leading-relaxed">
               Necesitas aprender a competir con ellos.
             </p>
           </motion.div>
@@ -49,12 +49,12 @@ export default function ServiciosProblemSection() {
               <motion.div
                 key={text}
                 variants={fadeInUp}
-                className="flex items-center gap-4 p-5 rounded-xl bg-white/[0.03] border border-white/[0.06] hover:bg-white/[0.06] hover:border-secondary/20 transition-all duration-300"
+                className="flex items-center gap-4 p-5 rounded-xl bg-card border border-border hover:bg-card-hover hover:border-secondary/20 transition-all duration-300"
               >
                 <div className="w-8 h-8 rounded-full bg-secondary/15 flex items-center justify-center shrink-0">
                   <CheckIcon className="w-4 h-4 text-secondary" />
                 </div>
-                <p className="text-white/80 font-medium">{text}</p>
+                <p className="text-text font-medium">{text}</p>
               </motion.div>
             ))}
           </motion.div>

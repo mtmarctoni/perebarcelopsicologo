@@ -9,7 +9,7 @@ import { fadeInUp, staggerContainer } from "@/components/home/animations";
 
 export default function AboutHeroSection() {
   return (
-    <section className="relative min-h-[70vh] flex items-center overflow-hidden bg-[#070b14]">
+    <section className="relative min-h-[70vh] flex items-center overflow-hidden bg-background">
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_70%_30%,_rgba(245,158,11,0.08)_0%,_transparent_50%)]" />
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_30%_70%,_rgba(28,71,97,0.25)_0%,_transparent_60%)]" />
 
@@ -29,7 +29,7 @@ export default function AboutHeroSection() {
 
             <motion.h1
               variants={fadeInUp}
-              className="text-4xl sm:text-5xl lg:text-[3.5rem] font-bold text-white tracking-tight leading-[1.1] mt-2"
+              className="text-4xl sm:text-5xl lg:text-[3.5rem] font-bold text-text-dark tracking-tight leading-[1.1] mt-2"
             >
               Si sabes que puedes rendir mas,{" "}
               <span className="text-secondary">esto no va de entrenar mas.</span>
@@ -38,7 +38,7 @@ export default function AboutHeroSection() {
             <motion.div variants={fadeInUp} className="mt-10">
               <Link
                 href="/contact"
-                className="inline-flex items-center justify-center bg-secondary text-[#0f172a] font-bold text-base px-8 py-4 rounded-full hover:bg-secondary-light hover:shadow-[0_0_30px_rgba(245,158,11,0.35)] hover:-translate-y-0.5 transition-all duration-300"
+                className="inline-flex items-center justify-center bg-secondary text-text-dark font-bold text-base px-8 py-4 rounded-full hover:bg-secondary-light hover:shadow-glow hover:-translate-y-0.5 transition-all duration-300"
               >
                 Pide tu sesion gratuita
               </Link>
@@ -54,7 +54,7 @@ export default function AboutHeroSection() {
             <div className="relative w-[280px] sm:w-[340px] lg:w-[380px]">
               <div className="absolute -inset-4 bg-secondary/10 rounded-[2rem] blur-2xl" />
 
-              <div className="relative aspect-[4/5] rounded-[2rem] overflow-hidden shadow-2xl shadow-black/40 border border-white/5">
+              <div className="relative aspect-[4/5] rounded-[2rem] overflow-hidden shadow-2xl shadow-black/40 border border-border">
                 <Image
                   src="/wp/profile-photo.webp"
                   alt="Pere Barcelo - Psicologo Deportivo"

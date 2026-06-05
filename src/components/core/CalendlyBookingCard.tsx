@@ -16,7 +16,7 @@ const CalendlyBookingCard = () => {
       </p>
 
       {hasCalendly ? (
-        <div className="mt-8 rounded-2xl overflow-hidden border border-secondary/20 bg-background-alt/60 min-h-[720px]">
+        <div className="mt-8 rounded-2xl overflow-hidden border border-secondary/20 bg-background-alt min-h-[720px]">
           <iframe
             src={calendlyUrl}
             title="Calendly booking"
@@ -27,7 +27,7 @@ const CalendlyBookingCard = () => {
           />
         </div>
       ) : (
-        <div className="mt-8 rounded-2xl border border-dashed border-secondary/30 bg-background-alt/60 p-8 flex flex-col justify-center items-start gap-4 min-h-[320px]">
+        <div className="mt-8 rounded-2xl border border-dashed border-secondary/30 bg-background-alt p-8 flex flex-col justify-center items-start gap-4 min-h-[320px]">
           <p className="text-text leading-relaxed">
             El bloque de reserva estara disponible en cuanto se configure la URL publica de
             Calendly.

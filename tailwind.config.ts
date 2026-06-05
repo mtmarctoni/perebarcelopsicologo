@@ -21,14 +21,15 @@ export default {
         dark: 'var(--primary-dark)',     // Darker variation #1C4761
       },
       secondary: {
-        DEFAULT: 'var(--secondary)',  // White text FFC300
-        light: 'var(--secondary-light)',    // Lighter variation FFEA00
-        dark: 'var(--secondary-dark)',     // Darker variation CC9C00
+        DEFAULT: 'rgb(var(--secondary-rgb) / <alpha-value>)',
+        light: 'rgb(var(--secondary-light-rgb) / <alpha-value>)',
+        dark: 'rgb(var(--secondary-dark-rgb) / <alpha-value>)',
       },
       text: {
         DEFAULT: 'var(--text)',  // Main text color
         light: 'var(--text-light)',
         dark: 'var(--text-dark)', // Secondary text color
+        inverse: 'var(--text-inverse)',
       },
       background: {
         DEFAULT: 'var(--background)',  // Default background
@@ -36,6 +37,13 @@ export default {
         navbar: 'var(--background-navbar)',   
         navbarAlt: 'var(--background-navbar-alt)',    
         footer: 'var(--background-footer)',
+      },
+      card: {
+        DEFAULT: 'var(--card)',
+        hover: 'var(--card-hover)',
+      },
+      border: {
+        DEFAULT: 'var(--border)',
       },
       success: 'var(--success)',  // Success color
       warning: 'var(--warning)',  // Warning color

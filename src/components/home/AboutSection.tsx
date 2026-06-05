@@ -8,7 +8,7 @@ import SectionLabel from "@/components/composables/SectionLabel";
 
 export default function AboutSection() {
   return (
-    <section className="relative bg-[#f8fafc] overflow-hidden">
+    <section className="relative bg-background overflow-hidden">
       <div className="relative z-10 max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 py-24 lg:py-32">
         <div className="grid lg:grid-cols-12 gap-12 lg:gap-16 items-center">
           {/* Image */}
@@ -45,25 +45,25 @@ export default function AboutSection() {
             transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1], delay: 0.15 }}
           >
             <SectionLabel text="Sobre mi" />
-            <h2 className="text-4xl sm:text-5xl font-bold text-[#0f172a] tracking-tight">
+            <h2 className="text-4xl sm:text-5xl font-bold text-text-dark tracking-tight">
               Quien soy
             </h2>
 
             <div className="mt-8 space-y-5">
-              <p className="text-xl text-[#0f172a] font-medium leading-relaxed">
+              <p className="text-xl text-text-dark font-medium leading-relaxed">
                 Soy Pere Barcelo, psicologo deportivo.
               </p>
-              <p className="text-lg text-[#475569] leading-relaxed">
+              <p className="text-lg text-text leading-relaxed">
                 Trabajo con deportistas que entrenan bien pero no consiguen rendir igual en
                 competicion.
               </p>
-              <p className="text-lg text-[#475569] leading-relaxed">
+              <p className="text-lg text-text leading-relaxed">
                 Mi enfoque es practico: desde la primera sesion sabes exactamente que hacer cuando
                 compites.
               </p>
             </div>
 
-            <div className="mt-8 p-6 rounded-2xl bg-[#0f172a] text-white">
+            <div className="mt-8 p-6 rounded-2xl bg-primary-dark text-text-inverse">
               <p className="text-lg font-bold">
                 No necesitas mas entrenamiento. Necesitas entrenar tu mente.
               </p>
@@ -72,7 +72,7 @@ export default function AboutSection() {
             <div className="mt-8">
               <Link
                 href="/contact"
-                className="inline-flex items-center justify-center bg-secondary text-[#0f172a] font-bold px-8 py-4 rounded-full hover:bg-secondary-light hover:shadow-[0_0_30px_rgba(245,158,11,0.35)] hover:-translate-y-0.5 transition-all duration-300"
+                className="inline-flex items-center justify-center bg-secondary text-text-dark font-bold px-8 py-4 rounded-full hover:bg-secondary-light hover:shadow-glow hover:-translate-y-0.5 transition-all duration-300"
               >
                 Reserva tu sesion gratuita
               </Link>
