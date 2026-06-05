@@ -10,7 +10,7 @@ import { fadeInUp, staggerContainer } from "@/components/home/animations";
 
 export default function HeroSection() {
   return (
-    <section className="relative min-h-screen flex items-center overflow-hidden bg-[#070b14]">
+    <section className="relative min-h-screen flex items-center overflow-hidden bg-background">
       {/* Background layers */}
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_80%_20%,_rgba(245,158,11,0.08)_0%,_transparent_50%)]" />
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_20%_80%,_rgba(28,71,97,0.25)_0%,_transparent_60%)]" />
@@ -25,8 +25,8 @@ export default function HeroSection() {
       />
 
       {/* Decorative diagonal lines */}
-      <div className="absolute top-0 right-[15%] w-px h-full bg-gradient-to-b from-transparent via-white/5 to-transparent" />
-      <div className="absolute top-0 right-[35%] w-px h-full bg-gradient-to-b from-transparent via-white/[0.03] to-transparent hidden lg:block" />
+      <div className="absolute top-0 right-[15%] w-px h-full bg-gradient-to-b from-transparent via-border to-transparent" />
+      <div className="absolute top-0 right-[35%] w-px h-full bg-gradient-to-b from-transparent via-card to-transparent hidden lg:block" />
 
       <div className="relative z-10 w-full max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 py-28 lg:py-0">
         <div className="grid lg:grid-cols-12 gap-10 lg:gap-8 items-center min-h-[85vh]">
@@ -43,7 +43,7 @@ export default function HeroSection() {
 
             <motion.h1
               variants={fadeInUp}
-              className="text-[2.6rem] sm:text-5xl lg:text-[3.5rem] xl:text-[4rem] font-bold text-white leading-[1.1] tracking-tight mt-2"
+              className="text-[2.6rem] sm:text-5xl lg:text-[3.5rem] xl:text-[4rem] font-bold text-text-dark leading-[1.1] tracking-tight mt-2"
             >
               Entrenas bien.
               <br />
@@ -66,7 +66,7 @@ export default function HeroSection() {
 
             <motion.p
               variants={fadeInUp}
-              className="mt-7 text-lg sm:text-xl text-white/60 max-w-md leading-relaxed"
+              className="mt-7 text-lg sm:text-xl text-text-light max-w-md leading-relaxed"
             >
               Rindes peor, dudas mas o te bloqueas en momentos clave. No es falta de nivel. Es como
               gestionas la presion.
@@ -75,13 +75,13 @@ export default function HeroSection() {
             <motion.div variants={fadeInUp} className="mt-10 flex flex-col sm:flex-row gap-4">
               <Link
                 href="/contact"
-                className="inline-flex items-center justify-center bg-secondary text-[#0f172a] font-bold text-base px-8 py-4 rounded-full hover:bg-secondary-light hover:shadow-[0_0_30px_rgba(245,158,11,0.35)] hover:-translate-y-0.5 transition-all duration-300"
+                className="inline-flex items-center justify-center bg-secondary text-text-dark font-bold text-base px-8 py-4 rounded-full hover:bg-secondary-light hover:shadow-glow hover:-translate-y-0.5 transition-all duration-300"
               >
                 Quiero saber que me esta bloqueando
               </Link>
               <Link
                 href="/servicios"
-                className="inline-flex items-center justify-center text-white/80 font-medium text-base px-8 py-4 rounded-full border border-white/15 hover:bg-white/5 hover:border-white/30 transition-all duration-300"
+                className="inline-flex items-center justify-center text-text-dark font-medium text-base px-8 py-4 rounded-full border border-border hover:bg-card-hover hover:border-secondary/30 transition-all duration-300"
               >
                 Ver como trabajo
               </Link>
@@ -89,7 +89,7 @@ export default function HeroSection() {
 
             <motion.div
               variants={fadeInUp}
-              className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-2 text-white/40 text-sm"
+              className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-2 text-text-dark opacity-40 text-sm"
             >
               <span className="flex items-center gap-2">
                 <CheckIcon className="w-4 h-4 text-secondary" />
@@ -119,7 +119,7 @@ export default function HeroSection() {
               <div className="absolute -bottom-8 -right-8 w-48 h-48 bg-secondary/8 rounded-full blur-3xl" />
 
               {/* Main image container with asymmetric frame */}
-              <div className="relative aspect-[3/4] rounded-[2rem] overflow-hidden shadow-2xl shadow-black/40 border border-white/5">
+              <div className="relative aspect-[3/4] rounded-[2rem] overflow-hidden shadow-2xl shadow-black/40 border border-border">
                 <Image
                   src="/wp/home-hero.webp"
                   alt="Pere Barcelo - Psicologo Deportivo"
@@ -134,13 +134,13 @@ export default function HeroSection() {
 
               {/* Floating stat card */}
               <motion.div
-                className="absolute -left-6 sm:-left-10 bottom-12 bg-[#0f172a]/90 backdrop-blur-md border border-white/10 rounded-2xl px-5 py-4 shadow-xl"
+                className="absolute -left-6 sm:-left-10 bottom-12 bg-background-alt backdrop-blur-md border border-border rounded-2xl px-5 py-4 shadow-xl"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.8, duration: 0.6 }}
               >
-                <p className="text-2xl font-bold text-white">+10</p>
-                <p className="text-xs text-white/50 mt-0.5">anos de experiencia</p>
+                <p className="text-2xl font-bold text-text-dark">+10</p>
+                <p className="text-xs text-text-light mt-0.5">anos de experiencia</p>
               </motion.div>
 
               {/* Floating badge */}
@@ -150,7 +150,7 @@ export default function HeroSection() {
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: 1, duration: 0.6 }}
               >
-                <p className="text-xs font-bold text-[#0f172a] uppercase tracking-wide">
+                <p className="text-xs font-bold text-text-dark uppercase tracking-wide">
                   Alto rendimiento
                 </p>
               </motion.div>
@@ -166,9 +166,11 @@ export default function HeroSection() {
         animate={{ opacity: 1 }}
         transition={{ delay: 1.4 }}
       >
-        <span className="text-white/30 text-xs uppercase tracking-widest">Descubre mas</span>
+        <span className="text-text-dark opacity-30 text-xs uppercase tracking-widest">
+          Descubre mas
+        </span>
         <motion.div
-          className="w-5 h-8 border-2 border-white/20 rounded-full flex justify-center pt-1.5"
+          className="w-5 h-8 border-2 border-border rounded-full flex justify-center pt-1.5"
           animate={{ y: [0, 6, 0] }}
           transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
         >

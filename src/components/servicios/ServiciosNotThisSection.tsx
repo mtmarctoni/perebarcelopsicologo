@@ -19,13 +19,13 @@ const yesItems = [
 
 export default function ServiciosNotThisSection() {
   return (
-    <section className="relative bg-[#f8fafc] overflow-hidden">
+    <section className="relative bg-background overflow-hidden">
       <div className="relative z-10 max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 py-24 lg:py-32">
         <div className="grid lg:grid-cols-2 gap-16">
           <div>
             <AnimatedSection>
               <SectionLabel text="Diferencia" />
-              <h2 className="text-4xl sm:text-5xl font-bold text-[#0f172a] tracking-tight leading-[1.1]">
+              <h2 className="text-4xl sm:text-5xl font-bold text-text-dark tracking-tight leading-[1.1]">
                 Que NO es esto
               </h2>
             </AnimatedSection>
@@ -57,7 +57,7 @@ export default function ServiciosNotThisSection() {
                       <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
                     </svg>
                   </div>
-                  <p className="text-[#0f172a] font-medium">{item.text}</p>
+                  <p className="text-text-dark font-medium">{item.text}</p>
                 </motion.div>
               ))}
             </motion.div>
@@ -65,7 +65,7 @@ export default function ServiciosNotThisSection() {
 
           <div>
             <AnimatedSection>
-              <h2 className="text-4xl sm:text-5xl font-bold text-[#0f172a] tracking-tight leading-[1.1] lg:mt-16">
+              <h2 className="text-4xl sm:text-5xl font-bold text-text-dark tracking-tight leading-[1.1] lg:mt-16">
                 Esto es entrenamiento mental
                 <br />
                 <span className="text-secondary">aplicado a competicion real</span>
@@ -99,7 +99,7 @@ export default function ServiciosNotThisSection() {
                       <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
                     </svg>
                   </div>
-                  <p className="text-[#0f172a] font-medium">{item.text}</p>
+                  <p className="text-text-dark font-medium">{item.text}</p>
                 </motion.div>
               ))}
             </motion.div>

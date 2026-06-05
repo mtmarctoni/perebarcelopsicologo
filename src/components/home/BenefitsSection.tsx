@@ -18,9 +18,9 @@ const benefits = [
 
 export default function BenefitsSection() {
   return (
-    <section className="relative bg-[#f8fafc] overflow-hidden">
+    <section className="relative bg-background overflow-hidden">
       {/* Large background numeral */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[20rem] font-bold text-[#0f172a]/[0.02] select-none pointer-events-none">
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[20rem] font-bold text-text-dark opacity-[0.02] select-none pointer-events-none">
         05
       </div>
 
@@ -29,18 +29,18 @@ export default function BenefitsSection() {
           {/* Left: heading + CTA */}
           <AnimatedSection className="lg:sticky lg:top-32">
             <SectionLabel text="Resultados" />
-            <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-[#0f172a] tracking-tight leading-[1.1]">
+            <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-text-dark tracking-tight leading-[1.1]">
               Que
               <br />
               <span className="text-secondary">conseguiras</span>
             </h2>
-            <p className="mt-6 text-lg text-[#475569] leading-relaxed max-w-md">
+            <p className="mt-6 text-lg text-text leading-relaxed max-w-md">
               Herramientas concretas para aplicar desde la primera sesion. Sin teorias abstractas.
             </p>
             <div className="mt-10">
               <Link
                 href="/contact"
-                className="inline-flex items-center justify-center bg-[#0f172a] text-white font-semibold px-8 py-4 rounded-full hover:bg-secondary hover:text-[#0f172a] hover:shadow-[0_0_30px_rgba(245,158,11,0.3)] transition-all duration-300"
+                className="inline-flex items-center justify-center bg-primary-dark text-text-inverse font-semibold px-8 py-4 rounded-full hover:bg-secondary hover:text-text-dark hover:shadow-glow transition-all duration-300"
               >
                 Quiero mejorar mi rendimiento
               </Link>
@@ -59,12 +59,12 @@ export default function BenefitsSection() {
               <motion.div
                 key={text}
                 variants={fadeInUp}
-                className="flex items-start gap-5 p-6 rounded-2xl bg-white border border-[#e2e8f0] shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-300 group"
+                className="flex items-start gap-5 p-6 rounded-2xl bg-background-alt border border-border shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-300 group"
               >
                 <div className="w-12 h-12 rounded-xl bg-secondary/10 flex items-center justify-center shrink-0 group-hover:bg-secondary group-hover:scale-110 transition-all duration-300">
-                  <CheckIcon className="w-6 h-6 text-secondary group-hover:text-[#0f172a] transition-colors duration-300" />
+                  <CheckIcon className="w-6 h-6 text-secondary group-hover:text-text-dark transition-colors duration-300" />
                 </div>
-                <p className="text-lg font-medium text-[#0f172a] leading-relaxed pt-2">{text}</p>
+                <p className="text-lg font-medium text-text-dark leading-relaxed pt-2">{text}</p>
               </motion.div>
             ))}
           </motion.div>
