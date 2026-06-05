@@ -3,69 +3,65 @@
 @tailwind utilities;
 
 :root {
-  /* Core colors */
-  --primary: #b9d8eb;
+  --primary: #1c4761;
   --primary-light: #d4e6f3;
   --primary-dark: #1c4761;
 
-  /* Background colors */
   --background: #f8fafc;
-  --background-alt: #f1f5f9;
-  --background-navbar: rgba(28, 71, 97, 0.95);
-  --background-navbar-alt: #d0d3d6;
+  --background-alt: #ffffff;
+  --background-navbar: rgba(248, 250, 252, 0.92);
   --background-footer: #0f2537;
 
-  /* Accent colors */
-  --secondary: #f59e0b;
-  --secondary-light: #fcd34d;
-  --secondary-dark: #d97706;
+  --card: #ffffff;
+  --card-hover: #f1f5f9;
 
-  /* Text colors */
-  --text: #475569;
+  --secondary-rgb: 245 158 11;
+  --secondary-light-rgb: 252 211 77;
+  --secondary-dark-rgb: 217 119 6;
+
+  --text: #334155;
   --text-light: #64748b;
   --text-dark: #0f172a;
+  --text-inverse: #ffffff;
 
-  /* UI colors */
+  --border: #e2e8f0;
+  --glow: rgba(245, 158, 11, 0.3);
+
   --success: #22c55e;
   --warning: #f59e0b;
   --error: #ef4444;
 }
 
 .dark {
-  /* Restore the previous dark-mode blue palette */
   --primary: #2f4f7f;
   --primary-light: #1c4761;
-  --primary-darker: #0f2537;
+  --primary-dark: #0f2537;
 
-  /* Background colors */
-  --background: #0f172a;
-  --background-alt: #1e293b;
-  --background-navbar: rgba(15, 37, 55, 0.92);
-  --background-navbar-alt: #d0d3d6;
-  --background-footer: #0a1a25;
+  --background: #070b14;
+  --background-alt: #0f172a;
+  --background-navbar: rgba(7, 11, 20, 0.95);
+  --background-footer: #050810;
 
-  /* Accent colors */
-  --secondary: #f59e0b;
-  --secondary-light: #fcd34d;
-  --secondary-dark: #fbbf24;
+  --card: rgba(255, 255, 255, 0.03);
+  --card-hover: rgba(255, 255, 255, 0.06);
 
-  /* Text colors */
+  --secondary-rgb: 245 158 11;
+  --secondary-light-rgb: 252 211 77;
+  --secondary-dark-rgb: 251 191 36;
+
   --text: #e2e8f0;
-  --text-light: #cbd5e1;
+  --text-light: #94a3b8;
   --text-dark: #f8fafc;
+  --text-inverse: #ffffff;
 
-  /* UI colors */
-  --success: #22c55e;
-  --warning: #f59e0b;
-  --error: #ef4444;
+  --border: rgba(255, 255, 255, 0.06);
+  --glow: rgba(245, 158, 11, 0.35);
 }
 
-/* Smooth scrolling */
 html {
   scroll-behavior: smooth;
 }
 
-/* Selection styling */
 ::selection {
   background-color: rgba(245, 158, 11, 0.3);
   color: inherit;

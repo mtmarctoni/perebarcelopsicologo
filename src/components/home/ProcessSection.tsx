@@ -31,13 +31,13 @@ const steps = [
 
 export default function ProcessSection() {
   return (
-    <section className="relative bg-[#070b14] overflow-hidden">
+    <section className="relative bg-background overflow-hidden">
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_30%_50%,_rgba(28,71,97,0.2)_0%,_transparent_60%)]" />
 
       <div className="relative z-10 max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 py-24 lg:py-32">
         <AnimatedSection className="text-center mb-20">
           <SectionLabel text="Metodologia" />
-          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white tracking-tight">
+          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-text-dark tracking-tight">
             Como <span className="text-secondary">trabajaremos</span>
           </h2>
         </AnimatedSection>
@@ -67,8 +67,8 @@ export default function ProcessSection() {
                     <div className="absolute inset-0 bg-secondary/20 rounded-2xl blur-lg" />
                   </div>
                   <div className="flex-1">
-                    <h3 className="text-xl font-bold text-white mt-1 lg:mt-0">{item.title}</h3>
-                    <p className="text-white/50 mt-2 leading-relaxed">{item.desc}</p>
+                    <h3 className="text-xl font-bold text-text-dark mt-1 lg:mt-0">{item.title}</h3>
+                    <p className="text-text-light mt-2 leading-relaxed">{item.desc}</p>
                   </div>
                 </div>
               </motion.div>

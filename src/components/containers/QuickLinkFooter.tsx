@@ -8,7 +8,7 @@ interface Props {
 const QuickLinkFooter = ({ link }: Props) => (
   <Link
     href={link.url}
-    className="text-white/80 hover:text-white transition-colors duration-300 text-sm"
+    className="text-text-dark opacity-80 hover:opacity-100 transition-all duration-300 text-sm"
   >
     {link.label}
   </Link>

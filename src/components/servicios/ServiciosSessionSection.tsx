@@ -31,16 +31,16 @@ const steps = [
 
 export default function ServiciosSessionSection() {
   return (
-    <section className="relative bg-[#0f172a] overflow-hidden">
+    <section className="relative bg-background-alt overflow-hidden">
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_40%_60%,_rgba(28,71,97,0.15)_0%,_transparent_60%)]" />
 
       <div className="relative z-10 max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 py-24 lg:py-32">
         <AnimatedSection className="text-center mb-16">
           <SectionLabel text="Proceso" />
-          <h2 className="text-4xl sm:text-5xl font-bold text-white tracking-tight">
+          <h2 className="text-4xl sm:text-5xl font-bold text-text-dark tracking-tight">
             Como es una <span className="text-secondary">sesion</span>
           </h2>
-          <p className="mt-4 text-lg text-white/50 max-w-xl mx-auto">
+          <p className="mt-4 text-lg text-text-light max-w-xl mx-auto">
             En cada sesion trabajamos tu caso real.
           </p>
         </AnimatedSection>
@@ -56,23 +56,21 @@ export default function ServiciosSessionSection() {
             <motion.div
               key={item.step}
               variants={fadeInUp}
-              className="flex gap-5 p-6 rounded-2xl bg-white/[0.03] border border-white/[0.06] hover:border-secondary/20 transition-all duration-300"
+              className="flex gap-5 p-6 rounded-2xl bg-card border border-border hover:border-secondary/20 transition-all duration-300"
             >
               <div className="w-12 h-12 rounded-2xl bg-secondary/10 border border-secondary/20 flex items-center justify-center text-secondary font-bold text-lg shrink-0">
                 {item.step}
               </div>
               <div>
-                <h3 className="text-lg font-bold text-white">{item.title}</h3>
-                <p className="text-white/50 mt-1 leading-relaxed">{item.desc}</p>
+                <h3 className="text-lg font-bold text-text-dark">{item.title}</h3>
+                <p className="text-text-light mt-1 leading-relaxed">{item.desc}</p>
               </div>
             </motion.div>
           ))}
         </motion.div>
 
         <AnimatedSection className="mt-12 text-center">
-          <p className="text-lg text-white/70 font-medium">
-            Sales sabiendo que hacer en cada momento.
-          </p>
+          <p className="text-lg text-text font-medium">Sales sabiendo que hacer en cada momento.</p>
         </AnimatedSection>
       </div>
     </section>

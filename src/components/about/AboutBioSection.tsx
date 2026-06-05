@@ -8,7 +8,7 @@ import SectionLabel from "@/components/composables/SectionLabel";
 
 export default function AboutBioSection() {
   return (
-    <section className="relative bg-[#0f172a] overflow-hidden">
+    <section className="relative bg-background-alt overflow-hidden">
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_20%_50%,_rgba(245,158,11,0.05)_0%,_transparent_60%)]" />
 
       <div className="relative z-10 max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 py-24 lg:py-32">
@@ -44,30 +44,32 @@ export default function AboutBioSection() {
             transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1], delay: 0.15 }}
           >
             <SectionLabel text="Sobre mi" />
-            <h2 className="text-4xl sm:text-5xl font-bold text-white tracking-tight">Quien soy</h2>
+            <h2 className="text-4xl sm:text-5xl font-bold text-text-dark tracking-tight">
+              Quien soy
+            </h2>
 
             <div className="mt-8 space-y-5">
-              <p className="text-xl text-white font-medium leading-relaxed">
+              <p className="text-xl text-text-dark font-medium leading-relaxed">
                 Soy Pere Barcelo, psicologo deportivo.
               </p>
-              <p className="text-lg text-white/60 leading-relaxed">
+              <p className="text-lg text-text-light leading-relaxed">
                 Trabajo con deportistas de diferentes disciplinas, adaptando el proceso a cada caso.
               </p>
-              <p className="text-lg text-white/60 leading-relaxed">
+              <p className="text-lg text-text-light leading-relaxed">
                 Mi objetivo es hacerlo aplicable a tu realidad.
               </p>
             </div>
 
-            <p className="mt-6 text-lg text-white/80 font-medium">No complicarlo mas.</p>
+            <p className="mt-6 text-lg text-text-dark font-medium">No complicarlo mas.</p>
 
             <div className="mt-6 space-y-3">
-              <p className="text-lg text-white/60 leading-relaxed">
+              <p className="text-lg text-text-light leading-relaxed">
                 No necesitas cambiar quien eres como deportista.
               </p>
-              <p className="text-lg text-white font-bold leading-relaxed">
+              <p className="text-lg text-text-dark font-bold leading-relaxed">
                 Necesitas cambiar como gestionas lo que pasa cuando compites.
               </p>
-              <p className="text-lg text-white font-bold leading-relaxed">
+              <p className="text-lg text-text-dark font-bold leading-relaxed">
                 Si sabes que puedes rendir mas pero algo te frena, el siguiente paso es claro:
               </p>
             </div>
@@ -75,7 +77,7 @@ export default function AboutBioSection() {
             <div className="mt-8">
               <Link
                 href="/contact"
-                className="inline-flex items-center justify-center bg-secondary text-[#0f172a] font-bold px-8 py-4 rounded-full hover:bg-secondary-light hover:shadow-[0_0_30px_rgba(245,158,11,0.35)] hover:-translate-y-0.5 transition-all duration-300"
+                className="inline-flex items-center justify-center bg-secondary text-text-dark font-bold px-8 py-4 rounded-full hover:bg-secondary-light hover:shadow-glow hover:-translate-y-0.5 transition-all duration-300"
               >
                 Empieza tu proceso ahora
               </Link>
