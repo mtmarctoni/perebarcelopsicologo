@@ -27,6 +27,16 @@ export const viewport: Viewport = {
   themeColor: "#f8fafc",
 };
 
+const CookiebotHead = ({ cbid }: { cbid: string }) => (
+  <Script
+    id="Cookiebot"
+    src="https://consent.cookiebot.com/uc.js"
+    data-cbid={cbid}
+    type="text/javascript"
+    strategy="afterInteractive"
+  />
+);
+
 const GTMHead = ({ gtmId }: { gtmId: string }) => (
   <Script
     id="gtm-script"
@@ -60,10 +70,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   const gtmId = clientEnv.NEXT_PUBLIC_GTM_ID;
+  const cookiebotCbid = clientEnv.NEXT_PUBLIC_COOKIEBOT_CBID;
 
   return (
     <html lang="es" suppressHydrationWarning className="scroll-smooth">
       <head>
+        {cookiebotCbid && <CookiebotHead cbid={cookiebotCbid} />}
         {gtmId && <GTMHead gtmId={gtmId} />}
 
         {/* Preconnect to external domains */}

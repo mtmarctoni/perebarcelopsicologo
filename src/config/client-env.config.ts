@@ -17,11 +17,17 @@ const clientEnvSchema = z.object({
     .string()
     .optional()
     .transform((val) => val?.trim() || undefined),
+
+  NEXT_PUBLIC_COOKIEBOT_CBID: z
+    .string()
+    .optional()
+    .transform((val) => val?.trim() || undefined),
 });
 
 const parsed = clientEnvSchema.safeParse({
   NEXT_PUBLIC_CALENDLY_URL: process.env.NEXT_PUBLIC_CALENDLY_URL,
   NEXT_PUBLIC_GTM_ID: process.env.NEXT_PUBLIC_GTM_ID,
+  NEXT_PUBLIC_COOKIEBOT_CBID: process.env.NEXT_PUBLIC_COOKIEBOT_CBID,
 });
 
 if (!parsed.success) {
