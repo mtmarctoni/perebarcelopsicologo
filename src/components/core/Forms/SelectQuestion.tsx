@@ -1,21 +1,27 @@
+import { useTranslations } from "next-intl";
 import type { Question } from "@/types/navbar";
+
+const optionKeyMap: Record<string, string[]> = {
+  "4": ["preferenceOption1", "preferenceOption2", "preferenceOption3"],
+  "5": ["interestOption1", "interestOption2", "interestOption3"],
+};
 
 interface Props {
   question: Question;
   selectedAnswer: string;
   setSelectedAnswer: (answer: string) => void;
-  // handleSelectOption: (option: string) => void;
 }
 
-const SelectQuestion = ({
-  question,
-  selectedAnswer,
-  setSelectedAnswer,
-  // handleSelectOption
-}: Props) => {
+const SelectQuestion = ({ question, selectedAnswer, setSelectedAnswer }: Props) => {
+  const t = useTranslations("Form");
+  const optionKeys = optionKeyMap[question.id] ?? [];
+  const options = question.options?.map(
+    (opt, i) => (optionKeys[i] ? t(optionKeys[i]) : opt) ?? opt,
+  );
+
   return (
     <div className="space-y-4">
-      {question.options?.map((option) => (
+      {options?.map((option) => (
         <button
           type="button"
           key={option}
