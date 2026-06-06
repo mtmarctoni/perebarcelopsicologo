@@ -73,8 +73,8 @@
     "checkFreeSession": "Sesión inicial gratuita",
     "checkPersonalized": "100% personalizado",
     "checkOnline": "Online",
-    "statNumber": "+10",
-    "statLabel": "años de experiencia",
+    "statNumber": "2018",
+    "statLabel": "Empecé en",
     "badgeText": "Alto rendimiento",
     "scrollIndicator": "Descubre más",
     "heroImageAlt": "Pere Barceló - Psicólogo Deportivo"
@@ -82,11 +82,11 @@
   "PainPointsSection": {
     "sectionLabel": "Para ti",
     "heading": "Esto es para ti si al competir...",
-    "point1": "01. Empiezas bien, pero tras un error te vienes abajo",
-    "point2": "02. Aparecen dudas que no tienes entrenando",
-    "point3": "03. Te notas más tenso y menos fluido",
-    "point4": "04. Piensas demasiado en lugar de competir",
-    "point5": "05. Sientes que podrías rendir más, pero algo falla",
+    "point1": "Empiezas bien, pero tras un error te vienes abajo",
+    "point2": "Aparecen dudas que no tienes entrenando",
+    "point3": "Te notas más tenso y menos fluido",
+    "point4": "Piensas demasiado en lugar de competir",
+    "point5": "Sientes que podrías rendir más, pero algo falla",
     "emphasis": "No es falta de nivel. Es cómo gestionas lo que pasa en tu cabeza cuando compites."
   },
   "BenefitsSection": {
@@ -178,7 +178,7 @@
   },
   "AboutWhySection": {
     "sectionLabel": "Motivación",
-    "heading": "Por qué hago esto",
+    "heading": "¿Por qué hago esto?",
     "paragraph1": "He visto a muchos deportistas con nivel quedarse lejos de su rendimiento real.",
     "paragraph2": "No por falta de entrenamiento. No por falta de talento.",
     "paragraph3": "Sino por no saber gestionar lo que pasa en su cabeza cuando compiten.",
@@ -187,7 +187,7 @@
   },
   "AboutExpectSection": {
     "sectionLabel": "Expectativas",
-    "heading": "Qué puedes esperar al trabajar conmigo",
+    "heading": "¿Qué puedes esperar al trabajar conmigo?",
     "item1": "No trabajamos sobre teoría, sino sobre lo que te pasa compitiendo",
     "item2": "Bajamos a tierra cada situación",
     "item3": "Sales de cada sesión con acciones concretas",
@@ -219,11 +219,11 @@
   "ServiciosPainSection": {
     "sectionLabel": "Para ti",
     "heading": "¿Te pasa esto cuando compites?",
-    "point1": "01. Empiezas bien, pero un error cambia tu rendimiento",
-    "point2": "02. Aparecen dudas que no tienes entrenando",
-    "point3": "03. Te tensas y pierdes fluidez",
-    "point4": "04. Piensas demasiado en vez de competir",
-    "point5": "05. Tu confianza depende del resultado o del momento",
+    "point1": "Empiezas bien, pero un error cambia tu rendimiento",
+    "point2": "Aparecen dudas que no tienes entrenando",
+    "point3": "Te tensas y pierdes fluidez",
+    "point4": "Piensas demasiado en vez de competir",
+    "point5": "Tu confianza depende del resultado o del momento",
     "emphasis": "No es falta de nivel. Es gestión del rendimiento bajo presión."
   },
   "ServiciosProblemSection": {
@@ -238,7 +238,7 @@
   },
   "ServiciosWorkSection": {
     "sectionLabel": "Contenido",
-    "heading": "Qué trabajaremos",
+    "heading": "¿Qué trabajaremos?",
     "subtitle": "Situaciones reales de competición:",
     "topic1Title": "Después de un error",
     "topic1Desc": "Cómo cortar la caída de rendimiento y volver al partido/competición",
@@ -251,7 +251,7 @@
   },
   "ServiciosTakeawaysSection": {
     "sectionLabel": "Resultados",
-    "heading": "Qué vas a llevar",
+    "heading": "¿Qué te vas a llevar?",
     "subtitle": "No es teoría, es aplicación directa. Herramientas que puedes usar desde la primera sesión.",
     "item1": "Qué hacer justo después de un error",
     "item2": "Cómo gestionar pensamientos en competición",
@@ -260,7 +260,7 @@
   },
   "ServiciosSessionSection": {
     "sectionLabel": "Proceso",
-    "heading": "Cómo es una sesión",
+    "heading": "¿Cómo es una sesión?",
     "subtitle": "En cada sesión trabajamos tu caso real.",
     "step1Title": "1. Analizamos situaciones concretas de competición",
     "step1Desc": "No hablamos en general. Trabajamos tu caso real.",

@@ -20,7 +20,7 @@ const Footer = () => {
 
   return (
     <footer className="relative bg-background-footer overflow-hidden">
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_30%_50%,_rgba(245,158,11,0.04)_0%,_transparent_60%)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_30%_50%,_rgba(185,216,235,0.04)_0%,_transparent_60%)]" />
 
       <div className="relative z-10 max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 pt-16 pb-8">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 lg:gap-8">
@@ -108,7 +108,7 @@ const Footer = () => {
             </p>
             <Link
               href="/contact"
-              className="inline-flex items-center justify-center bg-secondary text-text-dark text-sm font-bold px-6 py-3 rounded-full hover:bg-secondary-light hover:shadow-glow hover:-translate-y-0.5 transition-all duration-300"
+              className="inline-flex items-center justify-center text-center bg-secondary text-text-dark text-sm font-bold px-6 py-3 rounded-full hover:bg-secondary-light hover:shadow-glow hover:-translate-y-0.5 transition-all duration-300"
             >
               {t("ctaButton")}
             </Link>

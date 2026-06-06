@@ -8,12 +8,7 @@ import { usePathname, useRouter } from "@/i18n/routing";
 
 import { BarsIcon, CrossIcon } from "../composables/Icons";
 
-const navItems = [
-  { url: "/" },
-  { url: "/about" },
-  { url: "/servicios" },
-  { url: "/contact" },
-] as const;
+const navItems = [{ url: "/" }, { url: "/about" }, { url: "/servicios" }] as const;
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);

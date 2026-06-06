@@ -40,7 +40,7 @@ export default function AboutObjectiveSection() {
                   <svg
                     role="img"
                     aria-label="Checkmark"
-                    className="w-4 h-4 text-secondary group-hover:text-text-dark transition-colors duration-300"
+                    className="w-4 h-4 text-primary group-hover:text-text-dark transition-colors duration-300"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"

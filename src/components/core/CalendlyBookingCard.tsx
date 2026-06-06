@@ -9,7 +9,7 @@ const CalendlyBookingCard = () => {
 
   return (
     <div className="bg-background rounded-3xl shadow-card p-8 sm:p-10 h-full flex flex-col">
-      <span className="text-secondary text-sm font-semibold uppercase tracking-widest">
+      <span className="text-primary text-sm font-semibold uppercase tracking-widest">
         {t("label")}
       </span>
       <h2 className="text-3xl font-bold text-text-dark mt-3 tracking-tight">{t("heading")}</h2>

@@ -73,8 +73,8 @@
     "checkFreeSession": "Sessió inicial gratuïta",
     "checkPersonalized": "100% personalitzat",
     "checkOnline": "Online",
-    "statNumber": "+10",
-    "statLabel": "anys d'experiència",
+    "statNumber": "2018",
+    "statLabel": "Vaig començar",
     "badgeText": "Alt rendiment",
     "scrollIndicator": "Descobreix més",
     "heroImageAlt": "Pere Barceló - Psicòleg Esportiu"
@@ -82,11 +82,11 @@
   "PainPointsSection": {
     "sectionLabel": "Per a tu",
     "heading": "Això és per a tu si al competir...",
-    "point1": "01. Comences bé, però després d'un error t'enfonses",
-    "point2": "02. Apareixen dubtes que no tens entrenant",
-    "point3": "03. Et notes més tens i menys fluid",
-    "point4": "04. Penses massa en lloc de competir",
-    "point5": "05. Sents que podries rendir més, però alguna cosa falla",
+    "point1": "Comences bé, però després d'un error t'enfonses",
+    "point2": "Apareixen dubtes que no tens entrenant",
+    "point3": "Et notes més tens i menys fluid",
+    "point4": "Penses massa en lloc de competir",
+    "point5": "Sents que podries rendir més, però alguna cosa falla",
     "emphasis": "No és falta de nivell. És com gestiones el que passa al teu cap quan competeixes."
   },
   "BenefitsSection": {
@@ -178,7 +178,7 @@
   },
   "AboutWhySection": {
     "sectionLabel": "Motivació",
-    "heading": "Per què faig això",
+    "heading": "¿Per què faig això?",
     "paragraph1": "He vist a molts esportistes amb nivell quedar-se lluny del seu rendiment real.",
     "paragraph2": "No per falta d'entrenament. No per falta de talent.",
     "paragraph3": "Sinó per no saber gestionar el que passa al seu cap quan competeixen.",
@@ -187,7 +187,7 @@
   },
   "AboutExpectSection": {
     "sectionLabel": "Expectatives",
-    "heading": "Què pots esperar al treballar amb mi",
+    "heading": "¿Què pots esperar al treballar amb mi?",
     "item1": "No treballem sobre teoria, sinó sobre el que et passa competint",
     "item2": "Baixem a terra cada situació",
     "item3": "Surtos de cada sessió amb accions concretes",
@@ -218,12 +218,12 @@
   },
   "ServiciosPainSection": {
     "sectionLabel": "Per a tu",
-    "heading": "Et passa això quan competeixes?",
-    "point1": "01. Comences bé, però un error canvia el teu rendiment",
-    "point2": "02. Apareixen dubtes que no tens entrenant",
-    "point3": "03. Et tenses i perds fluïdesa",
-    "point4": "04. Penses massa en lloc de competir",
-    "point5": "05. La teva confiança depèn del resultat o del moment",
+    "heading": "¿Et passa això quan competeixes?",
+    "point1": "Comences bé, però un error canvia el teu rendiment",
+    "point2": "Apareixen dubtes que no tens entrenant",
+    "point3": "Et tenses i perds fluïdesa",
+    "point4": "Penses massa en lloc de competir",
+    "point5": "La teva confiança depèn del resultat o del moment",
     "emphasis": "No és falta de nivell. És gestió del rendiment sota pressió."
   },
   "ServiciosProblemSection": {
@@ -238,7 +238,7 @@
   },
   "ServiciosWorkSection": {
     "sectionLabel": "Contingut",
-    "heading": "Què treballarem",
+    "heading": "¿Què treballarem?",
     "subtitle": "Situacions reals de competició:",
     "topic1Title": "Després d'un error",
     "topic1Desc": "Com tallar la caiguda de rendiment i tornar al partit/competició",
@@ -251,7 +251,7 @@
   },
   "ServiciosTakeawaysSection": {
     "sectionLabel": "Resultats",
-    "heading": "Què t'emportaràs",
+    "heading": "¿Què t'emportaràs?",
     "subtitle": "No és teoria, és aplicació directa. Eines que pots usar des de la primera sessió.",
     "item1": "Què fer just després d'un error",
     "item2": "Com gestionar pensaments en competició",
@@ -260,7 +260,7 @@
   },
   "ServiciosSessionSection": {
     "sectionLabel": "Procés",
-    "heading": "Com és una sessió",
+    "heading": "¿Com és una sessió?",
     "subtitle": "A cada sessió treballem el teu cas real.",
     "step1Title": "1. Analitzem situacions concretes de competició",
     "step1Desc": "No parlem en general. Treballem el teu cas real.",

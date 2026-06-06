@@ -65,7 +65,7 @@ export default function ServiciosNotThisSection() {
 
           <div>
             <AnimatedSection>
-              <h2 className="text-4xl sm:text-5xl font-bold text-text-dark tracking-tight leading-[1.1] lg:mt-16">
+              <h2 className="text-4xl sm:text-5xl font-bold text-text-dark tracking-tight leading-[1.1]">
                 {t("yesHeading")}
               </h2>
             </AnimatedSection>
@@ -87,7 +87,7 @@ export default function ServiciosNotThisSection() {
                     <svg
                       role="img"
                       aria-label="Checkmark"
-                      className="w-4 h-4 text-secondary"
+                      className="w-4 h-4 text-primary"
                       fill="none"
                       viewBox="0 0 24 24"
                       stroke="currentColor"
