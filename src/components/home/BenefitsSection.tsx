@@ -31,7 +31,7 @@ export default function BenefitsSection() {
             <div className="mt-10">
               <Link
                 href="/contact"
-                className="inline-flex items-center justify-center text-center bg-primary-dark text-text-inverse font-semibold px-8 py-4 rounded-full hover:bg-secondary hover:text-text-dark hover:shadow-glow transition-all duration-300"
+                className="inline-flex items-center justify-center text-center bg-primary-dark text-text-inverse font-semibold px-8 py-4 rounded-full hover:bg-secondary hover:text-text-dark dark:hover:text-[#0f172a] hover:shadow-glow transition-all duration-300"
               >
                 {t("cta")}
               </Link>

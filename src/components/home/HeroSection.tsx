@@ -50,7 +50,7 @@ export default function HeroSection() {
               {t("headingLine1")}
               <br />
               {t("headingBeforeHighlight")}
-              <span className="text-primary relative">
+              <span className="text-[#0D85D8] dark:text-primary relative">
                 {t("headingHighlight")}
                 <svg className="absolute -bottom-2 left-0 w-full" viewBox="0 0 200 12" fill="none">
                   <title>Underline decoration</title>
@@ -59,7 +59,7 @@ export default function HeroSection() {
                     stroke="currentColor"
                     strokeWidth="3"
                     strokeLinecap="round"
-                    className="text-primary/60"
+                    className="opacity-60"
                   />
                 </svg>
               </span>
@@ -76,7 +76,7 @@ export default function HeroSection() {
             <motion.div variants={fadeInUp} className="mt-10 flex flex-col sm:flex-row gap-4">
               <Link
                 href="/contact"
-                className="inline-flex items-center justify-center text-center bg-secondary text-text-dark font-bold text-base px-8 py-4 rounded-full hover:bg-secondary-light hover:shadow-glow hover:-translate-y-0.5 transition-all duration-300"
+                className="inline-flex items-center justify-center text-center bg-secondary text-text-dark dark:text-[#0f172a] font-bold text-base px-8 py-4 rounded-full hover:bg-secondary-light hover:shadow-glow hover:-translate-y-0.5 transition-all duration-300"
               >
                 {t("ctaPrimary")}
               </Link>
@@ -87,15 +87,15 @@ export default function HeroSection() {
               className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-2 text-text-dark opacity-40 text-sm"
             >
               <span className="flex items-center gap-2">
-                <CheckIcon className="w-4 h-4 text-secondary" />
+                <CheckIcon className="w-4 h-4 text-primary" />
                 {t("checkFreeSession")}
               </span>
               <span className="flex items-center gap-2">
-                <CheckIcon className="w-4 h-4 text-secondary" />
+                <CheckIcon className="w-4 h-4 text-primary" />
                 {t("checkPersonalized")}
               </span>
               <span className="flex items-center gap-2">
-                <CheckIcon className="w-4 h-4 text-secondary" />
+                <CheckIcon className="w-4 h-4 text-primary" />
                 {t("checkOnline")}
               </span>
             </motion.div>
