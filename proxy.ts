@@ -7,9 +7,16 @@ const intlMiddleware = createMiddleware(routing);
 
 const STAGING_HOST = process.env.STAGING_HOST || "app.perebarcelopsicologo.com";
 
+function normalizeHost(value: string): string {
+  return value.split(":")[0].toLowerCase();
+}
+
 function isStaging(request: NextRequest): boolean {
-  const host = request.headers.get("host") || request.nextUrl.host;
-  return host.includes(STAGING_HOST);
+  const hostHeader = request.headers.get("host") || request.nextUrl.host;
+  const host = normalizeHost(hostHeader);
+  const stagingHost = normalizeHost(STAGING_HOST);
+
+  return host === stagingHost || host.endsWith(`.${stagingHost}`);
 }
 
 function getUnauthorizedResponse(): NextResponse {
