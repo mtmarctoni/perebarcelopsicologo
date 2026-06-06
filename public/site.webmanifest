@@ -1,10 +1,10 @@
 {
-    "name": "Pere Barceló - Psicólogo Deportivo",
-    "short_name": "Pere Barceló",
-    "description": "Psicólogo Deportivo en Mallorca especializado en deportistas y equipos",
-    "start_url": "/",
-    "display": "standalone",
-    "background_color": "#ffffff",
-    "theme_color": "#000000",
-    "icons": []
-  }
+  "name": "Pere Barceló - Psicólogo Deportivo",
+  "short_name": "Pere Barceló",
+  "description": "Psicólogo Deportivo en Mallorca especializado en deportistas y equipos",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#000000",
+  "icons": []
+}
