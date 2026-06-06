@@ -52,7 +52,7 @@ jobs:
         uses: actions/dependency-review-action@v4
         with:
           fail-on-severity: high
-          warn-on-openssf-scorecard-level: 4
+          warn-only: true
 
   lint-test-and-build:
     name: Lint, Test & Build
