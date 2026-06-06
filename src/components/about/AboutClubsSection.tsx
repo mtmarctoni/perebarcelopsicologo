@@ -13,7 +13,7 @@ export default function AboutClubsSection() {
   const t = useTranslations("AboutClubsSection");
   return (
     <section className="relative bg-background-alt overflow-hidden">
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_0%,_rgba(245,158,11,0.06)_0%,_transparent_60%)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_0%,_rgba(185,216,235,0.06)_0%,_transparent_60%)]" />
 
       <div className="relative z-10 max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 py-24 lg:py-32">
         <AnimatedSection className="text-center mb-16 max-w-3xl mx-auto">

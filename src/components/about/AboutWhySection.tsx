@@ -26,13 +26,11 @@ export default function AboutWhySection() {
               <p className="text-lg text-text leading-relaxed">{t("paragraph1")}</p>
               <p className="text-lg text-text leading-relaxed">{t("paragraph2")}</p>
               <p className="text-lg text-text leading-relaxed">{t("paragraph3")}</p>
-              <div className="mt-8 p-6 rounded-2xl bg-primary-dark text-text-inverse">
-                <p className="text-lg font-bold">{t("highlight")}</p>
-              </div>
+              <p className="text-lg text-text-dark font-bold leading-relaxed">{t("highlight")}</p>
               <div className="mt-8">
                 <a
                   href="/contact"
-                  className="inline-flex items-center justify-center bg-secondary text-text-dark font-bold px-8 py-4 rounded-full hover:bg-secondary-light hover:shadow-glow hover:-translate-y-0.5 transition-all duration-300"
+                  className="inline-flex items-center justify-center text-center bg-secondary text-text-dark font-bold px-8 py-4 rounded-full hover:bg-secondary-light hover:shadow-glow hover:-translate-y-0.5 transition-all duration-300"
                 >
                   {t("cta")}
                 </a>

@@ -11,7 +11,7 @@ export default function ServiciosHeroSection() {
   const t = useTranslations("ServiciosHeroSection");
   return (
     <section className="relative min-h-[70vh] flex items-center overflow-hidden bg-background">
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_30%_70%,_rgba(245,158,11,0.08)_0%,_transparent_50%)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_30%_70%,_rgba(185,216,235,0.08)_0%,_transparent_50%)]" />
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_70%_30%,_rgba(28,71,97,0.25)_0%,_transparent_60%)]" />
 
       <div className="absolute top-0 left-[25%] w-px h-full bg-gradient-to-b from-transparent via-white/5 to-transparent" />
@@ -44,7 +44,7 @@ export default function ServiciosHeroSection() {
           <motion.div variants={fadeInUp} className="mt-10">
             <Link
               href="/contact"
-              className="inline-flex items-center justify-center bg-secondary text-text-dark font-bold text-base px-8 py-4 rounded-full hover:bg-secondary-light hover:shadow-glow hover:-translate-y-0.5 transition-all duration-300"
+              className="inline-flex items-center justify-center text-center bg-secondary text-text-dark font-bold text-base px-8 py-4 rounded-full hover:bg-secondary-light hover:shadow-glow hover:-translate-y-0.5 transition-all duration-300"
             >
               {t("cta")}
             </Link>

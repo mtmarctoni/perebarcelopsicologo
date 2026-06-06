@@ -39,7 +39,7 @@ export default function ServiciosWorkSection() {
               variants={fadeInUp}
               className="p-8 rounded-2xl bg-background-alt border border-border shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-300 group"
             >
-              <span className="text-secondary/30 text-4xl font-bold">{item.icon}</span>
+              <span className="text-primary/30 text-4xl font-bold">{item.icon}</span>
               <h3 className="text-xl font-bold text-text-dark mt-3">{item.title}</h3>
               <p className="text-text mt-2 leading-relaxed">{item.desc}</p>
             </motion.div>

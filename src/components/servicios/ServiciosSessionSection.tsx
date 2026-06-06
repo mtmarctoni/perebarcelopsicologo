@@ -41,7 +41,7 @@ export default function ServiciosSessionSection() {
               variants={fadeInUp}
               className="flex gap-5 p-6 rounded-2xl bg-card border border-border hover:border-secondary/20 transition-all duration-300"
             >
-              <div className="w-12 h-12 rounded-2xl bg-secondary/10 border border-secondary/20 flex items-center justify-center text-secondary font-bold text-lg shrink-0">
+              <div className="w-12 h-12 rounded-2xl bg-secondary/10 border border-secondary/20 flex items-center justify-center text-primary font-bold text-lg shrink-0">
                 {item.step}
               </div>
               <div>

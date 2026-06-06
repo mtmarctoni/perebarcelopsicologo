@@ -14,7 +14,7 @@ export default function HeroSection() {
   return (
     <section className="relative min-h-screen flex items-center overflow-hidden bg-background">
       {/* Background layers */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_80%_20%,_rgba(245,158,11,0.08)_0%,_transparent_50%)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_80%_20%,_rgba(185,216,235,0.08)_0%,_transparent_50%)]" />
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_20%_80%,_rgba(28,71,97,0.25)_0%,_transparent_60%)]" />
 
       {/* Subtle noise texture overlay */}
@@ -30,7 +30,7 @@ export default function HeroSection() {
       <div className="absolute top-0 right-[15%] w-px h-full bg-gradient-to-b from-transparent via-border to-transparent" />
       <div className="absolute top-0 right-[35%] w-px h-full bg-gradient-to-b from-transparent via-card to-transparent hidden lg:block" />
 
-      <div className="relative z-10 w-full max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 py-28 lg:py-0">
+      <div className="relative z-10 w-full max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 py-28 lg:pt-24 lg:pb-10">
         <div className="grid lg:grid-cols-12 gap-10 lg:gap-8 items-center min-h-[85vh]">
           {/* Text column */}
           <motion.div
@@ -50,7 +50,7 @@ export default function HeroSection() {
               {t("headingLine1")}
               <br />
               {t("headingBeforeHighlight")}
-              <span className="text-secondary relative">
+              <span className="text-primary relative">
                 {t("headingHighlight")}
                 <svg className="absolute -bottom-2 left-0 w-full" viewBox="0 0 200 12" fill="none">
                   <title>Underline decoration</title>
@@ -59,7 +59,7 @@ export default function HeroSection() {
                     stroke="currentColor"
                     strokeWidth="3"
                     strokeLinecap="round"
-                    className="text-secondary/60"
+                    className="text-primary/60"
                   />
                 </svg>
               </span>
@@ -76,15 +76,9 @@ export default function HeroSection() {
             <motion.div variants={fadeInUp} className="mt-10 flex flex-col sm:flex-row gap-4">
               <Link
                 href="/contact"
-                className="inline-flex items-center justify-center bg-secondary text-text-dark font-bold text-base px-8 py-4 rounded-full hover:bg-secondary-light hover:shadow-glow hover:-translate-y-0.5 transition-all duration-300"
+                className="inline-flex items-center justify-center text-center bg-secondary text-text-dark font-bold text-base px-8 py-4 rounded-full hover:bg-secondary-light hover:shadow-glow hover:-translate-y-0.5 transition-all duration-300"
               >
                 {t("ctaPrimary")}
-              </Link>
-              <Link
-                href="/servicios"
-                className="inline-flex items-center justify-center text-text-dark font-medium text-base px-8 py-4 rounded-full border border-border hover:bg-card-hover hover:border-secondary/30 transition-all duration-300"
-              >
-                {t("ctaSecondary")}
               </Link>
             </motion.div>
 
@@ -122,7 +116,7 @@ export default function HeroSection() {
               {/* Main image container with asymmetric frame */}
               <div className="relative aspect-[3/4] rounded-[2rem] overflow-hidden shadow-2xl shadow-black/40 border border-border">
                 <Image
-                  src="/wp/home-hero.webp"
+                  src="/profile/pere1-transparente.webp"
                   alt={t("heroImageAlt")}
                   fill
                   sizes="(max-width: 768px) 80vw, 480px"

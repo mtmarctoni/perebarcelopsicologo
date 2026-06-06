@@ -46,7 +46,7 @@ export default function ProcessSection() {
               >
                 <div className="flex flex-col lg:flex-row items-center lg:items-start gap-4">
                   <div className="relative">
-                    <div className="w-16 h-16 rounded-2xl bg-secondary/10 border border-secondary/20 flex items-center justify-center text-secondary font-bold text-xl z-10 relative">
+                    <div className="w-16 h-16 rounded-2xl bg-secondary/10 border border-secondary/20 flex items-center justify-center text-primary font-bold text-xl z-10 relative">
                       {item.step}
                     </div>
                     <div className="absolute inset-0 bg-secondary/20 rounded-2xl blur-lg" />

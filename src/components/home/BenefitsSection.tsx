@@ -31,7 +31,7 @@ export default function BenefitsSection() {
             <div className="mt-10">
               <Link
                 href="/contact"
-                className="inline-flex items-center justify-center bg-primary-dark text-text-inverse font-semibold px-8 py-4 rounded-full hover:bg-secondary hover:text-text-dark hover:shadow-glow transition-all duration-300"
+                className="inline-flex items-center justify-center text-center bg-primary-dark text-text-inverse font-semibold px-8 py-4 rounded-full hover:bg-secondary hover:text-text-dark hover:shadow-glow transition-all duration-300"
               >
                 {t("cta")}
               </Link>
@@ -53,7 +53,7 @@ export default function BenefitsSection() {
                 className="flex items-start gap-5 p-6 rounded-2xl bg-background-alt border border-border shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-300 group"
               >
                 <div className="w-12 h-12 rounded-xl bg-secondary/10 flex items-center justify-center shrink-0 group-hover:bg-secondary group-hover:scale-110 transition-all duration-300">
-                  <CheckIcon className="w-6 h-6 text-secondary group-hover:text-text-dark transition-colors duration-300" />
+                  <CheckIcon className="w-6 h-6 text-primary group-hover:text-text-dark transition-colors duration-300" />
                 </div>
                 <p className="text-lg font-medium text-text-dark leading-relaxed pt-2">{text}</p>
               </motion.div>
