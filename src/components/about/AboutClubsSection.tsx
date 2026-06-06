@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
+import { useTranslations } from "next-intl";
 
 import AnimatedSection from "@/components/composables/AnimatedSection";
 import SectionLabel from "@/components/composables/SectionLabel";
@@ -9,15 +10,16 @@ import { fadeInUp, staggerContainer } from "@/components/home/animations";
 import { clubs } from "@/utils/data";
 
 export default function AboutClubsSection() {
+  const t = useTranslations("AboutClubsSection");
   return (
     <section className="relative bg-background-alt overflow-hidden">
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_0%,_rgba(245,158,11,0.06)_0%,_transparent_60%)]" />
 
       <div className="relative z-10 max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 py-24 lg:py-32">
         <AnimatedSection className="text-center mb-16 max-w-3xl mx-auto">
-          <SectionLabel text="Experiencia" />
+          <SectionLabel text={t("sectionLabel")} />
           <h2 className="text-4xl sm:text-5xl font-bold text-text-dark tracking-tight">
-            He trabajado con deportistas de diferentes disciplinas y niveles competitivos.
+            {t("heading")}
           </h2>
         </AnimatedSection>
 
@@ -51,14 +53,8 @@ export default function AboutClubsSection() {
         </motion.div>
 
         <AnimatedSection className="mt-16 max-w-2xl mx-auto text-center">
-          <p className="text-xl text-text-light leading-relaxed">
-            Cada caso es distinto. Pero el patron suele repetirse:
-          </p>
-          <p className="text-xl text-text-dark font-bold mt-3">
-            Entrenan bien.
-            <br />
-            Pero compitiendo no rinden igual.
-          </p>
+          <p className="text-xl text-text-light leading-relaxed">{t("closing")}</p>
+          <p className="text-xl text-text-dark font-bold mt-3">{t("closingBold")}</p>
         </AnimatedSection>
       </div>
     </section>

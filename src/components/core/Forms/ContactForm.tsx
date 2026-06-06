@@ -1,5 +1,6 @@
 "use client";
 
+import { useTranslations } from "next-intl";
 import QuestionContainer from "@/components/containers/QuestionFormContainer";
 import { useContactFormState } from "@/hooks/useContactFormState";
 import { QuestionType } from "@/types/navbar";
@@ -10,6 +11,7 @@ import ProgressBar from "./ProgressBar";
 import QuestionContent from "./QuestionContent";
 
 export default function TypeformStyleForm() {
+  const t = useTranslations("Form");
   const {
     currentQuestion,
     selectedAnswer,
@@ -46,7 +48,7 @@ export default function TypeformStyleForm() {
             isLoading={isLoading}
           />
           {questions[currentQuestion].type !== QuestionType.SUCCESS && selectedAnswer && (
-            <div className="text-sm text-text-light">Presiona Enter para continuar</div>
+            <div className="text-sm text-text-light">{t("enterToContinue")}</div>
           )}
         </QuestionContainer>
       </div>

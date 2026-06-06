@@ -1,9 +1,12 @@
+import { useTranslations } from "next-intl";
+
 interface BackButtonProps {
   show: boolean;
   onClick: () => void;
 }
 
 const BackButton = ({ show, onClick }: BackButtonProps) => {
+  const t = useTranslations("Form");
   if (!show) return null;
 
   return (
@@ -12,7 +15,7 @@ const BackButton = ({ show, onClick }: BackButtonProps) => {
       onClick={onClick}
       className="text-sm text-text-light hover:text-secondary transition-colors"
     >
-      ← Volver atrás
+      {t("buttonBack")}
     </button>
   );
 };

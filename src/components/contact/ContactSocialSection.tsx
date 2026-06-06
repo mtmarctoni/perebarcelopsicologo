@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { useTranslations } from "next-intl";
 
 import AnimatedSection from "@/components/composables/AnimatedSection";
 import { EnvelopeIcon, InstagramIcon, LinkedinIcon } from "@/components/composables/Icons";
@@ -15,15 +16,16 @@ const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
 };
 
 export default function ContactSocialSection() {
+  const t = useTranslations("ContactSocialSection");
   return (
     <section className="relative bg-background overflow-hidden">
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_80%_50%,_rgba(245,158,11,0.04)_0%,_transparent_50%)]" />
 
       <div className="relative z-10 max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 py-24 lg:py-32">
         <AnimatedSection className="text-center mb-16">
-          <SectionLabel text="Redes" />
+          <SectionLabel text={t("sectionLabel")} />
           <h2 className="text-4xl sm:text-5xl font-bold text-text-dark tracking-tight mt-2">
-            Tambien puedes encontrarme en
+            {t("heading")}
           </h2>
         </AnimatedSection>
 

@@ -1,19 +1,15 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { useTranslations } from "next-intl";
 
 import CheckIcon from "@/components/composables/CheckIcon";
 import SectionLabel from "@/components/composables/SectionLabel";
 import { fadeInUp, staggerContainer } from "@/components/home/animations";
 
-const items = [
-  "Que hacer justo despues de un error",
-  "Como gestionar pensamientos en competicion",
-  "Como competir con presion sin bloquearte",
-  "Como construir una confianza mas estable",
-];
-
 export default function ServiciosProblemSection() {
+  const t = useTranslations("ServiciosProblemSection");
+  const items = [t("item1"), t("item2"), t("item3"), t("item4")];
   return (
     <section className="relative bg-background-alt overflow-hidden">
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_30%,_rgba(245,158,11,0.05)_0%,_transparent_60%)]" />
@@ -26,16 +22,12 @@ export default function ServiciosProblemSection() {
             viewport={{ once: true }}
             transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
           >
-            <SectionLabel text="El enfoque" />
+            <SectionLabel text={t("sectionLabel")} />
             <h2 className="text-4xl sm:text-5xl font-bold text-text-dark tracking-tight leading-[1.1]">
-              El problema no es lo que te ocurre, sino como lo gestionas
+              {t("heading")}
             </h2>
-            <p className="mt-6 text-lg text-text-light leading-relaxed">
-              No necesitas eliminar los nervios ni controlar todos tus pensamientos.
-            </p>
-            <p className="mt-2 text-lg text-text-dark font-bold leading-relaxed">
-              Necesitas aprender a competir con ellos.
-            </p>
+            <p className="mt-6 text-lg text-text-light leading-relaxed">{t("paragraph")}</p>
+            <p className="mt-2 text-lg text-text-dark font-bold leading-relaxed">{t("boldText")}</p>
           </motion.div>
 
           <motion.div

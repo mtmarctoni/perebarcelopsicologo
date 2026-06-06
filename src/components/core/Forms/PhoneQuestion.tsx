@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { useTranslations } from "next-intl";
 
 import { CrossIcon } from "@/components/composables/Icons";
 import { PhoneFormats, type Question } from "@/types/navbar";
@@ -22,6 +23,7 @@ const PhoneQuestion = ({
   selectedAnswer,
   setSelectedAnswer,
 }: Props) => {
+  const t = useTranslations("Form");
   return (
     <div className="space-y-4">
       {!phoneFormat ? (
@@ -35,7 +37,7 @@ const PhoneQuestion = ({
               className={`w-full p-4 text-left border rounded-lg transition-colors
                                 hover:bg-primary-dark`}
             >
-              {format === PhoneFormats.ES ? "Tengo número español" : format}
+              {format === PhoneFormats.ES ? t("phoneFormatLabel") : format}
             </button>
           ))}
         </div>
@@ -51,9 +53,7 @@ const PhoneQuestion = ({
                                   : "border-secondary focus:border-primary"
                               }`}
             placeholder={
-              phoneFormat === PhoneFormats.ES
-                ? "Ej: 612345678 o +34612345678"
-                : "Introduce tu número"
+              phoneFormat === PhoneFormats.ES ? t("phoneEsPlaceholder") : t("phoneOtherPlaceholder")
             }
             onChange={(e) => {
               setSelectedAnswer(e.target.value);
@@ -82,7 +82,7 @@ const PhoneQuestion = ({
             onClick={() => setPhoneFormat(null)}
             className="text-sm text-text hover:text-secondary-light transition-colors"
           >
-            Cambiar formato
+            {t("phoneFormatChange")}
           </button>
         </>
       )}
