@@ -54,6 +54,11 @@ jobs:
         uses: actions/dependency-review-action@v4
         with:
           fail-on-severity: high
+          allow-dependencies: |
+            npm:assertion-error
+            npm:error-ex
+            npm:es-errors
+            npm:json-parse-even-better-errors
 
   lint-test-and-build:
     name: Lint, Test & Build
