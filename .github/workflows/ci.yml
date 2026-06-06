@@ -21,21 +21,21 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 20
-          cache: "npm"
+          cache: "pnpm"
 
       - name: Install dependencies
-        run: npm ci
+        run: pnpm install
 
-      - name: Run npm audit
-        run: npm audit --audit-level=high
+      - name: Run pnpm audit
+        run: pnpm audit --audit-level=high
         continue-on-error: true
-
-      - name: Verify package integrity
-        run: npm audit signatures
 
   dependency-review:
     name: Dependency Review
@@ -53,31 +53,40 @@ jobs:
         with:
           fail-on-severity: high
 
-  lint-and-build:
-    name: Lint, Type Check & Build
+  lint-test-and-build:
+    name: Lint, Test & Build
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 20
-          cache: "npm"
+          cache: "pnpm"
 
       - name: Install dependencies
-        run: npm ci
+        run: pnpm install
 
       - name: Run Biome (lint + format check)
-        run: npm run lint
+        run: pnpm lint
 
       - name: Run TypeScript type check
-        run: npm run type-check
+        run: pnpm type-check
+
+      - name: Run tests
+        run: pnpm test
+
+      - name: Run knip (dead code analysis)
+        run: pnpm knip
 
       - name: Build application
-        run: npm run build
+        run: pnpm build
         env:
           RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
           GOOGLE_SITE_VERIFICATION: ${{ secrets.GOOGLE_SITE_VERIFICATION }}
