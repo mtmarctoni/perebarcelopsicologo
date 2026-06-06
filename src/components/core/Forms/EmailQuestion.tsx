@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { useTranslations } from "next-intl";
 import { CrossIcon } from "../../composables/Icons";
 
 interface Props {
@@ -14,6 +15,7 @@ const EmailQuestion = ({
   validationError,
   setValidationError,
 }: Props) => {
+  const t = useTranslations("Form");
   return (
     <>
       <input
@@ -24,7 +26,7 @@ const EmailQuestion = ({
                       ? "border-error focus:border-error"
                       : "border-secondary focus:border-primary"
                   }`}
-        placeholder="ejemplo@correo.com"
+        placeholder={t("emailPlaceholder")}
         onChange={(e) => {
           setSelectedAnswer(e.target.value);
           setValidationError("");

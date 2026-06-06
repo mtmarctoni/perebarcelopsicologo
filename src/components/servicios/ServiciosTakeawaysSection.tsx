@@ -1,19 +1,15 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { useTranslations } from "next-intl";
 
 import CheckIcon from "@/components/composables/CheckIcon";
 import SectionLabel from "@/components/composables/SectionLabel";
 import { fadeInUp, staggerContainer } from "@/components/home/animations";
 
-const takeaways = [
-  "Que hacer justo despues de un error",
-  "Como gestionar pensamientos en competicion",
-  "Como competir con presion sin bloquearte",
-  "Como construir una confianza mas estable",
-];
-
 export default function ServiciosTakeawaysSection() {
+  const t = useTranslations("ServiciosTakeawaysSection");
+  const takeaways = [t("item1"), t("item2"), t("item3"), t("item4")];
   return (
     <section className="relative bg-background overflow-hidden">
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_30%,_rgba(245,158,11,0.06)_0%,_transparent_60%)]" />
@@ -26,14 +22,11 @@ export default function ServiciosTakeawaysSection() {
             viewport={{ once: true }}
             transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
           >
-            <SectionLabel text="Resultados" />
+            <SectionLabel text={t("sectionLabel")} />
             <h2 className="text-4xl sm:text-5xl font-bold text-text-dark tracking-tight leading-[1.1]">
-              Que vas a llevar
+              {t("heading")}
             </h2>
-            <p className="mt-6 text-lg text-text-light leading-relaxed max-w-md">
-              No es teoria, es aplicacion directa. Herramientas que puedes usar desde la primera
-              sesion.
-            </p>
+            <p className="mt-6 text-lg text-text-light leading-relaxed max-w-md">{t("subtitle")}</p>
           </motion.div>
 
           <motion.div

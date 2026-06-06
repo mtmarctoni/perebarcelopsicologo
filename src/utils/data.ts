@@ -6,7 +6,6 @@ import {
 } from "@/components/composables/Icons";
 import {
   type Club,
-  type NavItem,
   PhoneFormats,
   type Question,
   QuestionType,
@@ -15,13 +14,6 @@ import {
 
 export const phone: string = "+34 636 67 47 59";
 export const email: string = "pere@perebarcelopsicologo.com";
-
-export const navbarLinks: NavItem[] = [
-  { label: "Inicio", url: "/" },
-  { label: "Sobre mí", url: "/about" },
-  { label: "Servicios", url: "/servicios" },
-  { label: "Contacto", url: "/contact" },
-];
 
 export const socialMediaLinks: SocialCardProps[] = [
   {

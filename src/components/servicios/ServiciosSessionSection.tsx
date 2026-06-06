@@ -1,48 +1,31 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { useTranslations } from "next-intl";
 
 import AnimatedSection from "@/components/composables/AnimatedSection";
 import SectionLabel from "@/components/composables/SectionLabel";
 import { fadeInUp, staggerContainer } from "@/components/home/animations";
 
-const steps = [
-  {
-    step: "1",
-    title: "Analizamos situaciones concretas de competicion",
-    desc: "No hablamos en general. Trabajamos tu caso real.",
-  },
-  {
-    step: "2",
-    title: "Detectamos que te esta limitando",
-    desc: "Identificamos patrones y desencadenantes especificos.",
-  },
-  {
-    step: "3",
-    title: "Definimos herramientas aplicables",
-    desc: "Acciones concretas que puedes usar en competicion.",
-  },
-  {
-    step: "4",
-    title: "Te llevas acciones claras para competicion",
-    desc: "Sales sabiendo que hacer en cada momento.",
-  },
-];
-
 export default function ServiciosSessionSection() {
+  const t = useTranslations("ServiciosSessionSection");
+  const steps = [
+    { step: "1", title: t("step1Title"), desc: t("step1Desc") },
+    { step: "2", title: t("step2Title"), desc: t("step2Desc") },
+    { step: "3", title: t("step3Title"), desc: t("step3Desc") },
+    { step: "4", title: t("step4Title"), desc: t("step4Desc") },
+  ];
   return (
     <section className="relative bg-background-alt overflow-hidden">
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_40%_60%,_rgba(28,71,97,0.15)_0%,_transparent_60%)]" />
 
       <div className="relative z-10 max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 py-24 lg:py-32">
         <AnimatedSection className="text-center mb-16">
-          <SectionLabel text="Proceso" />
+          <SectionLabel text={t("sectionLabel")} />
           <h2 className="text-4xl sm:text-5xl font-bold text-text-dark tracking-tight">
-            Como es una <span className="text-secondary">sesion</span>
+            {t("heading")}
           </h2>
-          <p className="mt-4 text-lg text-text-light max-w-xl mx-auto">
-            En cada sesion trabajamos tu caso real.
-          </p>
+          <p className="mt-4 text-lg text-text-light max-w-xl mx-auto">{t("subtitle")}</p>
         </AnimatedSection>
 
         <motion.div
@@ -70,7 +53,7 @@ export default function ServiciosSessionSection() {
         </motion.div>
 
         <AnimatedSection className="mt-12 text-center">
-          <p className="text-lg text-text font-medium">Sales sabiendo que hacer en cada momento.</p>
+          <p className="text-lg text-text font-medium">{t("emphasis")}</p>
         </AnimatedSection>
       </div>
     </section>

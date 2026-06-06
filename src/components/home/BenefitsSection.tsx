@@ -2,21 +2,16 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
+import { useTranslations } from "next-intl";
 
 import AnimatedSection from "@/components/composables/AnimatedSection";
 import CheckIcon from "@/components/composables/CheckIcon";
 import SectionLabel from "@/components/composables/SectionLabel";
 import { fadeInUp, staggerContainer } from "@/components/home/animations";
 
-const benefits = [
-  "Competiras al nivel al que entrenas",
-  "Sabras que hacer despues de un error",
-  "Tendras mas control en momentos clave",
-  "Tu confianza dejara de depender del resultado",
-  "Competiras bien incluso sin sensaciones perfectas",
-];
-
 export default function BenefitsSection() {
+  const t = useTranslations("BenefitsSection");
+  const benefits = [t("benefit1"), t("benefit2"), t("benefit3"), t("benefit4"), t("benefit5")];
   return (
     <section className="relative bg-background overflow-hidden">
       {/* Large background numeral */}
@@ -28,21 +23,17 @@ export default function BenefitsSection() {
         <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-start">
           {/* Left: heading + CTA */}
           <AnimatedSection className="lg:sticky lg:top-32">
-            <SectionLabel text="Resultados" />
+            <SectionLabel text={t("sectionLabel")} />
             <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-text-dark tracking-tight leading-[1.1]">
-              Que
-              <br />
-              <span className="text-secondary">conseguiras</span>
+              {t("heading")}
             </h2>
-            <p className="mt-6 text-lg text-text leading-relaxed max-w-md">
-              Herramientas concretas para aplicar desde la primera sesion. Sin teorias abstractas.
-            </p>
+            <p className="mt-6 text-lg text-text leading-relaxed max-w-md">{t("subtitle")}</p>
             <div className="mt-10">
               <Link
                 href="/contact"
                 className="inline-flex items-center justify-center bg-primary-dark text-text-inverse font-semibold px-8 py-4 rounded-full hover:bg-secondary hover:text-text-dark hover:shadow-glow transition-all duration-300"
               >
-                Quiero mejorar mi rendimiento
+                {t("cta")}
               </Link>
             </div>
           </AnimatedSection>

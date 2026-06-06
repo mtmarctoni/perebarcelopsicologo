@@ -3,10 +3,12 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
+import { useTranslations } from "next-intl";
 
 import SectionLabel from "@/components/composables/SectionLabel";
 
 export default function AboutBioSection() {
+  const t = useTranslations("AboutBioSection");
   return (
     <section className="relative bg-background-alt overflow-hidden">
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_20%_50%,_rgba(245,158,11,0.05)_0%,_transparent_60%)]" />
@@ -27,7 +29,7 @@ export default function AboutBioSection() {
               <div className="relative aspect-[4/5] rounded-[2rem] overflow-hidden shadow-2xl">
                 <Image
                   src="/wp/profile-photo.webp"
-                  alt="Pere Barcelo - Psicologo Deportivo"
+                  alt={t("imageAlt")}
                   fill
                   sizes="(max-width: 1024px) 100vw, 45vw"
                   className="object-cover object-top"
@@ -43,35 +45,23 @@ export default function AboutBioSection() {
             viewport={{ once: true }}
             transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1], delay: 0.15 }}
           >
-            <SectionLabel text="Sobre mi" />
+            <SectionLabel text={t("sectionLabel")} />
             <h2 className="text-4xl sm:text-5xl font-bold text-text-dark tracking-tight">
-              Quien soy
+              {t("heading")}
             </h2>
 
             <div className="mt-8 space-y-5">
-              <p className="text-xl text-text-dark font-medium leading-relaxed">
-                Soy Pere Barcelo, psicologo deportivo.
-              </p>
-              <p className="text-lg text-text-light leading-relaxed">
-                Trabajo con deportistas de diferentes disciplinas, adaptando el proceso a cada caso.
-              </p>
-              <p className="text-lg text-text-light leading-relaxed">
-                Mi objetivo es hacerlo aplicable a tu realidad.
-              </p>
+              <p className="text-xl text-text-dark font-medium leading-relaxed">{t("bio1")}</p>
+              <p className="text-lg text-text-light leading-relaxed">{t("bio2")}</p>
+              <p className="text-lg text-text-light leading-relaxed">{t("bio3")}</p>
             </div>
 
-            <p className="mt-6 text-lg text-text-dark font-medium">No complicarlo mas.</p>
+            <p className="mt-6 text-lg text-text-dark font-medium">{t("emphasis")}</p>
 
             <div className="mt-6 space-y-3">
-              <p className="text-lg text-text-light leading-relaxed">
-                No necesitas cambiar quien eres como deportista.
-              </p>
-              <p className="text-lg text-text-dark font-bold leading-relaxed">
-                Necesitas cambiar como gestionas lo que pasa cuando compites.
-              </p>
-              <p className="text-lg text-text-dark font-bold leading-relaxed">
-                Si sabes que puedes rendir mas pero algo te frena, el siguiente paso es claro:
-              </p>
+              <p className="text-lg text-text-light leading-relaxed">{t("paragraph")}</p>
+              <p className="text-lg text-text-dark font-bold leading-relaxed">{t("boldText")}</p>
+              <p className="text-lg text-text-dark font-bold leading-relaxed">{t("ctaText")}</p>
             </div>
 
             <div className="mt-8">
@@ -79,7 +69,7 @@ export default function AboutBioSection() {
                 href="/contact"
                 className="inline-flex items-center justify-center bg-secondary text-text-dark font-bold px-8 py-4 rounded-full hover:bg-secondary-light hover:shadow-glow hover:-translate-y-0.5 transition-all duration-300"
               >
-                Empieza tu proceso ahora
+                {t("cta")}
               </Link>
             </div>
           </motion.div>

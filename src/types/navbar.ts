@@ -34,6 +34,7 @@ export enum PhoneFormats {
 }
 
 export interface ContactFormData {
+  locale: "es" | "ca";
   "1": Name;
   "2": Email;
   "3": Phone;

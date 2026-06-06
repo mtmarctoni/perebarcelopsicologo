@@ -1,20 +1,16 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { useTranslations } from "next-intl";
 
 import AnimatedSection from "@/components/composables/AnimatedSection";
 import CheckIcon from "@/components/composables/CheckIcon";
 import SectionLabel from "@/components/composables/SectionLabel";
 import { fadeInUp, staggerContainer } from "@/components/home/animations";
 
-const differentiators = [
-  "Que hacer justo despues de un error",
-  "Como actuar cuando aparecen dudas",
-  "Como competir cuando hay presion",
-  "Como rendir sin depender de sentirte perfecto",
-];
-
 export default function DifferentiationSection() {
+  const t = useTranslations("DifferentiationSection");
+  const differentiators = [t("item1"), t("item2"), t("item3"), t("item4")];
   return (
     <section className="relative bg-background-alt overflow-hidden">
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_70%_50%,_rgba(245,158,11,0.05)_0%,_transparent_60%)]" />
@@ -22,19 +18,12 @@ export default function DifferentiationSection() {
       <div className="relative z-10 max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 py-24 lg:py-32">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           <AnimatedSection>
-            <SectionLabel text="Diferencia" />
+            <SectionLabel text={t("sectionLabel")} />
             <h2 className="text-4xl sm:text-5xl font-bold text-text-dark tracking-tight leading-[1.1]">
-              Esto no es motivacion ni teoria
+              {t("heading")}
             </h2>
-            <p className="mt-6 text-lg text-text-light leading-relaxed">
-              No vamos a trabajar en &ldquo;pensar en positivo&rdquo; ni en intentar controlar todo
-              lo que pasa por tu cabeza. Porque eso es lo que hace que muchos deportistas se
-              bloqueen mas.
-            </p>
-            <p className="mt-4 text-lg text-text-light leading-relaxed">
-              No necesitas eliminar los nervios.{" "}
-              <strong className="text-text-dark">Necesitas saber competir con ellos.</strong>
-            </p>
+            <p className="mt-6 text-lg text-text-light leading-relaxed">{t("paragraph")}</p>
+            <p className="mt-4 text-lg text-text-light leading-relaxed">{t("emphasis")}</p>
           </AnimatedSection>
 
           <motion.div

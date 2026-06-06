@@ -1,29 +1,26 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { useTranslations } from "next-intl";
 
 import AnimatedSection from "@/components/composables/AnimatedSection";
 import SectionLabel from "@/components/composables/SectionLabel";
 import { fadeInUp, staggerContainer } from "@/components/home/animations";
 
-const objectives = [
-  "Aprendas que hacer cuando fallas",
-  "Sepas como competir con dudas",
-  "Puedas rendir incluso sin confianza perfecta",
-];
-
 export default function AboutObjectiveSection() {
+  const t = useTranslations("AboutObjectiveSection");
+  const objectives = [t("objective1"), t("objective2"), t("objective3")];
   return (
     <section className="relative bg-background overflow-hidden">
       <div className="relative z-10 max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 py-24 lg:py-32">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           <AnimatedSection>
-            <SectionLabel text="Objetivo" />
+            <SectionLabel text={t("sectionLabel")} />
             <h2 className="text-4xl sm:text-5xl font-bold text-text-dark tracking-tight leading-[1.1]">
-              Cual es mi objetivo
+              {t("heading")}
             </h2>
-            <p className="mt-6 text-lg text-text leading-relaxed">No busco que dependas de mi.</p>
-            <p className="mt-2 text-lg text-text leading-relaxed">Busco que:</p>
+            <p className="mt-6 text-lg text-text leading-relaxed">{t("paragraph1")}</p>
+            <p className="mt-2 text-lg text-text leading-relaxed">{t("paragraph2")}</p>
           </AnimatedSection>
 
           <motion.div
@@ -61,9 +58,7 @@ export default function AboutObjectiveSection() {
 
         <AnimatedSection className="mt-16 max-w-2xl mx-auto text-center">
           <div className="p-6 rounded-2xl bg-primary-dark text-text-inverse">
-            <p className="text-lg font-bold">
-              El objetivo es que puedas competir bien por tu cuenta.
-            </p>
+            <p className="text-lg font-bold">{t("highlight")}</p>
           </div>
         </AnimatedSection>
       </div>

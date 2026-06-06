@@ -3,12 +3,14 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
+import { useTranslations } from "next-intl";
 
 import CheckIcon from "@/components/composables/CheckIcon";
 import SectionLabel from "@/components/composables/SectionLabel";
 import { fadeInUp, staggerContainer } from "@/components/home/animations";
 
 export default function HeroSection() {
+  const t = useTranslations("HeroSection");
   return (
     <section className="relative min-h-screen flex items-center overflow-hidden bg-background">
       {/* Background layers */}
@@ -38,18 +40,18 @@ export default function HeroSection() {
             variants={staggerContainer}
           >
             <motion.div variants={fadeInUp}>
-              <SectionLabel text="Psicologia deportiva de alto rendimiento" />
+              <SectionLabel text={t("sectionLabel")} />
             </motion.div>
 
             <motion.h1
               variants={fadeInUp}
               className="text-[2.6rem] sm:text-5xl lg:text-[3.5rem] xl:text-[4rem] font-bold text-text-dark leading-[1.1] tracking-tight mt-2"
             >
-              Entrenas bien.
+              {t("headingLine1")}
               <br />
-              Pero cuando{" "}
+              {t("headingBeforeHighlight")}
               <span className="text-secondary relative">
-                compites
+                {t("headingHighlight")}
                 <svg className="absolute -bottom-2 left-0 w-full" viewBox="0 0 200 12" fill="none">
                   <title>Underline decoration</title>
                   <path
@@ -61,15 +63,14 @@ export default function HeroSection() {
                   />
                 </svg>
               </span>
-              , algo cambia.
+              {t("headingLine2")}
             </motion.h1>
 
             <motion.p
               variants={fadeInUp}
               className="mt-7 text-lg sm:text-xl text-text-light max-w-md leading-relaxed"
             >
-              Rindes peor, dudas mas o te bloqueas en momentos clave. No es falta de nivel. Es como
-              gestionas la presion.
+              {t("subtitle")}
             </motion.p>
 
             <motion.div variants={fadeInUp} className="mt-10 flex flex-col sm:flex-row gap-4">
@@ -77,13 +78,13 @@ export default function HeroSection() {
                 href="/contact"
                 className="inline-flex items-center justify-center bg-secondary text-text-dark font-bold text-base px-8 py-4 rounded-full hover:bg-secondary-light hover:shadow-glow hover:-translate-y-0.5 transition-all duration-300"
               >
-                Quiero saber que me esta bloqueando
+                {t("ctaPrimary")}
               </Link>
               <Link
                 href="/servicios"
                 className="inline-flex items-center justify-center text-text-dark font-medium text-base px-8 py-4 rounded-full border border-border hover:bg-card-hover hover:border-secondary/30 transition-all duration-300"
               >
-                Ver como trabajo
+                {t("ctaSecondary")}
               </Link>
             </motion.div>
 
@@ -93,15 +94,15 @@ export default function HeroSection() {
             >
               <span className="flex items-center gap-2">
                 <CheckIcon className="w-4 h-4 text-secondary" />
-                Sesion inicial gratuita
+                {t("checkFreeSession")}
               </span>
               <span className="flex items-center gap-2">
                 <CheckIcon className="w-4 h-4 text-secondary" />
-                100% personalizado
+                {t("checkPersonalized")}
               </span>
               <span className="flex items-center gap-2">
                 <CheckIcon className="w-4 h-4 text-secondary" />
-                Online
+                {t("checkOnline")}
               </span>
             </motion.div>
           </motion.div>
@@ -122,7 +123,7 @@ export default function HeroSection() {
               <div className="relative aspect-[3/4] rounded-[2rem] overflow-hidden shadow-2xl shadow-black/40 border border-border">
                 <Image
                   src="/wp/home-hero.webp"
-                  alt="Pere Barcelo - Psicologo Deportivo"
+                  alt={t("heroImageAlt")}
                   fill
                   sizes="(max-width: 768px) 80vw, 480px"
                   className="object-cover object-top"
@@ -139,8 +140,8 @@ export default function HeroSection() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.8, duration: 0.6 }}
               >
-                <p className="text-2xl font-bold text-text-dark">+10</p>
-                <p className="text-xs text-text-light mt-0.5">anos de experiencia</p>
+                <p className="text-2xl font-bold text-text-dark">{t("statNumber")}</p>
+                <p className="text-xs text-text-light mt-0.5">{t("statLabel")}</p>
               </motion.div>
 
               {/* Floating badge */}
@@ -151,7 +152,7 @@ export default function HeroSection() {
                 transition={{ delay: 1, duration: 0.6 }}
               >
                 <p className="text-xs font-bold text-text-dark uppercase tracking-wide">
-                  Alto rendimiento
+                  {t("badgeText")}
                 </p>
               </motion.div>
             </div>
@@ -167,7 +168,7 @@ export default function HeroSection() {
         transition={{ delay: 1.4 }}
       >
         <span className="text-text-dark opacity-30 text-xs uppercase tracking-widest">
-          Descubre mas
+          {t("scrollIndicator")}
         </span>
         <motion.div
           className="w-5 h-8 border-2 border-border rounded-full flex justify-center pt-1.5"

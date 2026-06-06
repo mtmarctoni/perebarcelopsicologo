@@ -1,32 +1,32 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { useTranslations } from "next-intl";
 
 import AnimatedSection from "@/components/composables/AnimatedSection";
 import SectionLabel from "@/components/composables/SectionLabel";
 import { fadeInUp, staggerContainer } from "@/components/home/animations";
 
-const notItems = [
-  { text: "Motivacion o frases positivas", isFalse: true },
-  { text: "Teoria sin aplicacion", isFalse: true },
-  { text: "Tecnicas genericas", isFalse: true },
-];
-
-const yesItems = [
-  { text: "No trabajamos 'como sentirte mejor'", isFalse: false },
-  { text: "Trabajamos como rendir mejor incluso sin sentirte bien", isFalse: false },
-];
-
 export default function ServiciosNotThisSection() {
+  const t = useTranslations("ServiciosNotThisSection");
+  const notItems = [
+    { text: t("notItem1"), isFalse: true },
+    { text: t("notItem2"), isFalse: true },
+    { text: t("notItem3"), isFalse: true },
+  ];
+  const yesItems = [
+    { text: t("yesItem1"), isFalse: false },
+    { text: t("yesItem2"), isFalse: false },
+  ];
   return (
     <section className="relative bg-background overflow-hidden">
       <div className="relative z-10 max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 py-24 lg:py-32">
         <div className="grid lg:grid-cols-2 gap-16">
           <div>
             <AnimatedSection>
-              <SectionLabel text="Diferencia" />
+              <SectionLabel text={t("sectionLabel")} />
               <h2 className="text-4xl sm:text-5xl font-bold text-text-dark tracking-tight leading-[1.1]">
-                Que NO es esto
+                {t("heading")}
               </h2>
             </AnimatedSection>
 
@@ -66,9 +66,7 @@ export default function ServiciosNotThisSection() {
           <div>
             <AnimatedSection>
               <h2 className="text-4xl sm:text-5xl font-bold text-text-dark tracking-tight leading-[1.1] lg:mt-16">
-                Esto es entrenamiento mental
-                <br />
-                <span className="text-secondary">aplicado a competicion real</span>
+                {t("yesHeading")}
               </h2>
             </AnimatedSection>
 

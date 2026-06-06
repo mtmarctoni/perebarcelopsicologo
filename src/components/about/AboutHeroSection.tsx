@@ -3,11 +3,13 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
+import { useTranslations } from "next-intl";
 
 import SectionLabel from "@/components/composables/SectionLabel";
 import { fadeInUp, staggerContainer } from "@/components/home/animations";
 
 export default function AboutHeroSection() {
+  const t = useTranslations("AboutHeroSection");
   return (
     <section className="relative min-h-[70vh] flex items-center overflow-hidden bg-background">
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_70%_30%,_rgba(245,158,11,0.08)_0%,_transparent_50%)]" />
@@ -24,15 +26,14 @@ export default function AboutHeroSection() {
             variants={staggerContainer}
           >
             <motion.div variants={fadeInUp}>
-              <SectionLabel text="Sobre mi" />
+              <SectionLabel text={t("sectionLabel")} />
             </motion.div>
 
             <motion.h1
               variants={fadeInUp}
               className="text-4xl sm:text-5xl lg:text-[3.5rem] font-bold text-text-dark tracking-tight leading-[1.1] mt-2"
             >
-              Si sabes que puedes rendir mas,{" "}
-              <span className="text-secondary">esto no va de entrenar mas.</span>
+              {t("heading")}
             </motion.h1>
 
             <motion.div variants={fadeInUp} className="mt-10">
@@ -40,7 +41,7 @@ export default function AboutHeroSection() {
                 href="/contact"
                 className="inline-flex items-center justify-center bg-secondary text-text-dark font-bold text-base px-8 py-4 rounded-full hover:bg-secondary-light hover:shadow-glow hover:-translate-y-0.5 transition-all duration-300"
               >
-                Pide tu sesion gratuita
+                {t("cta")}
               </Link>
             </motion.div>
           </motion.div>
@@ -57,7 +58,7 @@ export default function AboutHeroSection() {
               <div className="relative aspect-[4/5] rounded-[2rem] overflow-hidden shadow-2xl shadow-black/40 border border-border">
                 <Image
                   src="/wp/profile-photo.webp"
-                  alt="Pere Barcelo - Psicologo Deportivo"
+                  alt={t("imageAlt")}
                   fill
                   sizes="(max-width: 768px) 80vw, 380px"
                   className="object-cover object-top"

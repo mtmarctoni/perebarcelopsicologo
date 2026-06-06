@@ -1,11 +1,13 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { useTranslations } from "next-intl";
 
 import SectionLabel from "@/components/composables/SectionLabel";
 import { fadeInUp, staggerContainer } from "@/components/home/animations";
 
 export default function ContactHeroSection() {
+  const t = useTranslations("ContactHeroSection");
   return (
     <section className="relative bg-background overflow-hidden">
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_30%,_rgba(245,158,11,0.06)_0%,_transparent_60%)]" />
@@ -19,22 +21,21 @@ export default function ContactHeroSection() {
           variants={staggerContainer}
         >
           <motion.div variants={fadeInUp}>
-            <SectionLabel text="Contacto" />
+            <SectionLabel text={t("sectionLabel")} />
           </motion.div>
 
           <motion.h1
             variants={fadeInUp}
             className="text-4xl sm:text-5xl lg:text-6xl font-bold text-text-dark tracking-tight leading-[1.1]"
           >
-            Da el primer paso
+            {t("heading")}
           </motion.h1>
 
           <motion.p
             variants={fadeInUp}
             className="mt-6 text-lg sm:text-xl text-text-light leading-relaxed"
           >
-            Si sabes que puedes rendir mas pero algo te frena, hablemos. La primera sesion es
-            gratuita y sin compromiso.
+            {t("subtitle")}
           </motion.p>
         </motion.div>
       </div>
