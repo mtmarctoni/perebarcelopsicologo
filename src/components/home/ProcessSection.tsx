@@ -1,44 +1,29 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { useTranslations } from "next-intl";
 
 import AnimatedSection from "@/components/composables/AnimatedSection";
 import SectionLabel from "@/components/composables/SectionLabel";
 import { fadeInUp, staggerContainer } from "@/components/home/animations";
 
-const steps = [
-  {
-    step: "1",
-    title: "Entendemos tu caso",
-    desc: "Analizamos que te esta pasando realmente en competicion",
-  },
-  {
-    step: "2",
-    title: "Detectamos el bloqueo",
-    desc: "Identificamos que esta fallando exactamente",
-  },
-  {
-    step: "3",
-    title: "Plan practico",
-    desc: "Herramientas concretas para aplicar compitiendo",
-  },
-  {
-    step: "4",
-    title: "Seguimiento",
-    desc: "Ajustamos y llevamos el trabajo a competicion",
-  },
-];
-
 export default function ProcessSection() {
+  const t = useTranslations("ProcessSection");
+  const steps = [
+    { step: "1", title: t("step1Title"), desc: t("step1Desc") },
+    { step: "2", title: t("step2Title"), desc: t("step2Desc") },
+    { step: "3", title: t("step3Title"), desc: t("step3Desc") },
+    { step: "4", title: t("step4Title"), desc: t("step4Desc") },
+  ];
   return (
     <section className="relative bg-background overflow-hidden">
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_30%_50%,_rgba(28,71,97,0.2)_0%,_transparent_60%)]" />
 
       <div className="relative z-10 max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 py-24 lg:py-32">
         <AnimatedSection className="text-center mb-20">
-          <SectionLabel text="Metodologia" />
+          <SectionLabel text={t("sectionLabel")} />
           <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-text-dark tracking-tight">
-            Como <span className="text-secondary">trabajaremos</span>
+            {t("heading")}
           </h2>
         </AnimatedSection>
 

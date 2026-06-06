@@ -1,17 +1,30 @@
 "use client";
 
 import Link from "next/link";
+import { useLocale, useTranslations } from "next-intl";
 import { useTheme } from "next-themes";
 import { useCallback, useEffect, useState } from "react";
+import { usePathname, useRouter } from "@/i18n/routing";
 
-import { navbarLinks } from "@/utils/data";
 import { BarsIcon, CrossIcon } from "../composables/Icons";
+
+const navItems = [
+  { url: "/" },
+  { url: "/about" },
+  { url: "/servicios" },
+  { url: "/contact" },
+] as const;
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [mounted, setMounted] = useState(false);
   const { theme, setTheme } = useTheme();
+  const t = useTranslations("NavBar");
+  const tc = useTranslations("Common");
+  const locale = useLocale();
+  const pathname = usePathname();
+  const router = useRouter();
 
   useEffect(() => setMounted(true), []);
 
@@ -36,6 +49,8 @@ const Navbar = () => {
     };
   }, [isMenuOpen]);
 
+  const otherLocale = locale === "es" ? "ca" : "es";
+
   return (
     <>
       <nav
@@ -51,51 +66,33 @@ const Navbar = () => {
               href="/"
               className="text-text-dark font-bold text-lg tracking-tight whitespace-nowrap hover:text-secondary transition-colors duration-300"
             >
-              Pere Barcelo
-              <span className="font-normal text-text-light ml-1.5 text-base">Psicologo</span>
+              {tc("siteNameShort")}
+              <span className="font-normal text-text-light ml-1.5 text-base">
+                {tc("siteSubtext")}
+              </span>
             </Link>
 
             <div className="hidden lg:flex items-center gap-1">
-              {navbarLinks.map((item) => (
-                <div className="relative group" key={item.url}>
+              {navItems.map((item) => {
+                const labelKey = item.url === "/" ? "home" : item.url.replace("/", "");
+                return (
                   <Link
+                    key={item.url}
                     href={item.url}
                     className="text-text-light px-4 py-2 text-sm font-medium tracking-wide
                              hover:text-text-dark hover:bg-card-hover rounded-lg
                              transition-all duration-300"
                   >
-                    {item.label}
+                    {t(labelKey)}
                   </Link>
-
-                  {item.subLinks && (
-                    <div
-                      className="absolute invisible group-hover:visible opacity-0
-                                  group-hover:opacity-100 left-0 pt-2 w-60
-                                  transition-all duration-300"
-                    >
-                      <div className="bg-background-alt backdrop-blur-2xl rounded-2xl shadow-[0_24px_60px_rgba(0,0,0,0.5)] border border-border overflow-hidden p-2">
-                        {item.subLinks.map((subLink) => (
-                          <Link
-                            key={subLink.url}
-                            href={subLink.url}
-                            className="block px-4 py-3 rounded-xl text-sm font-medium text-text-light whitespace-nowrap
-                                     hover:text-text-dark hover:bg-card-hover
-                                     transition-all duration-200"
-                          >
-                            {subLink.label}
-                          </Link>
-                        ))}
-                      </div>
-                    </div>
-                  )}
-                </div>
-              ))}
+                );
+              })}
 
               <button
                 type="button"
                 onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
                 className="ml-3 p-2 rounded-xl text-text-light hover:text-secondary hover:bg-card-hover transition-all duration-300"
-                aria-label="Cambiar modo"
+                aria-label={mounted && theme === "dark" ? tc("themeLight") : tc("themeDark")}
               >
                 {mounted && theme === "dark" ? (
                   <svg
@@ -104,7 +101,7 @@ const Navbar = () => {
                     viewBox="0 0 24 24"
                     stroke="currentColor"
                     role="img"
-                    aria-label="Sol"
+                    aria-label={tc("themeLight")}
                   >
                     <path
                       strokeLinecap="round"
@@ -120,7 +117,7 @@ const Navbar = () => {
                     viewBox="0 0 24 24"
                     stroke="currentColor"
                     role="img"
-                    aria-label="Luna"
+                    aria-label={tc("themeDark")}
                   >
                     <path
                       strokeLinecap="round"
@@ -132,11 +129,22 @@ const Navbar = () => {
                 )}
               </button>
 
+              <button
+                type="button"
+                onClick={() => router.replace(pathname, { locale: otherLocale })}
+                className="ml-2 px-3 py-1.5 text-xs font-semibold uppercase tracking-widest rounded-lg
+                         text-text-light hover:text-secondary hover:bg-card-hover
+                         transition-all duration-300 border border-border"
+                aria-label={tc("localeSwitcherAria")}
+              >
+                {otherLocale}
+              </button>
+
               <Link
                 href="/contact"
                 className="ml-4 inline-flex items-center justify-center bg-secondary text-text-dark text-sm font-bold px-5 py-2.5 rounded-full hover:bg-secondary-light hover:shadow-glow hover:-translate-y-0.5 transition-all duration-300"
               >
-                Sesion gratuita
+                {t("ctaDesktop")}
               </Link>
             </div>
 
@@ -145,14 +153,14 @@ const Navbar = () => {
                 href="/contact"
                 className="inline-flex items-center justify-center bg-secondary text-text-dark text-xs font-bold px-4 py-2 rounded-full hover:bg-secondary-light transition-all duration-300"
               >
-                Sesiongratis
+                {t("ctaMobile")}
               </Link>
 
               <button
                 type="button"
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
                 className="text-text-dark hover:text-secondary p-2 rounded-xl hover:bg-card-hover transition-all duration-300"
-                aria-label={isMenuOpen ? "Cerrar menu" : "Abrir menu"}
+                aria-label={isMenuOpen ? t("closeMenu") : t("openMenu")}
               >
                 {isMenuOpen ? <CrossIcon className="w-6 h-6" /> : <BarsIcon className="w-6 h-6" />}
               </button>
@@ -172,45 +180,33 @@ const Navbar = () => {
               type="button"
               onClick={() => setIsMenuOpen(false)}
               className="text-text-dark hover:text-secondary p-2 rounded-xl hover:bg-card-hover transition-all duration-300"
-              aria-label="Cerrar menu"
+              aria-label={t("closeMenu")}
             >
               <CrossIcon className="w-7 h-7" />
             </button>
           </div>
 
-          {navbarLinks.map((item, index) => (
-            <div key={item.url}>
-              <Link
-                href={item.url}
-                onClick={() => setIsMenuOpen(false)}
-                className="text-2xl font-bold text-text-dark opacity-80 hover:opacity-100 transition-all duration-300"
-                style={{ transitionDelay: `${(index + 1) * 50}ms` }}
-              >
-                {item.label}
-              </Link>
-
-              {item.subLinks && (
-                <div className="mt-3 space-y-2 text-center">
-                  {item.subLinks.map((subLink) => (
-                    <Link
-                      key={subLink.url}
-                      href={subLink.url}
-                      onClick={() => setIsMenuOpen(false)}
-                      className="block text-text-light hover:text-secondary text-base transition-colors duration-200"
-                    >
-                      {subLink.label}
-                    </Link>
-                  ))}
-                </div>
-              )}
-            </div>
-          ))}
+          {navItems.map((item, index) => {
+            const labelKey = item.url === "/" ? "home" : item.url.replace("/", "");
+            return (
+              <div key={item.url}>
+                <Link
+                  href={item.url}
+                  onClick={() => setIsMenuOpen(false)}
+                  className="text-2xl font-bold text-text-dark opacity-80 hover:opacity-100 transition-all duration-300"
+                  style={{ transitionDelay: `${(index + 1) * 50}ms` }}
+                >
+                  {t(labelKey)}
+                </Link>
+              </div>
+            );
+          })}
 
           <button
             type="button"
             onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
             className="mt-4 p-3 rounded-xl text-text-light hover:text-secondary hover:bg-card-hover transition-all duration-300"
-            aria-label="Cambiar modo"
+            aria-label={mounted && theme === "dark" ? tc("themeLight") : tc("themeDark")}
           >
             {mounted && theme === "dark" ? (
               <svg
@@ -219,7 +215,7 @@ const Navbar = () => {
                 viewBox="0 0 24 24"
                 stroke="currentColor"
                 role="img"
-                aria-label="Sol"
+                aria-label={tc("themeLight")}
               >
                 <path
                   strokeLinecap="round"
@@ -235,7 +231,7 @@ const Navbar = () => {
                 viewBox="0 0 24 24"
                 stroke="currentColor"
                 role="img"
-                aria-label="Luna"
+                aria-label={tc("themeDark")}
               >
                 <path
                   strokeLinecap="round"
@@ -247,12 +243,23 @@ const Navbar = () => {
             )}
           </button>
 
+          <button
+            type="button"
+            onClick={() => router.replace(pathname, { locale: otherLocale })}
+            className="px-4 py-2 text-sm font-semibold uppercase tracking-widest rounded-xl
+                     text-text-light hover:text-secondary hover:bg-card-hover
+                     transition-all duration-300 border border-border"
+            aria-label={tc("localeSwitcherAria")}
+          >
+            {otherLocale}
+          </button>
+
           <Link
             href="/contact"
             onClick={() => setIsMenuOpen(false)}
             className="mt-4 inline-flex items-center justify-center bg-secondary text-text-dark text-base font-bold px-8 py-4 rounded-full hover:bg-secondary-light hover:shadow-glow transition-all duration-300"
           >
-            Sesion gratuita
+            {t("ctaDesktop")}
           </Link>
         </div>
       </div>

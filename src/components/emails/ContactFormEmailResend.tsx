@@ -5,8 +5,10 @@ import type {
   QuestionOptionInterestedIn,
   QuestionOptionMediaResponse,
 } from "@/types/navbar";
+import { t } from "@/utils/email-translations";
 
 interface Props {
+  locale: string;
   name: Name;
   email: Email;
   phone: Phone;
@@ -16,6 +18,7 @@ interface Props {
 }
 
 export const ContactFormEmail = ({
+  locale,
   name,
   email,
   phone,
@@ -23,6 +26,7 @@ export const ContactFormEmail = ({
   interestedIn,
   optionalComment,
 }: Props) => {
+  const year = new Date().getFullYear();
   return `
       <!DOCTYPE html>
       <html>
@@ -38,7 +42,7 @@ export const ContactFormEmail = ({
                   <!-- Header -->
                   <tr>
                     <td style="background-color: #1C4761; padding: 30px; border-radius: 8px 8px 0 0;">
-                      <h1 style="color: #ffffff; margin: 0; font-size: 24px; text-align: center;">Nuevo Contacto Recibido</h1>
+                      <h1 style="color: #ffffff; margin: 0; font-size: 24px; text-align: center;">${t(locale, "EmailTemplates.adminHeading")}</h1>
                     </td>
                   </tr>
                   
@@ -49,7 +53,7 @@ export const ContactFormEmail = ({
                         <tr>
                           <td style="padding: 10px 0;">
                             <p style="margin: 0; color: #64748b; font-size: 16px;">
-                              <strong style="color: #1C4761;">Nombre:</strong> 
+                              <strong style="color: #1C4761;">${t(locale, "EmailTemplates.fieldName")}:</strong> 
                               <span style="margin-left: 8px;">${name}</span>
                             </p>
                           </td>
@@ -57,7 +61,7 @@ export const ContactFormEmail = ({
                         <tr>
                           <td style="padding: 10px 0;">
                             <p style="margin: 0; color: #64748b; font-size: 16px;">
-                              <strong style="color: #1C4761;">Email:</strong>
+                              <strong style="color: #1C4761;">${t(locale, "EmailTemplates.fieldEmail")}:</strong>
                               <span style="margin-left: 8px;">${email}</span>
                             </p>
                           </td>
@@ -65,7 +69,7 @@ export const ContactFormEmail = ({
                         <tr>
                           <td style="padding: 10px 0;">
                             <p style="margin: 0; color: #64748b; font-size: 16px;">
-                              <strong style="color: #1C4761;">Teléfono:</strong>
+                              <strong style="color: #1C4761;">${t(locale, "EmailTemplates.fieldPhone")}:</strong>
                               <span style="margin-left: 8px;">${phone}</span>
                             </p>
                           </td>
@@ -73,7 +77,7 @@ export const ContactFormEmail = ({
                         <tr>
                           <td style="padding: 10px 0;">
                             <p style="margin: 0; color: #64748b; font-size: 16px;">
-                              <strong style="color: #1C4761;">Interesado en:</strong>
+                              <strong style="color: #1C4761;">${t(locale, "EmailTemplates.fieldInterest")}:</strong>
                               <span style="margin-left: 8px;">${interestedIn}</span>
                             </p>
                           </td>
@@ -81,7 +85,7 @@ export const ContactFormEmail = ({
                         <tr>
                           <td style="padding: 10px 0;">
                             <p style="margin: 0; color: #64748b; font-size: 16px;">
-                              <strong style="color: #1C4761;">Medio de respuesta:</strong>
+                              <strong style="color: #1C4761;">${t(locale, "EmailTemplates.fieldResponseMedium")}:</strong>
                               <span style="margin-left: 8px;">${mediaResponse}</span>
                             </p>
                           </td>
@@ -89,7 +93,7 @@ export const ContactFormEmail = ({
                         <tr>
                           <td style="padding: 10px 0;">
                             <p style="margin: 0; color: #64748b; font-size: 16px;">
-                              <strong style="color: #1C4761;">Comentario:</strong>
+                              <strong style="color: #1C4761;">${t(locale, "EmailTemplates.fieldComment")}:</strong>
                               <span style="margin-left: 8px;">${optionalComment}</span>
                             </p>
                           </td>
@@ -102,7 +106,7 @@ export const ContactFormEmail = ({
                   <tr>
                     <td style="background-color: #f8fafc; padding: 20px; text-align: center; border-radius: 0 0 8px 8px;">
                       <p style="margin: 0; color: #64748b; font-size: 14px;">
-                        © ${new Date().getFullYear()} Pere Barceló | Psicólogo Deportivo
+                        ${t(locale, "Common.copyright", { year: String(year) })}
                       </p>
                     </td>
                   </tr>

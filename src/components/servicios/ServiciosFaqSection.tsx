@@ -1,33 +1,24 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { useTranslations } from "next-intl";
 
 import AnimatedSection from "@/components/composables/AnimatedSection";
 import { fadeInUp, staggerContainer } from "@/components/home/animations";
 
-const faqs = [
-  {
-    question: "Y si no me funciona?",
-    answer: "La primera sesion es 100% gratuita. Sin ningun tipo de compromiso.",
-  },
-  {
-    question: "Esto sirve para mi deporte?",
-    answer: "El proceso se adapta a cada disciplina.",
-  },
-  {
-    question: "Cuanto tiempo se tarda en notar cambios?",
-    answer:
-      "Depende del caso, pero desde las primeras sesiones ya trabajas herramientas aplicables.",
-  },
-];
-
 export default function ServiciosFaqSection() {
+  const t = useTranslations("ServiciosFaqSection");
+  const faqs = [
+    { question: t("faq1Q"), answer: t("faq1A") },
+    { question: t("faq2Q"), answer: t("faq2A") },
+    { question: t("faq3Q"), answer: t("faq3A") },
+  ];
   return (
     <section className="relative bg-background overflow-hidden">
       <div className="relative z-10 max-w-4xl mx-auto px-5 sm:px-8 lg:px-12 py-24 lg:py-32">
         <AnimatedSection className="text-center mb-16">
           <h2 className="text-4xl sm:text-5xl font-bold text-text-dark tracking-tight">
-            Preguntas frecuentes
+            {t("sectionLabel")}
           </h2>
         </AnimatedSection>
 

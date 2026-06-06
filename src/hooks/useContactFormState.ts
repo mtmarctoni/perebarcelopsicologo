@@ -1,3 +1,4 @@
+import { useLocale, useTranslations } from "next-intl";
 import { useCallback, useEffect, useState } from "react";
 import { PhoneFormats, QuestionType } from "@/types/navbar";
 import { questions } from "@/utils/data";
@@ -5,6 +6,8 @@ import { handleResendErrors } from "@/utils/errorHandler";
 import { isValidEmail, isValidSpanishPhone } from "@/utils/validation";
 
 export const useContactFormState = () => {
+  const t = useTranslations("Form");
+  const locale = useLocale();
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [answers, setAnswers] = useState<Record<string, string>>({});
   const [selectedAnswer, setSelectedAnswer] = useState("");
@@ -17,6 +20,7 @@ export const useContactFormState = () => {
       setIsLoading(true);
 
       const finalAnswers = {
+        locale,
         ...answers,
         [questions[currentQuestion].id]: finalAnswer,
       };
@@ -54,7 +58,7 @@ export const useContactFormState = () => {
         setIsLoading(false);
       }
     },
-    [answers, currentQuestion],
+    [answers, currentQuestion, locale],
   );
 
   const handleNext = useCallback(
@@ -62,14 +66,14 @@ export const useContactFormState = () => {
       // Phone validation
       if (questions[currentQuestion].type === QuestionType.PHONE) {
         if (phoneFormat === PhoneFormats.ES && !isValidSpanishPhone(answer)) {
-          setValidationError("Por favor, introduce un número de teléfono español válido");
+          setValidationError(t("errorInvalidPhone"));
           return;
         }
       }
       // Email validation
       if (questions[currentQuestion].type === QuestionType.EMAIL) {
         if (!isValidEmail(answer)) {
-          setValidationError("Por favor, introduce una dirección de email válida");
+          setValidationError(t("errorInvalidEmail"));
           return;
         }
       }
@@ -88,7 +92,7 @@ export const useContactFormState = () => {
         handleSubmit(answer);
       }
     },
-    [currentQuestion, phoneFormat, handleSubmit],
+    [currentQuestion, phoneFormat, handleSubmit, t],
   );
 
   useEffect(() => {

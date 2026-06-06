@@ -1,46 +1,29 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { useTranslations } from "next-intl";
 
 import AnimatedSection from "@/components/composables/AnimatedSection";
 import SectionLabel from "@/components/composables/SectionLabel";
 import { fadeInUp, staggerContainer } from "@/components/home/animations";
 
-const topics = [
-  {
-    title: "Despues de un error",
-    desc: "Como cortar la caida de rendimiento y volver al partido/competicion",
-    icon: "01",
-  },
-  {
-    title: "Cuando aparecen dudas",
-    desc: "Como seguir compitiendo sin necesitar confianza perfecta",
-    icon: "02",
-  },
-  {
-    title: "Bajo presion",
-    desc: "Como mantener claridad cuando mas importa",
-    icon: "03",
-  },
-  {
-    title: "Sin buenas sensaciones",
-    desc: "Como rendir sin depender de como te sientes",
-    icon: "04",
-  },
-];
-
 export default function ServiciosWorkSection() {
+  const t = useTranslations("ServiciosWorkSection");
+  const topics = [
+    { title: t("topic1Title"), desc: t("topic1Desc"), icon: "01" },
+    { title: t("topic2Title"), desc: t("topic2Desc"), icon: "02" },
+    { title: t("topic3Title"), desc: t("topic3Desc"), icon: "03" },
+    { title: t("topic4Title"), desc: t("topic4Desc"), icon: "04" },
+  ];
   return (
     <section className="relative bg-background overflow-hidden">
       <div className="relative z-10 max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 py-24 lg:py-32">
         <AnimatedSection className="text-center mb-16">
-          <SectionLabel text="Contenido" />
+          <SectionLabel text={t("sectionLabel")} />
           <h2 className="text-4xl sm:text-5xl font-bold text-text-dark tracking-tight">
-            Que <span className="text-secondary">trabajaremos</span>
+            {t("heading")}
           </h2>
-          <p className="mt-4 text-lg text-text max-w-2xl mx-auto">
-            Situaciones reales de competicion:
-          </p>
+          <p className="mt-4 text-lg text-text max-w-2xl mx-auto">{t("subtitle")}</p>
         </AnimatedSection>
 
         <motion.div

@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { useTranslations } from "next-intl";
 
 import { CheckIcon } from "@/components/composables/Icons";
 
@@ -7,6 +8,7 @@ interface Props {
 }
 
 const SuccessQuestion = ({ resetForm }: Props) => {
+  const t = useTranslations("Form");
   return (
     <div className="text-center">
       <motion.div
@@ -24,7 +26,7 @@ const SuccessQuestion = ({ resetForm }: Props) => {
         onClick={resetForm}
         className="mt-8 px-6 py-2 bg-primary-dark text-white rounded-lg hover:bg-secondary-light transition-colors"
       >
-        Enviar otro mensaje
+        {t("buttonReset")}
       </motion.button>
     </div>
   );

@@ -7,10 +7,14 @@ import {
   sendUserConfirmationEmail,
 } from "@/services/email.service";
 import type { ContactFormData } from "@/types/navbar";
+import { emailSubjects } from "@/utils/email-translations";
 
 export async function POST(req: Request) {
   try {
     const formData: ContactFormData = await req.json();
+
+    const locale = (typeof formData.locale === "string" ? formData.locale : "es") as "es" | "ca";
+    const subjects = emailSubjects(locale);
 
     const userData = {
       name: formData[1],
@@ -21,15 +25,14 @@ export async function POST(req: Request) {
       optionalComment: formData[6],
     };
 
-    const adminHtml = ContactFormEmail(userData);
+    const adminHtml = ContactFormEmail({ locale, ...userData });
 
-    const userHtml = ConfirmationEmail({ name: userData.name });
+    const userHtml = ConfirmationEmail({ locale, name: userData.name });
 
-    const adminEmail = await sendAdminEmail({ html: adminHtml });
+    const adminEmail = await sendAdminEmail({ html: adminHtml, subject: subjects.contactForm });
 
     if (adminEmail.error) {
       const resendError = adminEmail.error as ResendErrorResponse;
-      // Return the specific error from Resend
       return NextResponse.json(
         {
           error: resendError.message,
@@ -42,11 +45,14 @@ export async function POST(req: Request) {
       );
     }
 
-    const userEmail = await sendUserConfirmationEmail({ to: userData.email, html: userHtml });
+    const userEmail = await sendUserConfirmationEmail({
+      to: userData.email,
+      html: userHtml,
+      subject: subjects.formConfirmation,
+    });
 
     if (userEmail.error) {
       const resendError = userEmail.error as ResendErrorResponse;
-      // Return the specific error from Resend
       return NextResponse.json(
         {
           error: resendError.message,

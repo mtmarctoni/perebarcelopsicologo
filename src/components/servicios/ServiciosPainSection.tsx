@@ -1,29 +1,30 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { useTranslations } from "next-intl";
 
 import AnimatedSection from "@/components/composables/AnimatedSection";
 import SectionLabel from "@/components/composables/SectionLabel";
 import { scaleIn, staggerContainer } from "@/components/home/animations";
 
-const painPoints = [
-  { num: "01", text: "Empiezas bien, pero un error cambia tu rendimiento" },
-  { num: "02", text: "Aparecen dudas que no tienes entrenando" },
-  { num: "03", text: "Te tensas y pierdes fluidez" },
-  { num: "04", text: "Piensas demasiado en vez de competir" },
-  { num: "05", text: "Tu confianza depende del resultado o del momento" },
-];
-
 export default function ServiciosPainSection() {
+  const t = useTranslations("ServiciosPainSection");
+  const painPoints = [
+    { num: "01", text: t("point1") },
+    { num: "02", text: t("point2") },
+    { num: "03", text: t("point3") },
+    { num: "04", text: t("point4") },
+    { num: "05", text: t("point5") },
+  ];
   return (
     <section className="relative bg-background-alt overflow-hidden">
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_30%_0%,_rgba(245,158,11,0.06)_0%,_transparent_60%)]" />
 
       <div className="relative z-10 max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 py-24 lg:py-32">
         <AnimatedSection className="max-w-2xl mb-16">
-          <SectionLabel text="Para ti" />
+          <SectionLabel text={t("sectionLabel")} />
           <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-text-dark tracking-tight">
-            Te pasa esto cuando compites?
+            {t("heading")}
           </h2>
         </AnimatedSection>
 
@@ -52,10 +53,7 @@ export default function ServiciosPainSection() {
         </motion.div>
 
         <AnimatedSection className="mt-16 max-w-2xl">
-          <p className="text-xl text-text-light leading-relaxed">
-            No es falta de nivel.{" "}
-            <strong className="text-text-dark">Es gestion del rendimiento bajo presion.</strong>
-          </p>
+          <p className="text-xl text-text-light leading-relaxed">{t("emphasis")}</p>
         </AnimatedSection>
       </div>
     </section>
