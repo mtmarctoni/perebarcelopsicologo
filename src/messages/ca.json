@@ -375,7 +375,8 @@
     "enterToContinue": "Prem Enter per continuar",
     "errorInvalidPhone": "Si us plau, introdueix un número de telèfon espanyol vàlid",
     "errorInvalidEmail": "Si us plau, introdueix una adreça d'email vàlida",
-    "errorResendEmail": "Email no vàlid. L'adreça de correu electrònic ha de seguir el format 'email@example.com' o 'Nom <email@example.com>'"
+    "errorResendEmail": "Email no vàlid. L'adreça de correu electrònic ha de seguir el format 'email@example.com' o 'Nom <email@example.com>'",
+    "errorUnexpected": "Ha ocorregut un error inesperat. Si us plau, torna-ho a intentar més tard."
   },
   "EmailTemplates": {
     "adminSubject": "Nou formulari de contacte",
