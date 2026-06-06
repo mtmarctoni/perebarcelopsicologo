@@ -57,7 +57,7 @@ jobs:
           warn-only: true
 
   lint-test-and-build:
-    name: Lint, Test & Build
+    name: Lint, Type Check & Build
     runs-on: ubuntu-latest
     timeout-minutes: 10
     continue-on-error: true
