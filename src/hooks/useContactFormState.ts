@@ -38,7 +38,6 @@ export const useContactFormState = () => {
 
         if (!response.ok) {
           setValidationError(handleResendErrors(data.error));
-
           throw new Error(data.error.message);
         }
 
@@ -52,13 +51,15 @@ export const useContactFormState = () => {
 
         // Move to success screen
         setCurrentQuestion(questions.length - 1);
-      } catch (_error) {
-        // Handle error
+      } catch (error) {
+        // biome-ignore lint/suspicious/noConsole: server-side error logging is intentional
+        console.error("Contact form submission error:", error);
+        setValidationError(t("errorUnexpected"));
       } finally {
         setIsLoading(false);
       }
     },
-    [answers, currentQuestion, locale],
+    [answers, currentQuestion, locale, t],
   );
 
   const handleNext = useCallback(

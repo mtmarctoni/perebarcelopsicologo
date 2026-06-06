@@ -20,12 +20,10 @@
     "src/components/containers/QuickLinkFooter.tsx",
     "src/components/containers/QuestionFormContainer.tsx",
     "src/utils/validation.ts",
-    "src/components/composables/Icons.tsx"
+    "src/components/composables/Icons.tsx",
+    "src/i18n/routing.ts"
   ],
-  "ignoreDependencies": [
-    "@svgr/webpack",
-    "postcss-load-config"
-  ],
+  "ignoreDependencies": ["@svgr/webpack", "postcss-load-config", "@swc/helpers"],
   "ignoreBinaries": ["vercel"],
   "ignoreExportsUsedInFile": {
     "interface": true,
