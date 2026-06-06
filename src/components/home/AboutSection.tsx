@@ -64,7 +64,7 @@ export default function AboutSection() {
             <div className="mt-8">
               <Link
                 href="/contact"
-                className="inline-flex items-center justify-center text-center bg-secondary text-text-dark font-bold px-8 py-4 rounded-full hover:bg-secondary-light hover:shadow-glow hover:-translate-y-0.5 transition-all duration-300"
+                className="inline-flex items-center justify-center text-center bg-secondary text-text-dark dark:text-[#0f172a] font-bold px-8 py-4 rounded-full hover:bg-secondary-light hover:shadow-glow hover:-translate-y-0.5 transition-all duration-300"
               >
                 {t("cta")}
               </Link>
