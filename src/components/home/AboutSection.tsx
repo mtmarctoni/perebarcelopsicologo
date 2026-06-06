@@ -28,7 +28,7 @@ export default function AboutSection() {
 
               <div className="relative aspect-[4/5] rounded-[2rem] overflow-hidden shadow-2xl">
                 <Image
-                  src="/wp/profile-photo.webp"
+                  src="/profile/pere1-transparente.webp"
                   alt={t("imageAlt")}
                   fill
                   sizes="(max-width: 1024px) 100vw, 45vw"
@@ -52,7 +52,7 @@ export default function AboutSection() {
             </h2>
 
             <div className="mt-8 space-y-5">
-              <p className="text-xl text-text-dark font-medium leading-relaxed">{t("bio1")}</p>
+              <p className="text-lg text-text leading-relaxed">{t("bio1")}</p>
               <p className="text-lg text-text leading-relaxed">{t("bio2")}</p>
               <p className="text-lg text-text leading-relaxed">{t("bio3")}</p>
             </div>
@@ -64,7 +64,7 @@ export default function AboutSection() {
             <div className="mt-8">
               <Link
                 href="/contact"
-                className="inline-flex items-center justify-center bg-secondary text-text-dark font-bold px-8 py-4 rounded-full hover:bg-secondary-light hover:shadow-glow hover:-translate-y-0.5 transition-all duration-300"
+                className="inline-flex items-center justify-center text-center bg-secondary text-text-dark font-bold px-8 py-4 rounded-full hover:bg-secondary-light hover:shadow-glow hover:-translate-y-0.5 transition-all duration-300"
               >
                 {t("cta")}
               </Link>

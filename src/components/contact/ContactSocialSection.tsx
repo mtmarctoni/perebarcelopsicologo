@@ -19,7 +19,7 @@ export default function ContactSocialSection() {
   const t = useTranslations("ContactSocialSection");
   return (
     <section className="relative bg-background overflow-hidden">
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_80%_50%,_rgba(245,158,11,0.04)_0%,_transparent_50%)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_80%_50%,_rgba(185,216,235,0.04)_0%,_transparent_50%)]" />
 
       <div className="relative z-10 max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 py-24 lg:py-32">
         <AnimatedSection className="text-center mb-16">
@@ -49,11 +49,11 @@ export default function ContactSocialSection() {
               >
                 <div className="w-14 h-14 rounded-2xl bg-secondary/10 flex items-center justify-center mx-auto mb-6 group-hover:bg-secondary/15 transition-colors duration-300">
                   {IconComponent && (
-                    <IconComponent className="w-7 h-7 text-secondary transition-colors duration-300" />
+                    <IconComponent className="w-7 h-7 text-primary transition-colors duration-300" />
                   )}
                 </div>
                 <h3 className="text-text-dark font-bold text-lg">{social.name}</h3>
-                <span className="text-text-light group-hover:text-secondary transition-colors duration-300 text-sm mt-1 block">
+                <span className="text-text-light group-hover:text-primary transition-colors duration-300 text-sm mt-1 block">
                   {social.username}
                 </span>
               </motion.a>

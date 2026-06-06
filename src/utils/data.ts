@@ -1,9 +1,4 @@
-import {
-  EnvelopeIcon,
-  InstagramIcon,
-  LinkedinIcon,
-  TwitterIcon,
-} from "@/components/composables/Icons";
+import { EnvelopeIcon, InstagramIcon, LinkedinIcon } from "@/components/composables/Icons";
 import {
   type Club,
   PhoneFormats,
@@ -49,12 +44,6 @@ export const socialMediaLinksFooter: SocialCardProps[] = [
     Icon: InstagramIcon,
     link: "https://www.instagram.com/perebarcelopsico/",
     username: "@perebarcelopsico",
-  },
-  {
-    name: "Twitter",
-    Icon: TwitterIcon,
-    link: "https://x.com/PBarceloPsico",
-    username: "@PBarceloPsico",
   },
   // Easy to add more social media here
 ];

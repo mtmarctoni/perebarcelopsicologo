@@ -37,7 +37,7 @@ export default function AboutExpectSection() {
               className="flex items-start gap-4 p-6 rounded-2xl bg-card border border-border hover:bg-card-hover hover:border-secondary/20 transition-all duration-300"
             >
               <div className="w-10 h-10 rounded-xl bg-secondary/10 flex items-center justify-center shrink-0">
-                <CheckIcon className="w-5 h-5 text-secondary" />
+                <CheckIcon className="w-5 h-5 text-primary" />
               </div>
               <p className="text-text-dark font-medium leading-relaxed">{text}</p>
             </motion.div>

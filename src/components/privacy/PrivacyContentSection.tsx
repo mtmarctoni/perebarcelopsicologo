@@ -14,7 +14,7 @@ interface PrivacyItemProps {
 function PrivacyItem({ icon, label }: PrivacyItemProps) {
   return (
     <div className="flex items-center gap-3 text-text-light text-sm">
-      <span className="text-secondary">{icon}</span>
+      <span className="text-primary">{icon}</span>
       <span>{label}</span>
     </div>
   );
@@ -161,7 +161,7 @@ export default function PrivacyContentSection() {
 
   return (
     <section className="relative bg-background-alt overflow-hidden">
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_30%_20%,_rgba(245,158,11,0.03)_0%,_transparent_50%)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_30%_20%,_rgba(185,216,235,0.03)_0%,_transparent_50%)]" />
 
       <div className="relative z-10 max-w-4xl mx-auto px-5 sm:px-8 lg:px-12 py-24 lg:py-32">
         <motion.div
