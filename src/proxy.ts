@@ -1,11 +1,22 @@
 import type { NextRequest } from "next/server";
 import { NextResponse } from "next/server";
+import createMiddleware from "next-intl/middleware";
+import { routing } from "./i18n/routing";
+
+const intlMiddleware = createMiddleware(routing);
 
 const STAGING_HOST = process.env.STAGING_HOST || "app.perebarcelopsicologo.com";
 
+function normalizeHost(value: string): string {
+  return value.split(":")[0].toLowerCase();
+}
+
 function isStaging(request: NextRequest): boolean {
-  const host = request.headers.get("host") || request.nextUrl.host;
-  return host.includes(STAGING_HOST);
+  const hostHeader = request.headers.get("host") || request.nextUrl.host;
+  const host = normalizeHost(hostHeader);
+  const stagingHost = normalizeHost(STAGING_HOST);
+
+  return host === stagingHost || host.endsWith(`.${stagingHost}`);
 }
 
 function getUnauthorizedResponse(): NextResponse {
@@ -21,6 +32,7 @@ function getUnauthorizedResponse(): NextResponse {
 export function proxy(request: NextRequest) {
   const host = request.headers.get("host") || request.nextUrl.host;
   const url = request.nextUrl;
+  const pathname = url.pathname;
 
   // === STAGING PROTECTION ===
   if (isStaging(request)) {
@@ -55,8 +67,6 @@ export function proxy(request: NextRequest) {
   }
 
   // === PRODUCTION REDIRECTS ===
-  // Skip API routes and static files for redirect logic
-  const pathname = url.pathname;
   const isSkippedPath =
     pathname.startsWith("/api") ||
     pathname.startsWith("/_next/static") ||
@@ -66,7 +76,7 @@ export function proxy(request: NextRequest) {
     pathname === "/robots.txt";
 
   if (!isSkippedPath) {
-    // www → non-www redirect
+    // www -> non-www redirect
     if (host.startsWith("www.")) {
       const newHostname = host.replace("www.", "");
       return NextResponse.redirect(
@@ -74,7 +84,7 @@ export function proxy(request: NextRequest) {
       );
     }
 
-    // HTTP → HTTPS redirect in production
+    // HTTP -> HTTPS redirect in production
     if (process.env.NODE_ENV === "production") {
       const proto = request.headers.get("x-forwarded-proto");
       if (proto === "http") {
@@ -83,17 +93,10 @@ export function proxy(request: NextRequest) {
     }
   }
 
-  return NextResponse.next();
+  // === INTL MIDDLEWARE ===
+  return intlMiddleware(request);
 }
 
 export const config = {
-  matcher: [
-    /*
-     * Match all request paths except for the ones starting with:
-     * - _next/static (static files)
-     * - _next/image (image optimization files)
-     * - favicon.ico (favicon file)
-     */
-    "/((?!_next/static|_next/image|favicon.ico).*)",
-  ],
+  matcher: ["/((?!api|_next|_vercel|.*\\..*).*)"],
 };
