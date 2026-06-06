@@ -59,7 +59,7 @@ const Navbar = () => {
           <div className="flex justify-between items-center h-20">
             <Link
               href="/"
-              className="text-text-dark font-bold text-lg tracking-tight whitespace-nowrap hover:text-secondary transition-colors duration-300"
+              className="text-text-dark font-bold text-lg tracking-tight whitespace-nowrap hover:text-primary transition-colors duration-300"
             >
               {tc("siteNameShort")}
               <span className="font-normal text-text-light ml-1.5 text-base">
@@ -86,7 +86,7 @@ const Navbar = () => {
               <button
                 type="button"
                 onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-                className="ml-3 p-2 rounded-xl text-text-light hover:text-secondary hover:bg-card-hover transition-all duration-300"
+                className="ml-3 p-2 rounded-xl text-text-light hover:text-primary hover:bg-card-hover transition-all duration-300"
                 aria-label={mounted && theme === "dark" ? tc("themeLight") : tc("themeDark")}
               >
                 {mounted && theme === "dark" ? (
@@ -128,8 +128,8 @@ const Navbar = () => {
                 type="button"
                 onClick={() => router.replace(pathname, { locale: otherLocale })}
                 className="ml-2 px-3 py-1.5 text-xs font-semibold uppercase tracking-widest rounded-lg
-                         text-text-light hover:text-secondary hover:bg-card-hover
-                         transition-all duration-300 border border-border"
+                          text-text-light hover:text-primary hover:bg-card-hover
+                          transition-all duration-300 border border-border"
                 aria-label={tc("localeSwitcherAria")}
               >
                 {otherLocale}
@@ -137,7 +137,7 @@ const Navbar = () => {
 
               <Link
                 href="/contact"
-                className="ml-4 inline-flex items-center justify-center bg-secondary text-text-dark text-sm font-bold px-5 py-2.5 rounded-full hover:bg-secondary-light hover:shadow-glow hover:-translate-y-0.5 transition-all duration-300"
+                className="ml-4 inline-flex items-center justify-center bg-secondary text-text-dark dark:text-[#0f172a] text-sm font-bold px-5 py-2.5 rounded-full hover:bg-secondary-light hover:shadow-glow hover:-translate-y-0.5 transition-all duration-300"
               >
                 {t("ctaDesktop")}
               </Link>
@@ -146,7 +146,7 @@ const Navbar = () => {
             <div className="flex items-center gap-3 lg:hidden">
               <Link
                 href="/contact"
-                className="inline-flex items-center justify-center bg-secondary text-text-dark text-xs font-bold px-4 py-2 rounded-full hover:bg-secondary-light transition-all duration-300"
+                className="inline-flex items-center justify-center bg-secondary text-text-dark dark:text-[#0f172a] text-xs font-bold px-4 py-2 rounded-full hover:bg-secondary-light transition-all duration-300"
               >
                 {t("ctaMobile")}
               </Link>
@@ -154,7 +154,7 @@ const Navbar = () => {
               <button
                 type="button"
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
-                className="text-text-dark hover:text-secondary p-2 rounded-xl hover:bg-card-hover transition-all duration-300"
+                className="text-text-dark hover:text-primary p-2 rounded-xl hover:bg-card-hover transition-all duration-300"
                 aria-label={isMenuOpen ? t("closeMenu") : t("openMenu")}
               >
                 {isMenuOpen ? <CrossIcon className="w-6 h-6" /> : <BarsIcon className="w-6 h-6" />}
@@ -174,7 +174,7 @@ const Navbar = () => {
             <button
               type="button"
               onClick={() => setIsMenuOpen(false)}
-              className="text-text-dark hover:text-secondary p-2 rounded-xl hover:bg-card-hover transition-all duration-300"
+              className="text-text-dark hover:text-primary p-2 rounded-xl hover:bg-card-hover transition-all duration-300"
               aria-label={t("closeMenu")}
             >
               <CrossIcon className="w-7 h-7" />
@@ -200,7 +200,7 @@ const Navbar = () => {
           <button
             type="button"
             onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-            className="mt-4 p-3 rounded-xl text-text-light hover:text-secondary hover:bg-card-hover transition-all duration-300"
+            className="mt-4 p-3 rounded-xl text-text-light hover:text-primary hover:bg-card-hover transition-all duration-300"
             aria-label={mounted && theme === "dark" ? tc("themeLight") : tc("themeDark")}
           >
             {mounted && theme === "dark" ? (
@@ -242,7 +242,7 @@ const Navbar = () => {
             type="button"
             onClick={() => router.replace(pathname, { locale: otherLocale })}
             className="px-4 py-2 text-sm font-semibold uppercase tracking-widest rounded-xl
-                     text-text-light hover:text-secondary hover:bg-card-hover
+                     text-text-light hover:text-primary hover:bg-card-hover
                      transition-all duration-300 border border-border"
             aria-label={tc("localeSwitcherAria")}
           >
@@ -252,7 +252,7 @@ const Navbar = () => {
           <Link
             href="/contact"
             onClick={() => setIsMenuOpen(false)}
-            className="mt-4 inline-flex items-center justify-center bg-secondary text-text-dark text-base font-bold px-8 py-4 rounded-full hover:bg-secondary-light hover:shadow-glow transition-all duration-300"
+            className="mt-4 inline-flex items-center justify-center bg-secondary text-text-dark dark:text-[#0f172a] text-base font-bold px-8 py-4 rounded-full hover:bg-secondary-light hover:shadow-glow transition-all duration-300"
           >
             {t("ctaDesktop")}
           </Link>

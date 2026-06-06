@@ -13,7 +13,7 @@ const BackButton = ({ show, onClick }: BackButtonProps) => {
     <button
       type="button"
       onClick={onClick}
-      className="text-sm text-text-light hover:text-secondary transition-colors"
+      className="text-sm text-text-light hover:text-primary transition-colors"
     >
       {t("buttonBack")}
     </button>

@@ -27,7 +27,7 @@ const Footer = () => {
           <div className="lg:col-span-5">
             <Link
               href="/"
-              className="inline-block text-text-inverse font-bold text-xl tracking-tight hover:text-secondary transition-colors duration-300"
+              className="inline-block text-text-inverse font-bold text-xl tracking-tight hover:text-primary transition-colors duration-300"
             >
               {tc("siteNameShort")}
               <span className="font-normal text-text-inverse opacity-40 ml-1.5 text-lg">
@@ -41,7 +41,7 @@ const Footer = () => {
             <div className="mt-6 flex items-center gap-4">
               <a
                 href={`mailto:${email}`}
-                className="flex items-center gap-2 text-text-inverse opacity-40 hover:opacity-100 hover:text-secondary transition-all duration-300 text-sm"
+                className="flex items-center gap-2 text-text-inverse opacity-40 hover:opacity-100 hover:text-primary transition-all duration-300 text-sm"
               >
                 <EnvelopeIcon className="w-4 h-4" />
                 <span>{email}</span>
@@ -50,7 +50,7 @@ const Footer = () => {
             <div className="mt-2 flex items-center gap-4">
               <a
                 href={`tel:${phone}`}
-                className="flex items-center gap-2 text-text-inverse opacity-40 hover:opacity-100 hover:text-secondary transition-all duration-300 text-sm"
+                className="flex items-center gap-2 text-text-inverse opacity-40 hover:opacity-100 hover:text-primary transition-all duration-300 text-sm"
               >
                 <WhatsappIcon className="w-4 h-4" />
                 <span>{phone}</span>
@@ -67,8 +67,8 @@ const Footer = () => {
                     target={social.link.startsWith("mailto") ? undefined : "_blank"}
                     rel={social.link.startsWith("mailto") ? undefined : "noopener noreferrer"}
                     className="w-10 h-10 rounded-xl bg-card border border-border flex items-center justify-center
-                             hover:bg-secondary/10 hover:border-secondary/20 hover:text-secondary
-                             text-text-inverse opacity-40 hover:opacity-100 transition-all duration-300"
+                             hover:bg-secondary/10 hover:border-secondary/20 hover:text-primary
+                             text-text-dark opacity-40 hover:opacity-100 transition-all duration-300"
                     aria-label={social.name}
                   >
                     <Icon className="w-4 h-4" />
@@ -89,7 +89,7 @@ const Footer = () => {
                   <li key={item.url}>
                     <Link
                       href={item.url}
-                      className="text-text-inverse opacity-40 hover:opacity-100 hover:text-secondary text-sm transition-all duration-300"
+                      className="text-text-inverse opacity-40 hover:opacity-100 hover:text-primary text-sm transition-all duration-300"
                     >
                       {tn(labelKey)}
                     </Link>
@@ -108,7 +108,7 @@ const Footer = () => {
             </p>
             <Link
               href="/contact"
-              className="inline-flex items-center justify-center text-center bg-secondary text-text-dark text-sm font-bold px-6 py-3 rounded-full hover:bg-secondary-light hover:shadow-glow hover:-translate-y-0.5 transition-all duration-300"
+              className="inline-flex items-center justify-center text-center bg-secondary text-text-dark dark:text-[#0f172a] text-sm font-bold px-6 py-3 rounded-full hover:bg-secondary-light hover:shadow-glow hover:-translate-y-0.5 transition-all duration-300"
             >
               {t("ctaButton")}
             </Link>

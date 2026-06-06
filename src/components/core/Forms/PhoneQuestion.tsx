@@ -80,7 +80,7 @@ const PhoneQuestion = ({
           <button
             type="button"
             onClick={() => setPhoneFormat(null)}
-            className="text-sm text-text hover:text-secondary-light transition-colors"
+            className="text-sm text-text hover:text-primary transition-colors"
           >
             {t("phoneFormatChange")}
           </button>
