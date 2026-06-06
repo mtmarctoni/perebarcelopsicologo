@@ -50,7 +50,7 @@ export default function HeroSection() {
               {t("headingLine1")}
               <br />
               {t("headingBeforeHighlight")}
-              <span className="text-[#3b82f6] dark:text-primary relative">
+              <span className="text-[#0D85D8] dark:text-primary relative">
                 {t("headingHighlight")}
                 <svg className="absolute -bottom-2 left-0 w-full" viewBox="0 0 200 12" fill="none">
                   <title>Underline decoration</title>
