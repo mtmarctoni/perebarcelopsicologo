@@ -22,10 +22,7 @@
     "src/utils/validation.ts",
     "src/components/composables/Icons.tsx"
   ],
-  "ignoreDependencies": [
-    "@svgr/webpack",
-    "postcss-load-config"
-  ],
+  "ignoreDependencies": ["@svgr/webpack", "postcss-load-config"],
   "ignoreBinaries": ["vercel"],
   "ignoreExportsUsedInFile": {
     "interface": true,
