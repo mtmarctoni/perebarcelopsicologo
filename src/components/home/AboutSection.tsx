@@ -28,7 +28,7 @@ export default function AboutSection() {
 
               <div className="relative aspect-[4/5] rounded-[2rem] overflow-hidden shadow-2xl">
                 <Image
-                  src="/profile/pere1-transparente.webp"
+                  src="/profile/pere-perfil-camiseta-marron.webp"
                   alt={t("imageAlt")}
                   fill
                   sizes="(max-width: 1024px) 100vw, 45vw"
