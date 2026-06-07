@@ -55,7 +55,7 @@ export function proxy(request: NextRequest) {
         username === expectedUsername &&
         password === expectedPassword
       ) {
-        const response = NextResponse.next();
+        const response = intlMiddleware(request);
         response.headers.set("X-Robots-Tag", "noindex, nofollow");
         return response;
       }
