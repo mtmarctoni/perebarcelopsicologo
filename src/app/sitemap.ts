@@ -4,11 +4,7 @@ const siteUrl = "https://perebarcelopsicologo.com";
 const routes = [
   "",
   "/about",
-  "/blog",
   "/contact",
-  "/mental",
-  "/methodology",
-  "/performance",
   "/privacy",
   "/servicios",
 ];
