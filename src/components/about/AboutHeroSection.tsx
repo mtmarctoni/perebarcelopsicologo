@@ -57,7 +57,7 @@ export default function AboutHeroSection() {
 
               <div className="relative aspect-[4/5] rounded-[2rem] overflow-hidden shadow-2xl shadow-black/40 border border-border">
                 <Image
-                  src="/profile/pere1-transparente.webp"
+                  src="/profile/pere-perfil-camiseta-verde.webp"
                   alt={t("imageAlt")}
                   fill
                   sizes="(max-width: 768px) 80vw, 380px"
