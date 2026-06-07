@@ -8,8 +8,14 @@ const intlMiddleware = createMiddleware(routing);
 const STAGING_HOST = process.env.STAGING_HOST || "app.perebarcelopsicologo.com";
 
 function isStaging(request: NextRequest): boolean {
-  const host = request.headers.get("host") || request.nextUrl.host;
-  return host.includes(STAGING_HOST);
+  const rawHost = request.headers.get("host") || request.nextUrl.host;
+  const normalizeHost = (value: string): string =>
+    value.split(":")[0].toLowerCase().replace(/\.$/, "");
+
+  const host = normalizeHost(rawHost);
+  const stagingHost = normalizeHost(STAGING_HOST);
+
+  return host === stagingHost;
 }
 
 function getUnauthorizedResponse(): NextResponse {
