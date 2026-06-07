@@ -1,13 +1,7 @@
 import type { MetadataRoute } from "next";
 
 const siteUrl = "https://perebarcelopsicologo.com";
-const routes = [
-  "",
-  "/about",
-  "/contact",
-  "/privacy",
-  "/servicios",
-];
+const routes = ["", "/about", "/contact", "/privacy", "/servicios"];
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const staticRoutes = routes.map((route) => ({
