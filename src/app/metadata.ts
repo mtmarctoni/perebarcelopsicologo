@@ -57,8 +57,8 @@ export const defaultMetadata: Metadata = {
     canonical: "/",
   },
   icons: {
-    icon: "/favicon.ico",
-    apple: "/apple-touch-icon.png",
+    icon: "/favicon-32x32.png",
+    apple: "/favicon-32x32.png",
   },
   manifest: "/site.webmanifest",
 };
