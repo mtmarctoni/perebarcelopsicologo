@@ -20,6 +20,7 @@
     "src/components/containers/QuickLinkFooter.tsx",
     "src/components/containers/QuestionFormContainer.tsx",
     "src/utils/validation.ts",
+    "src/components/seo/SchemaMarkup.tsx",
     "src/components/composables/Icons.tsx",
     "src/i18n/routing.ts"
   ],
