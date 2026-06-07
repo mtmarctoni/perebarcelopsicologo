@@ -5,8 +5,10 @@ const STAGING_HOST = process.env.STAGING_HOST || "app.perebarcelopsicologo.com";
 
 export default async function robots(): Promise<MetadataRoute.Robots> {
   const headersList = await headers();
-  const host = headersList.get("host") || "";
-  const isStaging = host.includes(STAGING_HOST);
+  const hostHeader = headersList.get("host") || "";
+  const normalizedHost = hostHeader.trim().toLowerCase().split(":")[0];
+  const normalizedStagingHost = STAGING_HOST.trim().toLowerCase();
+  const isStaging = normalizedHost === normalizedStagingHost;
 
   if (isStaging) {
     return {
