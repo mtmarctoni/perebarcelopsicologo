@@ -17,6 +17,7 @@ export function ThemeToggle() {
   return (
     <button
       type="button"
+      aria-label={theme === "dark" ? "Activar modo claro" : "Activar modo oscuro"}
       onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
       className="p-2 rounded-full hover:bg-gray-dark transition-colors duration-500"
     >

@@ -69,6 +69,7 @@ const Navbar = () => {
             <div className="lg:hidden">
               <button
                 type="button"
+                aria-label={isMenuOpen ? "Cerrar menú" : "Abrir menú"}
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
                 className="text-white hover:text-secondary p-2 rounded-full hover:bg-white/10 transition-all duration-300"
               >
