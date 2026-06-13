@@ -1,14 +1,16 @@
 import type { Metadata } from "next";
 
 import { serverEnv } from "@/config/server-env.config";
+import { getRobotsMetadata, getSiteUrl } from "@/lib/site";
 
-export const siteUrl = "https://perebarcelopsicologo.com";
 export const siteName = "Pere Barceló - Psicólogo Deportivo";
 const description =
   "Pere Barceló Lambea - Psicólogo Deportivo en Mallorca. Especializado en psicología del deporte para deportistas, equipos y clubes deportivos.";
 const keywords =
   "psicología deportiva, psicólogo deportivo mallorca, rendimiento deportivo, psicología del deporte, entrenamiento mental, deporte mallorca, psicología deportiva baleares";
 const googleVerification = serverEnv.GOOGLE_SITE_VERIFICATION;
+
+const siteUrl = getSiteUrl();
 
 const defaultOgImage = {
   url: `${siteUrl}/stock/alcanza-tu-objetivo.webp`,
@@ -41,20 +43,15 @@ export const defaultMetadata: Metadata = {
     images: [defaultOgImage.url],
     creator: "@PBarceloPsico",
   },
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      "max-video-preview": -1,
-      "max-image-preview": "large",
-      "max-snippet": -1,
-    },
-  },
+  robots: getRobotsMetadata(),
   ...(googleVerification ? { verification: { google: googleVerification } } : {}),
   alternates: {
     canonical: "/",
+    languages: {
+      "x-default": `${siteUrl}/`,
+      es: `${siteUrl}/`,
+      ca: `${siteUrl}/ca/`,
+    },
   },
   icons: {
     icon: "/favicon-32x32.png",
@@ -91,48 +88,32 @@ export function createPageMetadata({
     },
   ];
 
-  return getPageMetadata({
+  return {
+    ...defaultMetadata,
     title,
     description,
     keywords: keywords || defaultMetadata.keywords,
     alternates: {
-      canonical: path,
+      ...defaultMetadata.alternates,
+      canonical,
+      languages: {
+        "x-default": canonical,
+        es: canonical,
+        ca: `${siteUrl}/ca${path}`,
+      },
     },
     openGraph: {
+      ...defaultMetadata.openGraph,
       url: canonical,
       title,
       description,
       images,
     },
     twitter: {
+      ...defaultMetadata.twitter,
       title,
       description,
       images: images.map((image) => image.url),
-    },
-  });
-}
-
-// Helper function to generate page-specific metadata
-export function getPageMetadata(metadata: Partial<Metadata> = {}): Metadata {
-  return {
-    ...defaultMetadata,
-    ...metadata,
-    title: metadata.title || defaultMetadata.title,
-    alternates: {
-      ...defaultMetadata.alternates,
-      ...metadata.alternates,
-    },
-    openGraph: {
-      ...defaultMetadata.openGraph,
-      ...metadata.openGraph,
-      title: metadata.title || defaultMetadata.openGraph?.title,
-      description: metadata.description || defaultMetadata.openGraph?.description,
-    },
-    twitter: {
-      ...defaultMetadata.twitter,
-      ...metadata.twitter,
-      title: metadata.title || defaultMetadata.twitter?.title,
-      description: metadata.description || defaultMetadata.twitter?.description,
     },
   };
 }

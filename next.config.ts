@@ -48,6 +48,10 @@ const nextConfig: NextConfig = {
         protocol: "https",
         hostname: "perebarcelopsicologo.com",
       },
+      {
+        protocol: "https",
+        hostname: "app.perebarcelopsicologo.com",
+      },
     ],
   },
   async headers() {
@@ -120,14 +124,6 @@ const nextConfig: NextConfig = {
         source: "/mental/:path*",
         destination: "/",
         permanent: true,
-      },
-    ];
-  },
-  async rewrites() {
-    return [
-      {
-        source: "/sitemap.xml",
-        destination: "/api/sitemap",
       },
     ];
   },
