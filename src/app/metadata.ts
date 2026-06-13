@@ -53,6 +53,10 @@ export function getDefaultMetadata(host?: string): Metadata {
     ...(googleVerification ? { verification: { google: googleVerification } } : {}),
     alternates: {
       canonical: "/",
+      languages: {
+        es: `${siteUrl}/`,
+        ca: `${siteUrl}/ca/`,
+      },
     },
     icons: {
       icon: "/favicon-32x32.png",
@@ -62,7 +66,6 @@ export function getDefaultMetadata(host?: string): Metadata {
   };
 }
 
-// Re-export for backward compatibility
 export const siteUrl = getSiteUrl();
 export const defaultMetadata = getDefaultMetadata();
 
@@ -85,7 +88,6 @@ export async function createPageMetadata({
   keywords,
   host,
 }: PageMetadataOptions): Promise<Metadata> {
-  // If host is not provided, try to get it from headers
   const resolvedHost = host || (await headers()).get("host") || "";
   const siteUrl = getSiteUrl(resolvedHost);
   const canonical = path === "/" ? siteUrl : `${siteUrl}${path}`;
@@ -107,6 +109,10 @@ export async function createPageMetadata({
       keywords: keywords || defaultMetadata.keywords,
       alternates: {
         canonical: path,
+        languages: {
+          es: `${siteUrl}${path}`,
+          ca: `${siteUrl}/ca${path}`,
+        },
       },
       openGraph: {
         url: canonical,
@@ -124,7 +130,6 @@ export async function createPageMetadata({
   );
 }
 
-// Helper function to generate page-specific metadata
 export function getPageMetadata(metadata: Partial<Metadata> = {}, host?: string): Metadata {
   const base = getDefaultMetadata(host);
 
