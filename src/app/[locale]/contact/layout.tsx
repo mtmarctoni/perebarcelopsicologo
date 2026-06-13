@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { headers } from "next/headers";
 import { getTranslations } from "next-intl/server";
 
 import { createPageMetadata } from "@/app/metadata";
@@ -10,12 +11,14 @@ type Props = {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "Metadata.contactLayout" });
+  const host = (await headers()).get("host") || "";
 
-  return createPageMetadata({
+  return await createPageMetadata({
     title: t("title"),
     description: t("description"),
     path: "/contact",
     imagePath: "/stock/personas-escuchando.webp",
+    host,
   });
 }
 

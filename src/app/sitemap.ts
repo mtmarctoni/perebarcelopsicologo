@@ -1,16 +1,18 @@
 import type { MetadataRoute } from "next";
+import { headers } from "next/headers";
 
 import { getSiteUrl, isProduction } from "@/lib/site";
 
 const routes = ["", "/about", "/contact", "/privacy", "/servicios"];
 
-export default function sitemap(): MetadataRoute.Sitemap {
-  // Only serve sitemap on production to prevent indexing of staging/preview URLs
-  if (!isProduction()) {
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+  const host = (await headers()).get("host") || undefined;
+
+  if (!isProduction(host)) {
     return [];
   }
 
-  const siteUrl = getSiteUrl();
+  const siteUrl = getSiteUrl(host);
 
   const staticRoutes = routes.map((route) => ({
     url: `${siteUrl}${route}`,

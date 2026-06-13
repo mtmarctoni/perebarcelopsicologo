@@ -1,42 +1,41 @@
-/**
- * Environment detection and site URL utilities
- *
- * Production: perebarcelopsicologo.com
- * Staging:    app.perebarcelopsicologo.com (develop branch)
- * Preview:    *.vercel.app (PR deployments)
- * Development: localhost
- */
-
 export type Environment = "production" | "staging" | "preview" | "development";
 
 const PRODUCTION_HOST = "perebarcelopsicologo.com";
 const STAGING_HOST = process.env.STAGING_HOST || "app.perebarcelopsicologo.com";
 
+function matchHost(host: string | undefined, target: string): boolean {
+  if (!host) return false;
+  const hostname = host.split(":")[0];
+  return hostname === target || hostname.endsWith(`.${target}`);
+}
+
 function getEnvironment(host?: string): Environment {
-  // Vercel preview deployments
+  // Explicit APP_ENV takes precedence over all detection
+  if (process.env.APP_ENV === "production") return "production";
+  if (process.env.APP_ENV === "staging") return "staging";
+  if (process.env.APP_ENV === "preview") return "preview";
+  if (process.env.APP_ENV === "development") return "development";
+
   if (process.env.VERCEL_ENV === "preview") {
     return "preview";
   }
 
-  // Vercel production deployments — need to verify it's not staging
   if (process.env.VERCEL_ENV === "production") {
     const vercelUrl = process.env.VERCEL_URL || "";
-    if (vercelUrl.includes("app.") || vercelUrl.includes("staging")) {
+    if (vercelUrl.startsWith("app.") || vercelUrl.includes("staging")) {
       return "staging";
     }
-    // If host is explicitly staging, trust it
-    if (host?.includes(STAGING_HOST)) {
+    if (matchHost(host, STAGING_HOST)) {
       return "staging";
     }
     return "production";
   }
 
-  // Fallback: check request host
   if (host) {
-    if (host.includes(PRODUCTION_HOST) && !host.includes("app.")) {
+    if (matchHost(host, PRODUCTION_HOST) && !host.startsWith("app.")) {
       return "production";
     }
-    if (host.includes(STAGING_HOST)) {
+    if (matchHost(host, STAGING_HOST)) {
       return "staging";
     }
   }
@@ -68,9 +67,19 @@ export function getSiteUrl(host?: string): string {
   }
 }
 
-export function getRobotsMetadata(host?: string): { index: boolean; follow: boolean } {
+export function getRobotsMetadata(host?: string) {
+  const production = isProduction(host);
   return {
-    index: isProduction(host),
+    index: production,
     follow: true,
+    ...(production && {
+      googleBot: {
+        index: true,
+        follow: true,
+        "max-video-preview": -1,
+        "max-image-preview": "large" as const,
+        "max-snippet": -1,
+      },
+    }),
   };
 }
