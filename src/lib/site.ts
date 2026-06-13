@@ -1,6 +1,6 @@
 /**
  * Environment detection and site URL utilities
- * 
+ *
  * Production: perebarcelopsicologo.com
  * Staging:    app.perebarcelopsicologo.com (develop branch)
  * Preview:    *.vercel.app (PR deployments)
@@ -25,7 +25,7 @@ export function getEnvironment(host?: string): Environment {
       return "staging";
     }
     // If host is explicitly staging, trust it
-    if (host && host.includes(STAGING_HOST)) {
+    if (host?.includes(STAGING_HOST)) {
       return "staging";
     }
     return "production";
@@ -64,7 +64,6 @@ export function getSiteUrl(host?: string): string {
       const previewUrl = process.env.VERCEL_URL;
       return previewUrl ? `https://${previewUrl}` : `https://${PRODUCTION_HOST}`;
     }
-    case "development":
     default: {
       const resolvedHost = host || "localhost:3000";
       const protocol = resolvedHost.startsWith("localhost") ? "http" : "https";

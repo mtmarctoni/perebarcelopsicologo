@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import { headers } from "next/headers";
 
-import { getSiteUrl, getRobotsMetadata, isProduction } from "@/lib/site";
 import { serverEnv } from "@/config/server-env.config";
+import { getRobotsMetadata, getSiteUrl } from "@/lib/site";
 
 export const siteName = "Pere Barceló - Psicólogo Deportivo";
 const description =
@@ -125,10 +125,7 @@ export async function createPageMetadata({
 }
 
 // Helper function to generate page-specific metadata
-export function getPageMetadata(
-  metadata: Partial<Metadata> = {},
-  host?: string,
-): Metadata {
+export function getPageMetadata(metadata: Partial<Metadata> = {}, host?: string): Metadata {
   const base = getDefaultMetadata(host);
 
   return {
