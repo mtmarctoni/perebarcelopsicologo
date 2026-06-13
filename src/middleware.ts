@@ -29,7 +29,7 @@ function getUnauthorizedResponse(): NextResponse {
   });
 }
 
-export function proxy(request: NextRequest) {
+export function middleware(request: NextRequest) {
   const host = request.headers.get("host") || request.nextUrl.host;
   const url = request.nextUrl;
   const pathname = url.pathname;
