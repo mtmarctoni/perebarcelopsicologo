@@ -41,13 +41,13 @@ export default function ServiciosNotThisSection() {
                 <motion.div
                   key={item.text}
                   variants={fadeInUp}
-                  className="flex items-center gap-4 p-5 rounded-xl bg-red-50 border border-red-100"
+                  className="flex items-center gap-4 p-5 rounded-xl bg-red-50 dark:bg-red-950/30 border border-red-100 dark:border-red-900/30"
                 >
-                  <div className="w-8 h-8 rounded-full bg-red-100 flex items-center justify-center shrink-0">
+                    <div className="w-8 h-8 rounded-full bg-red-100 dark:bg-red-900/30 flex items-center justify-center shrink-0">
                     <svg
                       role="img"
                       aria-label="No es esto"
-                      className="w-4 h-4 text-red-500"
+                      className="w-4 h-4 text-red-500 dark:text-red-400"
                       fill="none"
                       viewBox="0 0 24 24"
                       stroke="currentColor"
