@@ -14,11 +14,12 @@ export default function HeroSection() {
   return (
     <section className="relative min-h-screen flex items-center overflow-hidden bg-background">
       {/* Background layers */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_80%_20%,_rgba(185,216,235,0.08)_0%,_transparent_50%)]" />
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_20%_80%,_rgba(28,71,97,0.25)_0%,_transparent_60%)]" />
+      <div aria-hidden="true" className="absolute inset-0 bg-[radial-gradient(ellipse_at_80%_20%,_rgba(185,216,235,0.08)_0%,_transparent_50%)]" />
+      <div aria-hidden="true" className="absolute inset-0 bg-[radial-gradient(ellipse_at_20%_80%,_rgba(28,71,97,0.25)_0%,_transparent_60%)]" />
 
       {/* Subtle noise texture overlay */}
       <div
+        aria-hidden="true"
         className="absolute inset-0 opacity-[0.035]"
         style={{
           backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E")`,
@@ -27,8 +28,8 @@ export default function HeroSection() {
       />
 
       {/* Decorative diagonal lines */}
-      <div className="absolute top-0 right-[15%] w-px h-full bg-gradient-to-b from-transparent via-border to-transparent" />
-      <div className="absolute top-0 right-[35%] w-px h-full bg-gradient-to-b from-transparent via-card to-transparent hidden lg:block" />
+      <div aria-hidden="true" className="absolute top-0 right-[15%] w-px h-full bg-gradient-to-b from-transparent via-border to-transparent" />
+      <div aria-hidden="true" className="absolute top-0 right-[35%] w-px h-full bg-gradient-to-b from-transparent via-card to-transparent hidden lg:block" />
 
       <div className="relative z-10 w-full max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 py-28 lg:pt-24 lg:pb-10">
         <div className="grid lg:grid-cols-12 gap-10 lg:gap-8 items-center min-h-[85vh]">
@@ -50,7 +51,7 @@ export default function HeroSection() {
               {t("headingLine1")}
               <br />
               {t("headingBeforeHighlight")}
-              <span className="text-[#0D85D8] dark:text-primary relative">
+              <span className="text-primary relative">
                 {t("headingHighlight")}
                 <svg className="absolute -bottom-2 left-0 w-full" viewBox="0 0 200 12" fill="none">
                   <title>Underline decoration</title>
@@ -110,8 +111,8 @@ export default function HeroSection() {
           >
             <div className="relative w-[280px] sm:w-[340px] lg:w-[420px] xl:w-[480px]">
               {/* Decorative amber glow behind image */}
-              <div className="absolute -inset-4 bg-secondary/10 rounded-[2rem] blur-2xl" />
-              <div className="absolute -bottom-8 -right-8 w-48 h-48 bg-secondary/8 rounded-full blur-3xl" />
+              <div aria-hidden="true" className="absolute -inset-4 bg-secondary/10 rounded-[2rem] blur-2xl" />
+              <div aria-hidden="true" className="absolute -bottom-8 -right-8 w-48 h-48 bg-secondary/8 rounded-full blur-3xl" />
 
               {/* Main image container with asymmetric frame */}
               <div className="relative aspect-[3/4] rounded-[2rem] overflow-hidden shadow-2xl shadow-black/40 border border-border">
@@ -124,7 +125,7 @@ export default function HeroSection() {
                   priority
                 />
                 {/* Bottom gradient overlay on image */}
-                <div className="absolute inset-0 bg-gradient-to-t from-[#070b14]/60 via-transparent to-transparent" />
+                <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-t from-[#070b14]/60 via-transparent to-transparent" />
               </div>
 
               {/* Floating stat card */}
