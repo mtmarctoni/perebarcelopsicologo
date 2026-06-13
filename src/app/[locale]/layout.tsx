@@ -94,9 +94,6 @@ export default async function LocaleLayout({ children, params }: Props) {
   return (
     <html lang={locale} suppressHydrationWarning className="scroll-smooth">
       <head>
-        {cookiebotCbid && <CookiebotHead cbid={cookiebotCbid} />}
-        {gtmId && <GTMHead gtmId={gtmId} />}
-
         {/* Preconnect to external domains */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
@@ -115,6 +112,8 @@ export default async function LocaleLayout({ children, params }: Props) {
       <body
         className={`${geistSans.variable} ${geistMono.variable} min-h-screen bg-background font-sans antialiased`}
       >
+        {cookiebotCbid && <CookiebotHead cbid={cookiebotCbid} />}
+        {gtmId && <GTMHead gtmId={gtmId} />}
         {gtmId && <GTMBody gtmId={gtmId} />}
         <Providers>
           <NextIntlClientProvider messages={messages}>{children}</NextIntlClientProvider>
