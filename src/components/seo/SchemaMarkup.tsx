@@ -1,6 +1,8 @@
+import { getSiteUrl } from "@/lib/site";
+
 import JsonLd from "./JsonLd";
 
-const siteUrl = "https://perebarcelopsicologo.com";
+const siteUrl = getSiteUrl();
 
 export const WebsiteSchema = () => {
   return (
