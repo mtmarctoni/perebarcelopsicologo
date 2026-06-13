@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 
 import { createPageMetadata } from "@/app/metadata";
+import FaqPageSchema from "@/components/seo/FaqPageSchema";
 import ServiciosContent from "./_servicios-content";
 
 type Props = {
@@ -19,6 +20,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   });
 }
 
-export default function ServiciosPage() {
-  return <ServiciosContent />;
+export default async function ServiciosPage({ params }: Props) {
+  const { locale } = await params;
+  return (
+    <>
+      <FaqPageSchema locale={locale} />
+      <ServiciosContent />
+    </>
+  );
 }
