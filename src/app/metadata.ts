@@ -48,6 +48,7 @@ export const defaultMetadata: Metadata = {
   alternates: {
     canonical: "/",
     languages: {
+      "x-default": `${siteUrl}/`,
       es: `${siteUrl}/`,
       ca: `${siteUrl}/ca/`,
     },
@@ -94,9 +95,10 @@ export function createPageMetadata({
     keywords: keywords || defaultMetadata.keywords,
     alternates: {
       ...defaultMetadata.alternates,
-      canonical: path,
+      canonical,
       languages: {
-        es: `${siteUrl}${path}`,
+        "x-default": canonical,
+        es: canonical,
         ca: `${siteUrl}/ca${path}`,
       },
     },

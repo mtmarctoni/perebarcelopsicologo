@@ -1,33 +1,8 @@
 {
-  "$schema": "https://unpkg.com/knip@6/schema.json",
-  "entry": [
-    "src/app/**/page.tsx",
-    "src/app/layout.tsx",
-    "src/app/providers.tsx",
-    "src/app/metadata.ts",
-    "src/app/sitemap.ts",
-    "src/config/**",
-    "src/hooks/**",
-    "src/services/**",
-    "next.config.ts",
-    "tailwind.config.ts"
-  ],
-  "project": ["src/**/*.{ts,tsx}", "*.config.{ts,js}"],
-  "ignore": [
-    "src/types/**",
-    "src/components/core/Forms/**",
-    "src/components/containers/ClubCard.tsx",
-    "src/components/containers/QuickLinkFooter.tsx",
-    "src/components/containers/QuestionFormContainer.tsx",
-    "src/utils/validation.ts",
-    "src/components/seo/SchemaMarkup.tsx",
-    "src/components/composables/Icons.tsx",
-    "src/i18n/routing.ts"
-  ],
-  "ignoreDependencies": ["@svgr/webpack", "postcss-load-config", "@swc/helpers"],
-  "ignoreBinaries": ["vercel"],
-  "ignoreExportsUsedInFile": {
-    "interface": true,
-    "type": true
+  "$schema": "https://unpkg.com/knip@5/schema.json",
+  "ignore": ["src/utils/validation.ts"],
+  "entry": ["src/app/layout.tsx", "src/app/sitemap.ts", "next.config.ts", "tailwind.config.ts"],
+  "ignoreIssues": {
+    "src/lib/site.ts": ["exports"]
   }
 }
