@@ -103,13 +103,13 @@
   "ProcessSection": {
     "sectionLabel": "Metodologia",
     "heading": "Com treballarem",
-    "step1Title": "1. Entenem el teu cas",
+    "step1Title": "Entenem el teu cas",
     "step1Desc": "Analitzem què t'està passant realment en competició",
-    "step2Title": "2. Detectem el bloqueig",
+    "step2Title": "Detectem el bloqueig",
     "step2Desc": "Identifiquem què està fallant exactament",
-    "step3Title": "3. Pla pràctic",
+    "step3Title": "Pla pràctic",
     "step3Desc": "Eines concretes per aplicar competint",
-    "step4Title": "4. Seguiment",
+    "step4Title": "Seguiment",
     "step4Desc": "Ajustem i portem el treball a competició"
   },
   "DifferentiationSection": {
@@ -178,7 +178,7 @@
   },
   "AboutWhySection": {
     "sectionLabel": "Motivació",
-    "heading": "¿Per què faig això?",
+    "heading": "Per què faig això?",
     "paragraph1": "He vist a molts esportistes amb nivell quedar-se lluny del seu rendiment real.",
     "paragraph2": "No per falta d'entrenament. No per falta de talent.",
     "paragraph3": "Sinó per no saber gestionar el que passa al seu cap quan competeixen.",
@@ -187,7 +187,7 @@
   },
   "AboutExpectSection": {
     "sectionLabel": "Expectatives",
-    "heading": "¿Què pots esperar al treballar amb mi?",
+    "heading": "Què pots esperar al treballar amb mi?",
     "item1": "No treballem sobre teoria, sinó sobre el que et passa competint",
     "item2": "Baixem a terra cada situació",
     "item3": "Surtos de cada sessió amb accions concretes",
@@ -218,7 +218,7 @@
   },
   "ServiciosPainSection": {
     "sectionLabel": "Per a tu",
-    "heading": "¿Et passa això quan competeixes?",
+    "heading": "Et passa això quan competeixes?",
     "point1": "Comences bé, però un error canvia el teu rendiment",
     "point2": "Apareixen dubtes que no tens entrenant",
     "point3": "Et tenses i perds fluïdesa",
@@ -238,7 +238,7 @@
   },
   "ServiciosWorkSection": {
     "sectionLabel": "Contingut",
-    "heading": "¿Què treballarem?",
+    "heading": "Què treballarem?",
     "subtitle": "Situacions reals de competició:",
     "topic1Title": "Després d'un error",
     "topic1Desc": "Com tallar la caiguda de rendiment i tornar al partit/competició",
@@ -251,7 +251,7 @@
   },
   "ServiciosTakeawaysSection": {
     "sectionLabel": "Resultats",
-    "heading": "¿Què t'emportaràs?",
+    "heading": "Què t'emportaràs?",
     "subtitle": "No és teoria, és aplicació directa. Eines que pots usar des de la primera sessió.",
     "item1": "Què fer just després d'un error",
     "item2": "Com gestionar pensaments en competició",
@@ -260,15 +260,15 @@
   },
   "ServiciosSessionSection": {
     "sectionLabel": "Procés",
-    "heading": "¿Com és una sessió?",
+    "heading": "Com és una sessió?",
     "subtitle": "A cada sessió treballem el teu cas real.",
-    "step1Title": "1. Analitzem situacions concretes de competició",
+    "step1Title": "Analitzem situacions concretes de competició",
     "step1Desc": "No parlem en general. Treballem el teu cas real.",
-    "step2Title": "2. Detectem què t'està limitant",
+    "step2Title": "Detectem què t'està limitant",
     "step2Desc": "Identifiquem patrons i desencadenants específics.",
-    "step3Title": "3. Definim eines aplicables",
+    "step3Title": "Definim eines aplicables",
     "step3Desc": "Accions concretes que pots usar en competició.",
-    "step4Title": "4. T'emportes accions clares per a competició",
+    "step4Title": "T'emportes accions clares per a competició",
     "step4Desc": "Surtos sabent què fer a cada moment.",
     "emphasis": "Surtos sabent què fer a cada moment."
   },
