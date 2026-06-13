@@ -1,34 +1,40 @@
 import type { Metadata } from "next";
 
-export type Environment = "production" | "staging" | "preview" | "development";
+const Env = {
+  Production: "production",
+  Staging: "staging",
+  Preview: "preview",
+  Development: "development",
+} as const;
+
+type Environment = (typeof Env)[keyof typeof Env];
 
 const PRODUCTION_HOST = "perebarcelopsicologo.com";
+const STAGING_URL_PREFIX = "app.";
 
 export function getEnvironment(): Environment {
-  // VERCEL_ENV takes precedence over APP_ENV when both are present.
-  // This prevents an accidental APP_ENV=production from exposing a Vercel preview.
   if (process.env.VERCEL_ENV) {
-    if (process.env.VERCEL_ENV === "production") {
+    if (process.env.VERCEL_ENV === Env.Production) {
       const vercelUrl = process.env.VERCEL_URL || "";
-      if (vercelUrl.startsWith("app.")) {
-        return "staging";
+      if (vercelUrl.startsWith(STAGING_URL_PREFIX)) {
+        return Env.Staging;
       }
-      return "production";
+      return Env.Production;
     }
-    if (process.env.VERCEL_ENV === "preview") return "preview";
-    return "development";
+    if (process.env.VERCEL_ENV === Env.Preview) return Env.Preview;
+    return Env.Development;
   }
 
-  if (process.env.APP_ENV === "production") return "production";
-  if (process.env.APP_ENV === "staging") return "staging";
-  if (process.env.APP_ENV === "preview") return "preview";
-  if (process.env.APP_ENV === "development") return "development";
+  if (process.env.APP_ENV === Env.Production) return Env.Production;
+  if (process.env.APP_ENV === Env.Staging) return Env.Staging;
+  if (process.env.APP_ENV === Env.Preview) return Env.Preview;
+  if (process.env.APP_ENV === Env.Development) return Env.Development;
 
-  return "development";
+  return Env.Development;
 }
 
 export function isProduction(): boolean {
-  return getEnvironment() === "production";
+  return getEnvironment() === Env.Production;
 }
 
 export function getSiteUrl(): string {
