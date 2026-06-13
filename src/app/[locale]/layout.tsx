@@ -97,14 +97,6 @@ export default async function LocaleLayout({ children, params }: Props) {
         {cookiebotCbid && <CookiebotHead cbid={cookiebotCbid} />}
         {gtmId && <GTMHead gtmId={gtmId} />}
 
-        {/* Preconnect to external domains */}
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap"
-          rel="stylesheet"
-        />
-
         {/* Favicon */}
         <link rel="icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
