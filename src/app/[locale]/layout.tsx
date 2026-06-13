@@ -1,6 +1,5 @@
 import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import { headers } from "next/headers";
 import { notFound } from "next/navigation";
 import Script from "next/script";
 import { NextIntlClientProvider } from "next-intl";
@@ -66,14 +65,11 @@ type Props = {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "Metadata" });
-  const headersList = await headers();
-  const host = headersList.get("host") || "";
 
-  return await createPageMetadata({
+  return createPageMetadata({
     title: t("defaultTitle"),
     description: t("defaultDescription"),
     path: "/",
-    host,
   });
 }
 

@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { headers } from "next/headers";
 
 import { serverEnv } from "@/config/server-env.config";
 import { getRobotsMetadata, getSiteUrl } from "@/lib/site";
@@ -11,63 +10,54 @@ const keywords =
   "psicología deportiva, psicólogo deportivo mallorca, rendimiento deportivo, psicología del deporte, entrenamiento mental, deporte mallorca, psicología deportiva baleares";
 const googleVerification = serverEnv.GOOGLE_SITE_VERIFICATION;
 
-export function getDefaultOgImage(siteUrl: string) {
-  return {
-    url: `${siteUrl}/stock/alcanza-tu-objetivo.webp`,
-    width: 1200,
-    height: 630,
-    alt: siteName,
-  };
-}
+const siteUrl = getSiteUrl();
 
-export function getDefaultMetadata(host?: string): Metadata {
-  const siteUrl = getSiteUrl(host);
-  const ogImage = getDefaultOgImage(siteUrl);
-  const robots = getRobotsMetadata(host);
+const defaultOgImage = {
+  url: `${siteUrl}/stock/alcanza-tu-objetivo.webp`,
+  width: 1200,
+  height: 630,
+  alt: siteName,
+};
 
-  return {
-    metadataBase: new URL(siteUrl),
+export const defaultMetadata: Metadata = {
+  metadataBase: new URL(siteUrl),
+  title: siteName,
+  description: description,
+  keywords: keywords,
+  authors: [{ name: "Pere Barceló Lambea" }],
+  creator: "Pere Barceló Lambea",
+  publisher: "Pere Barceló Lambea",
+  openGraph: {
+    type: "website",
+    locale: "es_ES",
+    url: siteUrl,
+    siteName: siteName,
     title: siteName,
     description: description,
-    keywords: keywords,
-    authors: [{ name: "Pere Barceló Lambea" }],
-    creator: "Pere Barceló Lambea",
-    publisher: "Pere Barceló Lambea",
-    openGraph: {
-      type: "website",
-      locale: "es_ES",
-      url: siteUrl,
-      siteName: siteName,
-      title: siteName,
-      description: description,
-      images: [ogImage],
+    images: [defaultOgImage],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: siteName,
+    description: description,
+    images: [defaultOgImage.url],
+    creator: "@PBarceloPsico",
+  },
+  robots: getRobotsMetadata(),
+  ...(googleVerification ? { verification: { google: googleVerification } } : {}),
+  alternates: {
+    canonical: "/",
+    languages: {
+      es: `${siteUrl}/`,
+      ca: `${siteUrl}/ca/`,
     },
-    twitter: {
-      card: "summary_large_image",
-      title: siteName,
-      description: description,
-      images: [ogImage.url],
-      creator: "@PBarceloPsico",
-    },
-    robots,
-    ...(googleVerification ? { verification: { google: googleVerification } } : {}),
-    alternates: {
-      canonical: "/",
-      languages: {
-        es: `${siteUrl}/`,
-        ca: `${siteUrl}/ca/`,
-      },
-    },
-    icons: {
-      icon: "/favicon-32x32.png",
-      apple: "/apple-touch-icon.png",
-    },
-    manifest: "/site.webmanifest",
-  };
-}
-
-export const siteUrl = getSiteUrl();
-export const defaultMetadata = getDefaultMetadata();
+  },
+  icons: {
+    icon: "/favicon-32x32.png",
+    apple: "/apple-touch-icon.png",
+  },
+  manifest: "/site.webmanifest",
+};
 
 interface PageMetadataOptions {
   title: string;
@@ -76,23 +66,18 @@ interface PageMetadataOptions {
   imagePath?: string;
   imageUrl?: string;
   keywords?: string | string[];
-  host?: string;
 }
 
-export async function createPageMetadata({
+export function createPageMetadata({
   title,
   description,
   path,
   imagePath,
   imageUrl,
   keywords,
-  host,
-}: PageMetadataOptions): Promise<Metadata> {
-  const resolvedHost = host || (await headers()).get("host") || "";
-  const siteUrl = getSiteUrl(resolvedHost);
+}: PageMetadataOptions): Metadata {
   const canonical = path === "/" ? siteUrl : `${siteUrl}${path}`;
-  const ogImage = getDefaultOgImage(siteUrl);
-  const resolvedImageUrl = imageUrl || (imagePath ? `${siteUrl}${imagePath}` : ogImage.url);
+  const resolvedImageUrl = imageUrl || (imagePath ? `${siteUrl}${imagePath}` : defaultOgImage.url);
   const images = [
     {
       url: resolvedImageUrl,
@@ -102,56 +87,31 @@ export async function createPageMetadata({
     },
   ];
 
-  return getPageMetadata(
-    {
-      title,
-      description,
-      keywords: keywords || defaultMetadata.keywords,
-      alternates: {
-        canonical: path,
-        languages: {
-          es: `${siteUrl}${path}`,
-          ca: `${siteUrl}/ca${path}`,
-        },
-      },
-      openGraph: {
-        url: canonical,
-        title,
-        description,
-        images,
-      },
-      twitter: {
-        title,
-        description,
-        images: images.map((image) => image.url),
-      },
-    },
-    resolvedHost,
-  );
-}
-
-export function getPageMetadata(metadata: Partial<Metadata> = {}, host?: string): Metadata {
-  const base = getDefaultMetadata(host);
-
   return {
-    ...base,
-    ...metadata,
-    title: metadata.title || base.title,
+    ...defaultMetadata,
+    title,
+    description,
+    keywords: keywords || defaultMetadata.keywords,
     alternates: {
-      ...base.alternates,
-      ...metadata.alternates,
+      ...defaultMetadata.alternates,
+      canonical: path,
+      languages: {
+        es: `${siteUrl}${path}`,
+        ca: `${siteUrl}/ca${path}`,
+      },
     },
     openGraph: {
-      ...base.openGraph,
-      ...metadata.openGraph,
-      title: metadata.title || base.openGraph?.title,
-      description: metadata.description || base.openGraph?.description,
+      ...defaultMetadata.openGraph,
+      url: canonical,
+      title,
+      description,
+      images,
     },
     twitter: {
-      ...base.twitter,
-      ...metadata.twitter,
-      title: metadata.title || base.twitter?.title,
-      description: metadata.description || base.twitter?.description,
+      ...defaultMetadata.twitter,
+      title,
+      description,
+      images: images.map((image) => image.url),
     },
   };
 }
