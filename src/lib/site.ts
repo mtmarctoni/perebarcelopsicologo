@@ -12,7 +12,7 @@ export type Environment = "production" | "staging" | "preview" | "development";
 const PRODUCTION_HOST = "perebarcelopsicologo.com";
 const STAGING_HOST = process.env.STAGING_HOST || "app.perebarcelopsicologo.com";
 
-export function getEnvironment(host?: string): Environment {
+function getEnvironment(host?: string): Environment {
   // Vercel preview deployments
   if (process.env.VERCEL_ENV === "preview") {
     return "preview";
@@ -48,10 +48,6 @@ export function isProduction(host?: string): boolean {
   return getEnvironment(host) === "production";
 }
 
-export function isIndexable(host?: string): boolean {
-  return isProduction(host);
-}
-
 export function getSiteUrl(host?: string): string {
   const env = getEnvironment(host);
 
@@ -70,12 +66,6 @@ export function getSiteUrl(host?: string): string {
       return `${protocol}://${resolvedHost}`;
     }
   }
-}
-
-export function getCanonicalUrl(path: string, host?: string): string {
-  const siteUrl = getSiteUrl(host);
-  const cleanPath = path === "/" ? "" : path;
-  return `${siteUrl}${cleanPath}`;
 }
 
 export function getRobotsMetadata(host?: string): { index: boolean; follow: boolean } {
