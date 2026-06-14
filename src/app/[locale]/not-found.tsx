@@ -1,11 +1,10 @@
-"use client";
-
 import Link from "next/link";
-import { useTranslations } from "next-intl";
+import { getTranslations } from "next-intl/server";
 import MainLayout from "@/components/core/MainLayout";
+import { routing } from "@/i18n/routing";
 
-export default function LocaleNotFound() {
-  const t = useTranslations("NotFound");
+export default async function LocaleNotFound() {
+  const t = await getTranslations({ locale: routing.defaultLocale, namespace: "NotFound" });
 
   return (
     <MainLayout>
