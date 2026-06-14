@@ -31,7 +31,7 @@ export const LocalBusinessSchema = () => {
         "@context": "https://schema.org",
         "@type": "LocalBusiness",
         name: "Pere Barceló - Psicólogo Deportivo",
-        image: `${siteUrl}/images/og-image.jpg`,
+        image: `${siteUrl}/stock/alcanza-tu-objetivo.webp`,
         "@id": siteUrl,
         url: siteUrl,
         telephone: "+34636674759",

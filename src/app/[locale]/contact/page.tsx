@@ -16,6 +16,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     title: t("title"),
     description: t("description"),
     path: "/contact",
+    locale,
     imagePath: "/stock/personas-escuchando.webp",
   });
 }

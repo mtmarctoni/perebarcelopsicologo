@@ -29,7 +29,7 @@ export const defaultMetadata: Metadata = {
   publisher: "Pere Barceló Lambea",
   openGraph: {
     type: "website",
-    locale: "es_ES",
+    locale: "es_ES", // overridden per-page in createPageMetadata
     url: siteUrl,
     siteName: siteName,
     title: siteName,
@@ -54,7 +54,11 @@ export const defaultMetadata: Metadata = {
     },
   },
   icons: {
-    icon: "/favicon-32x32.png",
+    icon: [
+      { url: "/favicon.ico", type: "image/x-icon" },
+      { url: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },
+      { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
+    ],
     apple: "/apple-touch-icon.png",
   },
   manifest: "/site.webmanifest",
@@ -64,6 +68,7 @@ interface PageMetadataOptions {
   title: string;
   description: string;
   path: string;
+  locale: string;
   imagePath?: string;
   imageUrl?: string;
   keywords?: string | string[];
@@ -73,6 +78,7 @@ export function createPageMetadata({
   title,
   description,
   path,
+  locale,
   imagePath,
   imageUrl,
   keywords,
@@ -104,6 +110,7 @@ export function createPageMetadata({
     },
     openGraph: {
       ...defaultMetadata.openGraph,
+      locale: locale === "ca" ? "ca_ES" : "es_ES",
       url: canonical,
       title,
       description,

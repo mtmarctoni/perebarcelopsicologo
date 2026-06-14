@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { z } from "zod";
 import { ConfirmationEmail } from "@/components/emails/ContactFormEmailConfirmation";
 import { ContactFormEmail } from "@/components/emails/ContactFormEmailResend";
 import {
@@ -6,26 +7,57 @@ import {
   sendAdminEmail,
   sendUserConfirmationEmail,
 } from "@/services/email.service";
-import type { ContactFormData } from "@/types/navbar";
+import type { QuestionOptionInterestedIn, QuestionOptionMediaResponse } from "@/types/navbar";
 import { emailSubjects } from "@/utils/email-translations";
+
+const contactSchema = z.object({
+  locale: z.enum(["es", "ca"]),
+  "1": z.string().min(1).max(100),
+  "2": z.string().email(),
+  "3": z.string().min(6).max(20),
+  "4": z.string().min(1).max(100),
+  "5": z.string().min(1).max(100),
+  "6": z.string().max(1000).default(""),
+});
 
 export async function POST(req: Request) {
   try {
-    const formData: ContactFormData = await req.json();
+    const body = await req.json();
+    const parseResult = contactSchema.safeParse(body);
 
-    const locale = (typeof formData.locale === "string" ? formData.locale : "es") as "es" | "ca";
+    if (!parseResult.success) {
+      return NextResponse.json(
+        {
+          error: "Datos del formulario inválidos.",
+          type: "validation_error",
+          details: parseResult.error.flatten().fieldErrors,
+        },
+        { status: 400 },
+      );
+    }
+
+    const formData = parseResult.data;
+    const locale = formData.locale;
     const subjects = emailSubjects(locale);
 
     const userData = {
-      name: formData[1],
-      email: formData[2],
-      phone: formData[3],
-      mediaResponse: formData[4],
-      interestedIn: formData[5],
-      optionalComment: formData[6],
+      name: formData["1"],
+      email: formData["2"],
+      phone: formData["3"],
+      mediaResponse: formData["4"],
+      interestedIn: formData["5"],
+      optionalComment: formData["6"],
     };
 
-    const adminHtml = ContactFormEmail({ locale, ...userData });
+    const adminHtml = ContactFormEmail({
+      locale,
+      name: userData.name,
+      email: userData.email,
+      phone: userData.phone,
+      mediaResponse: userData.mediaResponse as QuestionOptionMediaResponse,
+      interestedIn: userData.interestedIn as QuestionOptionInterestedIn,
+      optionalComment: userData.optionalComment,
+    });
 
     const userHtml = ConfirmationEmail({ locale, name: userData.name });
 
@@ -72,10 +104,10 @@ export async function POST(req: Request) {
       },
       success: true,
     });
-  } catch (error) {
+  } catch (_error) {
     return NextResponse.json(
       {
-        error: `Internal Server Error : ${error}`,
+        error: "Error interno del servidor.",
         type: "server_error",
       },
       {
