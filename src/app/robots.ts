@@ -1,14 +1,9 @@
 import type { MetadataRoute } from "next";
-import { headers } from "next/headers";
 
-const STAGING_HOST = process.env.STAGING_HOST || "app.perebarcelopsicologo.com";
+import { getSiteUrl, isProduction } from "@/lib/site";
 
-export default async function robots(): Promise<MetadataRoute.Robots> {
-  const headersList = await headers();
-  const host = headersList.get("host") || "";
-  const isStaging = host.includes(STAGING_HOST);
-
-  if (isStaging) {
+export default function robots(): MetadataRoute.Robots {
+  if (!isProduction()) {
     return {
       rules: {
         userAgent: "*",
@@ -23,6 +18,6 @@ export default async function robots(): Promise<MetadataRoute.Robots> {
       allow: "/",
       disallow: ["/admin/", "/api/"],
     },
-    sitemap: "https://perebarcelopsicologo.com/sitemap.xml",
+    sitemap: `${getSiteUrl()}/sitemap.xml`,
   };
 }

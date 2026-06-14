@@ -29,5 +29,8 @@
   "ignoreExportsUsedInFile": {
     "interface": true,
     "type": true
+  },
+  "ignoreIssues": {
+    "src/lib/site.ts": ["exports"]
   }
 }
