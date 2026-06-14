@@ -1,7 +1,5 @@
-"use client";
-
 import Link from "next/link";
-import { useTranslations } from "next-intl";
+import { getLocale, getTranslations } from "next-intl/server";
 
 import { email, phone, socialMediaLinksFooter } from "@/utils/data";
 import { EnvelopeIcon, WhatsappIcon } from "../composables/Icons";
@@ -13,10 +11,11 @@ const navItems = [
   { url: "/contact" },
 ] as const;
 
-const Footer = () => {
-  const t = useTranslations("Footer");
-  const tn = useTranslations("NavBar");
-  const tc = useTranslations("Common");
+const Footer = async () => {
+  const locale = await getLocale();
+  const t = await getTranslations({ locale, namespace: "Footer" });
+  const tn = await getTranslations({ locale, namespace: "NavBar" });
+  const tc = await getTranslations({ locale, namespace: "Common" });
 
   return (
     <footer className="relative bg-background-footer overflow-hidden">
