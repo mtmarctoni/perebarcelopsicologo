@@ -9,51 +9,59 @@ export default {
   darkMode: "class",
   theme: {
     screens: {
-      sm: '480px',
-      md: '600px',
-      lg: '890px', // 976px
-      xl: '1440px',
+      sm: "480px",
+      md: "600px",
+      lg: "890px", // 976px
+      xl: "1440px",
     },
-    colors:{
+    colors: {
       primary: {
-        DEFAULT: 'var(--primary)',  // Footer background
-        light: 'var(--primary-light)',    // Lighter variation #3c9ebff
-        dark: 'var(--primary-dark)',     // Darker variation #1C4761
+        DEFAULT: "var(--primary)", // Footer background
+        light: "var(--primary-light)", // Lighter variation #3c9ebff
+        dark: "var(--primary-dark)", // Darker variation #1C4761
       },
       secondary: {
-        DEFAULT: 'var(--secondary)',  // White text FFC300
-        light: 'var(--secondary-light)',    // Lighter variation FFEA00
-        dark: 'var(--secondary-dark)',     // Darker variation CC9C00
+        DEFAULT: "rgb(var(--secondary-rgb) / <alpha-value>)",
+        light: "rgb(var(--secondary-light-rgb) / <alpha-value>)",
+        dark: "rgb(var(--secondary-dark-rgb) / <alpha-value>)",
       },
       text: {
-        DEFAULT: 'var(--text)',  // Main text color
-        light: 'var(--text-light)',
-        dark: 'var(--text-dark)', // Secondary text color
+        DEFAULT: "var(--text)", // Main text color
+        light: "var(--text-light)",
+        dark: "var(--text-dark)", // Secondary text color
+        inverse: "var(--text-inverse)",
       },
       background: {
-        DEFAULT: 'var(--background)',  // Default background
-        alt: 'var(--background-alt)',  // Default background
-        navbar: 'var(--background-navbar)',   
-        navbarAlt: 'var(--background-navbar-alt)',    
-        footer: 'var(--background-footer)',
+        DEFAULT: "var(--background)", // Default background
+        alt: "var(--background-alt)", // Default background
+        navbar: "var(--background-navbar)",
+        navbarAlt: "var(--background-navbar-alt)",
+        footer: "var(--background-footer)",
       },
-      success: 'var(--success)',  // Success color
-      warning: 'var(--warning)',  // Warning color
-      error: 'var(--error)',  // Error color
-      'blue': '#1fb6ff',
-      'purple': '#7e5bef',
-      'pink': '#ff49db',
-      'orange': '#ff7849',
-      'green': '#13ce66',
-      'yellow': '#ffc82c',
-      'gray-dark': '#273444',
-      'gray': '#8492a6',
-      'gray-light': '#d3dce6',
-      'white': '#ffffff',
+      card: {
+        DEFAULT: "var(--card)",
+        hover: "var(--card-hover)",
+      },
+      border: {
+        DEFAULT: "var(--border)",
+      },
+      success: "var(--success)", // Success color
+      warning: "var(--warning)", // Warning color
+      error: "var(--error)", // Error color
+      blue: "#1fb6ff",
+      purple: "#7e5bef",
+      pink: "#ff49db",
+      orange: "#ff7849",
+      green: "#13ce66",
+      yellow: "#ffc82c",
+      "gray-dark": "#273444",
+      gray: "#8492a6",
+      "gray-light": "#d3dce6",
+      white: "#ffffff",
     },
     fontFamily: {
-      sans: ['Graphik', 'sans-serif'],
-      serif: ['Merriweather', 'serif'],
+      sans: ["Graphik", "sans-serif"],
+      serif: ["Merriweather", "serif"],
     },
     extend: {
       colors: {
@@ -61,22 +69,21 @@ export default {
         // foreground: "var(--foreground)",
       },
       spacing: {
-        '128': '32rem',
-        '144': '36rem',
+        "128": "32rem",
+        "144": "36rem",
       },
       borderRadius: {
-        '4xl': '2rem',
+        "4xl": "2rem",
       },
       boxShadow: {
-        'card': '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)',
-        'card-hover': '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)',
-        'glow': '0 0 20px rgba(245, 158, 11, 0.3)',
+        card: "0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)",
+        "card-hover": "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)",
+        glow: "0 0 20px rgba(185, 216, 235, 0.3)",
       },
       transitionTimingFunction: {
-        'smooth': 'cubic-bezier(0.4, 0, 0.2, 1)',
+        smooth: "cubic-bezier(0.4, 0, 0.2, 1)",
       },
     },
   },
   plugins: [],
 } satisfies Config;
-

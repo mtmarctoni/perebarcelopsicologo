@@ -2,41 +2,152 @@ name: CI
 
 on:
   push:
-    branches: [main]
+    branches: [main, develop]
   pull_request:
-    branches: [main]
+    branches: [main, develop]
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 
+permissions:
+  contents: read
+
 jobs:
-  lint-and-build:
+  lint-test-and-build:
     name: Lint, Type Check & Build
     runs-on: ubuntu-latest
-
+    timeout-minutes: 5
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 20
-          cache: "npm"
+          cache: "pnpm"
 
       - name: Install dependencies
-        run: npm ci
+        run: pnpm install --frozen-lockfile --prefer-offline
 
       - name: Run Biome (lint + format check)
-        run: npm run lint
+        run: pnpm lint
 
       - name: Run TypeScript type check
-        run: npm run type-check
+        run: pnpm type-check
+
+      - name: Run tests
+        run: pnpm test
+
+      - name: Run knip (dead code analysis)
+        run: pnpm knip
 
       - name: Build application
-        run: npm run build
+        run: pnpm build
         env:
           RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
           GOOGLE_SITE_VERIFICATION: ${{ secrets.GOOGLE_SITE_VERIFICATION }}
           NEXT_PUBLIC_CALENDLY_URL: ${{ secrets.NEXT_PUBLIC_CALENDLY_URL }}
+
+  security-audit:
+    name: Dependency Audit
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: "pnpm"
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile --prefer-offline
+
+      - name: Run pnpm audit
+        run: pnpm audit --audit-level=high
+        continue-on-error: true
+
+  dependency-review:
+    name: Dependency Review
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions:
+      contents: read
+      pull-requests: write
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Dependency Review
+        uses: actions/dependency-review-action@v4
+        with:
+          fail-on-severity: high
+          warn-only: true
+
+  secret-scan:
+    name: Secret Scan (TruffleHog)
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    continue-on-error: true
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Fetch all branches
+        run: |
+          git fetch origin --tags
+          git branch develop origin/develop 2>/dev/null || true
+
+      - name: TruffleHog OSS
+        uses: trufflesecurity/trufflehog@main
+        with:
+          path: ./
+          base: "${{ github.event_name == 'push' && github.event.before || 'develop' }}"
+          head: "${{ github.event_name == 'push' && github.event.after || 'HEAD' }}"
+          extra_args: --only-verified
+
+  file-guard:
+    name: Secret File Guard
+    runs-on: ubuntu-latest
+    timeout-minutes: 2
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Check for committed secrets
+        run: |
+          BLOCKED="\.env$ \.env\.local$ \.env\.production$ \.env\.development$
+          id_rsa id_rsa\.pub id_dsa id_dsa\.pub
+          \.pem$ \.key$ \.p12$ \.pfx$
+          credentials\.json service-account.*\.json
+          token\.json secret\.json"
+
+          FOUND=0
+          for pattern in $BLOCKED; do
+            if find . -not -path "*/node_modules/*" -not -path "*/.git/*" | grep -E "$pattern" | grep -v "\.env\.template$"; then
+              echo "ERROR: Blocked file pattern matched: $pattern"
+              FOUND=1
+            fi
+          done
+
+          if [ "$FOUND" -eq 1 ]; then
+            echo "---"
+            echo "Remove these files from the repository. If they are needed locally,"
+            echo "add them to .gitignore and remove them with: git rm --cached <file>"
+            exit 1
+          fi
+
+          echo "No secret files found in repository."

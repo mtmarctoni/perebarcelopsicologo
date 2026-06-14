@@ -1,90 +1,16 @@
-import type { Metadata, Viewport } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
-import "./globals.css";
-import Script from "next/script";
-import { defaultMetadata } from "./metadata";
-import { Providers } from "./providers";
+import type { ReactNode } from "react";
+import { LocalBusinessSchema, WebsiteSchema } from "@/components/seo/SchemaMarkup";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
-
-export const metadata: Metadata = {
-  ...defaultMetadata,
+type Props = {
+  children: ReactNode;
 };
 
-export const viewport: Viewport = {
-  width: "device-width",
-  initialScale: 1,
-  maximumScale: 5,
-  themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#ffffff" },
-    { media: "(prefers-color-scheme: dark)", color: "#0a0a0a" },
-  ],
-};
-
-const PrivacySettings = () => (
-  <>
-    <Script
-      id="humanity-options"
-      strategy="afterInteractive"
-      dangerouslySetInnerHTML={{
-        __html: `
-          var huOptions = {
-            'appID': 'perebarcelopsicologocom-5e860ea',
-            'currentLanguage': 'en',
-            'blocking': true,
-            'globalCookie': false
-          }
-        `,
-      }}
-    />
-    <Script
-      id="humanity-banner"
-      src="https://cdn.hu-manity.co/hu-banner.min.js"
-      strategy="afterInteractive"
-    />
-  </>
-);
-
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export default function RootLayout({ children }: Props) {
   return (
-    <html lang="es" suppressHydrationWarning className="scroll-smooth">
-      <head>
-        <PrivacySettings />
-        {/* Preconnect to external domains */}
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap"
-          rel="stylesheet"
-        />
-
-        {/* Favicon */}
-        <link rel="icon" type="image/x-icon" href="/favicon.ico" />
-        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
-        <link rel="manifest" href="/site.webmanifest" />
-
-        {/* Preload critical assets */}
-        {/* <link rel="preload" href="/stock/alcanza-tu-objetivo.webp" as="image" /> */}
-      </head>
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} min-h-screen bg-white dark:bg-gray-900 font-sans antialiased`}
-      >
-        <Providers>{children}</Providers>
-      </body>
-    </html>
+    <>
+      <WebsiteSchema />
+      <LocalBusinessSchema />
+      {children}
+    </>
   );
 }

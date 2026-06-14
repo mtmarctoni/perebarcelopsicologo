@@ -1,0 +1,416 @@
+{
+  "Common": {
+    "siteName": "Pere Barceló - Psicòleg Esportiu",
+    "siteNameShort": "Pere Barceló",
+    "siteSubtext": "Psicòleg",
+    "phone": "+34 636 67 47 59",
+    "email": "pere@perebarcelopsicologo.com",
+    "domain": "perebarcelopsicologo.com",
+    "authorName": "Pere Barceló Lambea",
+    "copyright": "© {year} Pere Barceló Psicòleg. Tots els drets reservats.",
+    "ogLocale": "ca_ES",
+    "htmlLang": "ca",
+    "localeSwitcherAria": "Canviar idioma a castellà",
+    "themeLight": "Sol",
+    "themeDark": "Lluna"
+  },
+  "NavBar": {
+    "home": "Inici",
+    "about": "Sobre mi",
+    "servicios": "Serveis",
+    "contact": "Contacte",
+    "ctaDesktop": "Sessió gratuïta",
+    "ctaMobile": "Sessiógratis",
+    "closeMenu": "Tancar menú",
+    "openMenu": "Obrir menú"
+  },
+  "Footer": {
+    "description": "Psicòleg esportiu especialitzat en millorar el rendiment i la salut mental d'esportistes a través de sessions online, tallers i assessorament.",
+    "navHeading": "Navegació",
+    "ctaHeading": "Comença avui",
+    "ctaText": "La primera sessió és gratuïta. Si saps que pots rendir més, parlem-ne.",
+    "ctaButton": "Reserva la teva sessió gratuïta",
+    "privacyLink": "Política de Privacitat"
+  },
+  "Metadata": {
+    "defaultTitle": "Pere Barceló - Psicòleg Esportiu",
+    "defaultDescription": "Pere Barceló Lambea - Psicòleg Esportiu a Mallorca. Especialitzat en psicologia de l'esport per a esportistes, equips i clubs esportius.",
+    "defaultKeywords": "psicologia esportiva, psicòleg esportiu mallorca, rendiment esportiu, psicologia de l'esport, entrenament mental, esport mallorca, psicologia esportiva balears",
+    "home": {
+      "title": "Psicòleg esportiu | Pere Barceló",
+      "description": "Entrenes bé. Però quan competeixes, alguna cosa canvia. Psicologia esportiva per competir al nivell al que entrenes, fins i tot sota pressió."
+    },
+    "about": {
+      "title": "Sobre mi | Pere Barceló - Psicòleg Esportiu",
+      "description": "Si saps que pots rendir més, això no va d'entrenar més. Coneix a Pere Barceló, psicòleg esportiu especialitzat en rendiment sota pressió."
+    },
+    "servicios": {
+      "title": "Serveis | Pere Barceló - Psicòleg Esportiu",
+      "description": "No és que no tinguis nivell. És que no competeixes igual que entrenes. Psicologia esportiva per a esportistes que es bloquegen en competició."
+    },
+    "contact": {
+      "title": "Contacte | Pere Barceló - Psicòleg Esportiu",
+      "description": "Contacta amb Pere Barceló, psicòleg esportiu especialitzat en alt rendiment. Primera sessió gratuïta i sense compromís."
+    },
+    "contactLayout": {
+      "title": "Contacte i reserva | Pere Barceló",
+      "description": "Contacta amb Pere Barceló per resoldre dubtes, demanar informació o reservar una primera trucada sobre psicologia esportiva."
+    },
+    "privacy": {
+      "title": "Política de Privacitat | Pere Barceló - Psicòleg Esportiu",
+      "description": "Informació sobre el tractament de dades personals, cookies i drets dels usuaris al lloc web de Pere Barceló Psicòleg."
+    }
+  },
+  "HeroSection": {
+    "sectionLabel": "Psicologia esportiva d'alt rendiment",
+    "headingLine1": "Entrenes bé.",
+    "headingBeforeHighlight": "Però quan ",
+    "headingHighlight": "competeixes",
+    "headingLine2": ", alguna cosa canvia.",
+    "subtitle": "Rendets pitjor, dubtes més o et bloqueges en moments clau. No és falta de nivell. És com gestiones la pressió.",
+    "ctaPrimary": "Vull saber què m'està bloquejant",
+    "ctaSecondary": "Veure com treball",
+    "checkFreeSession": "Sessió inicial gratuïta",
+    "checkPersonalized": "100% personalitzat",
+    "checkOnline": "Online",
+    "statNumber": "2018",
+    "statLabel": "Vaig començar",
+    "badgeText": "Alt rendiment",
+    "scrollIndicator": "Descobreix més",
+    "heroImageAlt": "Pere Barceló - Psicòleg Esportiu"
+  },
+  "PainPointsSection": {
+    "sectionLabel": "Per a tu",
+    "heading": "Això és per a tu si al competir...",
+    "point1": "Comences bé, però després d'un error t'enfonses",
+    "point2": "Apareixen dubtes que no tens entrenant",
+    "point3": "Et notes més tens i menys fluid",
+    "point4": "Penses massa en lloc de competir",
+    "point5": "Sents que podries rendir més, però alguna cosa falla",
+    "emphasis": "No és falta de nivell. És com gestiones el que passa al teu cap quan competeixes."
+  },
+  "BenefitsSection": {
+    "sectionLabel": "Resultats",
+    "heading": "Què aconseguiràs",
+    "subtitle": "Eines concretes per aplicar des de la primera sessió. Sense teories abstractes.",
+    "benefit1": "Competiràs al nivell al que entrenes",
+    "benefit2": "Sabràs què fer després d'un error",
+    "benefit3": "Tindràs més control en moments clau",
+    "benefit4": "La teva confiança deixarà de dependre del resultat",
+    "benefit5": "Competiràs bé fins i tot sense sensacions perfectes",
+    "cta": "Vull millorar el meu rendiment"
+  },
+  "ProcessSection": {
+    "sectionLabel": "Metodologia",
+    "heading": "Com treballarem",
+    "step1Title": "Entenem el teu cas",
+    "step1Desc": "Analitzem què t'està passant realment en competició",
+    "step2Title": "Detectem el bloqueig",
+    "step2Desc": "Identifiquem què està fallant exactament",
+    "step3Title": "Pla pràctic",
+    "step3Desc": "Eines concretes per aplicar competint",
+    "step4Title": "Seguiment",
+    "step4Desc": "Ajustem i portem el treball a competició"
+  },
+  "DifferentiationSection": {
+    "sectionLabel": "Diferència",
+    "heading": "Això no és motivació ni teoria",
+    "paragraph": "No treballarem en \"pensar en positiu\" ni en intentar controlar tot el que passa pel teu cap...",
+    "emphasis": "No necessites eliminar els nervis. Necessites saber competir amb ells.",
+    "item1": "Què fer just després d'un error",
+    "item2": "Com actuar quan apareixen dubtes",
+    "item3": "Com competir quan hi ha pressió",
+    "item4": "Com rendir sense dependre de sentir-te perfecte"
+  },
+  "AboutSection": {
+    "sectionLabel": "Sobre mi",
+    "heading": "Qui sóc",
+    "bio1": "Sóc Pere Barceló, psicòleg esportiu.",
+    "bio2": "Treball amb esportistes que entrenen bé però no aconsegueixen rendir igual en competició.",
+    "bio3": "El meu enfocament és pràctic: des de la primera sessió saps exactament què fer quan competeixes.",
+    "highlight": "No necessites més entrenament. Necessites entrenar la teva ment.",
+    "cta": "Reserva la teva sessió gratuïta",
+    "imageAlt": "Pere Barceló - Psicòleg Esportiu"
+  },
+  "FinalCtaSection": {
+    "heading": "Deixa de perdre rendiment pel que passa al teu cap",
+    "subtitle": "La primera sessió és gratuïta. Descobreix què t'està limitant i comença a competir al nivell que et mereixes.",
+    "cta": "Demana la teva sessió gratuïta",
+    "finePrint": "Sense compromís. Sense cost."
+  },
+  "AboutHeroSection": {
+    "sectionLabel": "Sobre mi",
+    "heading": "Si saps que pots rendir més, això no va d'entrenar més.",
+    "cta": "Demana la teva sessió gratuïta",
+    "imageAlt": "Pere Barceló - Psicòleg Esportiu"
+  },
+  "AboutBioSection": {
+    "sectionLabel": "Sobre mi",
+    "heading": "Qui sóc",
+    "bio1": "Sóc Pere Barceló, psicòleg esportiu.",
+    "bio2": "Treball amb esportistes de diferents disciplines, adaptant el procés a cada cas.",
+    "bio3": "El meu objectiu és fer-ho aplicable a la teva realitat.",
+    "emphasis": "No complicar-ho més.",
+    "paragraph": "No necessites canviar qui ets com a esportista.",
+    "boldText": "Necessites canviar com gestiones el que passa quan competeixes.",
+    "ctaText": "Si saps que pots rendir més però alguna cosa et frena, el següent pas és clar:",
+    "cta": "Comença el teu procés ara",
+    "imageAlt": "Pere Barceló - Psicòleg Esportiu"
+  },
+  "AboutClubsSection": {
+    "sectionLabel": "Experiència",
+    "heading": "He treballat amb esportistes de diferents disciplines i nivells competitius.",
+    "club1": "CE Constància",
+    "club2": "CDC Moscardó",
+    "club3": "CF Fuenlabrada",
+    "club4": "CF Playa de Palma",
+    "club5": "UE Petra",
+    "club6": "CE Sineu",
+    "club7": "Joventut Mariana",
+    "club8": "Entreculturas Montesión",
+    "club9": "CB Colonya Pollença",
+    "club10": "CG Alcúdia",
+    "club11": "Federació de Golf de les Illes Balears",
+    "club12": "Federació de Basquetbol de les Illes Balears",
+    "club13": "Palmer Basket",
+    "closing": "Cada cas és diferent. Però el patró sol repetir-se:",
+    "closingBold": "Entrenen bé. Però competint no rendeixen igual."
+  },
+  "AboutWhySection": {
+    "sectionLabel": "Motivació",
+    "heading": "Per què faig això?",
+    "paragraph1": "He vist a molts esportistes amb nivell quedar-se lluny del seu rendiment real.",
+    "paragraph2": "No per falta d'entrenament. No per falta de talent.",
+    "paragraph3": "Sinó per no saber gestionar el que passa al seu cap quan competeixen.",
+    "highlight": "Aquí és on es perd molt més del que sembla. I aquí és on té sentit treballar.",
+    "cta": "Detecta què t'està limitant"
+  },
+  "AboutExpectSection": {
+    "sectionLabel": "Expectatives",
+    "heading": "Què pots esperar al treballar amb mi?",
+    "item1": "No treballem sobre teoria, sinó sobre el que et passa competint",
+    "item2": "Baixem a terra cada situació",
+    "item3": "Surtos de cada sessió amb accions concretes",
+    "highlight": "No es tracta d'entendre més. Es tracta de saber què fer quan més importa."
+  },
+  "AboutObjectiveSection": {
+    "sectionLabel": "Objectiu",
+    "heading": "Quin és el meu objectiu",
+    "paragraph1": "No busco que depenguis de mi.",
+    "paragraph2": "Busco que:",
+    "objective1": "Aprenguis què fer quan falles",
+    "objective2": "Sàpigues com competir amb dubtes",
+    "objective3": "Puguis rendir fins i tot sense confiança perfecta",
+    "highlight": "L'objectiu és que puguis competir bé pel teu compte."
+  },
+  "AboutCtaSection": {
+    "heading": "Si saps que pots rendir més però alguna cosa et frena",
+    "subtitle": "Descobreix què t'està limitant i comença a competir al nivell que et mereixes.",
+    "cta": "Demana la teva sessió gratuïta",
+    "finePrint": "Sense compromís. Primera sessió d'anàlisi."
+  },
+  "ServiciosHeroSection": {
+    "sectionLabel": "Serveis",
+    "heading": "No és que no tinguis nivell. És que no competeixes igual que entrenes.",
+    "subtitle": "Psicologia esportiva per a esportistes que es bloquegen en competició i volen rendir quan més importa.",
+    "cta": "Reserva la teva primera sessió gratuïta",
+    "finePrint": "Sense compromís. Primera sessió d'anàlisi."
+  },
+  "ServiciosPainSection": {
+    "sectionLabel": "Per a tu",
+    "heading": "Et passa això quan competeixes?",
+    "point1": "Comences bé, però un error canvia el teu rendiment",
+    "point2": "Apareixen dubtes que no tens entrenant",
+    "point3": "Et tenses i perds fluïdesa",
+    "point4": "Penses massa en lloc de competir",
+    "point5": "La teva confiança depèn del resultat o del moment",
+    "emphasis": "No és falta de nivell. És gestió del rendiment sota pressió."
+  },
+  "ServiciosProblemSection": {
+    "sectionLabel": "L'enfocament",
+    "heading": "El problema no és el que et passa, sinó com ho gestiones",
+    "paragraph": "No necessites eliminar els nervis ni controlar tots els teus pensaments.",
+    "boldText": "Necessites aprendre a competir amb ells.",
+    "item1": "Què fer just després d'un error",
+    "item2": "Com gestionar pensaments en competició",
+    "item3": "Com competir amb pressió sense bloquejar-te",
+    "item4": "Com construir una confiança més estable"
+  },
+  "ServiciosWorkSection": {
+    "sectionLabel": "Contingut",
+    "heading": "Què treballarem?",
+    "subtitle": "Situacions reals de competició:",
+    "topic1Title": "Després d'un error",
+    "topic1Desc": "Com tallar la caiguda de rendiment i tornar al partit/competició",
+    "topic2Title": "Quan apareixen dubtes",
+    "topic2Desc": "Com seguir competint sense necessitar confiança perfecta",
+    "topic3Title": "Sota pressió",
+    "topic3Desc": "Com mantenir claredat quan més importa",
+    "topic4Title": "Sense bones sensacions",
+    "topic4Desc": "Com rendir sense dependre de com et sents"
+  },
+  "ServiciosTakeawaysSection": {
+    "sectionLabel": "Resultats",
+    "heading": "Què t'emportaràs?",
+    "subtitle": "No és teoria, és aplicació directa. Eines que pots usar des de la primera sessió.",
+    "item1": "Què fer just després d'un error",
+    "item2": "Com gestionar pensaments en competició",
+    "item3": "Com competir amb pressió sense bloquejar-te",
+    "item4": "Com construir una confiança més estable"
+  },
+  "ServiciosSessionSection": {
+    "sectionLabel": "Procés",
+    "heading": "Com és una sessió?",
+    "subtitle": "A cada sessió treballem el teu cas real.",
+    "step1Title": "Analitzem situacions concretes de competició",
+    "step1Desc": "No parlem en general. Treballem el teu cas real.",
+    "step2Title": "Detectem què t'està limitant",
+    "step2Desc": "Identifiquem patrons i desencadenants específics.",
+    "step3Title": "Definim eines aplicables",
+    "step3Desc": "Accions concretes que pots usar en competició.",
+    "step4Title": "T'emportes accions clares per a competició",
+    "step4Desc": "Surtos sabent què fer a cada moment.",
+    "emphasis": "Surtos sabent què fer a cada moment."
+  },
+  "ServiciosNotThisSection": {
+    "sectionLabel": "Diferència",
+    "heading": "Què NO és això",
+    "notItem1": "Motivació o frases positives",
+    "notItem2": "Teoria sense aplicació",
+    "notItem3": "Tècniques genèriques",
+    "yesHeading": "Això és entrenament mental aplicat a competició real",
+    "yesItem1": "No treballem \"com sentir-te millor\"",
+    "yesItem2": "Treballem com rendir millor fins i tot sense sentir-te bé"
+  },
+  "ServiciosCtaSection": {
+    "heading": "Si saps que pots rendir més però alguna cosa et frena",
+    "cta": "Comença ara el teu procés",
+    "finePrint": "Sense compromís. Primera sessió gratuïta."
+  },
+  "ServiciosFaqSection": {
+    "sectionLabel": "Preguntes freqüents",
+    "faq1Q": "I si no em funciona?",
+    "faq1A": "La primera sessió és 100% gratuïta. Sense cap tipus de compromís.",
+    "faq2Q": "Això serveix per al meu esport?",
+    "faq2A": "El procés s'adapta a cada disciplina.",
+    "faq3Q": "Quant temps es tarda a notar canvis?",
+    "faq3A": "Depèn del cas, però des de les primeres sessions ja treballes eines aplicables."
+  },
+  "ContactHeroSection": {
+    "sectionLabel": "Contacte",
+    "heading": "Fes el primer pas",
+    "subtitle": "Si saps que pots rendir més però alguna cosa et frena, parlem-ne. La primera sessió és gratuïta i sense compromís."
+  },
+  "ContactFormSection": {
+    "sectionLabel": "Reserva",
+    "heading": "Agenda la teva sessió gratuïta",
+    "subtitle": "Sense compromís. Tria el dia i l'hora que millor et vagi."
+  },
+  "ContactSocialSection": {
+    "sectionLabel": "Xarxes",
+    "heading": "També em pots trobar a"
+  },
+  "CalendlyBookingCard": {
+    "label": "Reserva directa",
+    "heading": "Reserva una trucada",
+    "description": "Si prefereixes triar hora directament, pots reservar una cita des del calendari.",
+    "placeholderText": "El bloc de reserva estarà disponible quan es configuri la URL pública de Calendly.",
+    "configHint": "Configuració requerida: NEXT_PUBLIC_CALENDLY_URL"
+  },
+  "PrivacyHeroSection": {
+    "sectionLabel": "Legal",
+    "heading": "Política de Privacitat",
+    "subtitle": "Informació sobre el tractament de les teves dades personals, cookies i drets."
+  },
+  "PrivacyContentSection": {
+    "section1Title": "1. Responsable del tractament",
+    "section1Desc": "Nom: Pere Barceló Lambea\nEmail: pere@perebarcelopsicologo.com\nTelèfon: +34 636 67 47 59\nLloc web: perebarcelopsicologo.com",
+    "section2Title": "2. Dades que recollim",
+    "section2Desc": "Recollim les dades que ens proporciones voluntàriament a través del formulari de contacte: nom, adreça de correu electrònic, número de telèfon i qualsevol altra informació que decideixis compartir. També recollim dades de navegació com adreça IP, tipus de navegador i pàgines visitades.",
+    "section3Title": "3. Finalitat i base legal del tractament",
+    "section3Desc": "Tractem les teves dades per respondre a les teves sol·licituds d'informació, gestionar la relació professional i enviar comunicacions relacionades amb els nostres serveis si has donat el teu consentiment. La base legal és el teu consentiment i l'interès legítim.",
+    "section4Title": "4. Conservació de les dades",
+    "section4Desc": "Conservem les teves dades durant el temps necessari per complir amb la finalitat per a la qual es van recollir i per complir amb obligacions legals.",
+    "section5Title": "5. Destinataris de les dades",
+    "section5Desc": "Les teves dades poden ser compartides amb: Vercel (allotjament web), Resend (servei de correu electrònic), Google LLC (analítica), Cookiebot (gestió de consentiment de cookies). No realitzem transferències internacionals de dades.",
+    "section6Title": "6. Cookies",
+    "section6Desc": "Utilitzem cookies tècniques necessàries per al funcionament del lloc i cookies d'anàlisi per entendre com s'utilitza el lloc. Pots gestionar les teves preferències de cookies en qualsevol moment.",
+    "section7Title": "7. Drets dels usuaris",
+    "section7Desc": "Tens dret a accedir, rectificar, suprimir, oposar-te, limitar el tractament i portar les teves dades. Per exercir els teus drets, contacta a pere@perebarcelopsicologo.com.",
+    "section8Title": "8. Seguretat de la informació",
+    "section8Desc": "Implementem mesures de seguretat tècniques i organitzatives per protegir les teves dades personals contra accessos no autoritzats, pèrdua o destrucció.",
+    "section9Title": "9. Modificacions d'aquesta política",
+    "section9Desc": "Ens reservem el dret de modificar aquesta política de privacitat. Els canvis seran publicats en aquesta pàgina.",
+    "section10Title": "10. Contacte",
+    "section10Desc": "Si tens preguntes sobre aquesta política, contacta a pere@perebarcelopsicologo.com o trucant al +34 636 67 47 59.",
+    "badgeProtected": "Dades protegides",
+    "badgeHttps": "HTTPS segur",
+    "badgeRgpd": "Compliment RGPD"
+  },
+  "Form": {
+    "nameQuestion": "Quin és el teu nom?",
+    "emailQuestion": "Quin és el teu email?",
+    "phoneQuestion": "Quin és el teu número de telèfon?",
+    "preferenceQuestion": "Per quin mitjà prefereixes rebre una resposta?",
+    "preferenceOption1": "Correu electrònic",
+    "preferenceOption2": "WhatsApp",
+    "preferenceOption3": "Trucada telefònica",
+    "interestQuestion": "En què estàs interessat?",
+    "interestOption1": "Sessions online",
+    "interestOption2": "Taller grupal",
+    "interestOption3": "Assessorament psicològic",
+    "commentQuestion": "Hi ha alguna cosa més que vulguis comentar-me?",
+    "successMessage": "Gràcies per contactar amb mi! Em posaré en contacte amb tu al més aviat possible.",
+    "textPlaceholder": "Escriu la teva resposta aquí",
+    "emailPlaceholder": "exemple@correu.com",
+    "phoneFormatLabel": "Tinc número espanyol",
+    "phoneFormatChange": "Canviar format",
+    "phoneEsPlaceholder": "Ex: 612345678 o +34612345678",
+    "phoneOtherPlaceholder": "Introdueix el teu número",
+    "textareaPlaceholder": "Aquest camp és opcional. Pots afegir qualsevol dubte o comentari addicional.",
+    "buttonNext": "Continuar",
+    "buttonBack": "← Tornar enrere",
+    "buttonReset": "Enviar un altre missatge",
+    "submitLoading": "Enviant el teu missatge...",
+    "enterToContinue": "Prem Enter per continuar",
+    "errorInvalidPhone": "Si us plau, introdueix un número de telèfon espanyol vàlid",
+    "errorInvalidEmail": "Si us plau, introdueix una adreça d'email vàlida",
+    "errorResendEmail": "Email no vàlid. L'adreça de correu electrònic ha de seguir el format 'email@example.com' o 'Nom <email@example.com>'",
+    "errorUnexpected": "Ha ocorregut un error inesperat. Si us plau, torna-ho a intentar més tard."
+  },
+  "EmailTemplates": {
+    "adminSubject": "Nou formulari de contacte",
+    "userSubject": "Gràcies per contactar amb nosaltres",
+    "fromName": "Pere Barceló Psicòleg <pere@perebarcelopsicologo.com>",
+    "adminHeading": "Nou Contacte Rebut",
+    "fieldName": "Nom:",
+    "fieldEmail": "Email:",
+    "fieldPhone": "Telèfon:",
+    "fieldInterest": "Interessat en:",
+    "fieldResponseMedium": "Mitjà de resposta:",
+    "fieldComment": "Comentari:",
+    "confirmationHeading": "Gràcies per contactar amb mi!",
+    "confirmationGreeting": "Hola {name},",
+    "confirmationBody": "He rebut el teu missatge i em posaré en contacte amb tu al més aviat possible a través del mitjà que has triat.",
+    "confirmationClosing": "Una salutació,",
+    "confirmationSignature": "Pere Barceló"
+  },
+  "SocialLinks": {
+    "emailName": "Email",
+    "linkedinName": "LinkedIn",
+    "instagramName": "Instagram",
+    "twitterName": "Twitter",
+    "visitAria": "Visitar {name}"
+  },
+  "BaseCard": {
+    "cta": "Demana Informació!"
+  },
+  "Schema": {
+    "websiteName": "Pere Barceló - Psicòleg Esportiu",
+    "telephone": "+34636674759",
+    "streetAddress": "Carrer de la Indústria, 12",
+    "city": "Palma",
+    "postalCode": "07013",
+    "country": "ES"
+  }
+}

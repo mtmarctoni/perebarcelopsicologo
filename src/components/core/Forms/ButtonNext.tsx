@@ -1,9 +1,12 @@
+import { useTranslations } from "next-intl";
+
 interface Props {
   show: boolean;
   onClick: () => void;
 }
 
 const ButtonNext = ({ show, onClick }: Props) => {
+  const t = useTranslations("Form");
   if (!show) return null;
   return (
     <div className="mt-4">
@@ -12,7 +15,7 @@ const ButtonNext = ({ show, onClick }: Props) => {
         onClick={onClick}
         className="px-6 py-2 bg-primary-dark text-white rounded-lg hover:bg-secondary-light transition-colors"
       >
-        Continuar
+        {t("buttonNext")}
       </button>
     </div>
   );

@@ -44,3 +44,6 @@ next-env.d.ts
 
 # another doc info
 /docs
+# gstack agent files
+.agents/
+AGENTS.md

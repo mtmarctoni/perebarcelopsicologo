@@ -1,25 +1,30 @@
 import type { NextConfig } from "next";
+import createNextIntlPlugin from "next-intl/plugin";
+
+const withNextIntl = createNextIntlPlugin();
 
 const nextConfig: NextConfig = {
   /* config options here */
   webpack(config) {
     // Grab the existing rule that handles SVG imports
-    const fileLoaderRule = config.module.rules.find((rule: any) => rule.test?.test?.('.svg'));
+    const fileLoaderRule = config.module.rules.find(
+      (rule: { test?: RegExp }) => rule.test?.test?.(".svg"),
+    );
 
     config.module.rules.push(
       // Reapply the existing rule, but only for svg imports ending in ?url
       {
         ...fileLoaderRule,
         test: /\.svg$/i,
-        resourceQuery: /url/ // *.svg?url
+        resourceQuery: /url/, // *.svg?url
       },
       // Convert all other *.svg imports to React components
       {
         test: /\.svg$/i,
         issuer: fileLoaderRule.issuer,
         resourceQuery: { not: [...(fileLoaderRule.resourceQuery?.not || []), /url/] }, // exclude if *.svg?url
-        use: ['@svgr/webpack']
-      }
+        use: ["@svgr/webpack"],
+      },
     );
 
     // Modify the file loader rule to ignore *.svg, since we have it handled now.
@@ -30,9 +35,9 @@ const nextConfig: NextConfig = {
   // Turbopack configuration
   turbopack: {
     rules: {
-      '*.svg': {
-        loaders: ['@svgr/webpack'],
-        as: '*.js',
+      "*.svg": {
+        loaders: ["@svgr/webpack"],
+        as: "*.js",
       },
     },
   },
@@ -40,58 +45,90 @@ const nextConfig: NextConfig = {
   images: {
     remotePatterns: [
       {
-        protocol: "http",
-        hostname: "100.84.193.47"
+        protocol: "https",
+        hostname: "perebarcelopsicologo.com",
       },
       {
         protocol: "https",
-        hostname: "perebarcelopsicologo.com"
+        hostname: "app.perebarcelopsicologo.com",
       },
-      {
-        protocol: "https",
-        hostname: "blog.perebarcelopsicologo.com"
-      }
     ],
   },
   async headers() {
     return [
       {
-        source: '/(.*)',
+        source: "/(.*)",
         headers: [
           {
-            key: 'X-Content-Type-Options',
-            value: 'nosniff',
+            key: "X-Content-Type-Options",
+            value: "nosniff",
           },
           {
-            key: 'X-Frame-Options',
-            value: 'DENY',
+            key: "X-Frame-Options",
+            value: "DENY",
           },
           {
-            key: 'X-XSS-Protection',
-            value: '1; mode=block',
+            key: "X-XSS-Protection",
+            value: "1; mode=block",
           },
           {
-            key: 'Referrer-Policy',
-            value: 'strict-origin-when-cross-origin',
+            key: "Referrer-Policy",
+            value: "strict-origin-when-cross-origin",
           },
           {
-            key: 'Permissions-Policy',
-            value: 'camera=(), microphone=(), geolocation=()',
+            key: "Permissions-Policy",
+            value: "camera=(), microphone=(), geolocation=()",
           },
         ],
       },
     ];
   },
-  async rewrites() {
+  async redirects() {
     return [
       {
-        source: '/sitemap.xml',
-        destination: '/api/sitemap',
+        source: "/blog",
+        destination: "/",
+        permanent: true,
+      },
+      {
+        source: "/blog/:path*",
+        destination: "/",
+        permanent: true,
+      },
+      {
+        source: "/methodology",
+        destination: "/",
+        permanent: true,
+      },
+      {
+        source: "/methodology/:path*",
+        destination: "/",
+        permanent: true,
+      },
+      {
+        source: "/performance",
+        destination: "/",
+        permanent: true,
+      },
+      {
+        source: "/performance/:path*",
+        destination: "/",
+        permanent: true,
+      },
+      {
+        source: "/mental",
+        destination: "/",
+        permanent: true,
+      },
+      {
+        source: "/mental/:path*",
+        destination: "/",
+        permanent: true,
       },
     ];
   },
-  basePath: '',
+  basePath: "",
   reactStrictMode: true,
 };
 
-export default nextConfig;
+export default withNextIntl(nextConfig);
