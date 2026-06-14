@@ -6,8 +6,6 @@ export const LinkedinIcon = ({ className }: Props) => (
   <svg
     className={className}
     xmlns="http://www.w3.org/2000/svg"
-    // width="24"
-    // height="24"
     fill="currentColor"
     viewBox="0 0 24 24"
   >
@@ -21,14 +19,7 @@ export const LinkedinIcon = ({ className }: Props) => (
 );
 
 export const InstagramIcon = ({ className }: Props) => (
-  <svg
-    className={className}
-    xmlns="http://www.w3.org/2000/svg"
-    // width="24"
-    // height="24"
-    fill="none"
-    viewBox="0 0 24 24"
-  >
+  <svg className={className} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
     <path
       fill="currentColor"
       fillRule="evenodd"
@@ -38,28 +29,8 @@ export const InstagramIcon = ({ className }: Props) => (
   </svg>
 );
 
-export const TwitterIcon = ({ className }: Props) => (
-  <svg
-    className={className}
-    xmlns="http://www.w3.org/2000/svg"
-    // width="24"
-    // height="24"
-    fill="currentColor"
-    viewBox="0 0 24 24"
-  >
-    <path d="M13.795 10.533 20.68 2h-3.073l-5.255 6.517L7.69 2H1l7.806 10.91L1.47 22h3.074l5.705-7.07L15.31 22H22l-8.205-11.467Zm-2.38 2.95L9.97 11.464 4.36 3.627h2.31l4.528 6.317 1.443 2.02 6.018 8.409h-2.31l-4.934-6.89Z" />
-  </svg>
-);
-
 export const WhatsappIcon = ({ className }: Props) => (
-  <svg
-    className={className}
-    xmlns="http://www.w3.org/2000/svg"
-    // width="24"
-    // height="24"
-    // fill="currentColor"
-    viewBox="0 0 24 24"
-  >
+  <svg className={className} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
     <path
       fill="currentColor"
       d="M12 4a8 8 0 0 0-6.895 12.06l.569.718-.697 2.359 2.32-.648.379.243A8 8 0 1 0 12 4ZM2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10a9.96 9.96 0 0 1-5.016-1.347l-4.948 1.382 1.426-4.829-.006-.007-.033-.055A9.958 9.958 0 0 1 2 12Z"

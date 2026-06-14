@@ -62,21 +62,3 @@ export const LocalBusinessSchema = () => {
     />
   );
 };
-
-export const BreadcrumbSchema = ({ items }: { items: Array<{ name: string; item: string }> }) => {
-  return (
-    <JsonLd
-      id="breadcrumb-schema"
-      code={{
-        "@context": "https://schema.org",
-        "@type": "BreadcrumbList",
-        itemListElement: items.map((item, index) => ({
-          "@type": "ListItem",
-          position: index + 1,
-          name: item.name,
-          item: item.item,
-        })),
-      }}
-    />
-  );
-};

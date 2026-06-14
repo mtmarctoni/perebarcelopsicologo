@@ -412,5 +412,15 @@
     "city": "Palma",
     "postalCode": "07013",
     "country": "ES"
+  },
+  "Error": {
+    "title": "Algo salió mal",
+    "description": "Ha ocurrido un error inesperado. Por favor, inténtalo de nuevo.",
+    "retry": "Intentar de nuevo"
+  },
+  "NotFound": {
+    "title": "Página no encontrada",
+    "description": "La página que buscas no existe o ha sido movida.",
+    "goHome": "Volver al inicio"
   }
 }
