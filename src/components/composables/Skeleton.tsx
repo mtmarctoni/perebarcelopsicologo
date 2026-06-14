@@ -2,11 +2,11 @@ interface SkeletonProps {
   className?: string;
 }
 
-export const SkeletonCircle = ({ className = "" }: SkeletonProps) => (
+const SkeletonCircle = ({ className = "" }: SkeletonProps) => (
   <div className={`rounded-full bg-text-light/10 animate-pulse ${className}`} />
 );
 
-export const SkeletonLine = ({ className = "" }: SkeletonProps) => (
+const SkeletonLine = ({ className = "" }: SkeletonProps) => (
   <div className={`rounded-full bg-text-light/10 animate-pulse ${className}`} />
 );
 
