@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
-
 import { createPageMetadata } from "@/app/metadata";
+import { images } from "@/config/images";
 import AboutContent from "./_about-content";
 
 type Props = {
@@ -17,7 +17,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     description: t("description"),
     path: "/about",
     locale,
-    imagePath: "/wp/profile-photo.webp",
+    imagePath: images.profilePhoto,
   });
 }
 

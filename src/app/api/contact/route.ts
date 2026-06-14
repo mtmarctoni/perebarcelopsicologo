@@ -8,7 +8,7 @@ import {
   sendUserConfirmationEmail,
 } from "@/services/email.service";
 import type { QuestionOptionInterestedIn, QuestionOptionMediaResponse } from "@/types/navbar";
-import { emailSubjects } from "@/utils/email-translations";
+import { emailSubjects, t } from "@/utils/email-translations";
 
 const contactSchema = z.object({
   locale: z.enum(["es", "ca"]),
@@ -28,7 +28,7 @@ export async function POST(req: Request) {
     if (!parseResult.success) {
       return NextResponse.json(
         {
-          error: "Datos del formulario inválidos.",
+          error: t(body.locale ?? "es", "Form.errorValidation"),
           type: "validation_error",
           details: parseResult.error.flatten().fieldErrors,
         },
@@ -107,7 +107,7 @@ export async function POST(req: Request) {
   } catch (_error) {
     return NextResponse.json(
       {
-        error: "Error interno del servidor.",
+        error: t("es", "Form.errorServer"),
         type: "server_error",
       },
       {

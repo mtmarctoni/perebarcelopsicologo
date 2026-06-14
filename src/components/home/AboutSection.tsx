@@ -4,8 +4,8 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import { useTranslations } from "next-intl";
-
 import SectionLabel from "@/components/composables/SectionLabel";
+import { images } from "@/config/images";
 
 export default function AboutSection() {
   const t = useTranslations("AboutSection");
@@ -28,7 +28,7 @@ export default function AboutSection() {
 
               <div className="relative aspect-[4/5] rounded-[2rem] overflow-hidden shadow-2xl">
                 <Image
-                  src="/profile/pere-perfil-camiseta-marron.webp"
+                  src={images.profileMaroon}
                   alt={t("imageAlt")}
                   fill
                   sizes="(max-width: 1024px) 100vw, 45vw"

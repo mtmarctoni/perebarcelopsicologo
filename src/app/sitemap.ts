@@ -1,8 +1,6 @@
 import type { MetadataRoute } from "next";
-
+import { sitemapRoutes } from "@/config/routes";
 import { getSiteUrl, isProduction } from "@/lib/site";
-
-const routes = ["", "/about", "/contact", "/privacy", "/servicios"];
 
 export default function sitemap(): MetadataRoute.Sitemap {
   if (!isProduction()) {
@@ -11,7 +9,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const siteUrl = getSiteUrl();
 
-  const staticRoutes = routes.map((route) => ({
+  const staticRoutes = sitemapRoutes.map((route) => ({
     url: `${siteUrl}${route}`,
     lastModified: new Date().toISOString().split("T")[0],
     changeFrequency: "monthly" as const,
