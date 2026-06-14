@@ -1,3 +1,4 @@
+import { images } from "@/config/images";
 import { getSiteUrl } from "@/lib/site";
 
 import JsonLd from "./JsonLd";
@@ -31,7 +32,7 @@ export const LocalBusinessSchema = () => {
         "@context": "https://schema.org",
         "@type": "LocalBusiness",
         name: "Pere Barceló - Psicólogo Deportivo",
-        image: `${siteUrl}/images/og-image.jpg`,
+        image: `${siteUrl}${images.ogDefault}`,
         "@id": siteUrl,
         url: siteUrl,
         telephone: "+34636674759",

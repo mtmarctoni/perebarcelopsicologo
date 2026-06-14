@@ -4,9 +4,9 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import { useTranslations } from "next-intl";
-
 import SectionLabel from "@/components/composables/SectionLabel";
 import { fadeInUp, staggerContainer } from "@/components/home/animations";
+import { images } from "@/config/images";
 
 export default function AboutHeroSection() {
   const t = useTranslations("AboutHeroSection");
@@ -57,7 +57,7 @@ export default function AboutHeroSection() {
 
               <div className="relative aspect-[4/5] rounded-[2rem] overflow-hidden shadow-2xl shadow-black/40 border border-border">
                 <Image
-                  src="/profile/pere-perfil-camiseta-verde.webp"
+                  src={images.profileGreen}
                   alt={t("imageAlt")}
                   fill
                   sizes="(max-width: 768px) 80vw, 380px"

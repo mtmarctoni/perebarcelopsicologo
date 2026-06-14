@@ -376,7 +376,9 @@
     "errorInvalidPhone": "Por favor, introduce un número de teléfono español válido",
     "errorInvalidEmail": "Por favor, introduce una dirección de email válida",
     "errorResendEmail": "Email no válido. La dirección de correo electrónico debe seguir el formato 'email@example.com' o 'Nombre <email@example.com>'",
-    "errorUnexpected": "Ha ocurrido un error inesperado. Por favor, inténtalo de nuevo más tarde."
+    "errorUnexpected": "Ha ocurrido un error inesperado. Por favor, inténtalo de nuevo más tarde.",
+    "errorValidation": "Datos del formulario inválidos.",
+    "errorServer": "Error interno del servidor."
   },
   "EmailTemplates": {
     "adminSubject": "Nuevo formulario de contacto",

@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
-
 import { createPageMetadata } from "@/app/metadata";
+import { images } from "@/config/images";
 import ContactContent from "./_contact-content";
 
 type Props = {
@@ -16,7 +16,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     title: t("title"),
     description: t("description"),
     path: "/contact",
-    imagePath: "/stock/personas-escuchando.webp",
+    locale,
+    imagePath: images.contactHero,
   });
 }
 

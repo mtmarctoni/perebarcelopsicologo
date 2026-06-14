@@ -4,10 +4,10 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import { useTranslations } from "next-intl";
-
 import CheckIcon from "@/components/composables/CheckIcon";
 import SectionLabel from "@/components/composables/SectionLabel";
 import { fadeInUp, staggerContainer } from "@/components/home/animations";
+import { images } from "@/config/images";
 
 export default function HeroSection() {
   const t = useTranslations("HeroSection");
@@ -135,7 +135,7 @@ export default function HeroSection() {
               {/* Main image container with asymmetric frame */}
               <div className="relative aspect-[3/4] rounded-[2rem] overflow-hidden shadow-2xl shadow-black/40 border border-border">
                 <Image
-                  src="/profile/pere1-transparente.webp"
+                  src={images.heroTransparent}
                   alt={t("heroImageAlt")}
                   fill
                   sizes="(max-width: 768px) 80vw, 480px"
