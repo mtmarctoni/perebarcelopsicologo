@@ -9,4 +9,5 @@ export const images = {
   favicon16: "/favicon-16x16.png",
   favicon32: "/favicon-32x32.png",
   appleTouchIcon: "/apple-touch-icon.png",
+  heroHome: "/profile/hero-home.webp",
 } as const;
