@@ -378,7 +378,8 @@
     "errorResendEmail": "Email no válido. La dirección de correo electrónico debe seguir el formato 'email@example.com' o 'Nombre <email@example.com>'",
     "errorUnexpected": "Ha ocurrido un error inesperado. Por favor, inténtalo de nuevo más tarde.",
     "errorValidation": "Datos del formulario inválidos.",
-    "errorServer": "Error interno del servidor."
+    "errorServer": "Error interno del servidor.",
+    "errorRateLimit": "Demasiadas solicitudes. Inténtalo de nuevo en un minuto."
   },
   "EmailTemplates": {
     "adminSubject": "Nuevo formulario de contacto",

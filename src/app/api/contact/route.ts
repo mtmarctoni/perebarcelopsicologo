@@ -10,6 +10,24 @@ import {
 import type { QuestionOptionInterestedIn, QuestionOptionMediaResponse } from "@/types/navbar";
 import { emailSubjects, t } from "@/utils/email-translations";
 
+const ALLOWED_ORIGINS = [
+  "https://perebarcelopsicologo.com",
+  "https://app.perebarcelopsicologo.com",
+  /^https:\/\/.*\.vercel\.app$/,
+];
+
+const escapeHtml = (s: string): string =>
+  s
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#39;");
+
+const rateLimitMap = new Map<string, { count: number; resetAt: number }>();
+const RATE_LIMIT_WINDOW_MS = 60_000;
+const RATE_LIMIT_MAX = 5;
+
 const contactSchema = z.object({
   locale: z.enum(["es", "ca"]),
   "1": z.string().min(1).max(100),
@@ -20,8 +38,47 @@ const contactSchema = z.object({
   "6": z.string().max(1000).default(""),
 });
 
+function getClientIp(req: Request): string {
+  return req.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ?? "unknown";
+}
+
+function checkRateLimit(ip: string): { allowed: boolean; remaining: number } {
+  const now = Date.now();
+  const entry = rateLimitMap.get(ip);
+  if (!entry || now > entry.resetAt) {
+    rateLimitMap.set(ip, { count: 1, resetAt: now + RATE_LIMIT_WINDOW_MS });
+    return { allowed: true, remaining: RATE_LIMIT_MAX - 1 };
+  }
+  entry.count += 1;
+  if (entry.count > RATE_LIMIT_MAX) {
+    return { allowed: false, remaining: 0 };
+  }
+  return { allowed: true, remaining: RATE_LIMIT_MAX - entry.count };
+}
+
+function checkOrigin(req: Request): boolean {
+  const origin = req.headers.get("origin");
+  if (!origin) return true;
+  return ALLOWED_ORIGINS.some((allowed) =>
+    typeof allowed === "string" ? origin === allowed : allowed.test(origin),
+  );
+}
+
 export async function POST(req: Request) {
   try {
+    if (!checkOrigin(req)) {
+      return NextResponse.json({ error: "Forbidden", type: "forbidden" }, { status: 403 });
+    }
+
+    const ip = getClientIp(req);
+    const rateLimit = checkRateLimit(ip);
+    if (!rateLimit.allowed) {
+      return NextResponse.json(
+        { error: t("es", "Form.errorRateLimit"), type: "rate_limited" },
+        { status: 429, headers: { "Retry-After": "60" } },
+      );
+    }
+
     const body = await req.json();
     const parseResult = contactSchema.safeParse(body);
 
@@ -41,12 +98,12 @@ export async function POST(req: Request) {
     const subjects = emailSubjects(locale);
 
     const userData = {
-      name: formData["1"],
-      email: formData["2"],
-      phone: formData["3"],
-      mediaResponse: formData["4"],
-      interestedIn: formData["5"],
-      optionalComment: formData["6"],
+      name: escapeHtml(formData["1"]),
+      email: escapeHtml(formData["2"]),
+      phone: escapeHtml(formData["3"]),
+      mediaResponse: escapeHtml(formData["4"]),
+      interestedIn: escapeHtml(formData["5"]),
+      optionalComment: escapeHtml(formData["6"]),
     };
 
     const adminHtml = ContactFormEmail({
@@ -59,7 +116,8 @@ export async function POST(req: Request) {
       optionalComment: userData.optionalComment,
     });
 
-    const userHtml = ConfirmationEmail({ locale, name: userData.name });
+    const translatableName = formData["1"];
+    const userHtml = ConfirmationEmail({ locale, name: translatableName });
 
     const adminEmail = await sendAdminEmail({ html: adminHtml, subject: subjects.contactForm });
 
