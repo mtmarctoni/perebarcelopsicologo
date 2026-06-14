@@ -153,7 +153,6 @@ const Navbar = () => {
 
               <button
                 type="button"
-                aria-label={isMenuOpen ? "Cerrar menú" : "Abrir menú"}
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
                 className="text-text-dark hover:text-primary p-2 rounded-xl hover:bg-card-hover transition-all duration-300"
                 aria-label={isMenuOpen ? t("closeMenu") : t("openMenu")}
