@@ -1,5 +1,3 @@
-"use client";
-
 import MainLayout from "@/components/core/MainLayout";
 import ServiciosCtaSection from "@/components/servicios/ServiciosCtaSection";
 import ServiciosFaqSection from "@/components/servicios/ServiciosFaqSection";

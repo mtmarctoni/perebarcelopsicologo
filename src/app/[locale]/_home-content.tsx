@@ -1,5 +1,3 @@
-"use client";
-
 import MainLayout from "@/components/core/MainLayout";
 import AboutSection from "@/components/home/AboutSection";
 import BenefitsSection from "@/components/home/BenefitsSection";
