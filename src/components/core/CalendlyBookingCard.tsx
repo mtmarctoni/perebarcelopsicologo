@@ -1,10 +1,11 @@
-import { useTranslations } from "next-intl";
+import { getLocale, getTranslations } from "next-intl/server";
 import { clientEnv } from "@/config/client-env.config";
 
 const calendlyUrl = clientEnv.NEXT_PUBLIC_CALENDLY_URL;
 
-const CalendlyBookingCard = () => {
-  const t = useTranslations("CalendlyBookingCard");
+const CalendlyBookingCard = async () => {
+  const locale = await getLocale();
+  const t = await getTranslations({ locale, namespace: "CalendlyBookingCard" });
   const hasCalendly = Boolean(calendlyUrl);
 
   return (

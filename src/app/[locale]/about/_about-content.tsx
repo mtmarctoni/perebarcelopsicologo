@@ -1,5 +1,3 @@
-"use client";
-
 import AboutBioSection from "@/components/about/AboutBioSection";
 import AboutClubsSection from "@/components/about/AboutClubsSection";
 import AboutCtaSection from "@/components/about/AboutCtaSection";
