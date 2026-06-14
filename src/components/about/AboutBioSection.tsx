@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import { useTranslations } from "next-intl";
+import { images } from "@/config/images";
 
 export default function AboutBioSection() {
   const t = useTranslations("AboutBioSection");
@@ -26,7 +27,7 @@ export default function AboutBioSection() {
 
               <div className="relative aspect-[4/5] rounded-[2rem] overflow-hidden shadow-2xl">
                 <Image
-                  src="/profile/pere1-transparente.webp"
+                  src={images.heroTransparent}
                   alt={t("imageAlt")}
                   fill
                   sizes="(max-width: 1024px) 100vw, 45vw"

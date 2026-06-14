@@ -1,15 +1,10 @@
 import Link from "next/link";
 import { getLocale, getTranslations } from "next-intl/server";
-
+import { navRoutes } from "@/config/routes";
 import { email, phone, socialMediaLinksFooter } from "@/utils/data";
 import { EnvelopeIcon, WhatsappIcon } from "../composables/Icons";
 
-const navItems = [
-  { url: "/" },
-  { url: "/about" },
-  { url: "/servicios" },
-  { url: "/contact" },
-] as const;
+const navItems = navRoutes;
 
 const Footer = async () => {
   const locale = await getLocale();
@@ -83,14 +78,13 @@ const Footer = async () => {
             </h3>
             <ul className="space-y-3">
               {navItems.map((item) => {
-                const labelKey = item.url === "/" ? "home" : item.url.replace("/", "");
                 return (
-                  <li key={item.url}>
+                  <li key={item.href}>
                     <Link
-                      href={item.url}
+                      href={item.href}
                       className="text-text-inverse opacity-40 hover:opacity-100 hover:text-primary text-sm transition-all duration-300"
                     >
-                      {tn(labelKey)}
+                      {tn(item.labelKey)}
                     </Link>
                   </li>
                 );

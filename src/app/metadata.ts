@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-
+import { images } from "@/config/images";
 import { serverEnv } from "@/config/server-env.config";
 import { getRobotsMetadata, getSiteUrl } from "@/lib/site";
 
@@ -13,7 +13,7 @@ const googleVerification = serverEnv.GOOGLE_SITE_VERIFICATION;
 const siteUrl = getSiteUrl();
 
 const defaultOgImage = {
-  url: `${siteUrl}/stock/alcanza-tu-objetivo.webp`,
+  url: `${siteUrl}${images.ogDefault}`,
   width: 1200,
   height: 630,
   alt: siteName,
@@ -55,11 +55,11 @@ export const defaultMetadata: Metadata = {
   },
   icons: {
     icon: [
-      { url: "/favicon.ico", type: "image/x-icon" },
-      { url: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },
-      { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
+      { url: images.faviconIco, type: "image/x-icon" },
+      { url: images.favicon16, sizes: "16x16", type: "image/png" },
+      { url: images.favicon32, sizes: "32x32", type: "image/png" },
     ],
-    apple: "/apple-touch-icon.png",
+    apple: images.appleTouchIcon,
   },
   manifest: "/site.webmanifest",
 };

@@ -4,11 +4,11 @@ import Link from "next/link";
 import { useLocale, useTranslations } from "next-intl";
 import { useTheme } from "next-themes";
 import { useCallback, useEffect, useState } from "react";
+import { navRoutes } from "@/config/routes";
 import { usePathname, useRouter } from "@/i18n/routing";
-
 import { BarsIcon, CrossIcon } from "../composables/Icons";
 
-const navItems = [{ url: "/" }, { url: "/about" }, { url: "/servicios" }] as const;
+const navItems = navRoutes.filter((r) => r.href !== "/contact");
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -69,16 +69,15 @@ const Navbar = () => {
 
             <div className="hidden lg:flex items-center gap-1">
               {navItems.map((item) => {
-                const labelKey = item.url === "/" ? "home" : item.url.replace("/", "");
                 return (
                   <Link
-                    key={item.url}
-                    href={item.url}
+                    key={item.href}
+                    href={item.href}
                     className="text-text-light px-4 py-2 text-sm font-medium tracking-wide
                              hover:text-text-dark hover:bg-card-hover rounded-lg
                              transition-all duration-300"
                   >
-                    {t(labelKey)}
+                    {t(item.labelKey)}
                   </Link>
                 );
               })}
@@ -182,16 +181,15 @@ const Navbar = () => {
           </div>
 
           {navItems.map((item, index) => {
-            const labelKey = item.url === "/" ? "home" : item.url.replace("/", "");
             return (
-              <div key={item.url}>
+              <div key={item.href}>
                 <Link
-                  href={item.url}
+                  href={item.href}
                   onClick={() => setIsMenuOpen(false)}
                   className="text-2xl font-bold text-text-dark opacity-80 hover:opacity-100 transition-all duration-300"
                   style={{ transitionDelay: `${(index + 1) * 50}ms` }}
                 >
-                  {t(labelKey)}
+                  {t(item.labelKey)}
                 </Link>
               </div>
             );
