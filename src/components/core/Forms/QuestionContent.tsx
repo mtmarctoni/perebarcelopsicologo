@@ -3,7 +3,7 @@ import { assertNever } from "@/utils/validation";
 import EmailQuestion from "./EmailQuestion";
 import PhoneQuestion from "./PhoneQuestion";
 import SelectQuestion from "./SelectQuestion";
-import SumbitLoader from "./SubmitLoader";
+import SubmitLoader from "./SubmitLoader";
 import SuccessQuestion from "./SuccessQuestion";
 import TextareaQuestion from "./TextareaQuestion";
 import TextQuestion from "./TextQuestion";
@@ -33,7 +33,7 @@ const QuestionContent = ({
   resetForm,
   isLoading,
 }: Props) => {
-  if (isLoading) return <SumbitLoader />;
+  if (isLoading) return <SubmitLoader />;
   //type narrowing
   switch (question.type) {
     case QuestionType.TEXT:
