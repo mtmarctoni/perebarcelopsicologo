@@ -26,6 +26,7 @@ const CookiebotScript = ({ cbid }: { cbid: string }) => (
     id="Cookiebot"
     src="https://consent.cookiebot.com/uc.js"
     data-cbid={cbid}
+    data-blockingmode="auto"
     type="text/javascript"
     strategy="beforeInteractive"
   />
