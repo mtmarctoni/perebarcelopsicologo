@@ -38,7 +38,7 @@ export default function AboutBioSection() {
           </motion.div>
 
           <motion.div
-            className="lg:col-span-7"
+            className="lg:col-span-7 text-center lg:text-left"
             initial={{ opacity: 0, x: 40 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
@@ -58,7 +58,7 @@ export default function AboutBioSection() {
               <p className="text-lg text-text leading-relaxed font-bold">{t("ctaText")}</p>
             </div>
 
-            <div className="mt-8">
+            <div className="mt-8 text-center">
               <Link
                 href="/contact"
                 className="inline-flex items-center justify-center text-center bg-secondary text-text-dark dark:text-[#0f172a] font-bold px-8 py-4 rounded-full hover:bg-secondary-light hover:shadow-glow hover:-translate-y-0.5 transition-all duration-300"

@@ -17,13 +17,15 @@ export default function BenefitsSection() {
       <div className="relative z-10 max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 py-24 lg:py-32">
         <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-start">
           {/* Left: heading + CTA */}
-          <AnimatedSection className="lg:sticky lg:top-32">
+          <AnimatedSection className="lg:sticky lg:top-32 text-center">
             <SectionLabel text={t("sectionLabel")} />
             <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-text-dark tracking-tight leading-[1.1]">
               {t("heading")}
             </h2>
-            <p className="mt-6 text-lg text-text leading-relaxed max-w-md">{t("subtitle")}</p>
-            <div className="mt-10">
+            <p className="mt-6 text-lg text-text leading-relaxed max-w-md mx-auto">
+              {t("subtitle")}
+            </p>
+            <div className="mt-10 text-center">
               <Link
                 href="/contact"
                 className="inline-flex items-center justify-center text-center bg-primary-dark text-text-inverse font-semibold px-8 py-4 rounded-full hover:bg-secondary hover:text-text-dark dark:hover:text-[#0f172a] hover:shadow-glow transition-all duration-300"

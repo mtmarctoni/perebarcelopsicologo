@@ -41,7 +41,7 @@ export default function ServiciosHeroSection() {
             {t("subtitle")}
           </motion.p>
 
-          <motion.div variants={fadeInUp} className="mt-10">
+          <motion.div variants={fadeInUp} className="mt-10 text-center">
             <Link
               href="/contact"
               className="inline-flex items-center justify-center text-center bg-secondary text-text-dark dark:text-[#0f172a] font-bold text-base px-8 py-4 rounded-full hover:bg-secondary-light hover:shadow-glow hover:-translate-y-0.5 transition-all duration-300"
@@ -49,7 +49,7 @@ export default function ServiciosHeroSection() {
               {t("cta")}
             </Link>
           </motion.div>
-          <motion.p variants={fadeInUp} className="mt-3 text-text-light text-sm">
+          <motion.p variants={fadeInUp} className="mt-3 text-text-light text-sm text-center">
             {t("finePrint")}
           </motion.p>
         </motion.div>

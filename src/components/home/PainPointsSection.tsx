@@ -21,7 +21,7 @@ export default function PainPointsSection() {
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_0%,_rgba(185,216,235,0.06)_0%,_transparent_60%)]" />
 
       <div className="relative z-10 max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 py-24 lg:py-32">
-        <AnimatedSection className="max-w-2xl mb-16">
+        <AnimatedSection className="max-w-2xl mb-16 mx-auto text-center">
           <SectionLabel text={t("sectionLabel")} />
           <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-text-dark tracking-tight">
             {t("heading")}
@@ -49,7 +49,7 @@ export default function PainPointsSection() {
           ))}
         </motion.div>
 
-        <AnimatedSection className="mt-16 max-w-2xl">
+        <AnimatedSection className="mt-16 max-w-2xl mx-auto text-center">
           <p className="text-xl text-text-light leading-relaxed">{t("emphasis")}</p>
         </AnimatedSection>
       </div>
