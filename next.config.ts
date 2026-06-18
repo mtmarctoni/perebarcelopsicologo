@@ -85,7 +85,7 @@ const nextConfig: NextConfig = {
           },
           {
             key: "Content-Security-Policy",
-            value: "default-src 'self'; script-src 'self' 'unsafe-eval' 'unsafe-inline' https://consent.cookiebot.com https://www.googletagmanager.com https://ssl.google-analytics.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob: https://*.calendly.com; font-src 'self'; connect-src 'self' https://*.resend.com https://vitals.vercel-insights.com; frame-src 'self' https://calendly.com https://consent.cookiebot.com; frame-ancestors 'none'; base-uri 'self'; form-action 'self'",
+            value: "default-src 'self'; script-src 'self' 'unsafe-eval' 'unsafe-inline' https://consent.cookiebot.com https://www.googletagmanager.com https://ssl.google-analytics.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob: https://*.calendly.com; font-src 'self'; connect-src 'self' https://*.resend.com https://vitals.vercel-insights.com https://consent.cookiebot.com https://www.google-analytics.com; frame-src 'self' https://calendly.com https://consent.cookiebot.com; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; object-src 'none'",
           },
         ],
       },
