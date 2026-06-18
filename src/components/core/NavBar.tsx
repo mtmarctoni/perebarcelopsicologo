@@ -145,7 +145,7 @@ const Navbar = () => {
             <div className="flex items-center gap-3 lg:hidden">
               <Link
                 href="/contact"
-                className="inline-flex items-center justify-center bg-secondary text-text-dark dark:text-[#0f172a] text-xs font-bold px-4 py-2 rounded-full hover:bg-secondary-light transition-all duration-300"
+                className="inline-flex items-center justify-center bg-secondary text-text-dark dark:text-[#0f172a] text-xs font-bold px-3 py-2 rounded-full whitespace-nowrap hover:bg-secondary-light transition-all duration-300"
               >
                 {t("ctaMobile")}
               </Link>
