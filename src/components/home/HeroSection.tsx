@@ -8,9 +8,11 @@ import CheckIcon from "@/components/composables/CheckIcon";
 import SectionLabel from "@/components/composables/SectionLabel";
 import { fadeInUp, staggerContainer } from "@/components/home/animations";
 import { images } from "@/config/images";
+import { getYearsOfExperience } from "@/utils/experience";
 
 export default function HeroSection() {
   const t = useTranslations("HeroSection");
+  const years = getYearsOfExperience();
   return (
     <section className="relative min-h-screen flex items-center overflow-hidden bg-background">
       {/* Background layers */}
@@ -86,7 +88,10 @@ export default function HeroSection() {
               {t("subtitle")}
             </motion.p>
 
-            <motion.div variants={fadeInUp} className="mt-10 flex flex-col sm:flex-row gap-4">
+            <motion.div
+              variants={fadeInUp}
+              className="mt-10 flex flex-col sm:flex-row gap-4 items-center justify-center"
+            >
               <Link
                 href="/contact"
                 className="inline-flex items-center justify-center text-center bg-secondary text-text-dark dark:text-[#0f172a] font-bold text-base px-8 py-4 rounded-full hover:bg-secondary-light hover:shadow-glow hover:-translate-y-0.5 transition-all duration-300"
@@ -97,7 +102,7 @@ export default function HeroSection() {
 
             <motion.div
               variants={fadeInUp}
-              className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-2 text-text-dark opacity-40 text-sm"
+              className="mt-8 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-text-dark opacity-40 text-sm"
             >
               <span className="flex items-center gap-2">
                 <CheckIcon className="w-4 h-4 text-primary" />
@@ -151,18 +156,23 @@ export default function HeroSection() {
 
               {/* Floating stat card */}
               <motion.div
-                className="absolute -left-6 sm:-left-10 bottom-12 bg-background-alt backdrop-blur-md border border-border rounded-2xl px-5 py-4 shadow-xl"
+                className="absolute -left-6 sm:-left-10 bottom-4 bg-background-alt backdrop-blur-md border border-border rounded-2xl px-5 py-4 shadow-xl"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.8, duration: 0.6 }}
               >
-                <p className="text-2xl font-bold text-text-dark">{t("statNumber")}</p>
-                <p className="text-xs text-text-light mt-0.5">{t("statLabel")}</p>
+                <p
+                  className="text-4xl font-bold text-text-dark text-center"
+                  suppressHydrationWarning
+                >
+                  {t("statNumber", { years })}
+                </p>
+                <p className="text-xs text-text-light mt-0.5 text-center">{t("statLabel")}</p>
               </motion.div>
 
               {/* Floating badge */}
               <motion.div
-                className="absolute -right-4 sm:-right-6 top-16 bg-secondary/90 backdrop-blur-sm rounded-full px-4 py-2 shadow-lg"
+                className="absolute -right-4 sm:-right-6 top-4 sm:top-6 bg-secondary/90 backdrop-blur-sm rounded-full px-4 py-2 shadow-lg"
                 initial={{ opacity: 0, x: 20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: 1, duration: 0.6 }}
