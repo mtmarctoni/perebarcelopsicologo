@@ -29,7 +29,7 @@ export const ContactFormEmail = ({
   const year = new Date().getFullYear();
   return `
       <!DOCTYPE html>
-      <html>
+        <html lang="${locale}">
         <head>
           <meta charset="utf-8">
           <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -54,7 +54,7 @@ export const ContactFormEmail = ({
                           <td style="padding: 10px 0;">
                             <p style="margin: 0; color: #64748b; font-size: 16px;">
                               <strong style="color: #1C4761;">${t(locale, "EmailTemplates.fieldName")}:</strong> 
-                              <span style="margin-left: 8px;">${name}</span>
+                              <span style="margin-left: 8px; word-break: break-word; overflow-wrap: break-word;">${name}</span>
                             </p>
                           </td>
                         </tr>
@@ -62,7 +62,7 @@ export const ContactFormEmail = ({
                           <td style="padding: 10px 0;">
                             <p style="margin: 0; color: #64748b; font-size: 16px;">
                               <strong style="color: #1C4761;">${t(locale, "EmailTemplates.fieldEmail")}:</strong>
-                              <span style="margin-left: 8px;">${email}</span>
+                              <span style="margin-left: 8px; word-break: break-word; overflow-wrap: break-word;">${email}</span>
                             </p>
                           </td>
                         </tr>
@@ -70,7 +70,7 @@ export const ContactFormEmail = ({
                           <td style="padding: 10px 0;">
                             <p style="margin: 0; color: #64748b; font-size: 16px;">
                               <strong style="color: #1C4761;">${t(locale, "EmailTemplates.fieldPhone")}:</strong>
-                              <span style="margin-left: 8px;">${phone}</span>
+                              <span style="margin-left: 8px; word-break: break-word; overflow-wrap: break-word;">${phone}</span>
                             </p>
                           </td>
                         </tr>
@@ -78,7 +78,7 @@ export const ContactFormEmail = ({
                           <td style="padding: 10px 0;">
                             <p style="margin: 0; color: #64748b; font-size: 16px;">
                               <strong style="color: #1C4761;">${t(locale, "EmailTemplates.fieldInterest")}:</strong>
-                              <span style="margin-left: 8px;">${interestedIn}</span>
+                              <span style="margin-left: 8px; word-break: break-word; overflow-wrap: break-word;">${interestedIn}</span>
                             </p>
                           </td>
                         </tr>
@@ -86,7 +86,7 @@ export const ContactFormEmail = ({
                           <td style="padding: 10px 0;">
                             <p style="margin: 0; color: #64748b; font-size: 16px;">
                               <strong style="color: #1C4761;">${t(locale, "EmailTemplates.fieldResponseMedium")}:</strong>
-                              <span style="margin-left: 8px;">${mediaResponse}</span>
+                              <span style="margin-left: 8px; word-break: break-word; overflow-wrap: break-word;">${mediaResponse}</span>
                             </p>
                           </td>
                         </tr>
@@ -94,7 +94,7 @@ export const ContactFormEmail = ({
                           <td style="padding: 10px 0;">
                             <p style="margin: 0; color: #64748b; font-size: 16px;">
                               <strong style="color: #1C4761;">${t(locale, "EmailTemplates.fieldComment")}:</strong>
-                              <span style="margin-left: 8px;">${optionalComment}</span>
+                              <span style="margin-left: 8px; word-break: break-word; overflow-wrap: break-word;">${optionalComment}</span>
                             </p>
                           </td>
                         </tr>

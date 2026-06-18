@@ -379,7 +379,9 @@
     "errorUnexpected": "Ha ocurrido un error inesperado. Por favor, inténtalo de nuevo más tarde.",
     "errorValidation": "Datos del formulario inválidos.",
     "errorServer": "Error interno del servidor.",
-    "errorRateLimit": "Demasiadas solicitudes. Inténtalo de nuevo en un minuto."
+    "errorRateLimit": "Demasiadas solicitudes. Inténtalo de nuevo en un minuto.",
+    "errorForbidden": "Acción no permitida.",
+    "warningConfirmationFailed": "Tu mensaje se ha enviado, pero no hemos podido enviar el correo de confirmación."
   },
   "EmailTemplates": {
     "adminSubject": "Nuevo formulario de contacto",

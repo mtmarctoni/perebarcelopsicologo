@@ -9,7 +9,7 @@ export const ConfirmationEmail = ({ locale, name }: Props) => {
   const year = new Date().getFullYear();
   return `
       <!DOCTYPE html>
-      <html>
+        <html lang="${locale}">
         <head>
           <meta charset="utf-8">
           <meta name="viewport" content="width=device-width, initial-scale=1.0">
