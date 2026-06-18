@@ -193,11 +193,11 @@ export default function HeroSection() {
         animate={{ opacity: 1 }}
         transition={{ delay: 1.4 }}
       >
-        <span className="text-text-dark opacity-30 text-xs uppercase tracking-widest">
+        <span className="text-text-light text-xs uppercase tracking-widest">
           {t("scrollIndicator")}
         </span>
         <motion.div
-          className="w-5 h-8 border-2 border-border rounded-full flex justify-center pt-1.5"
+          className="w-5 h-8 border-2 border-text-light/40 rounded-full flex justify-center pt-1.5"
           animate={{ y: [0, 6, 0] }}
           transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
         >
