@@ -18,7 +18,7 @@ export default function ServiciosHeroSection() {
 
       <div className="relative z-10 w-full max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 py-28 lg:py-0">
         <motion.div
-          className="max-w-3xl"
+          className="max-w-3xl mx-auto text-center"
           initial="hidden"
           animate="visible"
           variants={staggerContainer}
@@ -36,7 +36,7 @@ export default function ServiciosHeroSection() {
 
           <motion.p
             variants={fadeInUp}
-            className="mt-6 text-lg sm:text-xl text-text-light max-w-2xl leading-relaxed"
+            className="mt-6 text-lg sm:text-xl text-text-light max-w-2xl mx-auto leading-relaxed"
           >
             {t("subtitle")}
           </motion.p>
