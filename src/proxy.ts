@@ -84,8 +84,8 @@ export function proxy(request: NextRequest) {
       );
     }
 
-    // HTTP -> HTTPS redirect in production
-    if (process.env.NODE_ENV === "production") {
+    // HTTP -> HTTPS redirect only on Vercel production
+    if (process.env.VERCEL_ENV === "production") {
       const proto = request.headers.get("x-forwarded-proto");
       if (proto === "http") {
         return NextResponse.redirect(new URL(url.toString().replace("http://", "https://")));
