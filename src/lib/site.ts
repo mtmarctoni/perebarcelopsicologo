@@ -38,7 +38,7 @@ export function isProduction(): boolean {
 }
 
 export function getSiteUrl(): string {
-  return `https://${PRODUCTION_HOST}`;
+  return process.env.SITE_URL || `https://${PRODUCTION_HOST}`;
 }
 
 export function getRobotsMetadata(): Metadata["robots"] {
