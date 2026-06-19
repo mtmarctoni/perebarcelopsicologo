@@ -21,7 +21,7 @@ export default function AboutSection() {
             viewport={{ once: true }}
             transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
           >
-            <div className="relative">
+            <div className="relative w-[280px] sm:w-[340px] lg:w-full mx-auto lg:mx-0">
               {/* Decorative offset frame */}
               <div className="absolute -bottom-4 -right-4 w-full h-full rounded-[2rem] border-2 border-secondary/30" />
               <div className="absolute -top-4 -left-4 w-24 h-24 border-l-2 border-t-2 border-secondary/20 rounded-tl-3xl" />
@@ -40,7 +40,7 @@ export default function AboutSection() {
 
           {/* Text */}
           <motion.div
-            className="lg:col-span-7"
+            className="lg:col-span-7 text-center lg:text-left"
             initial={{ opacity: 0, x: 40 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
@@ -61,7 +61,7 @@ export default function AboutSection() {
               <p className="text-lg font-bold">{t("highlight")}</p>
             </div>
 
-            <div className="mt-8">
+            <div className="mt-8 text-center">
               <Link
                 href="/contact"
                 className="inline-flex items-center justify-center text-center bg-secondary text-text-dark dark:text-[#0f172a] font-bold px-8 py-4 rounded-full hover:bg-secondary-light hover:shadow-glow hover:-translate-y-0.5 transition-all duration-300"

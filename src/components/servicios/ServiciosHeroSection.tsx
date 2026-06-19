@@ -18,7 +18,7 @@ export default function ServiciosHeroSection() {
 
       <div className="relative z-10 w-full max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 py-28 lg:py-0">
         <motion.div
-          className="max-w-3xl"
+          className="max-w-3xl mx-auto text-center"
           initial="hidden"
           animate="visible"
           variants={staggerContainer}
@@ -36,12 +36,12 @@ export default function ServiciosHeroSection() {
 
           <motion.p
             variants={fadeInUp}
-            className="mt-6 text-lg sm:text-xl text-text-light max-w-2xl leading-relaxed"
+            className="mt-6 text-lg sm:text-xl text-text-light max-w-2xl mx-auto leading-relaxed"
           >
             {t("subtitle")}
           </motion.p>
 
-          <motion.div variants={fadeInUp} className="mt-10">
+          <motion.div variants={fadeInUp} className="mt-10 text-center">
             <Link
               href="/contact"
               className="inline-flex items-center justify-center text-center bg-secondary text-text-dark dark:text-[#0f172a] font-bold text-base px-8 py-4 rounded-full hover:bg-secondary-light hover:shadow-glow hover:-translate-y-0.5 transition-all duration-300"
@@ -49,7 +49,7 @@ export default function ServiciosHeroSection() {
               {t("cta")}
             </Link>
           </motion.div>
-          <motion.p variants={fadeInUp} className="mt-3 text-text-light text-sm">
+          <motion.p variants={fadeInUp} className="mt-3 text-text-light text-sm text-center">
             {t("finePrint")}
           </motion.p>
         </motion.div>

@@ -14,7 +14,7 @@ export default function AboutObjectiveSection() {
     <section className="relative bg-background overflow-hidden">
       <div className="relative z-10 max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 py-24 lg:py-32">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
-          <AnimatedSection>
+          <AnimatedSection className="text-center lg:text-left">
             <SectionLabel text={t("sectionLabel")} />
             <h2 className="text-4xl sm:text-5xl font-bold text-text-dark tracking-tight leading-[1.1]">
               {t("heading")}
