@@ -7,8 +7,11 @@ import CheckIcon from "@/components/composables/CheckIcon";
 import SectionLabel from "@/components/composables/SectionLabel";
 import { staggerDelay } from "@/components/home/animations";
 import { images } from "@/config/images";
+import { getYearsOfExperience } from "@/utils/experience";
+
 export default function HeroSection() {
   const t = useTranslations("HeroSection");
+  const years = getYearsOfExperience();
   return (
     <section className="relative min-h-screen flex items-center overflow-hidden bg-background">
       <div
@@ -140,7 +143,7 @@ export default function HeroSection() {
                 className="opacity-0 animate-fade-in-up absolute -left-6 sm:-left-10 bottom-12 bg-background-alt backdrop-blur-md border border-border rounded-2xl px-5 py-4 shadow-xl"
                 style={{ animationDelay: "800ms" }}
               >
-                <p className="text-2xl font-bold text-text-dark">{t("statNumber")}</p>
+                <p className="text-2xl font-bold text-text-dark">{t("statNumber", { years })}</p>
                 <p className="text-xs text-text-light mt-0.5">{t("statLabel")}</p>
               </div>
 
