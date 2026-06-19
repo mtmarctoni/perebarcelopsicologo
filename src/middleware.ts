@@ -29,7 +29,7 @@ function getUnauthorizedResponse(): NextResponse {
   });
 }
 
-export function proxy(request: NextRequest) {
+export function middleware(request: NextRequest) {
   const host = request.headers.get("host") || request.nextUrl.host;
   const url = request.nextUrl;
   const pathname = url.pathname;
@@ -60,7 +60,7 @@ export function proxy(request: NextRequest) {
         return response;
       }
     } catch {
-      // Malformed auth header
+      console.warn("[middleware] Malformed auth header from:", request.headers.get("host"));
     }
 
     return getUnauthorizedResponse();
