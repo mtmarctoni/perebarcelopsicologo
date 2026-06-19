@@ -378,7 +378,10 @@
     "errorResendEmail": "Email no vàlid. L'adreça de correu electrònic ha de seguir el format 'email@example.com' o 'Nom <email@example.com>'",
     "errorUnexpected": "Ha ocorregut un error inesperat. Si us plau, torna-ho a intentar més tard.",
     "errorValidation": "Dades del formulari invàlides.",
-    "errorServer": "Error intern del servidor."
+    "errorServer": "Error intern del servidor.",
+    "errorRateLimit": "Masses sol·licituds. Torna-ho a intentar en un minut.",
+    "errorForbidden": "Acció no permesa.",
+    "warningConfirmationFailed": "El teu missatge s'ha enviat, però no hem pogut enviar el correu de confirmació."
   },
   "EmailTemplates": {
     "adminSubject": "Nou formulari de contacte",

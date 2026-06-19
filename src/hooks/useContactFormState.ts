@@ -37,8 +37,8 @@ export const useContactFormState = () => {
         const data = await response.json();
 
         if (!response.ok) {
-          setValidationError(handleResendErrors(data.error));
-          throw new Error(data.error.message);
+          setValidationError(handleResendErrors(data));
+          throw new Error(data.error ?? t("errorUnexpected"));
         }
 
         // Push GTM event for Google Ads conversion tracking
@@ -49,12 +49,17 @@ export const useContactFormState = () => {
           });
         }
 
+        if (data.warnings?.includes("user_email_failed")) {
+          // biome-ignore lint/suspicious/noConsole: server-side warning is intentional
+          console.warn("User confirmation email failed to send");
+        }
+
         // Move to success screen
         setCurrentQuestion(questions.length - 1);
       } catch (error) {
         // biome-ignore lint/suspicious/noConsole: server-side error logging is intentional
         console.error("Contact form submission error:", error);
-        setValidationError(t("errorUnexpected"));
+        setValidationError((prev) => prev ?? t("errorUnexpected"));
       } finally {
         setIsLoading(false);
       }
