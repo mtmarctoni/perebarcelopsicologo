@@ -1,10 +1,14 @@
+"use client";
+
 import { useTranslations } from "next-intl";
+import { useState } from "react";
 import { clientEnv } from "@/config/client-env.config";
 
 const calendlyUrl = clientEnv.NEXT_PUBLIC_CALENDLY_URL;
 
 const CalendlyBookingCard = () => {
   const t = useTranslations("CalendlyBookingCard");
+  const [showIframe, setShowIframe] = useState(false);
   const hasCalendly = Boolean(calendlyUrl);
 
   return (
@@ -17,14 +21,27 @@ const CalendlyBookingCard = () => {
 
       {hasCalendly ? (
         <div className="mt-8 rounded-2xl overflow-hidden border border-secondary/20 bg-background-alt min-h-[720px]">
-          <iframe
-            src={calendlyUrl}
-            title="Calendly booking"
-            className="w-full h-[720px]"
-            loading="lazy"
-            allow="camera; microphone; autoplay; fullscreen; display-capture"
-            referrerPolicy="no-referrer-when-downgrade"
-          />
+          {showIframe ? (
+            <iframe
+              src={calendlyUrl}
+              title="Calendly booking"
+              className="w-full h-[720px]"
+              loading="lazy"
+              allow="camera; microphone; autoplay; fullscreen; display-capture"
+              referrerPolicy="no-referrer-when-downgrade"
+            />
+          ) : (
+            <div className="h-[720px] flex flex-col items-center justify-center gap-6 p-8 text-center">
+              <p className="text-text-light max-w-md">{t("loadDescription")}</p>
+              <button
+                type="button"
+                onClick={() => setShowIframe(true)}
+                className="inline-flex items-center justify-center rounded-full bg-primary px-8 py-3 text-sm font-semibold text-white transition hover:bg-primary-dark focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
+              >
+                {t("openCalendar")}
+              </button>
+            </div>
+          )}
         </div>
       ) : (
         <div className="mt-8 rounded-2xl border border-dashed border-secondary/30 bg-background-alt p-8 flex flex-col justify-center items-start gap-4 min-h-[320px]">
