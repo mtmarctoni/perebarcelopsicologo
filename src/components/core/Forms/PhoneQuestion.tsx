@@ -1,4 +1,3 @@
-import { motion } from "framer-motion";
 import { useTranslations } from "next-intl";
 
 import { CrossIcon } from "@/components/composables/Icons";
@@ -62,14 +61,13 @@ const PhoneQuestion = ({
             value={selectedAnswer}
           />
           {validationError && (
-            <motion.div
-              initial={{ opacity: 0, y: -10 }}
-              animate={{ opacity: 1, y: 0 }}
-              className="flex items-center space-x-2 bg-background text-error px-4 py-2 rounded-lg mt-2"
+            <div
+              className="opacity-0 animate-fade-in-up flex items-center space-x-2 bg-background text-error px-4 py-2 rounded-lg mt-2"
+              style={{ animationDuration: "0.3s" }}
             >
               <CrossIcon className="w-5 h-5" />
               <span className="text-sm font-medium">{validationError}</span>
-            </motion.div>
+            </div>
           )}
 
           <button
