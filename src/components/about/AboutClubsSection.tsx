@@ -38,7 +38,7 @@ export default function AboutClubsSection() {
                   sizes="(max-width: 768px) 64px, 80px"
                 />
               </div>
-              <span className="text-xs sm:text-sm text-center font-medium text-text-light group-hover:text-text-dark transition-colors duration-300 line-clamp-2 leading-snug">
+              <span className="text-xs sm:text-sm text-center font-medium text-text-light group-hover:text-text-dark transition-colors duration-300 leading-snug">
                 {club.name}
               </span>
             </div>

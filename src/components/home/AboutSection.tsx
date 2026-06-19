@@ -48,7 +48,7 @@ export default function AboutSection() {
               <p className="text-lg font-bold">{t("highlight")}</p>
             </div>
 
-            <div className="mt-8">
+            <div className="mt-8 text-center">
               <Link
                 href="/contact"
                 className="inline-flex items-center justify-center text-center bg-secondary text-text-dark dark:text-[#0f172a] font-bold px-8 py-4 rounded-full hover:bg-secondary-light hover:shadow-glow hover:-translate-y-0.5 transition-all duration-300"

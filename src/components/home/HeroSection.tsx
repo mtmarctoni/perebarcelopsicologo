@@ -7,7 +7,6 @@ import CheckIcon from "@/components/composables/CheckIcon";
 import SectionLabel from "@/components/composables/SectionLabel";
 import { staggerDelay } from "@/components/home/animations";
 import { images } from "@/config/images";
-
 export default function HeroSection() {
   const t = useTranslations("HeroSection");
   return (
@@ -162,7 +161,7 @@ export default function HeroSection() {
         className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-0 animate-fade-in"
         style={{ animationDelay: "1400ms" }}
       >
-        <span className="text-text-dark opacity-30 text-xs uppercase tracking-widest">
+        <span className="text-text-light text-xs uppercase tracking-widest">
           {t("scrollIndicator")}
         </span>
         <div className="w-5 h-8 border-2 border-border rounded-full flex justify-center pt-1.5 animate-bounce-down">

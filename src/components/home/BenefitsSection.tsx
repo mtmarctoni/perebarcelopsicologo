@@ -20,8 +20,10 @@ export default function BenefitsSection() {
             <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-text-dark tracking-tight leading-[1.1]">
               {t("heading")}
             </h2>
-            <p className="mt-6 text-lg text-text leading-relaxed max-w-md">{t("subtitle")}</p>
-            <div className="mt-10">
+            <p className="mt-6 text-lg text-text leading-relaxed max-w-md mx-auto">
+              {t("subtitle")}
+            </p>
+            <div className="mt-10 text-center">
               <Link
                 href="/contact"
                 className="inline-flex items-center justify-center text-center bg-primary-dark text-text-inverse font-semibold px-8 py-4 rounded-full hover:bg-secondary hover:text-text-dark dark:hover:text-[#0f172a] hover:shadow-glow transition-all duration-300"
