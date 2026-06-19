@@ -1,10 +1,9 @@
 "use client";
 
-import { motion } from "framer-motion";
 import { useTranslations } from "next-intl";
 
 import AnimatedSection from "@/components/composables/AnimatedSection";
-import { fadeInUp, staggerContainer } from "@/components/home/animations";
+import { staggerDelay } from "@/components/home/animations";
 
 interface PrivacyItemProps {
   icon: string;
@@ -164,18 +163,12 @@ export default function PrivacyContentSection() {
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_30%_20%,_rgba(185,216,235,0.03)_0%,_transparent_50%)]" />
 
       <div className="relative z-10 max-w-4xl mx-auto px-5 sm:px-8 lg:px-12 py-24 lg:py-32">
-        <motion.div
-          className="space-y-16"
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-60px" }}
-          variants={staggerContainer}
-        >
-          {sections.map((section) => (
-            <motion.div
+        <div className="space-y-16">
+          {sections.map((section, i) => (
+            <div
               key={section.title}
-              variants={fadeInUp}
-              className="bg-background-alt border border-border rounded-2xl p-8 sm:p-10"
+              className="opacity-0 animate-fade-in-up bg-background-alt border border-border rounded-2xl p-8 sm:p-10"
+              style={{ animationDelay: `${staggerDelay(i, 0.1, 0.06)}ms` }}
             >
               <h2 className="text-xl sm:text-2xl font-bold text-text-dark tracking-tight">
                 {section.title}
@@ -201,9 +194,9 @@ export default function PrivacyContentSection() {
               {section.closing && (
                 <p className="text-text-light mt-4 leading-relaxed">{section.closing}</p>
               )}
-            </motion.div>
+            </div>
           ))}
-        </motion.div>
+        </div>
 
         <AnimatedSection className="mt-12 pt-8 border-t border-border">
           <div className="flex flex-wrap items-center gap-x-6 gap-y-3 justify-center">

@@ -1,11 +1,10 @@
 "use client";
 
-import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import { useTranslations } from "next-intl";
 import SectionLabel from "@/components/composables/SectionLabel";
-import { fadeInUp, staggerContainer } from "@/components/home/animations";
+import { staggerDelay } from "@/components/home/animations";
 import { images } from "@/config/images";
 
 export default function AboutHeroSection() {
@@ -19,38 +18,37 @@ export default function AboutHeroSection() {
 
       <div className="relative z-10 w-full max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 py-28 lg:py-0">
         <div className="grid lg:grid-cols-12 gap-10 lg:gap-8 items-center">
-          <motion.div
-            className="lg:col-span-6"
-            initial="hidden"
-            animate="visible"
-            variants={staggerContainer}
-          >
-            <motion.div variants={fadeInUp}>
+          <div className="lg:col-span-6">
+            <div
+              className="opacity-0 animate-fade-in-up"
+              style={{ animationDelay: `${staggerDelay(0)}ms` }}
+            >
               <SectionLabel text={t("sectionLabel")} />
-            </motion.div>
+            </div>
 
-            <motion.h1
-              variants={fadeInUp}
-              className="text-4xl sm:text-5xl lg:text-[3.5rem] font-bold text-text-dark tracking-tight leading-[1.1] mt-2"
+            <h1
+              className="opacity-0 animate-fade-in-up text-4xl sm:text-5xl lg:text-[3.5rem] font-bold text-text-dark tracking-tight leading-[1.1] mt-2"
+              style={{ animationDelay: `${staggerDelay(1)}ms` }}
             >
               {t("heading")}
-            </motion.h1>
+            </h1>
 
-            <motion.div variants={fadeInUp} className="mt-10">
+            <div
+              className="opacity-0 animate-fade-in-up mt-10"
+              style={{ animationDelay: `${staggerDelay(2)}ms` }}
+            >
               <Link
                 href="/contact"
                 className="inline-flex items-center justify-center text-center bg-secondary text-text-dark dark:text-[#0f172a] font-bold text-base px-8 py-4 rounded-full hover:bg-secondary-light hover:shadow-glow hover:-translate-y-0.5 transition-all duration-300"
               >
                 {t("cta")}
               </Link>
-            </motion.div>
-          </motion.div>
+            </div>
+          </div>
 
-          <motion.div
-            className="lg:col-span-6 flex justify-center lg:justify-end"
-            initial={{ opacity: 0, scale: 0.95, x: 40 }}
-            animate={{ opacity: 1, scale: 1, x: 0 }}
-            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1], delay: 0.2 }}
+          <div
+            className="lg:col-span-6 flex justify-center lg:justify-end opacity-0 animate-fade-in-up"
+            style={{ animationDelay: "200ms", animationDuration: "800ms" }}
           >
             <div className="relative w-[280px] sm:w-[340px] lg:w-[380px]">
               <div className="absolute -inset-4 bg-secondary/10 rounded-[2rem] blur-2xl" />
@@ -67,7 +65,7 @@ export default function AboutHeroSection() {
                 <div className="absolute inset-0 bg-gradient-to-t from-[#070b14]/60 via-transparent to-transparent" />
               </div>
             </div>
-          </motion.div>
+          </div>
         </div>
       </div>
     </section>

@@ -1,11 +1,10 @@
 "use client";
 
-import { motion } from "framer-motion";
 import { useTranslations } from "next-intl";
 
 import AnimatedSection from "@/components/composables/AnimatedSection";
 import SectionLabel from "@/components/composables/SectionLabel";
-import { scaleIn, staggerContainer } from "@/components/home/animations";
+import { staggerDelay } from "@/components/home/animations";
 
 export default function PainPointsSection() {
   const t = useTranslations("PainPointsSection");
@@ -28,26 +27,20 @@ export default function PainPointsSection() {
           </h2>
         </AnimatedSection>
 
-        <motion.div
-          className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-6"
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-60px" }}
-          variants={staggerContainer}
-        >
-          {painPoints.map((item) => (
-            <motion.div
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-6">
+          {painPoints.map((item, i) => (
+            <div
               key={item.num}
-              variants={scaleIn}
-              className="group relative bg-card border border-border rounded-2xl p-7 lg:p-8 hover:bg-card-hover hover:border-secondary/30 hover:-translate-y-1 transition-all duration-500"
+              className="opacity-0 animate-scale-in group relative bg-card border border-border rounded-2xl p-7 lg:p-8 hover:bg-card-hover hover:border-secondary/30 hover:-translate-y-1 transition-all duration-500"
+              style={{ animationDelay: `${staggerDelay(i, 0.1, 0.12)}ms` }}
             >
               <div className="w-10 h-10 rounded-full bg-secondary/10 flex items-center justify-center mb-5">
                 <span className="text-primary font-bold text-sm">{item.num}</span>
               </div>
               <p className="text-text-dark text-lg leading-relaxed relative z-10">{item.text}</p>
-            </motion.div>
+            </div>
           ))}
-        </motion.div>
+        </div>
 
         <AnimatedSection className="mt-16 max-w-2xl">
           <p className="text-xl text-text-light leading-relaxed">{t("emphasis")}</p>

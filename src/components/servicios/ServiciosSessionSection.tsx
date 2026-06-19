@@ -1,11 +1,10 @@
 "use client";
 
-import { motion } from "framer-motion";
 import { useTranslations } from "next-intl";
 
 import AnimatedSection from "@/components/composables/AnimatedSection";
 import SectionLabel from "@/components/composables/SectionLabel";
-import { fadeInUp, staggerContainer } from "@/components/home/animations";
+import { staggerDelay } from "@/components/home/animations";
 
 export default function ServiciosSessionSection() {
   const t = useTranslations("ServiciosSessionSection");
@@ -28,18 +27,12 @@ export default function ServiciosSessionSection() {
           <p className="mt-4 text-lg text-text-light max-w-xl mx-auto">{t("subtitle")}</p>
         </AnimatedSection>
 
-        <motion.div
-          className="space-y-6 max-w-3xl mx-auto"
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-60px" }}
-          variants={staggerContainer}
-        >
-          {steps.map((item) => (
-            <motion.div
+        <div className="space-y-6 max-w-3xl mx-auto">
+          {steps.map((item, i) => (
+            <div
               key={item.step}
-              variants={fadeInUp}
-              className="flex gap-5 p-6 rounded-2xl bg-card border border-border hover:border-secondary/20 transition-all duration-300"
+              className="opacity-0 animate-fade-in-up flex gap-5 p-6 rounded-2xl bg-card border border-border hover:border-secondary/20 transition-all duration-300"
+              style={{ animationDelay: `${staggerDelay(i, 0.1, 0.12)}ms` }}
             >
               <div className="w-12 h-12 rounded-2xl bg-secondary/10 border border-secondary/20 flex items-center justify-center text-primary font-bold text-lg shrink-0">
                 {item.step}
@@ -48,9 +41,9 @@ export default function ServiciosSessionSection() {
                 <h3 className="text-lg font-bold text-text-dark">{item.title}</h3>
                 <p className="text-text-light mt-1 leading-relaxed">{item.desc}</p>
               </div>
-            </motion.div>
+            </div>
           ))}
-        </motion.div>
+        </div>
 
         <AnimatedSection className="mt-12 text-center">
           <p className="text-lg text-text font-medium">{t("emphasis")}</p>

@@ -1,11 +1,10 @@
 "use client";
 
-import { motion } from "framer-motion";
 import { useTranslations } from "next-intl";
 
 import AnimatedSection from "@/components/composables/AnimatedSection";
 import SectionLabel from "@/components/composables/SectionLabel";
-import { fadeInUp, staggerContainer } from "@/components/home/animations";
+import { staggerDelay } from "@/components/home/animations";
 
 export default function ServiciosNotThisSection() {
   const t = useTranslations("ServiciosNotThisSection");
@@ -30,18 +29,12 @@ export default function ServiciosNotThisSection() {
               </h2>
             </AnimatedSection>
 
-            <motion.div
-              className="mt-8 space-y-4"
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, margin: "-60px" }}
-              variants={staggerContainer}
-            >
-              {notItems.map((item) => (
-                <motion.div
+            <div className="mt-8 space-y-4">
+              {notItems.map((item, i) => (
+                <div
                   key={item.text}
-                  variants={fadeInUp}
-                  className="flex items-center gap-4 p-5 rounded-xl bg-red-50 dark:bg-red-950/30 border border-red-100 dark:border-red-900/30"
+                  className="opacity-0 animate-fade-in-up flex items-center gap-4 p-5 rounded-xl bg-red-50 dark:bg-red-950/30 border border-red-100 dark:border-red-900/30"
+                  style={{ animationDelay: `${staggerDelay(i, 0.1, 0.12)}ms` }}
                 >
                   <div className="w-8 h-8 rounded-full bg-red-100 dark:bg-red-900/30 flex items-center justify-center shrink-0">
                     <svg
@@ -58,9 +51,9 @@ export default function ServiciosNotThisSection() {
                     </svg>
                   </div>
                   <p className="text-text-dark font-medium">{item.text}</p>
-                </motion.div>
+                </div>
               ))}
-            </motion.div>
+            </div>
           </div>
 
           <div>
@@ -70,18 +63,12 @@ export default function ServiciosNotThisSection() {
               </h2>
             </AnimatedSection>
 
-            <motion.div
-              className="mt-8 space-y-4"
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, margin: "-60px" }}
-              variants={staggerContainer}
-            >
-              {yesItems.map((item) => (
-                <motion.div
+            <div className="mt-8 space-y-4">
+              {yesItems.map((item, i) => (
+                <div
                   key={item.text}
-                  variants={fadeInUp}
-                  className="flex items-center gap-4 p-5 rounded-xl bg-secondary/5 border border-secondary/20"
+                  className="opacity-0 animate-fade-in-up flex items-center gap-4 p-5 rounded-xl bg-secondary/5 border border-secondary/20"
+                  style={{ animationDelay: `${staggerDelay(i, 0.1, 0.12)}ms` }}
                 >
                   <div className="w-8 h-8 rounded-full bg-secondary/15 flex items-center justify-center shrink-0">
                     <svg
@@ -98,9 +85,9 @@ export default function ServiciosNotThisSection() {
                     </svg>
                   </div>
                   <p className="text-text-dark font-medium">{item.text}</p>
-                </motion.div>
+                </div>
               ))}
-            </motion.div>
+            </div>
           </div>
         </div>
       </div>

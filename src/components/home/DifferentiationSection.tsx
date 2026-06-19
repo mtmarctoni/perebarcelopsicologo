@@ -1,12 +1,11 @@
 "use client";
 
-import { motion } from "framer-motion";
 import { useTranslations } from "next-intl";
 
 import AnimatedSection from "@/components/composables/AnimatedSection";
 import CheckIcon from "@/components/composables/CheckIcon";
 import SectionLabel from "@/components/composables/SectionLabel";
-import { fadeInUp, staggerContainer } from "@/components/home/animations";
+import { staggerDelay } from "@/components/home/animations";
 
 export default function DifferentiationSection() {
   const t = useTranslations("DifferentiationSection");
@@ -26,26 +25,20 @@ export default function DifferentiationSection() {
             <p className="mt-4 text-lg text-text-light leading-relaxed">{t("emphasis")}</p>
           </AnimatedSection>
 
-          <motion.div
-            className="space-y-4"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-60px" }}
-            variants={staggerContainer}
-          >
-            {differentiators.map((text) => (
-              <motion.div
+          <div className="space-y-4">
+            {differentiators.map((text, i) => (
+              <div
                 key={text}
-                variants={fadeInUp}
-                className="flex items-center gap-4 p-5 rounded-xl bg-card border border-border hover:bg-card-hover hover:border-secondary/20 transition-all duration-300"
+                className="opacity-0 animate-fade-in-up flex items-center gap-4 p-5 rounded-xl bg-card border border-border hover:bg-card-hover hover:border-secondary/20 transition-all duration-300"
+                style={{ animationDelay: `${staggerDelay(i, 0.1, 0.12)}ms` }}
               >
                 <div className="w-8 h-8 rounded-full bg-secondary/15 flex items-center justify-center shrink-0">
                   <CheckIcon className="w-4 h-4 text-primary" />
                 </div>
                 <p className="text-text-dark font-medium">{text}</p>
-              </motion.div>
+              </div>
             ))}
-          </motion.div>
+          </div>
         </div>
       </div>
     </section>

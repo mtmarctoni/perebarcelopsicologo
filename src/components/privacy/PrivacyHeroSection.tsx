@@ -1,10 +1,9 @@
 "use client";
 
-import { motion } from "framer-motion";
 import { useTranslations } from "next-intl";
 
 import SectionLabel from "@/components/composables/SectionLabel";
-import { fadeInUp, staggerContainer } from "@/components/home/animations";
+import { staggerDelay } from "@/components/home/animations";
 
 export default function PrivacyHeroSection() {
   const t = useTranslations("PrivacyHeroSection");
@@ -14,27 +13,28 @@ export default function PrivacyHeroSection() {
       <div className="absolute top-0 right-[25%] w-px h-full bg-gradient-to-b from-transparent via-white/5 to-transparent" />
 
       <div className="relative z-10 max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 py-24 lg:py-32">
-        <motion.div
-          className="text-center max-w-2xl mx-auto"
-          initial="hidden"
-          animate="visible"
-          variants={staggerContainer}
-        >
-          <motion.div variants={fadeInUp}>
+        <div className="text-center max-w-2xl mx-auto">
+          <div
+            className="opacity-0 animate-fade-in-up"
+            style={{ animationDelay: `${staggerDelay(0)}ms` }}
+          >
             <SectionLabel text={t("sectionLabel")} />
-          </motion.div>
+          </div>
 
-          <motion.h1
-            variants={fadeInUp}
-            className="text-4xl sm:text-5xl lg:text-6xl font-bold text-text-dark tracking-tight leading-[1.1]"
+          <h1
+            className="opacity-0 animate-fade-in-up text-4xl sm:text-5xl lg:text-6xl font-bold text-text-dark tracking-tight leading-[1.1]"
+            style={{ animationDelay: `${staggerDelay(1)}ms` }}
           >
             {t("heading")}
-          </motion.h1>
+          </h1>
 
-          <motion.p variants={fadeInUp} className="mt-6 text-lg text-text-light leading-relaxed">
+          <p
+            className="opacity-0 animate-fade-in-up mt-6 text-lg text-text-light leading-relaxed"
+            style={{ animationDelay: `${staggerDelay(2)}ms` }}
+          >
             {t("subtitle")}
-          </motion.p>
-        </motion.div>
+          </p>
+        </div>
       </div>
     </section>
   );

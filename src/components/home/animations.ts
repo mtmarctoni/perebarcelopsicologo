@@ -1,16 +1,10 @@
-import type { Variants } from "framer-motion";
+export type AnimationVariant =
+  | "fade-in-up"
+  | "scale-in"
+  | "fade-in"
+  | "slide-in-left"
+  | "slide-in-right";
 
-export const fadeInUp: Variants = {
-  hidden: { opacity: 0, y: 40 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] } },
-};
-
-export const staggerContainer: Variants = {
-  hidden: {},
-  visible: { transition: { staggerChildren: 0.12, delayChildren: 0.1 } },
-};
-
-export const scaleIn: Variants = {
-  hidden: { opacity: 0, scale: 0.92 },
-  visible: { opacity: 1, scale: 1, transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] } },
-};
+export function staggerDelay(index: number, baseDelay = 0.1, stagger = 0.12): number {
+  return (baseDelay + index * stagger) * 1000;
+}

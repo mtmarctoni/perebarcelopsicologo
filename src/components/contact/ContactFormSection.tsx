@@ -1,9 +1,13 @@
 "use client";
 
+import dynamic from "next/dynamic";
 import { useTranslations } from "next-intl";
 import AnimatedSection from "@/components/composables/AnimatedSection";
 import SectionLabel from "@/components/composables/SectionLabel";
-import CalendlyBookingCard from "@/components/core/CalendlyBookingCard";
+
+const CalendlyBookingCard = dynamic(() => import("@/components/core/CalendlyBookingCard"), {
+  ssr: false,
+});
 
 export default function ContactFormSection() {
   const t = useTranslations("ContactFormSection");

@@ -1,11 +1,10 @@
 "use client";
 
-import { motion } from "framer-motion";
 import { useTranslations } from "next-intl";
 
 import AnimatedSection from "@/components/composables/AnimatedSection";
 import SectionLabel from "@/components/composables/SectionLabel";
-import { fadeInUp, staggerContainer } from "@/components/home/animations";
+import { staggerDelay } from "@/components/home/animations";
 
 export default function AboutObjectiveSection() {
   const t = useTranslations("AboutObjectiveSection");
@@ -23,18 +22,12 @@ export default function AboutObjectiveSection() {
             <p className="mt-2 text-lg text-text leading-relaxed">{t("paragraph2")}</p>
           </AnimatedSection>
 
-          <motion.div
-            className="space-y-5"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-60px" }}
-            variants={staggerContainer}
-          >
-            {objectives.map((text) => (
-              <motion.div
+          <div className="space-y-5">
+            {objectives.map((text, i) => (
+              <div
                 key={text}
-                variants={fadeInUp}
-                className="flex items-start gap-4 p-5 rounded-xl bg-background-alt border border-border shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-300 group"
+                className="opacity-0 animate-fade-in-up flex items-start gap-4 p-5 rounded-xl bg-background-alt border border-border shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-300 group"
+                style={{ animationDelay: `${staggerDelay(i, 0.1, 0.12)}ms` }}
               >
                 <div className="w-8 h-8 rounded-full bg-secondary/15 flex items-center justify-center shrink-0 group-hover:bg-secondary transition-colors duration-300">
                   <svg
@@ -51,9 +44,9 @@ export default function AboutObjectiveSection() {
                   </svg>
                 </div>
                 <p className="text-lg font-medium text-text-dark leading-relaxed pt-0.5">{text}</p>
-              </motion.div>
+              </div>
             ))}
-          </motion.div>
+          </div>
         </div>
 
         <AnimatedSection className="mt-16 max-w-2xl mx-auto text-center">

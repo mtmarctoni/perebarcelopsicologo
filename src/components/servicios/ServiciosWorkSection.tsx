@@ -1,11 +1,10 @@
 "use client";
 
-import { motion } from "framer-motion";
 import { useTranslations } from "next-intl";
 
 import AnimatedSection from "@/components/composables/AnimatedSection";
 import SectionLabel from "@/components/composables/SectionLabel";
-import { fadeInUp, staggerContainer } from "@/components/home/animations";
+import { staggerDelay } from "@/components/home/animations";
 
 export default function ServiciosWorkSection() {
   const t = useTranslations("ServiciosWorkSection");
@@ -26,25 +25,19 @@ export default function ServiciosWorkSection() {
           <p className="mt-4 text-lg text-text max-w-2xl mx-auto">{t("subtitle")}</p>
         </AnimatedSection>
 
-        <motion.div
-          className="grid sm:grid-cols-2 gap-6 max-w-4xl mx-auto"
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-60px" }}
-          variants={staggerContainer}
-        >
-          {topics.map((item) => (
-            <motion.div
+        <div className="grid sm:grid-cols-2 gap-6 max-w-4xl mx-auto">
+          {topics.map((item, i) => (
+            <div
               key={item.icon}
-              variants={fadeInUp}
-              className="p-8 rounded-2xl bg-background-alt border border-border shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-300 group"
+              className="opacity-0 animate-fade-in-up p-8 rounded-2xl bg-background-alt border border-border shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-300 group"
+              style={{ animationDelay: `${staggerDelay(i, 0.1, 0.12)}ms` }}
             >
               <span className="text-primary/30 text-4xl font-bold">{item.icon}</span>
               <h3 className="text-xl font-bold text-text-dark mt-3">{item.title}</h3>
               <p className="text-text mt-2 leading-relaxed">{item.desc}</p>
-            </motion.div>
+            </div>
           ))}
-        </motion.div>
+        </div>
       </div>
     </section>
   );

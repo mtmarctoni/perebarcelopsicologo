@@ -1,10 +1,9 @@
 "use client";
 
-import { motion } from "framer-motion";
 import { useTranslations } from "next-intl";
 
 import AnimatedSection from "@/components/composables/AnimatedSection";
-import { fadeInUp, staggerContainer } from "@/components/home/animations";
+import { staggerDelay } from "@/components/home/animations";
 
 export default function ServiciosFaqSection() {
   const t = useTranslations("ServiciosFaqSection");
@@ -22,24 +21,18 @@ export default function ServiciosFaqSection() {
           </h2>
         </AnimatedSection>
 
-        <motion.div
-          className="space-y-6"
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-60px" }}
-          variants={staggerContainer}
-        >
-          {faqs.map((faq) => (
-            <motion.div
+        <div className="space-y-6">
+          {faqs.map((faq, i) => (
+            <div
               key={faq.question}
-              variants={fadeInUp}
-              className="p-8 rounded-2xl bg-background-alt border border-border shadow-sm"
+              className="opacity-0 animate-fade-in-up p-8 rounded-2xl bg-background-alt border border-border shadow-sm"
+              style={{ animationDelay: `${staggerDelay(i, 0.1, 0.12)}ms` }}
             >
               <h3 className="text-xl font-bold text-text-dark">{faq.question}</h3>
               <p className="text-lg text-text mt-3 leading-relaxed">{faq.answer}</p>
-            </motion.div>
+            </div>
           ))}
-        </motion.div>
+        </div>
       </div>
     </section>
   );

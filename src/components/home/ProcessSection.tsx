@@ -1,11 +1,10 @@
 "use client";
 
-import { motion } from "framer-motion";
 import { useTranslations } from "next-intl";
 
 import AnimatedSection from "@/components/composables/AnimatedSection";
 import SectionLabel from "@/components/composables/SectionLabel";
-import { fadeInUp, staggerContainer } from "@/components/home/animations";
+import { staggerDelay } from "@/components/home/animations";
 
 export default function ProcessSection() {
   const t = useTranslations("ProcessSection");
@@ -28,21 +27,14 @@ export default function ProcessSection() {
         </AnimatedSection>
 
         <div className="relative">
-          {/* Connecting line (desktop) */}
           <div className="absolute top-[3.25rem] left-0 right-0 h-px bg-gradient-to-r from-transparent via-secondary/30 to-transparent hidden lg:block" />
 
-          <motion.div
-            className="grid sm:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-8"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-60px" }}
-            variants={staggerContainer}
-          >
-            {steps.map((item) => (
-              <motion.div
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-8">
+            {steps.map((item, i) => (
+              <div
                 key={item.step}
-                variants={fadeInUp}
-                className="relative text-center lg:text-left"
+                className="opacity-0 animate-fade-in-up relative text-center lg:text-left"
+                style={{ animationDelay: `${staggerDelay(i, 0.1, 0.12)}ms` }}
               >
                 <div className="flex flex-col lg:flex-row items-center lg:items-start gap-4">
                   <div className="relative">
@@ -56,9 +48,9 @@ export default function ProcessSection() {
                     <p className="text-text-light mt-2 leading-relaxed">{item.desc}</p>
                   </div>
                 </div>
-              </motion.div>
+              </div>
             ))}
-          </motion.div>
+          </div>
         </div>
       </div>
     </section>

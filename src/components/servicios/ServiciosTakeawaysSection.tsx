@@ -1,11 +1,11 @@
 "use client";
 
-import { motion } from "framer-motion";
 import { useTranslations } from "next-intl";
 
+import AnimatedSection from "@/components/composables/AnimatedSection";
 import CheckIcon from "@/components/composables/CheckIcon";
 import SectionLabel from "@/components/composables/SectionLabel";
-import { fadeInUp, staggerContainer } from "@/components/home/animations";
+import { staggerDelay } from "@/components/home/animations";
 
 export default function ServiciosTakeawaysSection() {
   const t = useTranslations("ServiciosTakeawaysSection");
@@ -16,39 +16,28 @@ export default function ServiciosTakeawaysSection() {
 
       <div className="relative z-10 max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 py-24 lg:py-32">
         <div className="grid lg:grid-cols-2 gap-16 items-start">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-          >
+          <AnimatedSection>
             <SectionLabel text={t("sectionLabel")} />
             <h2 className="text-4xl sm:text-5xl font-bold text-text-dark tracking-tight leading-[1.1]">
               {t("heading")}
             </h2>
             <p className="mt-6 text-lg text-text-light leading-relaxed max-w-md">{t("subtitle")}</p>
-          </motion.div>
+          </AnimatedSection>
 
-          <motion.div
-            className="space-y-4"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-60px" }}
-            variants={staggerContainer}
-          >
-            {takeaways.map((text) => (
-              <motion.div
+          <div className="space-y-4">
+            {takeaways.map((text, i) => (
+              <div
                 key={text}
-                variants={fadeInUp}
-                className="flex items-center gap-4 p-5 rounded-xl bg-card border border-border hover:bg-card-hover hover:border-secondary/20 transition-all duration-300"
+                className="opacity-0 animate-fade-in-up flex items-center gap-4 p-5 rounded-xl bg-card border border-border hover:bg-card-hover hover:border-secondary/20 transition-all duration-300"
+                style={{ animationDelay: `${staggerDelay(i, 0.1, 0.12)}ms` }}
               >
                 <div className="w-8 h-8 rounded-full bg-secondary/15 flex items-center justify-center shrink-0">
                   <CheckIcon className="w-4 h-4 text-primary" />
                 </div>
                 <p className="text-text font-medium">{text}</p>
-              </motion.div>
+              </div>
             ))}
-          </motion.div>
+          </div>
         </div>
       </div>
     </section>

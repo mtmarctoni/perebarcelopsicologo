@@ -1,12 +1,11 @@
 "use client";
 
-import { motion } from "framer-motion";
 import { useTranslations } from "next-intl";
 
 import AnimatedSection from "@/components/composables/AnimatedSection";
 import CheckIcon from "@/components/composables/CheckIcon";
 import SectionLabel from "@/components/composables/SectionLabel";
-import { fadeInUp, staggerContainer } from "@/components/home/animations";
+import { staggerDelay } from "@/components/home/animations";
 
 export default function AboutExpectSection() {
   const t = useTranslations("AboutExpectSection");
@@ -23,26 +22,20 @@ export default function AboutExpectSection() {
           </h2>
         </AnimatedSection>
 
-        <motion.div
-          className="grid sm:grid-cols-3 gap-6 max-w-4xl mx-auto"
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-60px" }}
-          variants={staggerContainer}
-        >
-          {expectations.map((text) => (
-            <motion.div
+        <div className="grid sm:grid-cols-3 gap-6 max-w-4xl mx-auto">
+          {expectations.map((text, i) => (
+            <div
               key={text}
-              variants={fadeInUp}
-              className="flex items-start gap-4 p-6 rounded-2xl bg-card border border-border hover:bg-card-hover hover:border-secondary/20 transition-all duration-300"
+              className="opacity-0 animate-fade-in-up flex items-start gap-4 p-6 rounded-2xl bg-card border border-border hover:bg-card-hover hover:border-secondary/20 transition-all duration-300"
+              style={{ animationDelay: `${staggerDelay(i, 0.1, 0.12)}ms` }}
             >
               <div className="w-10 h-10 rounded-xl bg-secondary/10 flex items-center justify-center shrink-0">
                 <CheckIcon className="w-5 h-5 text-primary" />
               </div>
               <p className="text-text-dark font-medium leading-relaxed">{text}</p>
-            </motion.div>
+            </div>
           ))}
-        </motion.div>
+        </div>
 
         <AnimatedSection className="mt-12 text-center max-w-2xl mx-auto">
           <div className="p-6 rounded-2xl bg-secondary/10 border border-secondary/20">
