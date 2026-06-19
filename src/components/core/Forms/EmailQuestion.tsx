@@ -43,11 +43,6 @@ const EmailQuestion = ({
           <span className="text-sm font-medium">{validationError}</span>
         </motion.div>
       )}
-      {/* {selectedAnswer && !validationError && (
-        <div className="text-sm text-text-light">
-          Presiona Enter para continuar
-        </div>
-      )} */}
     </>
   );
 };

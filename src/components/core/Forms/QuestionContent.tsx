@@ -16,7 +16,6 @@ interface Props {
   setValidationError: (error: string | null) => void;
   phoneFormat: PhoneFormats | null;
   setPhoneFormat: (format: PhoneFormats | null) => void;
-  //   handleSelectOption: (option: string) => void;
   resetForm: () => void;
   isLoading: boolean;
 }
@@ -29,7 +28,6 @@ const QuestionContent = ({
   setValidationError,
   phoneFormat,
   setPhoneFormat,
-  //   handleSelectOption,
   resetForm,
   isLoading,
 }: Props) => {
@@ -71,7 +69,6 @@ const QuestionContent = ({
           question={question}
           selectedAnswer={selectedAnswer}
           setSelectedAnswer={setSelectedAnswer}
-          //   handleSelectOption={handleSelectOption}
         />
       );
     case QuestionType.TEXTAREA:

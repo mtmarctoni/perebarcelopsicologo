@@ -72,11 +72,6 @@ const PhoneQuestion = ({
             </motion.div>
           )}
 
-          {/* {selectedAnswer && !validationError && (
-                        <div className="text-sm text-text-light">
-                            Presiona Enter para continuar
-                        </div>
-                    )} */}
           <button
             type="button"
             onClick={() => setPhoneFormat(null)}

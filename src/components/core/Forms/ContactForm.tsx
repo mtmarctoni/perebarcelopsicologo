@@ -21,7 +21,6 @@ export default function TypeformStyleForm() {
     resetForm,
     setSelectedAnswer,
     setValidationError,
-    // handleSelectOption,
     phoneFormat,
     setPhoneFormat,
     isLoading,
@@ -43,7 +42,6 @@ export default function TypeformStyleForm() {
             setValidationError={setValidationError}
             phoneFormat={phoneFormat}
             setPhoneFormat={setPhoneFormat}
-            // handleSelectOption={handleSelectOption}
             resetForm={resetForm}
             isLoading={isLoading}
           />
