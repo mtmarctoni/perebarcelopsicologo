@@ -20,7 +20,7 @@
     "servicios": "Serveis",
     "contact": "Contacte",
     "ctaDesktop": "Sessió gratuïta",
-    "ctaMobile": "Sessiógratis",
+    "ctaMobile": "Sessió gratis",
     "closeMenu": "Tancar menú",
     "openMenu": "Obrir menú"
   },
@@ -73,8 +73,8 @@
     "checkFreeSession": "Sessió inicial gratuïta",
     "checkPersonalized": "100% personalitzat",
     "checkOnline": "Online",
-    "statNumber": "2018",
-    "statLabel": "Vaig començar",
+    "statNumber": "+{years}",
+    "statLabel": "anys d'experiència",
     "badgeText": "Alt rendiment",
     "scrollIndicator": "Descobreix més",
     "heroImageAlt": "Pere Barceló - Psicòleg Esportiu"
