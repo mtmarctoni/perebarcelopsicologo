@@ -314,6 +314,8 @@
     "label": "Reserva directa",
     "heading": "Reserva una trucada",
     "description": "Si prefereixes triar hora directament, pots reservar una cita des del calendari.",
+    "loadDescription": "Carrega el calendari per triar dia i hora de la teva cita.",
+    "openCalendar": "Obrir calendari",
     "placeholderText": "El bloc de reserva estarà disponible quan es configuri la URL pública de Calendly.",
     "configHint": "Configuració requerida: NEXT_PUBLIC_CALENDLY_URL"
   },
