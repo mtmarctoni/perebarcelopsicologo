@@ -1,25 +1,33 @@
 #!/usr/bin/env node
 /**
- * Check Next.js chunk sizes against thresholds.
+ * Check Next.js chunk sizes against compressed thresholds.
  *
  * This script runs after `next build` and checks the generated chunks
- * without relying on content-hash names (which change every build).
+ * using gzip/brotli sizes — what users actually download over the wire.
  */
 
 const fs = require('node:fs');
 const path = require('node:path');
+const { execSync } = require('node:child_process');
 
 const CHUNKS_DIR = path.join(process.cwd(), '.next', 'static', 'chunks');
 const BUDGETS = {
-  // The largest shared chunk should not exceed this
-  largestChunk: 230 * 1024,
-  // Total of all JS chunks (raw size)
-  total: 700 * 1024,
+  // Largest single chunk (raw) — framework budget
+  largestChunk: 300 * 1024,
+  // Total compressed JS — what users download
+  totalGzip: 400 * 1024,
+  totalBrotli: 350 * 1024,
 };
 
 function formatBytes(bytes) {
   const kb = bytes / 1024;
   return `${kb.toFixed(1)} KB`;
+}
+
+function getCompressedSize(filePath, type) {
+  const cmd = type === 'gzip' ? 'gzip -c' : 'brotli -c';
+  const buffer = execSync(`${cmd} "${filePath}"`, { maxBuffer: 10 * 1024 * 1024 });
+  return buffer.length;
 }
 
 function checkBundles() {
@@ -31,11 +39,16 @@ function checkBundles() {
   const files = fs
     .readdirSync(CHUNKS_DIR)
     .filter((f) => f.endsWith('.js'))
-    .map((f) => ({
-      name: f,
-      size: fs.statSync(path.join(CHUNKS_DIR, f)).size,
-    }))
-    .sort((a, b) => b.size - a.size);
+    .map((f) => {
+      const filePath = path.join(CHUNKS_DIR, f);
+      return {
+        name: f,
+        raw: fs.statSync(filePath).size,
+        gzip: getCompressedSize(filePath, 'gzip'),
+        brotli: getCompressedSize(filePath, 'brotli'),
+      };
+    })
+    .sort((a, b) => b.raw - a.raw);
 
   if (files.length === 0) {
     console.error('❌ No JS chunks found.');
@@ -43,44 +56,61 @@ function checkBundles() {
   }
 
   let hasError = false;
-  let totalSize = 0;
+  let totalRaw = 0;
+  let totalGzip = 0;
+  let totalBrotli = 0;
 
-  console.log('📦 Bundle size check\n');
+  console.log('📦 Bundle size check (compressed)\n');
 
   for (const file of files) {
-    totalSize += file.size;
+    totalRaw += file.raw;
+    totalGzip += file.gzip;
+    totalBrotli += file.brotli;
   }
 
   // Check largest chunk
   const largest = files[0];
-  console.log(`Largest chunk:      ${largest.name} — ${formatBytes(largest.size)}`);
-  if (largest.size > BUDGETS.largestChunk) {
+  console.log(`Largest chunk:      ${largest.name} — ${formatBytes(largest.raw)} raw`);
+  if (largest.raw > BUDGETS.largestChunk) {
     console.error(
-      `   ❌ Exceeds budget of ${formatBytes(BUDGETS.largestChunk)} by ${formatBytes(largest.size - BUDGETS.largestChunk)}`,
+      `   ❌ Exceeds budget of ${formatBytes(BUDGETS.largestChunk)} by ${formatBytes(largest.raw - BUDGETS.largestChunk)}`,
     );
     hasError = true;
   } else {
     console.log(`   ✅ Under budget`);
   }
 
-  // Show remaining chunks for info
-  const remaining = files.slice(1).filter((f) => f.size > 1024);
+  // Show remaining chunks
+  const remaining = files.slice(1).filter((f) => f.raw > 1024);
   if (remaining.length > 0) {
     console.log(`\nOther chunks:`);
     for (const chunk of remaining) {
-      console.log(`  ${chunk.name} — ${formatBytes(chunk.size)}`);
+      console.log(`  ${chunk.name} — ${formatBytes(chunk.raw)} raw`);
     }
   }
 
-  // Check total
-  console.log(`\nTotal static JS:    ${formatBytes(totalSize)}`);
-  if (totalSize > BUDGETS.total) {
+  // Check total compressed
+  console.log(`\nTotal static JS:`);
+  console.log(`  Raw:    ${formatBytes(totalRaw)}`);
+  console.log(`  Gzip:   ${formatBytes(totalGzip)}`);
+  console.log(`  Brotli: ${formatBytes(totalBrotli)}`);
+
+  if (totalGzip > BUDGETS.totalGzip) {
     console.error(
-      `   ❌ Exceeds budget of ${formatBytes(BUDGETS.total)} by ${formatBytes(totalSize - BUDGETS.total)}`,
+      `   ❌ Gzip exceeds budget of ${formatBytes(BUDGETS.totalGzip)} by ${formatBytes(totalGzip - BUDGETS.totalGzip)}`,
     );
     hasError = true;
   } else {
-    console.log(`   ✅ Under budget`);
+    console.log(`   ✅ Gzip under budget`);
+  }
+
+  if (totalBrotli > BUDGETS.totalBrotli) {
+    console.error(
+      `   ❌ Brotli exceeds budget of ${formatBytes(BUDGETS.totalBrotli)} by ${formatBytes(totalBrotli - BUDGETS.totalBrotli)}`,
+    );
+    hasError = true;
+  } else {
+    console.log(`   ✅ Brotli under budget`);
   }
 
   console.log();
