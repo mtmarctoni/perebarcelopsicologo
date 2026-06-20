@@ -49,7 +49,7 @@ export default function AboutHeroSection() {
 
             <m.div
               className="lg:col-span-6 flex justify-center lg:justify-end"
-              initial={{ opacity: 0, scale: 0.95, x: 40 }}
+              initial={{ opacity: 1, scale: 0.95, x: 40 }}
               animate={{ opacity: 1, scale: 1, x: 0 }}
               transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1], delay: 0.2 }}
             >
@@ -65,6 +65,7 @@ export default function AboutHeroSection() {
                     className="object-cover object-top"
                     priority
                     fetchPriority="high"
+                    decoding="sync"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#070b14]/60 via-transparent to-transparent" />
                 </div>
