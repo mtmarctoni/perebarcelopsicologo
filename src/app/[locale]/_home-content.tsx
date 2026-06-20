@@ -1,4 +1,3 @@
-import MainLayout from "@/components/core/MainLayout";
 import AboutSection from "@/components/home/AboutSection";
 import BenefitsSection from "@/components/home/BenefitsSection";
 import DifferentiationSection from "@/components/home/DifferentiationSection";
@@ -9,7 +8,7 @@ import ProcessSection from "@/components/home/ProcessSection";
 
 export default function HomeContent() {
   return (
-    <MainLayout>
+    <>
       <HeroSection />
       <main>
         <PainPointsSection />
@@ -19,6 +18,6 @@ export default function HomeContent() {
         <AboutSection />
         <FinalCtaSection />
       </main>
-    </MainLayout>
+    </>
   );
 }

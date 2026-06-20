@@ -5,11 +5,10 @@ import AboutExpectSection from "@/components/about/AboutExpectSection";
 import AboutHeroSection from "@/components/about/AboutHeroSection";
 import AboutObjectiveSection from "@/components/about/AboutObjectiveSection";
 import AboutWhySection from "@/components/about/AboutWhySection";
-import MainLayout from "@/components/core/MainLayout";
 
 export default function AboutContent() {
   return (
-    <MainLayout>
+    <>
       <AboutHeroSection />
       <main>
         <AboutClubsSection />
@@ -19,6 +18,6 @@ export default function AboutContent() {
         <AboutBioSection />
         <AboutCtaSection />
       </main>
-    </MainLayout>
+    </>
   );
 }
