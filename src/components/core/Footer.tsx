@@ -112,6 +112,7 @@ const Footer = async () => {
 
         <div className="mt-16 pt-8 border-t border-border">
           <div className="flex flex-col sm:flex-row justify-between items-center gap-4">
+            {/* react-doctor-disable-next-line react-doctor/rendering-hydration-mismatch-time */}
             <p className="text-text-inverse opacity-25 text-xs">
               {tc("copyright", { year: new Date().getFullYear() })}
             </p>

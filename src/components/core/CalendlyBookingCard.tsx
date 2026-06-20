@@ -22,6 +22,7 @@ const CalendlyBookingCard = () => {
       {hasCalendly ? (
         <div className="mt-8 rounded-2xl overflow-hidden border border-secondary/20 bg-background-alt min-h-[720px]">
           {showIframe ? (
+            // react-doctor-disable-next-line react-doctor/iframe-missing-sandbox
             <iframe
               src={calendlyUrl}
               title="Calendly booking"

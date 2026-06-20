@@ -1,7 +1,7 @@
 "use client";
 
 import type { Variants } from "framer-motion";
-import { motion } from "framer-motion";
+import { domAnimation, LazyMotion, m } from "framer-motion";
 
 const defaultVariants: Variants = {
   hidden: { opacity: 0, y: 40 },
@@ -20,14 +20,16 @@ export default function AnimatedSection({
   variants = defaultVariants,
 }: Props) {
   return (
-    <motion.div
-      className={className}
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, margin: "-80px" }}
-      variants={variants}
-    >
-      {children}
-    </motion.div>
+    <LazyMotion features={domAnimation}>
+      <m.div
+        className={className}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: "-80px" }}
+        variants={variants}
+      >
+        {children}
+      </m.div>
+    </LazyMotion>
   );
 }
