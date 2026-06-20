@@ -1,6 +1,7 @@
 import { GoogleTagManager } from "@next/third-parties/google";
 import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import { cookies } from "next/headers";
 import { notFound } from "next/navigation";
 import Script from "next/script";
 import { NextIntlClientProvider } from "next-intl";
@@ -67,8 +68,15 @@ export default async function LocaleLayout({ children, params }: Props) {
   const gtmId = clientEnv.NEXT_PUBLIC_GTM_ID;
   const cookiebotCbid = clientEnv.NEXT_PUBLIC_COOKIEBOT_CBID;
 
+  const cookieStore = await cookies();
+  const themeCookie = cookieStore.get("theme")?.value;
+  const initialTheme = themeCookie === "dark" ? "dark" : "light";
+
   return (
-    <html lang={locale} suppressHydrationWarning className="scroll-smooth bg-background">
+    <html
+      lang={locale}
+      className={`scroll-smooth bg-background ${initialTheme === "dark" ? "dark" : ""}`}
+    >
       <body
         className={`${geistSans.variable} ${geistMono.variable} min-h-screen bg-background font-sans antialiased`}
       >
@@ -80,7 +88,7 @@ export default async function LocaleLayout({ children, params }: Props) {
           </>
         )}
         {gtmId && <GoogleTagManager gtmId={gtmId} />}
-        <Providers>
+        <Providers initialTheme={initialTheme}>
           <NextIntlClientProvider messages={messages}>{children}</NextIntlClientProvider>
         </Providers>
       </body>
