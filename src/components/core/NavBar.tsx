@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useLocale, useTranslations } from "next-intl";
-import { useCallback, useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useTheme } from "@/components/core/ThemeProvider";
 import { navRoutes } from "@/config/routes";
 import { usePathname, useRouter } from "@/i18n/routing";
@@ -23,15 +23,20 @@ const Navbar = () => {
 
   useEffect(() => setMounted(true), []);
 
-  const handleScroll = useCallback(() => {
-    setIsScrolled(window.scrollY > 20);
-  }, []);
+  const handleScrollRef = useRef<(() => void) | null>(null);
 
   useEffect(() => {
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    handleScroll();
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, [handleScroll]);
+    handleScrollRef.current = () => {
+      setIsScrolled(window.scrollY > 20);
+    };
+  });
+
+  useEffect(() => {
+    const handler = () => handleScrollRef.current?.();
+    window.addEventListener("scroll", handler, { passive: true });
+    handler();
+    return () => window.removeEventListener("scroll", handler);
+  }, []);
 
   useEffect(() => {
     if (isMenuOpen) {

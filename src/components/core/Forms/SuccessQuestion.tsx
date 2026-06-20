@@ -12,8 +12,8 @@ const SuccessQuestion = ({ resetForm }: Props) => {
   return (
     <div className="text-center">
       <motion.div
-        initial={{ scale: 0 }}
-        animate={{ scale: 1.5 }}
+        initial={{ scale: 0.95, opacity: 0 }}
+        animate={{ scale: 1.5, opacity: 1 }}
         className="w-16 h-16 mx-auto mb-4 bg-success rounded-full flex items-center justify-center"
       >
         <CheckIcon className="w-8 h-8 text-white" />

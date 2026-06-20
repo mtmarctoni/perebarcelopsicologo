@@ -29,6 +29,7 @@ const CalendlyBookingCard = () => {
               loading="lazy"
               allow="camera; microphone; autoplay; fullscreen; display-capture"
               referrerPolicy="no-referrer-when-downgrade"
+              sandbox="allow-scripts allow-forms allow-same-origin allow-popups"
             />
           ) : (
             <div className="h-[720px] flex flex-col items-center justify-center gap-6 p-8 text-center">

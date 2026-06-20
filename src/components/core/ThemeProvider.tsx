@@ -1,6 +1,14 @@
 "use client";
 
-import { createContext, type ReactNode, useCallback, useContext, useEffect, useState } from "react";
+import {
+  createContext,
+  type ReactNode,
+  useCallback,
+  useContext,
+  useEffect,
+  useMemo,
+  useState,
+} from "react";
 
 type Theme = "light" | "dark";
 
@@ -41,19 +49,15 @@ export function ThemeProvider({
 
   useEffect(() => {
     const saved = localStorage.getItem("theme") as Theme | null;
-    if (saved === "light" || saved === "dark") {
-      if (saved !== initialTheme) {
-        setTheme(saved);
-      }
-    } else {
-      const preferred = getSystemTheme();
-      if (preferred !== initialTheme) {
-        setTheme(preferred);
-      }
+    const target: Theme = saved === "light" || saved === "dark" ? saved : getSystemTheme();
+    if (target !== initialTheme) {
+      setTheme(target);
     }
   }, [initialTheme, setTheme]);
 
-  return <ThemeContext.Provider value={{ theme, setTheme }}>{children}</ThemeContext.Provider>;
+  const value = useMemo(() => ({ theme, setTheme }), [theme, setTheme]);
+
+  return <ThemeContext.Provider value={value}>{children}</ThemeContext.Provider>;
 }
 
 export function useTheme(): ThemeContextValue {
