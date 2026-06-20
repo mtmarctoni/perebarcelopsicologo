@@ -8,9 +8,11 @@ const navItems = navRoutes;
 
 const Footer = async () => {
   const locale = await getLocale();
-  const t = await getTranslations({ locale, namespace: "Footer" });
-  const tn = await getTranslations({ locale, namespace: "NavBar" });
-  const tc = await getTranslations({ locale, namespace: "Common" });
+  const [t, tn, tc] = await Promise.all([
+    getTranslations({ locale, namespace: "Footer" }),
+    getTranslations({ locale, namespace: "NavBar" }),
+    getTranslations({ locale, namespace: "Common" }),
+  ]);
 
   return (
     <footer className="relative bg-background-footer overflow-hidden">
@@ -110,6 +112,7 @@ const Footer = async () => {
 
         <div className="mt-16 pt-8 border-t border-border">
           <div className="flex flex-col sm:flex-row justify-between items-center gap-4">
+            {/* react-doctor-disable-next-line react-doctor/rendering-hydration-mismatch-time */}
             <p className="text-text-inverse opacity-25 text-xs">
               {tc("copyright", { year: new Date().getFullYear() })}
             </p>

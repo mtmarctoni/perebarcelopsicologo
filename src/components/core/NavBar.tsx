@@ -2,10 +2,10 @@
 
 import Link from "next/link";
 import { useLocale, useTranslations } from "next-intl";
-import { useCallback, useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useTheme } from "@/components/core/ThemeProvider";
 import { navRoutes } from "@/config/routes";
-import { usePathname, useRouter } from "@/i18n/routing";
+import { useRouter } from "@/i18n/routing";
 import { BarsIcon, CrossIcon } from "../composables/Icons";
 
 const navItems = navRoutes.filter((r) => r.href !== "/contact");
@@ -13,25 +13,26 @@ const navItems = navRoutes.filter((r) => r.href !== "/contact");
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
-  const [mounted, setMounted] = useState(false);
   const { theme, setTheme } = useTheme();
   const t = useTranslations("NavBar");
   const tc = useTranslations("Common");
   const locale = useLocale();
-  const pathname = usePathname();
   const router = useRouter();
 
-  useEffect(() => setMounted(true), []);
-
-  const handleScroll = useCallback(() => {
-    setIsScrolled(window.scrollY > 20);
-  }, []);
+  const handleScrollRef = useRef<(() => void) | null>(null);
 
   useEffect(() => {
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    handleScroll();
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, [handleScroll]);
+    handleScrollRef.current = () => {
+      setIsScrolled(window.scrollY > 20);
+    };
+  });
+
+  useEffect(() => {
+    const handler = () => handleScrollRef.current?.();
+    window.addEventListener("scroll", handler, { passive: true });
+    handler();
+    return () => window.removeEventListener("scroll", handler);
+  }, []);
 
   useEffect(() => {
     if (isMenuOpen) {
@@ -45,6 +46,11 @@ const Navbar = () => {
   }, [isMenuOpen]);
 
   const otherLocale = locale === "es" ? "ca" : "es";
+
+  const switchLocale = () => {
+    const currentPath = window.location.pathname.replace(/^\/(es|ca)(\/|$)/, "/");
+    router.replace(currentPath || "/", { locale: otherLocale });
+  };
 
   return (
     <>
@@ -86,9 +92,9 @@ const Navbar = () => {
                 type="button"
                 onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
                 className="ml-3 p-2 rounded-xl text-text-light hover:text-primary hover:bg-card-hover transition-all duration-300"
-                aria-label={mounted && theme === "dark" ? tc("themeLight") : tc("themeDark")}
+                aria-label={theme === "dark" ? tc("themeLight") : tc("themeDark")}
               >
-                {mounted && theme === "dark" ? (
+                {theme === "dark" ? (
                   <svg
                     className="w-5 h-5"
                     fill="none"
@@ -125,7 +131,7 @@ const Navbar = () => {
 
               <button
                 type="button"
-                onClick={() => router.replace(pathname, { locale: otherLocale })}
+                onClick={switchLocale}
                 className="ml-2 px-3 py-1.5 text-xs font-semibold uppercase tracking-widest rounded-lg
                           text-text-light hover:text-primary hover:bg-card-hover
                           transition-all duration-300 border border-border"
@@ -199,9 +205,9 @@ const Navbar = () => {
             type="button"
             onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
             className="mt-4 p-3 rounded-xl text-text-light hover:text-primary hover:bg-card-hover transition-all duration-300"
-            aria-label={mounted && theme === "dark" ? tc("themeLight") : tc("themeDark")}
+            aria-label={theme === "dark" ? tc("themeLight") : tc("themeDark")}
           >
-            {mounted && theme === "dark" ? (
+            {theme === "dark" ? (
               <svg
                 className="w-6 h-6"
                 fill="none"
@@ -238,7 +244,7 @@ const Navbar = () => {
 
           <button
             type="button"
-            onClick={() => router.replace(pathname, { locale: otherLocale })}
+            onClick={switchLocale}
             className="px-4 py-2 text-sm font-semibold uppercase tracking-widest rounded-xl
                      text-text-light hover:text-primary hover:bg-card-hover
                      transition-all duration-300 border border-border"

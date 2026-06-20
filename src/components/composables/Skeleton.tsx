@@ -19,6 +19,7 @@ interface PageSkeletonProps {
 function SkeletonLines({ count }: { count: number }) {
   const items: React.ReactNode[] = [];
   for (let i = 0; i < count; i++) {
+    // react-doctor-disable-next-line react-doctor/no-array-index-as-key
     items.push(
       <SkeletonLine
         key={`line-${i}`}

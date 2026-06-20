@@ -33,11 +33,13 @@ const RATE_LIMIT_MAX = 5;
 const contactSchema = z.object({
   locale: z.enum(["es", "ca"]),
   "1": z.string().min(1).max(100),
-  "2": z.string().email(),
+  "2": z.email(),
   "3": z.string().min(6).max(20).refine(isValidSpanishPhone, {
     message: "Must be a valid Spanish phone number",
   }),
+  // react-doctor-disable-next-line react-doctor/zod-v4-no-deprecated-schema-apis
   "4": z.nativeEnum(QuestionOptionMediaResponse),
+  // react-doctor-disable-next-line react-doctor/zod-v4-no-deprecated-schema-apis
   "5": z.nativeEnum(QuestionOptionInterestedIn),
   "6": z.string().max(1000).default(""),
 });
