@@ -162,23 +162,25 @@ const nextConfig: NextConfig = {
           },
         ],
       },
-      // Cache static images for 1 year
+      // Cache static images for 1 year with stale-while-revalidate
+      // for non-hashed assets that may change between deployments
       {
         source: "/(favicon.ico|favicon-16x16.png|favicon-32x32.png|apple-touch-icon.png|icon-192x192.png|icon-512x512.png|site.webmanifest)",
         headers: [
           {
             key: "Cache-Control",
-            value: "public, max-age=31536000, immutable",
+            value: "public, max-age=31536000, stale-while-revalidate=86400",
           },
         ],
       },
-      // Cache static images for 1 year
+      // Cache static images for 1 year with stale-while-revalidate
+      // Images are not hashed, so allow background revalidation
       {
         source: "/(stock|profile|clubs|wp)/(.*)",
         headers: [
           {
             key: "Cache-Control",
-            value: "public, max-age=31536000, immutable",
+            value: "public, max-age=31536000, stale-while-revalidate=86400",
           },
         ],
       },

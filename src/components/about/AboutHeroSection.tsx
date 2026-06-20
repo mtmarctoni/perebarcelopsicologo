@@ -64,6 +64,7 @@ export default function AboutHeroSection() {
                     sizes="(max-width: 768px) 80vw, 380px"
                     className="object-cover object-top"
                     priority
+                    fetchPriority="high"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#070b14]/60 via-transparent to-transparent" />
                 </div>
