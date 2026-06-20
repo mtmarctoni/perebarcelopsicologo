@@ -2,8 +2,8 @@
 
 import Link from "next/link";
 import { useLocale, useTranslations } from "next-intl";
-import { useTheme } from "next-themes";
 import { useCallback, useEffect, useState } from "react";
+import { useTheme } from "@/components/core/ThemeProvider";
 import { navRoutes } from "@/config/routes";
 import { usePathname, useRouter } from "@/i18n/routing";
 import { BarsIcon, CrossIcon } from "../composables/Icons";

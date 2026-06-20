@@ -1,4 +1,3 @@
-import MainLayout from "@/components/core/MainLayout";
 import ServiciosCtaSection from "@/components/servicios/ServiciosCtaSection";
 import ServiciosFaqSection from "@/components/servicios/ServiciosFaqSection";
 import ServiciosHeroSection from "@/components/servicios/ServiciosHeroSection";
@@ -11,7 +10,7 @@ import ServiciosWorkSection from "@/components/servicios/ServiciosWorkSection";
 
 export default function ServiciosContent() {
   return (
-    <MainLayout>
+    <>
       <ServiciosHeroSection />
       <main>
         <ServiciosPainSection />
@@ -23,6 +22,6 @@ export default function ServiciosContent() {
         <ServiciosCtaSection />
         <ServiciosFaqSection />
       </main>
-    </MainLayout>
+    </>
   );
 }
