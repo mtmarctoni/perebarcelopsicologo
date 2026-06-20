@@ -47,3 +47,8 @@ next-env.d.ts
 # gstack agent files
 .agents/
 AGENTS.md
+
+# lighthouse reports
+lighthouse-seo-report.report.*
+lighthouse-report.report.*
+lh-report.report.*
