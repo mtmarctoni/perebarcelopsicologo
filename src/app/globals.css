@@ -172,6 +172,20 @@ html {
   animation: slideInDown 0.3s ease-out forwards;
 }
 
+/* Subtle scroll indicator — replaces tacky animate-bounce */
+@keyframes float-subtle {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+.animate-float-subtle {
+  animation: float-subtle 2s cubic-bezier(0.16, 1, 0.3, 1) infinite;
+}
+
 .animate-delay-500 {
   animation-delay: 0.5s;
 }

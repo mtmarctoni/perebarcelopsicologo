@@ -1,9 +1,20 @@
+import type { Metadata } from "next";
+
+import { createPageMetadata } from "@/app/metadata";
 import SectionContainer from "@/components/containers/SectionContainer";
 import SocialCard from "@/components/containers/SocialCard";
 import CalendlyBookingCard from "@/components/core/CalendlyBookingCard";
 import ContactForm from "@/components/core/Forms/ContactForm";
 import MainLayout from "@/components/core/MainLayout";
 import { socialMediaLinks } from "@/utils/social";
+
+export const metadata: Metadata = createPageMetadata({
+  title: "Contacta con Pere Barceló | Psicólogo Deportivo",
+  description:
+    "¿Quieres mejorar tu rendimiento deportivo o tu salud mental? Contacta con Pere Barceló, psicólogo deportivo en Mallorca.",
+  path: "/contact",
+  locale: "es",
+});
 
 export default function ContactPage() {
   return (

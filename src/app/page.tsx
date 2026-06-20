@@ -54,8 +54,10 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
-          <ScrollIcon className="w-10 h-10 text-white/70" />
+        <div className="absolute bottom-8 left-1/2 -translate-x-1/2">
+          <div className="animate-float-subtle">
+            <ScrollIcon className="w-10 h-10 text-white/70" />
+          </div>
         </div>
       </section>
 
