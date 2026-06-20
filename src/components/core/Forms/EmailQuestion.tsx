@@ -27,6 +27,7 @@ const EmailQuestion = ({
                       : "border-secondary focus:border-primary"
                   }`}
         placeholder={t("emailPlaceholder")}
+        aria-label={t("emailPlaceholder")}
         onChange={(e) => {
           setSelectedAnswer(e.target.value);
           setValidationError("");

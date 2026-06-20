@@ -55,6 +55,9 @@ const PhoneQuestion = ({
             placeholder={
               phoneFormat === PhoneFormats.ES ? t("phoneEsPlaceholder") : t("phoneOtherPlaceholder")
             }
+            aria-label={
+              phoneFormat === PhoneFormats.ES ? t("phoneEsPlaceholder") : t("phoneOtherPlaceholder")
+            }
             onChange={(e) => {
               setSelectedAnswer(e.target.value);
               setValidationError("");

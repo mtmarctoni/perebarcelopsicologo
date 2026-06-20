@@ -14,6 +14,7 @@ const TextQuestion = ({ type, selectedAnswer, setSelectedAnswer }: Props) => {
       type={type}
       className="w-full p-4 text-xl border-b-2 border-secondary rounded-xl bg-transparent focus:outline-none"
       placeholder={t("textPlaceholder")}
+      aria-label={t("textPlaceholder")}
       onChange={(e) => setSelectedAnswer(e.target.value)}
       value={selectedAnswer}
     />

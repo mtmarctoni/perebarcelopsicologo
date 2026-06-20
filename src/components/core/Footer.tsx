@@ -8,9 +8,11 @@ const navItems = navRoutes;
 
 const Footer = async () => {
   const locale = await getLocale();
-  const t = await getTranslations({ locale, namespace: "Footer" });
-  const tn = await getTranslations({ locale, namespace: "NavBar" });
-  const tc = await getTranslations({ locale, namespace: "Common" });
+  const [t, tn, tc] = await Promise.all([
+    getTranslations({ locale, namespace: "Footer" }),
+    getTranslations({ locale, namespace: "NavBar" }),
+    getTranslations({ locale, namespace: "Common" }),
+  ]);
 
   return (
     <footer className="relative bg-background-footer overflow-hidden">
