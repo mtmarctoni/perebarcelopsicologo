@@ -44,11 +44,10 @@ next-env.d.ts
 
 # another doc info
 /docs
+
 # gstack agent files
 .agents/
-AGENTS.md
 
 # lighthouse reports
-lighthouse-seo-report.report.*
-lighthouse-report.report.*
-lh-report.report.*
+lighthouse-report.*
+.lighthouseci/

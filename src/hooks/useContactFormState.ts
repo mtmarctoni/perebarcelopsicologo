@@ -1,8 +1,8 @@
 import { useLocale, useTranslations } from "next-intl";
 import { useCallback, useEffect, useState } from "react";
 import { PhoneFormats, QuestionType } from "@/types/navbar";
-import { questions } from "@/utils/data";
 import { handleResendErrors } from "@/utils/errorHandler";
+import { questions } from "@/utils/questions";
 import { isValidEmail, isValidSpanishPhone } from "@/utils/validation";
 
 export const useContactFormState = () => {

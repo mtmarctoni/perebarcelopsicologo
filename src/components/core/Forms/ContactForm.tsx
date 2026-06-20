@@ -4,7 +4,7 @@ import { useTranslations } from "next-intl";
 import QuestionContainer from "@/components/containers/QuestionFormContainer";
 import { useContactFormState } from "@/hooks/useContactFormState";
 import { QuestionType } from "@/types/navbar";
-import { questions } from "@/utils/data";
+import { questions } from "@/utils/questions";
 import ButtonBack from "./ButtonBack";
 import ButtonNext from "./ButtonNext";
 import ProgressBar from "./ProgressBar";

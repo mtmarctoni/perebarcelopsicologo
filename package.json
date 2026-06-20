@@ -12,6 +12,9 @@
     "format": "biome format --write src/",
     "test": "vitest run",
     "type-check": "tsc --noEmit",
+    "analyze": "ANALYZE=true next build",
+    "size": "npm run build && node scripts/check-bundle-size.js && size-limit",
+    "lighthouse": "lhci autorun",
     "env:pull": "vercel env pull .env.local",
     "env:push": "./scripts/vercel-env-push.sh",
     "knip": "knip",
@@ -20,12 +23,19 @@
     "gitpush": "git add . && git commit -m quickCommit && git push",
     "doctor": "npx react-doctor@latest"
   },
+  "size-limit": [
+    {
+      "name": "Total static JS",
+      "path": ".next/static/chunks/*.js",
+      "limit": "600 KB"
+    }
+  ],
   "dependencies": {
     "@next/third-parties": "^16.2.9",
     "@swc/helpers": "^0.5.17",
-    "framer-motion": "^12.0.1",
     "next": "^16.2.6",
     "next-intl": "^4.13.0",
+    "next-themes": "^0.4.4",
     "react": "19.2.0",
     "react-dom": "19.2.0",
     "resend": "^4.1.1",
@@ -33,6 +43,9 @@
   },
   "devDependencies": {
     "@biomejs/biome": "^2.4.13",
+    "@lhci/cli": "^0.15.1",
+    "@next/bundle-analyzer": "^16.2.9",
+    "@size-limit/preset-app": "^12.1.0",
     "@svgr/webpack": "^8.1.0",
     "@types/node": "^20",
     "@types/react": "19.2.2",
@@ -40,6 +53,7 @@
     "knip": "^6.16.0",
     "lighthouse": "^13.4.0",
     "postcss": "^8.5.15",
+    "size-limit": "^12.1.0",
     "tailwindcss": "^3.4.1",
     "typescript": "^5",
     "vitest": "^4.1.8"

@@ -1,7 +1,8 @@
 import Link from "next/link";
 import { getLocale, getTranslations } from "next-intl/server";
 import { navRoutes } from "@/config/routes";
-import { email, phone, socialMediaLinksFooter } from "@/utils/data";
+import { email, phone } from "@/utils/constants";
+import { socialMediaLinksFooter } from "@/utils/social";
 import { EnvelopeIcon, WhatsappIcon } from "../composables/Icons";
 
 const navItems = navRoutes;
