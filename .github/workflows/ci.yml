@@ -14,8 +14,8 @@ permissions:
   contents: read
 
 jobs:
-  lint-test-and-build:
-    name: Lint, Type Check & Build
+  lint-and-test:
+    name: Lint, Type Check & Test
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
@@ -32,7 +32,7 @@ jobs:
           cache: "pnpm"
 
       - name: Install dependencies
-        run: pnpm install --frozen-lockfile --prefer-offline
+        run: pnpm install --frozen-lockfile --prefer-offline --ignore-scripts
 
       - name: Run Biome (lint + format check)
         run: pnpm lint
@@ -45,6 +45,27 @@ jobs:
 
       - name: Run knip (dead code analysis)
         run: pnpm knip
+
+  build:
+    name: Build
+    needs: lint-and-test
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: "pnpm"
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile --prefer-offline --ignore-scripts
 
       - name: Build application
         run: pnpm build
