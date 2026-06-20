@@ -82,13 +82,13 @@ export default async function LocaleLayout({ children, params }: Props) {
       className={`scroll-smooth bg-background ${initialTheme === "dark" ? "dark" : ""}`}
     >
       <head>
-        {/* Preconnect to critical third-party origins for faster resource loading */}
+        {/* Preconnect to critical third-party origins for faster resource loading.
+            Place preconnect hints before any preload/resource links to ensure the
+            browser initiates TCP/TLS handshakes early. */}
         {gtmId && (
           <>
             <link rel="preconnect" href="https://www.googletagmanager.com" />
             <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
-            <link rel="preconnect" href="https://www.google-analytics.com" />
-            <link rel="dns-prefetch" href="https://www.google-analytics.com" />
           </>
         )}
         {cookiebotCbid && (
