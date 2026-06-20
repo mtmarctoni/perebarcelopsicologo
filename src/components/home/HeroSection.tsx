@@ -127,9 +127,10 @@ export default function HeroSection() {
             {/* Image column */}
             <m.div
               className="lg:col-span-6 xl:col-span-7 order-1 lg:order-2 flex justify-center lg:justify-end"
-              initial={{ opacity: 0, scale: 0.95, x: 30 }}
+              initial={{ opacity: 1, scale: 0.95, x: 30 }}
               animate={{ opacity: 1, scale: 1, x: 0 }}
               transition={{ duration: 1, ease: [0.22, 1, 0.36, 1], delay: 0.2 }}
+              style={{ willChange: "transform" }}
             >
               <div className="relative w-[280px] sm:w-[340px] lg:w-[420px] xl:w-[480px]">
                 {/* Decorative amber glow behind image */}
@@ -152,6 +153,7 @@ export default function HeroSection() {
                     className="object-cover object-top"
                     priority
                     fetchPriority="high"
+                    decoding="sync"
                   />
                   {/* Bottom gradient overlay on image */}
                   <div
