@@ -68,7 +68,7 @@ export default async function LocaleLayout({ children, params }: Props) {
   const cookiebotCbid = clientEnv.NEXT_PUBLIC_COOKIEBOT_CBID;
 
   return (
-    <html lang={locale} suppressHydrationWarning className="scroll-smooth">
+    <html lang={locale} suppressHydrationWarning className="scroll-smooth bg-background">
       <body
         className={`${geistSans.variable} ${geistMono.variable} min-h-screen bg-background font-sans antialiased`}
       >
