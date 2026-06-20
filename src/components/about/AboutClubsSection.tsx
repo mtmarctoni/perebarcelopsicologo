@@ -7,7 +7,7 @@ import { useTranslations } from "next-intl";
 import AnimatedSection from "@/components/composables/AnimatedSection";
 import SectionLabel from "@/components/composables/SectionLabel";
 import { fadeInUp, staggerContainer } from "@/components/home/animations";
-import { clubs } from "@/utils/data";
+import { clubs } from "@/utils/clubs";
 
 export default function AboutClubsSection() {
   const t = useTranslations("AboutClubsSection");

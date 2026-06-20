@@ -7,7 +7,7 @@ import AnimatedSection from "@/components/composables/AnimatedSection";
 import { EnvelopeIcon, InstagramIcon, LinkedinIcon } from "@/components/composables/Icons";
 import SectionLabel from "@/components/composables/SectionLabel";
 import { fadeInUp, staggerContainer } from "@/components/home/animations";
-import { socialMediaLinks } from "@/utils/data";
+import { socialMediaLinks } from "@/utils/social";
 
 const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
   Email: EnvelopeIcon,
