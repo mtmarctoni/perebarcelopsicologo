@@ -72,7 +72,13 @@ export default async function LocaleLayout({ children, params }: Props) {
       <body
         className={`${geistSans.variable} ${geistMono.variable} min-h-screen bg-background font-sans antialiased`}
       >
-        {cookiebotCbid && <CookiebotScript cbid={cookiebotCbid} />}
+        {cookiebotCbid && (
+          <>
+            <link rel="preconnect" href="https://consent.cookiebot.com" />
+            <link rel="dns-prefetch" href="https://consent.cookiebot.com" />
+            <CookiebotScript cbid={cookiebotCbid} />
+          </>
+        )}
         {gtmId && <GoogleTagManager gtmId={gtmId} />}
         <Providers>
           <NextIntlClientProvider messages={messages}>{children}</NextIntlClientProvider>
