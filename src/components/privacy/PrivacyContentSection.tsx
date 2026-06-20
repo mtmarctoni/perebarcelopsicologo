@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { domAnimation, LazyMotion, m } from "framer-motion";
 import { useTranslations } from "next-intl";
 
 import AnimatedSection from "@/components/composables/AnimatedSection";
@@ -13,10 +13,12 @@ interface PrivacyItemProps {
 
 function PrivacyItem({ icon, label }: PrivacyItemProps) {
   return (
-    <div className="flex items-center gap-3 text-text-light text-sm">
-      <span className="text-primary">{icon}</span>
-      <span>{label}</span>
-    </div>
+    <LazyMotion features={domAnimation}>
+      <div className="flex items-center gap-3 text-text-light text-sm">
+        <span className="text-primary">{icon}</span>
+        <span>{label}</span>
+      </div>
+    </LazyMotion>
   );
 }
 
@@ -160,59 +162,61 @@ export default function PrivacyContentSection() {
   ];
 
   return (
-    <section className="relative bg-background-alt overflow-hidden">
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_30%_20%,_rgba(185,216,235,0.03)_0%,_transparent_50%)]" />
+    <LazyMotion features={domAnimation}>
+      <section className="relative bg-background-alt overflow-hidden">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_30%_20%,_rgba(185,216,235,0.03)_0%,_transparent_50%)]" />
 
-      <div className="relative z-10 max-w-4xl mx-auto px-5 sm:px-8 lg:px-12 py-24 lg:py-32">
-        <motion.div
-          className="space-y-16"
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-60px" }}
-          variants={staggerContainer}
-        >
-          {sections.map((section) => (
-            <motion.div
-              key={section.title}
-              variants={fadeInUp}
-              className="bg-background-alt border border-border rounded-2xl p-8 sm:p-10"
-            >
-              <h2 className="text-xl sm:text-2xl font-bold text-text-dark tracking-tight">
-                {section.title}
-              </h2>
+        <div className="relative z-10 max-w-4xl mx-auto px-5 sm:px-8 lg:px-12 py-24 lg:py-32">
+          <m.div
+            className="space-y-16"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-60px" }}
+            variants={staggerContainer}
+          >
+            {sections.map((section) => (
+              <m.div
+                key={section.title}
+                variants={fadeInUp}
+                className="bg-background-alt border border-border rounded-2xl p-8 sm:p-10"
+              >
+                <h2 className="text-xl sm:text-2xl font-bold text-text-dark tracking-tight">
+                  {section.title}
+                </h2>
 
-              {section.content?.map((paragraph) => (
-                <p key={paragraph.slice(0, 40)} className="text-text-light mt-4 leading-relaxed">
-                  {paragraph}
-                </p>
-              ))}
+                {section.content?.map((paragraph) => (
+                  <p key={paragraph.slice(0, 40)} className="text-text-light mt-4 leading-relaxed">
+                    {paragraph}
+                  </p>
+                ))}
 
-              {section.list && (
-                <ul className="mt-4 space-y-3">
-                  {section.list.map((item) => (
-                    <li key={item.term} className="text-text-light leading-relaxed">
-                      <strong className="text-text-dark opacity-80">{item.term}</strong>{" "}
-                      <span>{item.detail}</span>
-                    </li>
-                  ))}
-                </ul>
-              )}
+                {section.list && (
+                  <ul className="mt-4 space-y-3">
+                    {section.list.map((item) => (
+                      <li key={item.term} className="text-text-light leading-relaxed">
+                        <strong className="text-text-dark opacity-80">{item.term}</strong>{" "}
+                        <span>{item.detail}</span>
+                      </li>
+                    ))}
+                  </ul>
+                )}
 
-              {section.closing && (
-                <p className="text-text-light mt-4 leading-relaxed">{section.closing}</p>
-              )}
-            </motion.div>
-          ))}
-        </motion.div>
+                {section.closing && (
+                  <p className="text-text-light mt-4 leading-relaxed">{section.closing}</p>
+                )}
+              </m.div>
+            ))}
+          </m.div>
 
-        <AnimatedSection className="mt-12 pt-8 border-t border-border">
-          <div className="flex flex-wrap items-center gap-x-6 gap-y-3 justify-center">
-            <PrivacyItem icon="\u2713" label={t("badgeProtected")} />
-            <PrivacyItem icon="\u2713" label={t("badgeHttps")} />
-            <PrivacyItem icon="\u2713" label={t("badgeRgpd")} />
-          </div>
-        </AnimatedSection>
-      </div>
-    </section>
+          <AnimatedSection className="mt-12 pt-8 border-t border-border">
+            <div className="flex flex-wrap items-center gap-x-6 gap-y-3 justify-center">
+              <PrivacyItem icon="\u2713" label={t("badgeProtected")} />
+              <PrivacyItem icon="\u2713" label={t("badgeHttps")} />
+              <PrivacyItem icon="\u2713" label={t("badgeRgpd")} />
+            </div>
+          </AnimatedSection>
+        </div>
+      </section>
+    </LazyMotion>
   );
 }
