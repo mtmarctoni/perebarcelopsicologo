@@ -15,7 +15,7 @@ permissions:
 
 jobs:
   lint-and-test:
-    name: Lint, Type Check & Build
+    name: Lint, Type Check & Test
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
