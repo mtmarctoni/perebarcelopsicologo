@@ -60,8 +60,8 @@ export default {
       white: "#ffffff",
     },
     fontFamily: {
-      sans: ["Graphik", "sans-serif"],
-      serif: ["Merriweather", "serif"],
+      sans: ['var(--font-geist-sans)', 'system-ui', 'sans-serif'],
+      mono: ['var(--font-geist-mono)', 'monospace'],
     },
     extend: {
       colors: {
