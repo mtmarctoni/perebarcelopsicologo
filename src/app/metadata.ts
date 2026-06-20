@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { images } from "@/config/images";
 import { serverEnv } from "@/config/server-env.config";
-import { getCanonicalUrl, getRobotsMetadata, getSiteUrl } from "@/lib/site";
+import { getCanonicalUrl, getRobotsMetadata } from "@/lib/site";
 
 export const siteName = "Pere Barceló - Psicólogo Deportivo";
 const description =
@@ -10,8 +10,7 @@ const keywords =
   "psicología deportiva, psicólogo deportivo mallorca, rendimiento deportivo, psicología del deporte, entrenamiento mental, deporte mallorca, psicología deportiva baleares";
 const googleVerification = serverEnv.GOOGLE_SITE_VERIFICATION;
 
-const siteUrl = getSiteUrl();
-const canonicalUrl = getCanonicalUrl();
+const siteUrl = getCanonicalUrl();
 
 const defaultOgImage = {
   url: `${siteUrl}${images.ogDefault}`,
@@ -47,11 +46,11 @@ export const defaultMetadata: Metadata = {
   robots: getRobotsMetadata(),
   ...(googleVerification ? { verification: { google: googleVerification } } : {}),
   alternates: {
-    canonical: canonicalUrl,
+    canonical: siteUrl,
     languages: {
-      "x-default": `${canonicalUrl}/`,
-      es: `${canonicalUrl}/`,
-      ca: `${canonicalUrl}/ca/`,
+      "x-default": `${siteUrl}/`,
+      es: `${siteUrl}/`,
+      ca: `${siteUrl}/ca/`,
     },
   },
   icons: {
@@ -75,6 +74,12 @@ interface PageMetadataOptions {
   keywords?: string | string[];
 }
 
+/** Build a canonical URL that includes the locale prefix for non-default locales. */
+function buildCanonicalUrl(path: string, locale: string): string {
+  const localePath = locale === "es" ? path : `/ca${path}`;
+  return path === "/" && locale === "es" ? siteUrl : `${siteUrl}${localePath}`;
+}
+
 export function createPageMetadata({
   title,
   description,
@@ -84,7 +89,7 @@ export function createPageMetadata({
   imageUrl,
   keywords,
 }: PageMetadataOptions): Metadata {
-  const canonical = path === "/" ? canonicalUrl : `${canonicalUrl}${path}`;
+  const canonical = buildCanonicalUrl(path, locale);
   const resolvedImageUrl = imageUrl || (imagePath ? `${siteUrl}${imagePath}` : defaultOgImage.url);
   const images = [
     {
@@ -95,6 +100,10 @@ export function createPageMetadata({
     },
   ];
 
+  // Build hreflang URLs - each language points to its own version
+  const esPath = path === "/" ? "" : path;
+  const caPath = `/ca${path}`;
+
   return {
     ...defaultMetadata,
     title,
@@ -104,9 +113,9 @@ export function createPageMetadata({
       ...defaultMetadata.alternates,
       canonical,
       languages: {
-        "x-default": canonical,
-        es: canonical,
-        ca: `${canonicalUrl}/ca${path}`,
+        "x-default": `${siteUrl}${esPath}`,
+        es: `${siteUrl}${esPath}`,
+        ca: `${siteUrl}${caPath}`,
       },
     },
     openGraph: {

@@ -2,16 +2,16 @@ import { describe, expect, it, vi } from "vitest";
 
 vi.mock("@/lib/site", () => ({
   isProduction: vi.fn(),
-  getSiteUrl: vi.fn(),
+  getCanonicalUrl: vi.fn(),
 }));
 
 import sitemap from "@/app/sitemap";
-import { getSiteUrl, isProduction } from "@/lib/site";
+import { getCanonicalUrl, isProduction } from "@/lib/site";
 
 describe("sitemap.xml", () => {
   it("returns all routes on production", () => {
     vi.mocked(isProduction).mockReturnValue(true);
-    vi.mocked(getSiteUrl).mockReturnValue("https://perebarcelopsicologo.com");
+    vi.mocked(getCanonicalUrl).mockReturnValue("https://perebarcelopsicologo.com");
 
     const entries = sitemap();
     const urls = entries.map((e) => e.url);
@@ -25,7 +25,7 @@ describe("sitemap.xml", () => {
 
   it("has root route with priority 1", () => {
     vi.mocked(isProduction).mockReturnValue(true);
-    vi.mocked(getSiteUrl).mockReturnValue("https://perebarcelopsicologo.com");
+    vi.mocked(getCanonicalUrl).mockReturnValue("https://perebarcelopsicologo.com");
 
     const entries = sitemap();
     const root = entries.find((e) => e.url === "https://perebarcelopsicologo.com");
@@ -34,7 +34,7 @@ describe("sitemap.xml", () => {
 
   it("has hreflang alternates for each route", () => {
     vi.mocked(isProduction).mockReturnValue(true);
-    vi.mocked(getSiteUrl).mockReturnValue("https://perebarcelopsicologo.com");
+    vi.mocked(getCanonicalUrl).mockReturnValue("https://perebarcelopsicologo.com");
 
     const entries = sitemap();
     for (const entry of entries) {
@@ -47,7 +47,7 @@ describe("sitemap.xml", () => {
 
   it("has correct Catalan alternates", () => {
     vi.mocked(isProduction).mockReturnValue(true);
-    vi.mocked(getSiteUrl).mockReturnValue("https://perebarcelopsicologo.com");
+    vi.mocked(getCanonicalUrl).mockReturnValue("https://perebarcelopsicologo.com");
 
     const entries = sitemap();
     const about = entries.find((e) => e.url === "https://perebarcelopsicologo.com/about");

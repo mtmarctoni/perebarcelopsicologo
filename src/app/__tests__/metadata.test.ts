@@ -5,8 +5,8 @@ vi.mock("@/config/server-env.config", () => ({
 }));
 
 vi.mock("@/lib/site", () => ({
-  getSiteUrl: vi.fn().mockReturnValue("https://perebarcelopsicologo.com"),
   getCanonicalUrl: vi.fn().mockReturnValue("https://perebarcelopsicologo.com"),
+  getSiteUrl: vi.fn().mockReturnValue("https://perebarcelopsicologo.com"),
   getRobotsMetadata: vi.fn().mockReturnValue({
     index: true,
     follow: true,
@@ -170,7 +170,7 @@ describe("createPageMetadata", () => {
       path: "/",
       locale: "ca",
     });
-    expect(meta.alternates?.canonical).toBe("https://perebarcelopsicologo.com");
+    expect(meta.alternates?.canonical).toBe("https://perebarcelopsicologo.com/ca/");
     expect(meta.alternates?.languages?.ca).toBe("https://perebarcelopsicologo.com/ca/");
   });
 

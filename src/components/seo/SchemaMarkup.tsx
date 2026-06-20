@@ -1,9 +1,9 @@
 import { images } from "@/config/images";
-import { getSiteUrl } from "@/lib/site";
+import { getCanonicalUrl } from "@/lib/site";
 
 import JsonLd from "./JsonLd";
 
-const siteUrl = getSiteUrl();
+const canonicalUrl = getCanonicalUrl();
 
 export const WebsiteSchema = () => {
   return (
@@ -13,7 +13,7 @@ export const WebsiteSchema = () => {
         "@context": "https://schema.org",
         "@type": "WebSite",
         name: "Pere Barceló - Psicólogo Deportivo",
-        url: siteUrl,
+        url: canonicalUrl,
       }}
     />
   );
@@ -27,9 +27,9 @@ export const LocalBusinessSchema = () => {
         "@context": "https://schema.org",
         "@type": "LocalBusiness",
         name: "Pere Barceló - Psicólogo Deportivo",
-        image: `${siteUrl}${images.ogDefault}`,
-        "@id": siteUrl,
-        url: siteUrl,
+        image: `${canonicalUrl}${images.ogDefault}`,
+        "@id": canonicalUrl,
+        url: canonicalUrl,
         telephone: "+34636674759",
         priceRange: "€€",
         address: {
