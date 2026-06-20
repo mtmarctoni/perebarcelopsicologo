@@ -2,15 +2,11 @@
   "$schema": "https://unpkg.com/knip@6/schema.json",
   "entry": [
     "src/app/**/page.tsx",
-    "src/app/layout.tsx",
     "src/app/providers.tsx",
     "src/app/metadata.ts",
-    "src/app/sitemap.ts",
     "src/config/**",
     "src/hooks/**",
-    "src/services/**",
-    "next.config.ts",
-    "tailwind.config.ts"
+    "src/services/**"
   ],
   "project": ["src/**/*.{ts,tsx}", "*.config.{ts,js}"],
   "ignore": [
@@ -19,8 +15,6 @@
     "src/components/containers/ClubCard.tsx",
     "src/components/containers/QuickLinkFooter.tsx",
     "src/components/containers/QuestionFormContainer.tsx",
-    "src/utils/validation.ts",
-    "src/components/seo/SchemaMarkup.tsx",
     "src/components/composables/Icons.tsx",
     "src/i18n/routing.ts"
   ],
