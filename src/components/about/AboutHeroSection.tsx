@@ -52,7 +52,6 @@ export default function AboutHeroSection() {
               initial={{ opacity: 1, scale: 0.95, x: 40 }}
               animate={{ opacity: 1, scale: 1, x: 0 }}
               transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1], delay: 0.2 }}
-              style={{ willChange: "transform" }}
             >
               <div className="relative w-[280px] sm:w-[340px] lg:w-[380px]">
                 <div className="absolute -inset-4 bg-secondary/10 rounded-[2rem] blur-2xl" />
