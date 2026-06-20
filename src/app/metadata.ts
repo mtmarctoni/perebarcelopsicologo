@@ -46,7 +46,7 @@ export const defaultMetadata: Metadata = {
   robots: getRobotsMetadata(),
   ...(googleVerification ? { verification: { google: googleVerification } } : {}),
   alternates: {
-    canonical: "/",
+    canonical: siteUrl,
     languages: {
       "x-default": `${siteUrl}/`,
       es: `${siteUrl}/`,

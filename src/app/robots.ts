@@ -1,6 +1,6 @@
 import type { MetadataRoute } from "next";
 
-import { getSiteUrl, isProduction } from "@/lib/site";
+import { getCanonicalUrl, isProduction } from "@/lib/site";
 
 export default function robots(): MetadataRoute.Robots {
   if (!isProduction()) {
@@ -18,6 +18,6 @@ export default function robots(): MetadataRoute.Robots {
       allow: "/",
       disallow: ["/admin/", "/api/"],
     },
-    sitemap: `${getSiteUrl()}/sitemap.xml`,
+    sitemap: `${getCanonicalUrl()}/sitemap.xml`,
   };
 }

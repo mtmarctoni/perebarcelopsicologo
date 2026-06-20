@@ -2,16 +2,16 @@ import { describe, expect, it, vi } from "vitest";
 
 vi.mock("@/lib/site", () => ({
   isProduction: vi.fn(),
-  getSiteUrl: vi.fn(),
+  getCanonicalUrl: vi.fn(),
 }));
 
 import robots from "@/app/robots";
-import { getSiteUrl, isProduction } from "@/lib/site";
+import { getCanonicalUrl, isProduction } from "@/lib/site";
 
 describe("robots.txt", () => {
   it("allows all robots on production with sitemap link", () => {
     vi.mocked(isProduction).mockReturnValue(true);
-    vi.mocked(getSiteUrl).mockReturnValue("https://perebarcelopsicologo.com");
+    vi.mocked(getCanonicalUrl).mockReturnValue("https://perebarcelopsicologo.com");
 
     const result = robots();
     expect(result).toEqual({
