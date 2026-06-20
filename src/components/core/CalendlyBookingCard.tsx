@@ -1,38 +1,54 @@
+"use client";
+
+import { useTranslations } from "next-intl";
+import { useState } from "react";
 import { clientEnv } from "@/config/client-env.config";
 
 const calendlyUrl = clientEnv.NEXT_PUBLIC_CALENDLY_URL;
 
 const CalendlyBookingCard = () => {
+  const t = useTranslations("CalendlyBookingCard");
+  const [showIframe, setShowIframe] = useState(false);
   const hasCalendly = Boolean(calendlyUrl);
 
   return (
     <div className="bg-background rounded-3xl shadow-card p-8 sm:p-10 h-full flex flex-col">
-      <span className="text-secondary text-sm font-semibold uppercase tracking-widest">
-        Reserva directa
+      <span className="text-primary text-sm font-semibold uppercase tracking-widest">
+        {t("label")}
       </span>
-      <h2 className="text-3xl font-bold text-text-dark mt-3 tracking-tight">Reserva una llamada</h2>
-      <p className="text-text mt-4 leading-relaxed">
-        Si prefieres elegir hora directamente, puedes reservar una cita desde el calendario.
-      </p>
+      <h2 className="text-3xl font-bold text-text-dark mt-3 tracking-tight">{t("heading")}</h2>
+      <p className="text-text mt-4 leading-relaxed">{t("description")}</p>
 
       {hasCalendly ? (
-        <div className="mt-8 rounded-2xl overflow-hidden border border-secondary/20 bg-background-alt/60 min-h-[720px]">
-          <iframe
-            src={calendlyUrl}
-            title="Calendly booking"
-            className="w-full h-[720px]"
-            loading="lazy"
-          />
+        <div className="mt-8 rounded-2xl overflow-hidden border border-secondary/20 bg-background-alt min-h-[720px]">
+          {showIframe ? (
+            // react-doctor-disable-next-line react-doctor/iframe-missing-sandbox
+            <iframe
+              src={calendlyUrl}
+              title="Calendly booking"
+              className="w-full h-[720px]"
+              loading="lazy"
+              allow="camera; microphone; autoplay; fullscreen; display-capture"
+              referrerPolicy="no-referrer-when-downgrade"
+              sandbox="allow-scripts allow-forms allow-same-origin allow-popups"
+            />
+          ) : (
+            <div className="h-[720px] flex flex-col items-center justify-center gap-6 p-8 text-center">
+              <p className="text-text-light max-w-md">{t("loadDescription")}</p>
+              <button
+                type="button"
+                onClick={() => setShowIframe(true)}
+                className="inline-flex items-center justify-center rounded-full bg-primary px-8 py-3 text-sm font-semibold text-white transition hover:bg-primary-dark focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
+              >
+                {t("openCalendar")}
+              </button>
+            </div>
+          )}
         </div>
       ) : (
-        <div className="mt-8 rounded-2xl border border-dashed border-secondary/30 bg-background-alt/60 p-8 flex flex-col justify-center items-start gap-4 min-h-[320px]">
-          <p className="text-text leading-relaxed">
-            El bloque de reserva estara disponible en cuanto se configure la URL publica de
-            Calendly.
-          </p>
-          <p className="text-text-light text-sm leading-relaxed">
-            Configuracion requerida: <code>NEXT_PUBLIC_CALENDLY_URL</code>
-          </p>
+        <div className="mt-8 rounded-2xl border border-dashed border-secondary/30 bg-background-alt p-8 flex flex-col justify-center items-start gap-4 min-h-[320px]">
+          <p className="text-text leading-relaxed">{t("placeholderText")}</p>
+          <p className="text-text-light text-sm leading-relaxed">{t("configHint")}</p>
         </div>
       )}
     </div>

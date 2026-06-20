@@ -1,14 +1,19 @@
-interface ResendError {
-  error: string;
-  type: "resend_error";
-  statusCode: number;
+interface ApiError {
+  error?: string;
+  type?: string;
 }
 
-export const handleResendErrors = ({ type, statusCode }: ResendError) => {
-  if (type !== "resend_error") return null;
+export const handleResendErrors = (data: ApiError): string | null => {
+  if (!data.type) return null;
 
-  if (statusCode === 422)
-    return "Email no válido. La dirección de correo electrónico debe seguir el formato 'email@example.com' o 'Nombre <email@example.com>'";
+  const knownTypes = [
+    "validation_error",
+    "resend_error",
+    "rate_limited",
+    "server_error",
+    "forbidden",
+  ];
+  if (!knownTypes.includes(data.type)) return null;
 
-  return null;
+  return data.error ?? null;
 };

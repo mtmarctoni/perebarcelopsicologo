@@ -21,10 +21,10 @@ export type QuestionOption = string;
 export enum QuestionOptionMediaResponse {
   EMAIL = "Correo electrónico",
   WHATSAPP = "WhatsApp",
-  PHONE = "Llamada Telefónica",
+  PHONE = "Llamada telefónica",
 }
 export enum QuestionOptionInterestedIn {
-  ONLINE_SESSIONS = "Sesiones Online",
+  ONLINE_SESSIONS = "Sesiones online",
   GROUP_WORKSHOP = "Taller grupal",
   CONSULTING = "Asesoramiento psicológico",
 }
@@ -34,6 +34,7 @@ export enum PhoneFormats {
 }
 
 export interface ContactFormData {
+  locale: "es" | "ca";
   "1": Name;
   "2": Email;
   "3": Phone;

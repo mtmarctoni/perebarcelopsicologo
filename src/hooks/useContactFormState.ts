@@ -1,3 +1,4 @@
+import { useLocale, useTranslations } from "next-intl";
 import { useCallback, useEffect, useState } from "react";
 import { PhoneFormats, QuestionType } from "@/types/navbar";
 import { questions } from "@/utils/data";
@@ -5,6 +6,8 @@ import { handleResendErrors } from "@/utils/errorHandler";
 import { isValidEmail, isValidSpanishPhone } from "@/utils/validation";
 
 export const useContactFormState = () => {
+  const t = useTranslations("Form");
+  const locale = useLocale();
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [answers, setAnswers] = useState<Record<string, string>>({});
   const [selectedAnswer, setSelectedAnswer] = useState("");
@@ -17,6 +20,7 @@ export const useContactFormState = () => {
       setIsLoading(true);
 
       const finalAnswers = {
+        locale,
         ...answers,
         [questions[currentQuestion].id]: finalAnswer,
       };
@@ -33,20 +37,34 @@ export const useContactFormState = () => {
         const data = await response.json();
 
         if (!response.ok) {
-          setValidationError(handleResendErrors(data.error));
+          setValidationError(handleResendErrors(data));
+          throw new Error(data.error ?? t("errorUnexpected"));
+        }
 
-          throw new Error(data.error.message);
+        // Push GTM event for Google Ads conversion tracking
+        if (typeof window !== "undefined" && window.dataLayer) {
+          window.dataLayer.push({
+            event: "generate_lead",
+            leadSource: "contact_form",
+          });
+        }
+
+        if (data.warnings?.includes("user_email_failed")) {
+          // biome-ignore lint/suspicious/noConsole: server-side warning is intentional
+          console.warn("User confirmation email failed to send");
         }
 
         // Move to success screen
         setCurrentQuestion(questions.length - 1);
-      } catch (_error) {
-        // Handle error
+      } catch (error) {
+        // biome-ignore lint/suspicious/noConsole: server-side error logging is intentional
+        console.error("Contact form submission error:", error);
+        setValidationError((prev) => prev ?? t("errorUnexpected"));
       } finally {
         setIsLoading(false);
       }
     },
-    [answers, currentQuestion],
+    [answers, currentQuestion, locale, t],
   );
 
   const handleNext = useCallback(
@@ -54,14 +72,14 @@ export const useContactFormState = () => {
       // Phone validation
       if (questions[currentQuestion].type === QuestionType.PHONE) {
         if (phoneFormat === PhoneFormats.ES && !isValidSpanishPhone(answer)) {
-          setValidationError("Por favor, introduce un número de teléfono español válido");
+          setValidationError(t("errorInvalidPhone"));
           return;
         }
       }
       // Email validation
       if (questions[currentQuestion].type === QuestionType.EMAIL) {
         if (!isValidEmail(answer)) {
-          setValidationError("Por favor, introduce una dirección de email válida");
+          setValidationError(t("errorInvalidEmail"));
           return;
         }
       }
@@ -80,7 +98,7 @@ export const useContactFormState = () => {
         handleSubmit(answer);
       }
     },
-    [currentQuestion, phoneFormat, handleSubmit],
+    [currentQuestion, phoneFormat, handleSubmit, t],
   );
 
   useEffect(() => {

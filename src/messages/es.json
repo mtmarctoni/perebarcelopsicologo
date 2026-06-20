@@ -1,0 +1,433 @@
+{
+  "Common": {
+    "siteName": "Pere Barceló - Psicólogo Deportivo",
+    "siteNameShort": "Pere Barceló",
+    "siteSubtext": "Psicólogo",
+    "phone": "+34 636 67 47 59",
+    "email": "pere@perebarcelopsicologo.com",
+    "domain": "perebarcelopsicologo.com",
+    "authorName": "Pere Barceló Lambea",
+    "copyright": "© {year} Pere Barceló Psicólogo. Todos los derechos reservados.",
+    "ogLocale": "es_ES",
+    "htmlLang": "es",
+    "localeSwitcherAria": "Cambiar idioma a catalán",
+    "themeLight": "Sol",
+    "themeDark": "Luna"
+  },
+  "NavBar": {
+    "home": "Inicio",
+    "about": "Sobre mí",
+    "servicios": "Servicios",
+    "contact": "Contacto",
+    "ctaDesktop": "Sesión gratuita",
+    "ctaMobile": "Sesión gratis",
+    "closeMenu": "Cerrar menú",
+    "openMenu": "Abrir menú"
+  },
+  "Footer": {
+    "description": "Psicólogo deportivo especializado en mejorar el rendimiento y la salud mental de deportistas a través de sesiones online, talleres y asesoramiento.",
+    "navHeading": "Navegación",
+    "ctaHeading": "Empieza hoy",
+    "ctaText": "La primera sesión es gratuita. Si sabes que puedes rendir más, hablemos.",
+    "ctaButton": "Reserva tu sesión gratuita",
+    "privacyLink": "Política de Privacidad"
+  },
+  "Metadata": {
+    "defaultTitle": "Pere Barceló - Psicólogo Deportivo",
+    "defaultDescription": "Pere Barceló Lambea - Psicólogo Deportivo en Mallorca. Especializado en psicología del deporte para deportistas, equipos y clubes deportivos.",
+    "defaultKeywords": "psicología deportiva, psicólogo deportivo mallorca, rendimiento deportivo, psicología del deporte, entrenamiento mental, deporte mallorca, psicología deportiva baleares",
+    "home": {
+      "title": "Psicólogo deportivo | Pere Barceló",
+      "description": "Entrenas bien. Pero cuando compites, algo cambia. Psicología deportiva para competir al nivel al que entrenas, incluso bajo presión."
+    },
+    "about": {
+      "title": "Sobre mí | Pere Barceló - Psicólogo Deportivo",
+      "description": "Si sabes que puedes rendir más, esto no va de entrenar más. Conoce a Pere Barceló, psicólogo deportivo especializado en rendimiento bajo presión."
+    },
+    "servicios": {
+      "title": "Servicios | Pere Barceló - Psicólogo Deportivo",
+      "description": "No es que no tengas nivel. Es que no compites igual que entrenas. Psicología deportiva para deportistas que se bloquean en competición."
+    },
+    "contact": {
+      "title": "Contacto | Pere Barceló - Psicólogo Deportivo",
+      "description": "Contacta con Pere Barceló, psicólogo deportivo especializado en alto rendimiento. Primera sesión gratuita y sin compromiso."
+    },
+    "contactLayout": {
+      "title": "Contacto y reserva | Pere Barceló",
+      "description": "Contacta con Pere Barceló para resolver dudas, pedir información o reservar una primera llamada sobre psicología deportiva."
+    },
+    "privacy": {
+      "title": "Política de Privacidad | Pere Barceló - Psicólogo Deportivo",
+      "description": "Información sobre el tratamiento de datos personales, cookies y derechos de los usuarios en el sitio web de Pere Barceló Psicólogo."
+    }
+  },
+  "HeroSection": {
+    "sectionLabel": "Psicología deportiva de alto rendimiento",
+    "headingLine1": "Entrenas bien.",
+    "headingBeforeHighlight": "Pero cuando ",
+    "headingHighlight": "compites",
+    "headingLine2": ", algo cambia.",
+    "subtitle": "Rindes peor, dudas más o te bloqueas en momentos clave. No es falta de nivel. Es cómo gestionas la presión.",
+    "ctaPrimary": "Quiero saber qué me está bloqueando",
+    "ctaSecondary": "Ver cómo trabajo",
+    "checkFreeSession": "Sesión inicial gratuita",
+    "checkPersonalized": "100% personalizado",
+    "checkOnline": "Online",
+    "statNumber": "+{years}",
+    "statLabel": "años de experiencia",
+    "badgeText": "Alto rendimiento",
+    "scrollIndicator": "Descubre más",
+    "heroImageAlt": "Pere Barceló - Psicólogo Deportivo"
+  },
+  "PainPointsSection": {
+    "sectionLabel": "Para ti",
+    "heading": "Esto es para ti si al competir...",
+    "point1": "Empiezas bien, pero tras un error te vienes abajo",
+    "point2": "Aparecen dudas que no tienes entrenando",
+    "point3": "Te notas más tenso y menos fluido",
+    "point4": "Piensas demasiado en lugar de competir",
+    "point5": "Sientes que podrías rendir más, pero algo falla",
+    "emphasis": "No es falta de nivel. Es cómo gestionas lo que pasa en tu cabeza cuando compites."
+  },
+  "BenefitsSection": {
+    "sectionLabel": "Resultados",
+    "heading": "¿Qué conseguirás?",
+    "subtitle": "Herramientas concretas para aplicar desde la primera sesión. Sin teorías abstractas.",
+    "benefit1": "Competirás al nivel al que entrenas",
+    "benefit2": "Sabrás qué hacer después de un error",
+    "benefit3": "Tendrás más control en momentos clave",
+    "benefit4": "Tu confianza dejará de depender del resultado",
+    "benefit5": "Competirás bien incluso sin sensaciones perfectas",
+    "cta": "Quiero mejorar mi rendimiento"
+  },
+  "ProcessSection": {
+    "sectionLabel": "Metodología",
+    "heading": "¿Cómo trabajaremos?",
+    "step1Title": "Entendemos tu caso",
+    "step1Desc": "Analizamos qué te está pasando realmente en competición",
+    "step2Title": "Detectamos el bloqueo",
+    "step2Desc": "Identificamos qué está fallando exactamente",
+    "step3Title": "Plan práctico",
+    "step3Desc": "Herramientas concretas para aplicar compitiendo",
+    "step4Title": "Seguimiento",
+    "step4Desc": "Ajustamos y llevamos el trabajo a competición"
+  },
+  "DifferentiationSection": {
+    "sectionLabel": "Diferencia",
+    "heading": "Esto no es motivación ni teoría",
+    "paragraph": "No vamos a trabajar en \"pensar en positivo\" ni en intentar controlar todo lo que pasa por tu cabeza...",
+    "emphasis": "No necesitas eliminar los nervios. Necesitas saber competir con ellos.",
+    "item1": "Qué hacer justo después de un error",
+    "item2": "Cómo actuar cuando aparecen dudas",
+    "item3": "Cómo competir cuando hay presión",
+    "item4": "Cómo rendir sin depender de sentirte perfecto"
+  },
+  "AboutSection": {
+    "sectionLabel": "Sobre mí",
+    "heading": "¿Quién soy?",
+    "bio1": "Soy Pere Barceló, psicólogo deportivo.",
+    "bio2": "Trabajo con deportistas que entrenan bien pero no consiguen rendir igual en competición.",
+    "bio3": "Mi enfoque es práctico: desde la primera sesión sabes exactamente qué hacer cuando compites.",
+    "highlight": "No necesitas más entrenamiento. Necesitas entrenar tu mente.",
+    "cta": "Reserva tu sesión gratuita",
+    "imageAlt": "Pere Barceló - Psicólogo Deportivo"
+  },
+  "FinalCtaSection": {
+    "heading": "Deja de perder rendimiento por lo que pasa en tu cabeza",
+    "subtitle": "La primera sesión es gratuita. Descubre qué te está limitando y empieza a competir al nivel que te mereces.",
+    "cta": "Pide tu sesión gratuita",
+    "finePrint": "Sin compromiso. Sin coste."
+  },
+  "AboutHeroSection": {
+    "sectionLabel": "Sobre mí",
+    "heading": "Si sabes que puedes rendir más, esto no va de entrenar más.",
+    "cta": "Pide tu sesión gratuita",
+    "imageAlt": "Pere Barceló - Psicólogo Deportivo"
+  },
+  "AboutBioSection": {
+    "sectionLabel": "Sobre mí",
+    "heading": "Quién soy",
+    "bio1": "Soy Pere Barceló, psicólogo deportivo.",
+    "bio2": "Trabajo con deportistas de diferentes disciplinas, adaptando el proceso a cada caso.",
+    "bio3": "Mi objetivo es hacerlo aplicable a tu realidad.",
+    "emphasis": "No complicarlo más.",
+    "paragraph": "No necesitas cambiar quién eres como deportista.",
+    "boldText": "Necesitas cambiar cómo gestionas lo que pasa cuando compites.",
+    "ctaText": "Si sabes que puedes rendir más pero algo te frena, el siguiente paso es claro:",
+    "cta": "Empieza tu proceso ahora",
+    "imageAlt": "Pere Barceló - Psicólogo Deportivo"
+  },
+  "AboutClubsSection": {
+    "sectionLabel": "Experiencia",
+    "heading": "He trabajado con deportistas de diferentes disciplinas y niveles competitivos.",
+    "club1": "CE Constància",
+    "club2": "CDC Moscardó",
+    "club3": "CF Fuenlabrada",
+    "club4": "CF Playa de Palma",
+    "club5": "UE Petra",
+    "club6": "CE Sineu",
+    "club7": "Joventut Mariana",
+    "club8": "Entreculturas Montesión",
+    "club9": "CB Colonya Pollença",
+    "club10": "CG Alcúdia",
+    "club11": "Federación de Golf de las Islas Baleares",
+    "club12": "Federación de Baloncesto de las Islas Baleares",
+    "club13": "Palmer Basket",
+    "closing": "Cada caso es distinto. Pero el patrón suele repetirse:",
+    "closingBold": "Entrenan bien. Pero compitiendo no rinden igual."
+  },
+  "AboutWhySection": {
+    "sectionLabel": "Motivación",
+    "heading": "¿Por qué hago esto?",
+    "paragraph1": "He visto a muchos deportistas con nivel quedarse lejos de su rendimiento real.",
+    "paragraph2": "No por falta de entrenamiento. No por falta de talento.",
+    "paragraph3": "Sino por no saber gestionar lo que pasa en su cabeza cuando compiten.",
+    "highlight": "Ahí es donde se pierde mucho más de lo que parece. Y ahí es donde tiene sentido trabajar.",
+    "cta": "Detecta qué te está limitando"
+  },
+  "AboutExpectSection": {
+    "sectionLabel": "Expectativas",
+    "heading": "¿Qué puedes esperar al trabajar conmigo?",
+    "item1": "No trabajamos sobre teoría, sino sobre lo que te pasa compitiendo",
+    "item2": "Bajamos a tierra cada situación",
+    "item3": "Sales de cada sesión con acciones concretas",
+    "highlight": "No se trata de entender más. Se trata de saber qué hacer cuando más importa."
+  },
+  "AboutObjectiveSection": {
+    "sectionLabel": "Objetivo",
+    "heading": "¿Cuál es mi objetivo?",
+    "paragraph1": "No busco que dependas de mí.",
+    "paragraph2": "Busco que:",
+    "objective1": "Aprendas qué hacer cuando fallas",
+    "objective2": "Sepas cómo competir con dudas",
+    "objective3": "Puedas rendir incluso sin confianza perfecta",
+    "highlight": "El objetivo es que puedas competir bien por tu cuenta."
+  },
+  "AboutCtaSection": {
+    "heading": "Si sabes que puedes rendir más algo te frena",
+    "subtitle": "Descubre qué te está limitando y empieza a competir al nivel que te mereces.",
+    "cta": "Pide tu sesión gratuita",
+    "finePrint": "Sin compromiso. Primera sesión de análisis."
+  },
+  "ServiciosHeroSection": {
+    "sectionLabel": "Servicios",
+    "heading": "No es que no tengas nivel. Es que no compites igual que entrenas.",
+    "subtitle": "Psicología deportiva para deportistas que se bloquean en competición y quieren rendir cuando más importa.",
+    "cta": "Reserva tu primera sesión gratuita",
+    "finePrint": "Sin compromiso. Primera sesión de análisis."
+  },
+  "ServiciosPainSection": {
+    "sectionLabel": "Para ti",
+    "heading": "¿Te pasa esto cuando compites?",
+    "point1": "Empiezas bien, pero un error cambia tu rendimiento",
+    "point2": "Aparecen dudas que no tienes entrenando",
+    "point3": "Te tensas y pierdes fluidez",
+    "point4": "Piensas demasiado en vez de competir",
+    "point5": "Tu confianza depende del resultado o del momento",
+    "emphasis": "No es falta de nivel. Es gestión del rendimiento bajo presión."
+  },
+  "ServiciosProblemSection": {
+    "sectionLabel": "El enfoque",
+    "heading": "El problema no es lo que te ocurre, sino cómo lo gestionas",
+    "paragraph": "No necesitas eliminar los nervios ni controlar todos tus pensamientos.",
+    "boldText": "Necesitas aprender a competir con ellos.",
+    "item1": "Qué hacer justo después de un error",
+    "item2": "Cómo gestionar pensamientos en competición",
+    "item3": "Cómo competir con presión sin bloquearte",
+    "item4": "Cómo construir una confianza más estable"
+  },
+  "ServiciosWorkSection": {
+    "sectionLabel": "Contenido",
+    "heading": "¿Qué trabajaremos?",
+    "subtitle": "Situaciones reales de competición:",
+    "topic1Title": "Después de un error",
+    "topic1Desc": "Cómo cortar la caída de rendimiento y volver al partido/competición",
+    "topic2Title": "Cuando aparecen dudas",
+    "topic2Desc": "Cómo seguir compitiendo sin necesitar confianza perfecta",
+    "topic3Title": "Bajo presión",
+    "topic3Desc": "Cómo mantener claridad cuando más importa",
+    "topic4Title": "Sin buenas sensaciones",
+    "topic4Desc": "Cómo rendir sin depender de cómo te sientes"
+  },
+  "ServiciosTakeawaysSection": {
+    "sectionLabel": "Resultados",
+    "heading": "¿Qué te vas a llevar?",
+    "subtitle": "No es teoría, es aplicación directa. Herramientas que puedes usar desde la primera sesión.",
+    "item1": "Qué hacer justo después de un error",
+    "item2": "Cómo gestionar pensamientos en competición",
+    "item3": "Cómo competir con presión sin bloquearte",
+    "item4": "Cómo construir una confianza más estable"
+  },
+  "ServiciosSessionSection": {
+    "sectionLabel": "Proceso",
+    "heading": "¿Cómo es una sesión?",
+    "subtitle": "En cada sesión trabajamos tu caso real.",
+    "step1Title": "Analizamos situaciones concretas de competición",
+    "step1Desc": "No hablamos en general. Trabajamos tu caso real.",
+    "step2Title": "Detectamos qué te está limitando",
+    "step2Desc": "Identificamos patrones y desencadenantes específicos.",
+    "step3Title": "Definimos herramientas aplicables",
+    "step3Desc": "Acciones concretas que puedes usar en competición.",
+    "step4Title": "Te llevas acciones claras para competición",
+    "step4Desc": "Sales sabiendo qué hacer en cada momento.",
+    "emphasis": "Sales sabiendo qué hacer en cada momento."
+  },
+  "ServiciosNotThisSection": {
+    "sectionLabel": "Diferencia",
+    "heading": "Qué NO es esto",
+    "notItem1": "Motivación o frases positivas",
+    "notItem2": "Teoría sin aplicación",
+    "notItem3": "Técnicas genéricas",
+    "yesHeading": "Esto es entrenamiento mental aplicado a competición real",
+    "yesItem1": "No trabajamos \"cómo sentirte mejor\"",
+    "yesItem2": "Trabajamos cómo rendir mejor incluso sin sentirte bien"
+  },
+  "ServiciosCtaSection": {
+    "heading": "Si sabes que puedes rendir más pero algo te frena",
+    "cta": "Empieza ahora tu proceso",
+    "finePrint": "Sin compromiso. Primera sesión gratuita."
+  },
+  "ServiciosFaqSection": {
+    "sectionLabel": "Preguntas frecuentes",
+    "faq1Q": "¿Y si no me funciona?",
+    "faq1A": "La primera sesión es 100% gratuita. Sin ningún tipo de compromiso.",
+    "faq2Q": "¿Esto sirve para mi deporte?",
+    "faq2A": "El proceso se adapta a cada disciplina.",
+    "faq3Q": "¿Cuánto tiempo se tarda en notar cambios?",
+    "faq3A": "Depende del caso, pero desde las primeras sesiones ya trabajas herramientas aplicables."
+  },
+  "ContactHeroSection": {
+    "sectionLabel": "Contacto",
+    "heading": "Da el primer paso",
+    "subtitle": "Si sabes que puedes rendir más pero algo te frena, hablemos. La primera sesión es gratuita y sin compromiso."
+  },
+  "ContactFormSection": {
+    "sectionLabel": "Reserva",
+    "heading": "Agenda tu sesión gratuita",
+    "subtitle": "Sin compromiso. Elige el día y la hora que mejor te venga."
+  },
+  "ContactSocialSection": {
+    "sectionLabel": "Redes",
+    "heading": "También puedes encontrarme en"
+  },
+  "CalendlyBookingCard": {
+    "label": "Reserva directa",
+    "heading": "Reserva una llamada",
+    "description": "Si prefieres elegir hora directamente, puedes reservar una cita desde el calendario.",
+    "loadDescription": "Carga el calendario para elegir día y hora de tu cita.",
+    "openCalendar": "Abrir calendario",
+    "placeholderText": "El bloque de reserva estará disponible en cuanto se configure la URL pública de Calendly.",
+    "configHint": "Configuración requerida: NEXT_PUBLIC_CALENDLY_URL"
+  },
+  "PrivacyHeroSection": {
+    "sectionLabel": "Legal",
+    "heading": "Política de Privacidad",
+    "subtitle": "Información sobre el tratamiento de tus datos personales, cookies y derechos."
+  },
+  "PrivacyContentSection": {
+    "section1Title": "1. Responsable del tratamiento",
+    "section1Desc": "Nombre: Pere Barceló Lambea\nEmail: pere@perebarcelopsicologo.com\nTeléfono: +34 636 67 47 59\nSitio web: perebarcelopsicologo.com",
+    "section2Title": "2. Datos que recogemos",
+    "section2Desc": "Recogemos los datos que nos proporcionas voluntariamente a través del formulario de contacto: nombre, dirección de correo electrónico, número de teléfono y cualquier otra información que decidas compartir. También recogemos datos de navegación como dirección IP, tipo de navegador y páginas visitadas.",
+    "section3Title": "3. Finalidad y base legal del tratamiento",
+    "section3Desc": "Tratamos tus datos para responder a tus solicitudes de información, gestionar la relación profesional y enviar comunicaciones relacionadas con nuestros servicios si has dado tu consentimiento. La base legal es tu consentimiento y el interés legítimo.",
+    "section4Title": "4. Conservación de los datos",
+    "section4Desc": "Conservamos tus datos durante el tiempo necesario para cumplir con la finalidad para la que se recogieron y para cumplir con obligaciones legales.",
+    "section5Title": "5. Destinatarios de los datos",
+    "section5Desc": "Tus datos pueden ser compartidos con: Vercel (alojamiento web), Resend (servicio de correo electrónico), Google LLC (analítica), Cookiebot (gestión de consentimiento de cookies). No realizamos transferencias internacionales de datos.",
+    "section6Title": "6. Cookies",
+    "section6Desc": "Utilizamos cookies técnicas necesarias para el funcionamiento del sitio y cookies de análisis para entender cómo se utiliza el sitio. Puedes gestionar tus preferencias de cookies en cualquier momento.",
+    "section7Title": "7. Derechos de los usuarios",
+    "section7Desc": "Tienes derecho a acceder, rectificar, suprimir, oponerte, limitar el tratamiento y portar tus datos. Para ejercer tus derechos, contacta en pere@perebarcelopsicologo.com.",
+    "section8Title": "8. Seguridad de la información",
+    "section8Desc": "Implementamos medidas de seguridad técnicas y organizativas para proteger tus datos personales contra accesos no autorizados, pérdida o destrucción.",
+    "section9Title": "9. Modificaciones de esta política",
+    "section9Desc": "Nos reservamos el derecho de modificar esta política de privacidad. Los cambios serán publicados en esta página.",
+    "section10Title": "10. Contacto",
+    "section10Desc": "Si tienes preguntas sobre esta política, contacta en pere@perebarcelopsicologo.com o llamando al +34 636 67 47 59.",
+    "badgeProtected": "Datos protegidos",
+    "badgeHttps": "HTTPS seguro",
+    "badgeRgpd": "Cumplimiento RGPD"
+  },
+  "Form": {
+    "nameQuestion": "¿Cuál es tu nombre?",
+    "emailQuestion": "¿Cuál es tu email?",
+    "phoneQuestion": "¿Cuál es tu número de teléfono?",
+    "preferenceQuestion": "¿Por qué medio prefieres recibir una respuesta?",
+    "preferenceOption1": "Correo electrónico",
+    "preferenceOption2": "WhatsApp",
+    "preferenceOption3": "Llamada telefónica",
+    "interestQuestion": "¿En qué estás interesado?",
+    "interestOption1": "Sesiones online",
+    "interestOption2": "Taller grupal",
+    "interestOption3": "Asesoramiento psicológico",
+    "commentQuestion": "¿Hay algo más que quieras comentarme?",
+    "successMessage": "¡Gracias por contactar conmigo! Me pondré en contacto contigo lo antes posible.",
+    "textPlaceholder": "Escribe tu respuesta aquí",
+    "emailPlaceholder": "ejemplo@correo.com",
+    "phoneFormatLabel": "Tengo número español",
+    "phoneFormatChange": "Cambiar formato",
+    "phoneEsPlaceholder": "Ej: 612345678 o +34612345678",
+    "phoneOtherPlaceholder": "Introduce tu número",
+    "textareaPlaceholder": "Este campo es opcional. Puedes añadir cualquier duda o comentario adicional.",
+    "buttonNext": "Continuar",
+    "buttonBack": "← Volver atrás",
+    "buttonReset": "Enviar otro mensaje",
+    "submitLoading": "Enviando tu mensaje...",
+    "enterToContinue": "Presiona Enter para continuar",
+    "errorInvalidPhone": "Por favor, introduce un número de teléfono español válido",
+    "errorInvalidEmail": "Por favor, introduce una dirección de email válida",
+    "errorResendEmail": "Email no válido. La dirección de correo electrónico debe seguir el formato 'email@example.com' o 'Nombre <email@example.com>'",
+    "errorUnexpected": "Ha ocurrido un error inesperado. Por favor, inténtalo de nuevo más tarde.",
+    "errorValidation": "Datos del formulario inválidos.",
+    "errorServer": "Error interno del servidor.",
+    "errorRateLimit": "Demasiadas solicitudes. Inténtalo de nuevo en un minuto.",
+    "errorForbidden": "Acción no permitida.",
+    "warningConfirmationFailed": "Tu mensaje se ha enviado, pero no hemos podido enviar el correo de confirmación."
+  },
+  "EmailTemplates": {
+    "adminSubject": "Nuevo formulario de contacto",
+    "userSubject": "Gracias por contactar con nosotros",
+    "fromName": "Pere Barceló Psicólogo <pere@perebarcelopsicologo.com>",
+    "adminHeading": "Nuevo Contacto Recibido",
+    "fieldName": "Nombre:",
+    "fieldEmail": "Email:",
+    "fieldPhone": "Teléfono:",
+    "fieldInterest": "Interesado en:",
+    "fieldResponseMedium": "Medio de respuesta:",
+    "fieldComment": "Comentario:",
+    "confirmationHeading": "¡Gracias por contactar conmigo!",
+    "confirmationGreeting": "Hola {name},",
+    "confirmationBody": "He recibido tu mensaje y me pondré en contacto contigo lo antes posible a través del medio que has elegido.",
+    "confirmationClosing": "Un saludo,",
+    "confirmationSignature": "Pere Barceló"
+  },
+  "SocialLinks": {
+    "emailName": "Email",
+    "linkedinName": "LinkedIn",
+    "instagramName": "Instagram",
+    "twitterName": "Twitter",
+    "visitAria": "Visitar {name}"
+  },
+  "BaseCard": {
+    "cta": "¡Pide Información!"
+  },
+  "Schema": {
+    "websiteName": "Pere Barceló - Psicólogo Deportivo",
+    "telephone": "+34636674759",
+    "streetAddress": "Carrer de la Indústria, 12",
+    "city": "Palma",
+    "postalCode": "07013",
+    "country": "ES"
+  },
+  "Error": {
+    "title": "Algo salió mal",
+    "description": "Ha ocurrido un error inesperado. Por favor, inténtalo de nuevo.",
+    "retry": "Intentar de nuevo"
+  },
+  "NotFound": {
+    "title": "Página no encontrada",
+    "description": "La página que buscas no existe o ha sido movida.",
+    "goHome": "Volver al inicio"
+  }
+}

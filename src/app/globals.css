@@ -3,121 +3,97 @@
 @tailwind utilities;
 
 :root {
-  /* Core colors */
-  --primary: #b9d8eb;
-  --primary-light: #d4e6f3;
-  --primary-dark: #1c4761;
+  --primary: #122f41;
+  --primary-light: #b9d8eb;
+  --primary-dark: #122f41;
 
-  /* Background colors */
   --background: #f8fafc;
-  --background-alt: #f1f5f9;
-  --background-navbar: rgba(28, 71, 97, 0.95);
-  --background-navbar-alt: #d0d3d6;
-  --background-footer: #0f2537;
+  --background-alt: #ffffff;
+  --background-navbar: rgba(248, 250, 252, 0.92);
+  --background-footer: #122f41;
 
-  /* Accent colors */
-  --secondary: #f59e0b;
-  --secondary-light: #fcd34d;
-  --secondary-dark: #d97706;
+  --card: #ffffff;
+  --card-hover: #f1f5f9;
 
-  /* Text colors */
-  --text: #475569;
+  --secondary-rgb: 185 216 235;
+  --secondary-light-rgb: 211 233 245;
+  --secondary-dark-rgb: 140 185 210;
+
+  --text: #334155;
   --text-light: #64748b;
   --text-dark: #0f172a;
+  --text-inverse: #ffffff;
 
-  /* UI colors */
+  --border: #e2e8f0;
+  --glow: rgba(185, 216, 235, 0.3);
+
   --success: #22c55e;
   --warning: #f59e0b;
   --error: #ef4444;
 }
 
 .dark {
-  /* Restore the previous dark-mode blue palette */
-  --primary: #2f4f7f;
+  --primary: #8bbce3;
   --primary-light: #1c4761;
-  --primary-darker: #0f2537;
+  --primary-dark: #0f2537;
 
-  /* Background colors */
-  --background: #0f172a;
-  --background-alt: #1e293b;
-  --background-navbar: rgba(15, 37, 55, 0.92);
-  --background-navbar-alt: #d0d3d6;
-  --background-footer: #0a1a25;
+  --background: #070b14;
+  --background-alt: #0f172a;
+  --background-navbar: rgba(7, 11, 20, 0.95);
+  --background-footer: #050810;
 
-  /* Accent colors */
-  --secondary: #f59e0b;
-  --secondary-light: #fcd34d;
-  --secondary-dark: #fbbf24;
+  --card: rgba(255, 255, 255, 0.03);
+  --card-hover: rgba(255, 255, 255, 0.06);
 
-  /* Text colors */
+  --secondary-rgb: 185 216 235;
+  --secondary-light-rgb: 211 233 245;
+  --secondary-dark-rgb: 140 185 210;
+
   --text: #e2e8f0;
-  --text-light: #cbd5e1;
+  --text-light: #94a3b8;
   --text-dark: #f8fafc;
+  --text-inverse: #ffffff;
 
-  /* UI colors */
-  --success: #22c55e;
-  --warning: #f59e0b;
-  --error: #ef4444;
+  --border: rgba(255, 255, 255, 0.06);
+  --glow: rgba(185, 216, 235, 0.35);
 }
 
-/* Style for blog post from wordpress*/
-.blog-title {
-  @apply text-4xl sm:text-5xl font-extrabold text-text-dark tracking-tight mb-8;
-}
-
-.blog-content {
-  @apply text-text text-lg leading-relaxed;
-}
-
-.blog-content h2 {
-  @apply text-3xl font-bold text-text-dark mt-16 mb-6 tracking-tight;
-}
-
-.blog-content h3 {
-  @apply text-2xl font-bold text-text-dark mt-12 mb-4 tracking-tight;
-}
-
-.blog-content p {
-  @apply mb-6 text-lg leading-relaxed;
-}
-
-.blog-content ul,
-.blog-content ol {
-  @apply my-6 ml-6 space-y-3;
-}
-
-.blog-content li {
-  @apply text-lg leading-relaxed;
-}
-
-.blog-content img {
-  @apply rounded-2xl my-10 shadow-card;
-}
-
-.blog-content blockquote {
-  @apply pl-6 border-l-4 border-secondary italic my-10 text-text-light;
-}
-
-/* dividers */
-.blog-content .elementor-divider-separator {
-  @apply block w-full border-b-2 border-secondary pt-6;
-  opacity: 0.5;
-}
-
-/* title and subtitle */
-.blog-content .elementor-element:first-of-type .elementor-widget-text-editor p {
-  @apply text-xl md:text-2xl leading-relaxed text-text-light
-         border-l-4 border-secondary pl-6 py-4 my-8
-         italic font-light;
-}
-
-/* Smooth scrolling */
 html {
   scroll-behavior: smooth;
 }
 
-/* Selection styling */
 ::selection {
-  background-color: rgba(245, 158, 11, 0.3);
+  background-color: rgba(185, 216, 235, 0.3);
   color: inherit;
+}
+
+/* Cookiebot accessibility overrides */
+#CybotCookiebotDialog .CybotCookiebotDialogBodyLevelButtonSave {
+  background-color: #1c4761 !important;
+  color: #ffffff !important;
+}
+
+#CybotCookiebotDialog a,
+#CybotCookiebotDialog .CybotCookiebotDialogBodyLevelDetailsButton {
+  font-size: 0.875rem !important;
+  padding: 0.5rem 1rem !important;
+  min-height: 44px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+}
+
+#CybotCookiebotDialog *:focus-visible {
+  outline: 2px solid #1c4761 !important;
+  outline-offset: 2px !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }

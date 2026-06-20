@@ -1,122 +1,268 @@
 "use client";
-import Link from "next/link";
-import { useState } from "react";
-import { ThemeToggle } from "@/components/features/DarkToggle";
-import { navbarLinks } from "@/utils/data";
 
+import Link from "next/link";
+import { useLocale, useTranslations } from "next-intl";
+import { useEffect, useRef, useState } from "react";
+import { useTheme } from "@/components/core/ThemeProvider";
+import { navRoutes } from "@/config/routes";
+import { useRouter } from "@/i18n/routing";
 import { BarsIcon, CrossIcon } from "../composables/Icons";
-import { IconFooterContainer } from "../containers/IconContainer";
+
+const navItems = navRoutes.filter((r) => r.href !== "/contact");
 
 const Navbar = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+  const { theme, setTheme } = useTheme();
+  const t = useTranslations("NavBar");
+  const tc = useTranslations("Common");
+  const locale = useLocale();
+  const router = useRouter();
+
+  const handleScrollRef = useRef<(() => void) | null>(null);
+
+  useEffect(() => {
+    handleScrollRef.current = () => {
+      setIsScrolled(window.scrollY > 20);
+    };
+  });
+
+  useEffect(() => {
+    const handler = () => handleScrollRef.current?.();
+    window.addEventListener("scroll", handler, { passive: true });
+    handler();
+    return () => window.removeEventListener("scroll", handler);
+  }, []);
+
+  useEffect(() => {
+    if (isMenuOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [isMenuOpen]);
+
+  const otherLocale = locale === "es" ? "ca" : "es";
+
+  const switchLocale = () => {
+    const currentPath = window.location.pathname.replace(/^\/(es|ca)(\/|$)/, "/");
+    router.replace(currentPath || "/", { locale: otherLocale });
+  };
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-background-navbar backdrop-blur-xl border-b border-white/10">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-20">
-          <div className="flex justify-center space-x-4">
-            {/* Logo/Brand */}
+    <>
+      <nav
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+          isScrolled
+            ? "bg-background-navbar backdrop-blur-xl border-b border-border shadow-[0_4px_30px_rgba(0,0,0,0.3)]"
+            : "bg-transparent"
+        }`}
+      >
+        <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12">
+          <div className="flex justify-between items-center h-20">
             <Link
               href="/"
-              className="content-center text-white font-bold text-lg tracking-tight whitespace-nowrap hover:text-secondary transition-colors duration-300"
+              className="text-text-dark font-bold text-lg tracking-tight whitespace-nowrap hover:text-primary transition-colors duration-300"
             >
-              Pere Barceló
-              <span className="font-normal text-white/70 ml-1">Psicólogo</span>
+              {tc("siteNameShort")}
+              <span className="font-normal text-text-light ml-1.5 text-base">
+                {tc("siteSubtext")}
+              </span>
             </Link>
-          </div>
 
-          {/* Navigation Links */}
-          <div className="hidden lg:flex items-center space-x-2">
-            {navbarLinks.map((item) => (
-              <div className="relative group" key={item.url}>
-                <Link
-                  href={item.url}
-                  className="text-white/80 whitespace-nowrap px-3 py-2 text-sm font-medium tracking-[0.01em]
-                           border-b-2 border-transparent hover:border-secondary hover:text-white
-                           transition-colors duration-200"
-                >
-                  {item.label}
-                </Link>
-
-                {/* Dropdown Menu */}
-                {item.subLinks && (
-                  <div
-                    className="absolute invisible group-hover:visible opacity-0 
-                                group-hover:opacity-100 left-0 pt-2 w-60 
-                                transition-all duration-300 ease-smooth"
+            <div className="hidden lg:flex items-center gap-1">
+              {navItems.map((item) => {
+                return (
+                  <Link
+                    key={item.href}
+                    href={item.href}
+                    className="text-text-light px-4 py-2 text-sm font-medium tracking-wide
+                             hover:text-text-dark hover:bg-card-hover rounded-lg
+                             transition-all duration-300"
                   >
-                    <div className="bg-background-navbar/95 backdrop-blur-2xl rounded-2xl shadow-[0_24px_60px_rgba(2,6,23,0.38)] border border-white/20 overflow-hidden ring-1 ring-white/10 p-2">
-                      {item.subLinks.map((subLink) => (
-                        <Link
-                          key={subLink.url}
-                          href={subLink.url}
-                          className="block px-4 py-3 rounded-xl text-sm font-semibold text-white/92 whitespace-nowrap
-                                   hover:bg-white/14 hover:text-white hover:shadow-[inset_0_0_0_1px_rgba(255,255,255,0.08)]
-                                   transition-all duration-200"
-                        >
-                          {subLink.label}
-                        </Link>
-                      ))}
-                    </div>
-                  </div>
-                )}
-              </div>
-            ))}
-          </div>
+                    {t(item.labelKey)}
+                  </Link>
+                );
+              })}
 
-          <div className="flex flex-row items-center gap-3">
-            {/* Mobile Menu Button */}
-            <div className="lg:hidden">
+              <button
+                type="button"
+                onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+                className="ml-3 p-2 rounded-xl text-text-light hover:text-primary hover:bg-card-hover transition-all duration-300"
+                aria-label={theme === "dark" ? tc("themeLight") : tc("themeDark")}
+              >
+                {theme === "dark" ? (
+                  <svg
+                    className="w-5 h-5"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    role="img"
+                    aria-label={tc("themeLight")}
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"
+                    />
+                  </svg>
+                ) : (
+                  <svg
+                    className="w-5 h-5"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    role="img"
+                    aria-label={tc("themeDark")}
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"
+                    />
+                  </svg>
+                )}
+              </button>
+
+              <button
+                type="button"
+                onClick={switchLocale}
+                className="ml-2 px-3 py-1.5 text-xs font-semibold uppercase tracking-widest rounded-lg
+                          text-text-light hover:text-primary hover:bg-card-hover
+                          transition-all duration-300 border border-border"
+                aria-label={tc("localeSwitcherAria")}
+              >
+                {otherLocale}
+              </button>
+
+              <Link
+                href="/contact"
+                className="ml-4 inline-flex items-center justify-center bg-secondary text-text-dark dark:text-[#0f172a] text-sm font-bold px-5 py-2.5 rounded-full hover:bg-secondary-light hover:shadow-glow hover:-translate-y-0.5 transition-all duration-300"
+              >
+                {t("ctaDesktop")}
+              </Link>
+            </div>
+
+            <div className="flex items-center gap-3 lg:hidden">
+              <Link
+                href="/contact"
+                className="inline-flex items-center justify-center bg-secondary text-text-dark dark:text-[#0f172a] text-xs font-bold px-3 py-2 rounded-full whitespace-nowrap hover:bg-secondary-light transition-all duration-300"
+              >
+                {t("ctaMobile")}
+              </Link>
+
               <button
                 type="button"
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
-                className="text-white hover:text-secondary p-2 rounded-full hover:bg-white/10 transition-all duration-300"
+                className="text-text-dark hover:text-primary p-2 rounded-xl hover:bg-card-hover transition-all duration-300"
+                aria-label={isMenuOpen ? t("closeMenu") : t("openMenu")}
               >
                 {isMenuOpen ? <CrossIcon className="w-6 h-6" /> : <BarsIcon className="w-6 h-6" />}
               </button>
             </div>
-            <IconFooterContainer>
-              <ThemeToggle />
-            </IconFooterContainer>
           </div>
         </div>
+      </nav>
 
-        {/* Mobile Navigation */}
-        <div className={`lg:hidden ${isMenuOpen ? "block" : "hidden"}`}>
-          <div className="px-2 pb-4 space-y-1">
-            {navbarLinks.map((item) => (
-              <div key={item.url}>
-                <Link
-                  href={item.url}
-                  className="text-white/80 block px-4 py-3 text-base font-medium rounded-xl
-                           hover:text-white hover:bg-white/10 transition-all duration-300"
-                  onClick={() => setIsMenuOpen(false)}
-                >
-                  {item.label}
-                </Link>
-
-                {/* Mobile Dropdown Items */}
-                {item.subLinks && (
-                  <div className="pl-4 space-y-1">
-                    {item.subLinks.map((subLink) => (
-                      <Link
-                        key={subLink.url}
-                        href={subLink.url}
-                        className="text-white/60 block px-4 py-2 text-sm font-medium rounded-xl
-                                 hover:text-secondary hover:bg-white/5 transition-all duration-300"
-                        onClick={() => setIsMenuOpen(false)}
-                      >
-                        {subLink.label}
-                      </Link>
-                    ))}
-                  </div>
-                )}
-              </div>
-            ))}
+      <div
+        className={`fixed inset-0 z-40 bg-background backdrop-blur-xl transition-all duration-500 lg:hidden ${
+          isMenuOpen ? "opacity-100 visible" : "opacity-0 invisible"
+        }`}
+      >
+        <div className="flex flex-col items-center justify-center min-h-screen gap-6">
+          <div className="absolute top-6 right-6">
+            <button
+              type="button"
+              onClick={() => setIsMenuOpen(false)}
+              className="text-text-dark hover:text-primary p-2 rounded-xl hover:bg-card-hover transition-all duration-300"
+              aria-label={t("closeMenu")}
+            >
+              <CrossIcon className="w-7 h-7" />
+            </button>
           </div>
+
+          {navItems.map((item, index) => {
+            return (
+              <div key={item.href}>
+                <Link
+                  href={item.href}
+                  onClick={() => setIsMenuOpen(false)}
+                  className="text-2xl font-bold text-text-dark opacity-80 hover:opacity-100 transition-all duration-300"
+                  style={{ transitionDelay: `${(index + 1) * 50}ms` }}
+                >
+                  {t(item.labelKey)}
+                </Link>
+              </div>
+            );
+          })}
+
+          <button
+            type="button"
+            onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+            className="mt-4 p-3 rounded-xl text-text-light hover:text-primary hover:bg-card-hover transition-all duration-300"
+            aria-label={theme === "dark" ? tc("themeLight") : tc("themeDark")}
+          >
+            {theme === "dark" ? (
+              <svg
+                className="w-6 h-6"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                role="img"
+                aria-label={tc("themeLight")}
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"
+                />
+              </svg>
+            ) : (
+              <svg
+                className="w-6 h-6"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                role="img"
+                aria-label={tc("themeDark")}
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"
+                />
+              </svg>
+            )}
+          </button>
+
+          <button
+            type="button"
+            onClick={switchLocale}
+            className="px-4 py-2 text-sm font-semibold uppercase tracking-widest rounded-xl
+                     text-text-light hover:text-primary hover:bg-card-hover
+                     transition-all duration-300 border border-border"
+            aria-label={tc("localeSwitcherAria")}
+          >
+            {otherLocale}
+          </button>
+
+          <Link
+            href="/contact"
+            onClick={() => setIsMenuOpen(false)}
+            className="mt-4 inline-flex items-center justify-center bg-secondary text-text-dark dark:text-[#0f172a] text-base font-bold px-8 py-4 rounded-full hover:bg-secondary-light hover:shadow-glow transition-all duration-300"
+          >
+            {t("ctaDesktop")}
+          </Link>
         </div>
       </div>
-    </nav>
+    </>
   );
 };
 
