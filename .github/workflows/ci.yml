@@ -14,8 +14,8 @@ permissions:
   contents: read
 
 jobs:
-  lint-and-build:
-    name: Lint, Type Check & Build
+  lint-and-test:
+    name: Lint, Type Check & Test
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
@@ -32,7 +32,67 @@ jobs:
           cache: "pnpm"
 
       - name: Install dependencies
-        run: pnpm install --frozen-lockfile
+        run: pnpm install --frozen-lockfile --prefer-offline --ignore-scripts
+
+      - name: Run Biome (lint + format check)
+        run: pnpm lint
+
+      - name: Run TypeScript type check
+        run: pnpm type-check
+
+      - name: Run tests
+        run: pnpm test
+
+      - name: Run knip (dead code analysis)
+        run: pnpm knip
+
+  build:
+    name: Build
+    needs: lint-and-test
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: "pnpm"
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile --prefer-offline --ignore-scripts
+
+      - name: Build application
+        run: pnpm build
+        env:
+          RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
+          GOOGLE_SITE_VERIFICATION: ${{ secrets.GOOGLE_SITE_VERIFICATION }}
+          NEXT_PUBLIC_CALENDLY_URL: ${{ secrets.NEXT_PUBLIC_CALENDLY_URL }}
+
+  security-audit:
+    name: Dependency Audit
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: "pnpm"
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile --prefer-offline
 
       - name: Run pnpm audit
         run: pnpm audit --audit-level=high
@@ -56,8 +116,8 @@ jobs:
           fail-on-severity: high
           warn-only: true
 
-  lint-test-and-build:
-    name: Lint, Type Check & Build
+  secret-scan:
+    name: Secret Scan (TruffleHog)
     runs-on: ubuntu-latest
     timeout-minutes: 10
     continue-on-error: true
@@ -88,33 +148,27 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Install pnpm
-        uses: pnpm/action-setup@v4
+      - name: Check for committed secrets
+        run: |
+          BLOCKED="\.env$ \.env\.local$ \.env\.production$ \.env\.development$
+          id_rsa id_rsa\.pub id_dsa id_dsa\.pub
+          \.pem$ \.key$ \.p12$ \.pfx$
+          credentials\.json service-account.*\.json
+          token\.json secret\.json"
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: 20
-          cache: "pnpm"
+          FOUND=0
+          for pattern in $BLOCKED; do
+            if find . -not -path "*/node_modules/*" -not -path "*/.git/*" | grep -E "$pattern" | grep -v "\.env\.template$"; then
+              echo "ERROR: Blocked file pattern matched: $pattern"
+              FOUND=1
+            fi
+          done
 
-      - name: Install dependencies
-        run: pnpm install --frozen-lockfile
+          if [ "$FOUND" -eq 1 ]; then
+            echo "---"
+            echo "Remove these files from the repository. If they are needed locally,"
+            echo "add them to .gitignore and remove them with: git rm --cached <file>"
+            exit 1
+          fi
 
-      - name: Run Biome (lint + format check)
-        run: pnpm lint
-
-      - name: Run TypeScript type check
-        run: pnpm type-check
-
-      - name: Run tests
-        run: pnpm test
-
-      - name: Run knip (dead code analysis)
-        run: pnpm knip
-
-      - name: Build application
-        run: pnpm build
-        env:
-          RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
-          GOOGLE_SITE_VERIFICATION: ${{ secrets.GOOGLE_SITE_VERIFICATION }}
-          NEXT_PUBLIC_CALENDLY_URL: ${{ secrets.NEXT_PUBLIC_CALENDLY_URL }}
+          echo "No secret files found in repository."

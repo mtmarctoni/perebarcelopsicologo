@@ -1,0 +1,7 @@
+onlyBuiltDependencies:
+  - sharp
+  - "@biomejs/biome"
+  - esbuild
+  - "@swc/core"
+minimumReleaseAge: 10080
+trustPolicy: no-downgrade
