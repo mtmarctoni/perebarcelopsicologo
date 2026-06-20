@@ -151,6 +151,7 @@ export default function HeroSection() {
                     sizes="(max-width: 768px) 80vw, 480px"
                     className="object-cover object-top"
                     priority
+                    fetchPriority="high"
                   />
                   {/* Bottom gradient overlay on image */}
                   <div
