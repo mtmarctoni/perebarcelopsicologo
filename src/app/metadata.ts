@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { images } from "@/config/images";
 import { serverEnv } from "@/config/server-env.config";
-import { getRobotsMetadata, getSiteUrl } from "@/lib/site";
+import { getCanonicalUrl, getRobotsMetadata, getSiteUrl } from "@/lib/site";
 
 export const siteName = "Pere Barceló - Psicólogo Deportivo";
 const description =
@@ -11,6 +11,7 @@ const keywords =
 const googleVerification = serverEnv.GOOGLE_SITE_VERIFICATION;
 
 const siteUrl = getSiteUrl();
+const canonicalUrl = getCanonicalUrl();
 
 const defaultOgImage = {
   url: `${siteUrl}${images.ogDefault}`,
@@ -46,11 +47,11 @@ export const defaultMetadata: Metadata = {
   robots: getRobotsMetadata(),
   ...(googleVerification ? { verification: { google: googleVerification } } : {}),
   alternates: {
-    canonical: "/",
+    canonical: canonicalUrl,
     languages: {
-      "x-default": `${siteUrl}/`,
-      es: `${siteUrl}/`,
-      ca: `${siteUrl}/ca/`,
+      "x-default": `${canonicalUrl}/`,
+      es: `${canonicalUrl}/`,
+      ca: `${canonicalUrl}/ca/`,
     },
   },
   icons: {
@@ -83,7 +84,7 @@ export function createPageMetadata({
   imageUrl,
   keywords,
 }: PageMetadataOptions): Metadata {
-  const canonical = path === "/" ? siteUrl : `${siteUrl}${path}`;
+  const canonical = path === "/" ? canonicalUrl : `${canonicalUrl}${path}`;
   const resolvedImageUrl = imageUrl || (imagePath ? `${siteUrl}${imagePath}` : defaultOgImage.url);
   const images = [
     {
@@ -105,7 +106,7 @@ export function createPageMetadata({
       languages: {
         "x-default": canonical,
         es: canonical,
-        ca: `${siteUrl}/ca${path}`,
+        ca: `${canonicalUrl}/ca${path}`,
       },
     },
     openGraph: {
