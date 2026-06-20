@@ -80,12 +80,12 @@ export function ThemeProvider({
   initialTheme,
 }: {
   children: ReactNode;
-  initialTheme: Theme;
+  initialTheme?: Theme;
 }) {
   const theme = useSyncExternalStore(
     themeStore.subscribe,
     themeStore.getSnapshot,
-    () => initialTheme,
+    () => initialTheme ?? "light",
   );
 
   const setTheme = useCallback((newTheme: Theme) => {

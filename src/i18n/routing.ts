@@ -5,6 +5,7 @@ export const routing = defineRouting({
   locales: ["es", "ca"],
   defaultLocale: "es",
   localePrefix: "as-needed",
+  localeDetection: false,
 });
 
 export const { Link, redirect, usePathname, useRouter, getPathname } = createNavigation(routing);

@@ -1,11 +1,10 @@
 import { GoogleTagManager } from "@next/third-parties/google";
 import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import { cookies } from "next/headers";
 import { notFound } from "next/navigation";
 import Script from "next/script";
 import { NextIntlClientProvider } from "next-intl";
-import { getMessages, getTranslations } from "next-intl/server";
+import { getMessages, getTranslations, setRequestLocale } from "next-intl/server";
 import "../globals.css";
 import Footer from "@/components/core/Footer";
 import Navbar from "@/components/core/NavBar";
@@ -62,6 +61,10 @@ export const viewport: Viewport = {
   themeColor: "#f8fafc",
 };
 
+export function generateStaticParams() {
+  return routing.locales.map((locale) => ({ locale }));
+}
+
 export default async function LocaleLayout({ children, params }: Props) {
   const { locale } = await params;
 
@@ -69,19 +72,34 @@ export default async function LocaleLayout({ children, params }: Props) {
     notFound();
   }
 
+  // Enable static rendering by providing locale to next-intl's request cache
+  // instead of reading from headers() (which would force dynamic rendering)
+  setRequestLocale(locale);
+
   const messages = await getMessages();
   const gtmId = clientEnv.NEXT_PUBLIC_GTM_ID;
   const cookiebotCbid = clientEnv.NEXT_PUBLIC_COOKIEBOT_CBID;
 
-  const cookieStore = await cookies();
-  const themeCookie = cookieStore.get("theme")?.value;
-  const initialTheme = themeCookie === "dark" ? "dark" : "light";
-
   return (
     <html
       lang={locale}
-      className={`scroll-smooth bg-background ${initialTheme === "dark" ? "dark" : ""}`}
+      className="scroll-smooth bg-background"
+      suppressHydrationWarning
     >
+      <Script
+        id="theme-init"
+        strategy="beforeInteractive"
+        dangerouslySetInnerHTML={{
+          __html: `
+            (function() {
+              const theme = document.cookie.match(/theme=(dark|light)/)?.[1];
+              if (theme === "dark" || (!theme && window.matchMedia("(prefers-color-scheme: dark)").matches)) {
+                document.documentElement.classList.add("dark");
+              }
+            })();
+          `,
+        }}
+      />
       <head>
         {/* Preconnect to critical third-party origins for faster resource loading.
             Place preconnect hints before any preload/resource links to ensure the
@@ -106,7 +124,7 @@ export default async function LocaleLayout({ children, params }: Props) {
       >
         {cookiebotCbid && <CookiebotScript cbid={cookiebotCbid} />}
         {gtmId && <GoogleTagManager gtmId={gtmId} />}
-        <Providers initialTheme={initialTheme}>
+        <Providers>
           <NextIntlClientProvider messages={messages}>
             <Navbar />
             <div className="flex flex-col min-h-screen flex-grow">{children}</div>

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
-import { getTranslations } from "next-intl/server";
+import { use } from "react";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 
 import { createPageMetadata } from "@/app/metadata";
 import HomeContent from "./_home-content";
@@ -20,6 +21,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   });
 }
 
-export default function HomePage() {
+export default function HomePage({ params }: Props) {
+  const { locale } = use(params);
+  setRequestLocale(locale);
+
   return <HomeContent />;
 }

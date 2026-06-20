@@ -1,5 +1,6 @@
+import { use } from "react";
 import type { Metadata } from "next";
-import { getTranslations } from "next-intl/server";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 
 import { createPageMetadata } from "@/app/metadata";
 import PrivacyContent from "./_privacy-content";
@@ -20,6 +21,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   });
 }
 
-export default function PrivacyPage() {
+export default function PrivacyPage({ params }: Props) {
+  const { locale } = use(params);
+  setRequestLocale(locale);
+
   return <PrivacyContent />;
 }
