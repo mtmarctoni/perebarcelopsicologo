@@ -7,7 +7,6 @@ vi.mock("@/config/server-env.config", () => ({
 vi.mock("@/lib/site", () => ({
   getCanonicalUrl: vi.fn().mockReturnValue("https://perebarcelopsicologo.com"),
   getSiteUrl: vi.fn().mockReturnValue("https://perebarcelopsicologo.com"),
-  getCanonicalUrl: vi.fn().mockReturnValue("https://perebarcelopsicologo.com"),
   getRobotsMetadata: vi.fn().mockReturnValue({
     index: true,
     follow: true,
