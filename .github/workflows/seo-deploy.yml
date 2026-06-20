@@ -1,0 +1,64 @@
+name: Lighthouse Post-Deply Check
+
+on:
+  push:
+    branches: [main]
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  lighthouse:
+    name: Lighthouse Audit
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: "pnpm"
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile --prefer-offline
+
+      - name: Run Lighthouse audit against production
+        id: lighthouse
+        run: |
+          pnpm exec lighthouse https://perebarcelopsicologo.com \
+            --output=json \
+            --output=html \
+            --output-path=./lh-report \
+            --chrome-flags="--headless --no-sandbox" \
+            --quiet
+
+      - name: Display scores
+        run: |
+          echo "### Lighthouse Scores" >> $GITHUB_STEP_SUMMARY
+          node -e "
+            const r = require('./lh-report.report.json');
+            const cats = r.categories || {};
+            let summary = '| Category | Score |\n|---|---|\n';
+            for (const [name, cat] of Object.entries(cats)) {
+              const score = Math.round(cat.score * 100);
+              const icon = score >= 90 ? ':green_circle:' : score >= 50 ? ':yellow_circle:' : ':red_circle:';
+              summary += '| ' + icon + ' ' + cat.title + ' | ' + score + '/100 |\n';
+            }
+            console.log(summary);
+          " >> $GITHUB_STEP_SUMMARY
+
+      - name: Upload Lighthouse report
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: lighthouse-report
+          path: ./lh-report.report.html
