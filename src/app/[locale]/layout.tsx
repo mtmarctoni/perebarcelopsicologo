@@ -1,4 +1,3 @@
-import { GoogleTagManager } from "@next/third-parties/google";
 import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { cookies } from "next/headers";
@@ -33,6 +32,14 @@ const CookiebotScript = ({ cbid }: { cbid: string }) => (
     data-cbid={cbid}
     data-blockingmode="auto"
     type="text/javascript"
+    strategy="lazyOnload"
+  />
+);
+
+const GtmScript = ({ gtmId }: { gtmId: string }) => (
+  <Script
+    id="gtm"
+    src={`https://www.googletagmanager.com/gtm.js?id=${gtmId}`}
     strategy="lazyOnload"
   />
 );
@@ -102,7 +109,7 @@ export default async function LocaleLayout({ children, params }: Props) {
         className={`${geistSans.variable} ${geistMono.variable} min-h-screen bg-background font-sans antialiased`}
       >
         {cookiebotCbid && <CookiebotScript cbid={cookiebotCbid} />}
-        {gtmId && <GoogleTagManager gtmId={gtmId} />}
+        {gtmId && <GtmScript gtmId={gtmId} />}
         <Providers initialTheme={initialTheme}>
           <NextIntlClientProvider messages={messages}>
             <Navbar />
