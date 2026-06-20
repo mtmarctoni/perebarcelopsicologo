@@ -7,6 +7,8 @@ import Script from "next/script";
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages, getTranslations } from "next-intl/server";
 import "../globals.css";
+import Footer from "@/components/core/Footer";
+import Navbar from "@/components/core/NavBar";
 import { clientEnv } from "@/config/client-env.config";
 import { routing } from "@/i18n/routing";
 import { createPageMetadata } from "../metadata";
@@ -89,7 +91,11 @@ export default async function LocaleLayout({ children, params }: Props) {
         )}
         {gtmId && <GoogleTagManager gtmId={gtmId} />}
         <Providers initialTheme={initialTheme}>
-          <NextIntlClientProvider messages={messages}>{children}</NextIntlClientProvider>
+          <NextIntlClientProvider messages={messages}>
+            <Navbar />
+            <div className="flex flex-col min-h-screen flex-grow">{children}</div>
+            <Footer />
+          </NextIntlClientProvider>
         </Providers>
       </body>
     </html>
