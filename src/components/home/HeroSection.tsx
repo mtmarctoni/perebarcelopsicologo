@@ -130,7 +130,6 @@ export default function HeroSection() {
               initial={{ opacity: 1, scale: 0.95, x: 30 }}
               animate={{ opacity: 1, scale: 1, x: 0 }}
               transition={{ duration: 1, ease: [0.22, 1, 0.36, 1], delay: 0.2 }}
-              style={{ willChange: "transform" }}
             >
               <div className="relative w-[280px] sm:w-[340px] lg:w-[420px] xl:w-[480px]">
                 {/* Decorative amber glow behind image */}
