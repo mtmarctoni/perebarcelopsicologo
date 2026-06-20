@@ -9,6 +9,10 @@ import { getMessages, getTranslations } from "next-intl/server";
 import "../globals.css";
 import Footer from "@/components/core/Footer";
 import Navbar from "@/components/core/NavBar";
+import {
+  LocalBusinessSchema,
+  WebsiteSchema,
+} from "@/components/seo/SchemaMarkup";
 import { clientEnv } from "@/config/client-env.config";
 import { routing } from "@/i18n/routing";
 import { createPageMetadata } from "../metadata";
@@ -99,6 +103,8 @@ export default async function LocaleLayout({ children, params }: Props) {
             <link rel="dns-prefetch" href="https://consent.cookiebot.com" />
           </>
         )}
+        <WebsiteSchema />
+        <LocalBusinessSchema />
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} min-h-screen bg-background font-sans antialiased`}
