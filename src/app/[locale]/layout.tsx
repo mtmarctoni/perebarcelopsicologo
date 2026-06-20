@@ -9,10 +9,7 @@ import { getMessages, getTranslations } from "next-intl/server";
 import "../globals.css";
 import Footer from "@/components/core/Footer";
 import Navbar from "@/components/core/NavBar";
-import {
-  LocalBusinessSchema,
-  WebsiteSchema,
-} from "@/components/seo/SchemaMarkup";
+import { LocalBusinessSchema, WebsiteSchema } from "@/components/seo/SchemaMarkup";
 import { clientEnv } from "@/config/client-env.config";
 import { routing } from "@/i18n/routing";
 import { createPageMetadata } from "../metadata";
@@ -40,8 +37,6 @@ const CookiebotScript = ({ cbid }: { cbid: string }) => (
     strategy="lazyOnload"
   />
 );
-
-
 
 type Props = {
   children: React.ReactNode;
