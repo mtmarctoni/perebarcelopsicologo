@@ -6,6 +6,7 @@ vi.mock("@/config/server-env.config", () => ({
 
 vi.mock("@/lib/site", () => ({
   getSiteUrl: vi.fn().mockReturnValue("https://perebarcelopsicologo.com"),
+  getCanonicalUrl: vi.fn().mockReturnValue("https://perebarcelopsicologo.com"),
   getRobotsMetadata: vi.fn().mockReturnValue({
     index: true,
     follow: true,
@@ -49,7 +50,7 @@ describe("defaultMetadata", () => {
   });
 
   it("has alternates with canonical and hreflang", () => {
-    expect(defaultMetadata.alternates?.canonical).toBe("/");
+    expect(defaultMetadata.alternates?.canonical).toBe("https://perebarcelopsicologo.com");
     expect(defaultMetadata.alternates?.languages?.["x-default"]).toBe(
       "https://perebarcelopsicologo.com/",
     );
