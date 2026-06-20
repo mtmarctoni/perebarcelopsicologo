@@ -17,11 +17,13 @@ import { Providers } from "../providers";
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
+  display: "swap",
 });
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
+  display: "swap",
 });
 
 const CookiebotScript = ({ cbid }: { cbid: string }) => (
@@ -31,7 +33,7 @@ const CookiebotScript = ({ cbid }: { cbid: string }) => (
     data-cbid={cbid}
     data-blockingmode="auto"
     type="text/javascript"
-    strategy="beforeInteractive"
+    strategy="lazyOnload"
   />
 );
 
@@ -79,16 +81,27 @@ export default async function LocaleLayout({ children, params }: Props) {
       lang={locale}
       className={`scroll-smooth bg-background ${initialTheme === "dark" ? "dark" : ""}`}
     >
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} min-h-screen bg-background font-sans antialiased`}
-      >
+      <head>
+        {/* Preconnect to critical third-party origins for faster resource loading */}
+        {gtmId && (
+          <>
+            <link rel="preconnect" href="https://www.googletagmanager.com" />
+            <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+            <link rel="preconnect" href="https://www.google-analytics.com" />
+            <link rel="dns-prefetch" href="https://www.google-analytics.com" />
+          </>
+        )}
         {cookiebotCbid && (
           <>
             <link rel="preconnect" href="https://consent.cookiebot.com" />
             <link rel="dns-prefetch" href="https://consent.cookiebot.com" />
-            <CookiebotScript cbid={cookiebotCbid} />
           </>
         )}
+      </head>
+      <body
+        className={`${geistSans.variable} ${geistMono.variable} min-h-screen bg-background font-sans antialiased`}
+      >
+        {cookiebotCbid && <CookiebotScript cbid={cookiebotCbid} />}
         {gtmId && <GoogleTagManager gtmId={gtmId} />}
         <Providers initialTheme={initialTheme}>
           <NextIntlClientProvider messages={messages}>
