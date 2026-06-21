@@ -1,5 +1,5 @@
 type DataLayerEvent = {
-  event: "generate_lead";
+  event: "generate_lead" | "calendly_scheduled";
   leadSource?: string;
 };
 
