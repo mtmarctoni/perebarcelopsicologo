@@ -97,6 +97,10 @@ export default async function LocaleLayout({ children, params }: Props) {
             <link rel="dns-prefetch" href="https://consent.cookiebot.com" />
           </>
         )}
+        <link rel="preconnect" href="https://calendly.com" />
+        <link rel="dns-prefetch" href="https://calendly.com" />
+        <link rel="preconnect" href="https://assets.calendly.com" />
+        <link rel="dns-prefetch" href="https://assets.calendly.com" />
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} min-h-screen bg-background font-sans antialiased`}
