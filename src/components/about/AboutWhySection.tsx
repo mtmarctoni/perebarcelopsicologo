@@ -1,12 +1,10 @@
-"use client";
-
 import Link from "next/link";
-import { useTranslations } from "next-intl";
+import { getTranslations } from "next-intl/server";
 import AnimatedSection from "@/components/composables/AnimatedSection";
 import SectionLabel from "@/components/composables/SectionLabel";
 
-export default function AboutWhySection() {
-  const t = useTranslations("AboutWhySection");
+export default async function AboutWhySection() {
+  const t = await getTranslations("AboutWhySection");
   return (
     <section className="relative bg-background overflow-hidden">
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[20rem] font-bold text-text-dark opacity-[0.02] select-none pointer-events-none">

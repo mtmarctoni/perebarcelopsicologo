@@ -1,12 +1,10 @@
-"use client";
-
 import Link from "next/link";
-import { useTranslations } from "next-intl";
+import { getTranslations } from "next-intl/server";
 
 import AnimatedSection from "@/components/composables/AnimatedSection";
 
-export default function AboutCtaSection() {
-  const t = useTranslations("AboutCtaSection");
+export default async function AboutCtaSection() {
+  const t = await getTranslations("AboutCtaSection");
   return (
     <section className="relative bg-background overflow-hidden">
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_50%,_rgba(185,216,235,0.08)_0%,_transparent_70%)]" />
