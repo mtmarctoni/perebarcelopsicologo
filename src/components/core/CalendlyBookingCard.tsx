@@ -53,21 +53,19 @@ function CalendlySkeleton() {
 const CalendlyBookingCard = () => {
   const t = useTranslations("CalendlyBookingCard");
   const iframeRef = useRef<HTMLIFrameElement>(null);
-  const [iframeHeight, setIframeHeight] = useState(() => {
-    if (typeof window !== "undefined") {
-      return estimateFrameHeight(window.innerWidth);
-    }
-    return 920;
-  });
+  const [iframeHeight, setIframeHeight] = useState(920);
   const [isLoaded, setIsLoaded] = useState(false);
   const [timedOut, setTimedOut] = useState(false);
-  const [embedUrl, _setEmbedUrl] = useState(() => {
-    if (typeof window !== "undefined" && calendlyBaseUrl) {
-      return buildEmbedUrl(calendlyBaseUrl);
-    }
-    return "";
-  });
+  const [embedUrl, setEmbedUrl] = useState("");
   const hasCalendly = Boolean(calendlyBaseUrl);
+
+  // Initialise client-only values after mount to avoid SSR hydration mismatches.
+  useEffect(() => {
+    if (calendlyBaseUrl) {
+      setEmbedUrl(buildEmbedUrl(calendlyBaseUrl));
+    }
+    setIframeHeight(estimateFrameHeight(window.innerWidth));
+  }, []);
 
   const containerCallbackRef = useCallback((node: HTMLDivElement | null) => {
     if (!node) return;
@@ -127,7 +125,7 @@ const CalendlyBookingCard = () => {
               onLoad={() => setIsLoaded(true)}
               allow="camera; microphone; autoplay; fullscreen; display-capture"
               referrerPolicy="no-referrer-when-downgrade"
-              sandbox="allow-scripts allow-popups allow-forms allow-popups-to-escape-sandbox"
+              sandbox="allow-scripts allow-same-origin allow-popups allow-forms allow-popups-to-escape-sandbox"
             />
           )}
           {timedOut && !isLoaded && (
