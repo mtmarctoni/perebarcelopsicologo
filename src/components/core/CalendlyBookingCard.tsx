@@ -1,7 +1,7 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState, useSyncExternalStore } from "react";
 import { clientEnv } from "@/config/client-env.config";
 
 const calendlyBaseUrl = clientEnv.NEXT_PUBLIC_CALENDLY_URL;
@@ -25,6 +25,19 @@ function buildEmbedUrl(base: string): string {
   url.searchParams.set("embed_domain", window.location.hostname);
   url.searchParams.set("embed_type", "Inline");
   return url.toString();
+}
+
+function useEmbedUrl(baseUrl: string | undefined): string {
+  return useSyncExternalStore(
+    () => () => {},
+    () => {
+      if (typeof window !== "undefined" && baseUrl) {
+        return buildEmbedUrl(baseUrl);
+      }
+      return "";
+    },
+    () => "",
+  );
 }
 
 function CalendlySkeleton() {
@@ -56,16 +69,8 @@ const CalendlyBookingCard = () => {
   const [iframeHeight, setIframeHeight] = useState(920);
   const [isLoaded, setIsLoaded] = useState(false);
   const [timedOut, setTimedOut] = useState(false);
-  const [embedUrl, setEmbedUrl] = useState("");
+  const embedUrl = useEmbedUrl(calendlyBaseUrl);
   const hasCalendly = Boolean(calendlyBaseUrl);
-
-  // Initialise client-only values after mount to avoid SSR hydration mismatches.
-  useEffect(() => {
-    if (calendlyBaseUrl) {
-      setEmbedUrl(buildEmbedUrl(calendlyBaseUrl));
-    }
-    setIframeHeight(estimateFrameHeight(window.innerWidth));
-  }, []);
 
   const containerCallbackRef = useCallback((node: HTMLDivElement | null) => {
     if (!node) return;
