@@ -1,5 +1,5 @@
 import { EnvelopeIcon, InstagramIcon, LinkedinIcon } from "@/components/composables/Icons";
-import { type Club, type SocialCardProps } from "@/types/navbar";
+import type { Club, SocialCardProps } from "@/types/navbar";
 
 export const phone: string = "+34 636 67 47 59";
 export const email: string = "pere@perebarcelopsicologo.com";
