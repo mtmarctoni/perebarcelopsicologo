@@ -7,7 +7,7 @@
 //
 // Usage: node scripts/check-server-only-imports.mjs
 
-import { readFileSync, existsSync, readdirSync, statSync } from "node:fs";
+import { existsSync, readdirSync, readFileSync } from "node:fs";
 import { join, sep } from "node:path";
 
 const ALLOWED_PATTERNS = [
