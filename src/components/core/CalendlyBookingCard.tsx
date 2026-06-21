@@ -61,7 +61,7 @@ const CalendlyBookingCard = () => {
   });
   const [isLoaded, setIsLoaded] = useState(false);
   const [timedOut, setTimedOut] = useState(false);
-  const [embedUrl, setEmbedUrl] = useState(() => {
+  const [embedUrl, _setEmbedUrl] = useState(() => {
     if (typeof window !== "undefined" && calendlyBaseUrl) {
       return buildEmbedUrl(calendlyBaseUrl);
     }
