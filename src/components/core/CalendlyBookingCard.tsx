@@ -1,15 +1,32 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { clientEnv } from "@/config/client-env.config";
 
 const calendlyUrl = clientEnv.NEXT_PUBLIC_CALENDLY_URL;
 
 const CalendlyBookingCard = () => {
   const t = useTranslations("CalendlyBookingCard");
-  const [showIframe, setShowIframe] = useState(false);
+  const iframeRef = useRef<HTMLIFrameElement>(null);
+  const [iframeHeight, setIframeHeight] = useState(700);
   const hasCalendly = Boolean(calendlyUrl);
+
+  useEffect(() => {
+    const handleMessage = (e: MessageEvent) => {
+      if (
+        e.source === iframeRef.current?.contentWindow &&
+        typeof e.data?.event === "string" &&
+        e.data.event.indexOf("calendly") === 0
+      ) {
+        if (e.data.event === "calendly.resize" && typeof e.data.height === "number") {
+          setIframeHeight(e.data.height);
+        }
+      }
+    };
+    window.addEventListener("message", handleMessage);
+    return () => window.removeEventListener("message", handleMessage);
+  }, []);
 
   return (
     <div className="bg-background rounded-3xl shadow-card p-8 sm:p-10 h-full flex flex-col">
@@ -20,30 +37,18 @@ const CalendlyBookingCard = () => {
       <p className="text-text mt-4 leading-relaxed">{t("description")}</p>
 
       {hasCalendly ? (
-        <div className="mt-8 rounded-2xl overflow-hidden border border-secondary/20 bg-background-alt min-h-[720px]">
-          {showIframe ? (
-            // react-doctor-disable-next-line react-doctor/iframe-missing-sandbox
-            <iframe
-              src={calendlyUrl}
-              title="Calendly booking"
-              className="w-full h-[720px]"
-              loading="lazy"
-              allow="camera; microphone; autoplay; fullscreen; display-capture"
-              referrerPolicy="no-referrer-when-downgrade"
-              sandbox="allow-scripts allow-forms allow-same-origin allow-popups"
-            />
-          ) : (
-            <div className="h-[720px] flex flex-col items-center justify-center gap-6 p-8 text-center">
-              <p className="text-text-light max-w-md">{t("loadDescription")}</p>
-              <button
-                type="button"
-                onClick={() => setShowIframe(true)}
-                className="inline-flex items-center justify-center rounded-full bg-primary px-8 py-3 text-sm font-semibold text-white transition hover:bg-primary-dark focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
-              >
-                {t("openCalendar")}
-              </button>
-            </div>
-          )}
+        <div className="mt-8 rounded-2xl overflow-hidden border border-secondary/20 bg-background-alt">
+          <iframe
+            ref={iframeRef}
+            src={calendlyUrl}
+            title="Calendly booking"
+            className="w-full"
+            style={{ height: iframeHeight }}
+            loading="lazy"
+            allow="camera; microphone; autoplay; fullscreen; display-capture"
+            referrerPolicy="no-referrer-when-downgrade"
+            sandbox="allow-scripts allow-forms allow-popups"
+          />
         </div>
       ) : (
         <div className="mt-8 rounded-2xl border border-dashed border-secondary/30 bg-background-alt p-8 flex flex-col justify-center items-start gap-4 min-h-[320px]">

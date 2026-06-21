@@ -2,7 +2,7 @@ export const images = {
   ogDefault: "/stock/alcanza-tu-objetivo.webp",
   contactHero: "/stock/personas-escuchando.webp",
   profilePhoto: "/wp/profile-photo.webp",
-  heroTransparent: "/profile/pere1-transparente.webp",
+  heroTransparent: "/profile/pere-bio.webp",
   profileMaroon: "/profile/pere-perfil-camiseta-marron.webp",
   profileGreen: "/profile/pere-perfil-camiseta-verde.webp",
   faviconIco: "/favicon.ico",
