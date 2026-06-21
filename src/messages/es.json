@@ -311,10 +311,6 @@
     "heading": "También puedes encontrarme en"
   },
   "CalendlyBookingCard": {
-    "label": "Reserva directa",
-    "heading": "Reserva una llamada",
-    "description": "Si prefieres elegir hora directamente, puedes reservar una cita desde el calendario.",
-    "loadDescription": "Carga el calendario para elegir día y hora de tu cita.",
     "openCalendar": "Abrir calendario",
     "placeholderText": "El bloque de reserva estará disponible en cuanto se configure la URL pública de Calendly.",
     "configHint": "Configuración requerida: NEXT_PUBLIC_CALENDLY_URL"
