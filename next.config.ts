@@ -72,8 +72,8 @@ const nextConfig: NextConfig = {
   },
   webpack(config) {
     // Grab the existing rule that handles SVG imports
-    const fileLoaderRule = config.module.rules.find(
-      (rule: { test?: RegExp }) => rule.test?.test?.(".svg"),
+    const fileLoaderRule = config.module.rules.find((rule: { test?: RegExp }) =>
+      rule.test?.test?.(".svg"),
     );
 
     config.module.rules.push(
@@ -154,20 +154,11 @@ const nextConfig: NextConfig = {
           },
         ],
       },
-      // Cache static assets with immutable hashes for 1 year
-      {
-        source: "/_next/static/(.*)",
-        headers: [
-          {
-            key: "Cache-Control",
-            value: "public, max-age=31536000, immutable",
-          },
-        ],
-      },
       // Cache static images for 1 year with stale-while-revalidate
       // for non-hashed assets that may change between deployments
       {
-        source: "/(favicon.ico|favicon-16x16.png|favicon-32x32.png|apple-touch-icon.png|icon-192x192.png|icon-512x512.png|site.webmanifest)",
+        source:
+          "/(favicon.ico|favicon-16x16.png|favicon-32x32.png|apple-touch-icon.png|icon-192x192.png|icon-512x512.png|site.webmanifest)",
         headers: [
           {
             key: "Cache-Control",
