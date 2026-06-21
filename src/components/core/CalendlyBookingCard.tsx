@@ -8,22 +8,25 @@ const calendlyUrl = clientEnv.NEXT_PUBLIC_CALENDLY_URL;
 
 const CalendlyBookingCard = () => {
   const t = useTranslations("CalendlyBookingCard");
-  const iframeRef = useRef<HTMLIFrameElement>(null);
   const [iframeHeight, setIframeHeight] = useState(700);
   const hasCalendly = Boolean(calendlyUrl);
+  const iframeRef = useRef<HTMLIFrameElement>(null);
 
   useEffect(() => {
     const handleMessage = (e: MessageEvent) => {
-      if (
-        e.source === iframeRef.current?.contentWindow &&
-        typeof e.data?.event === "string" &&
-        e.data.event.indexOf("calendly") === 0
-      ) {
-        if (e.data.event === "calendly.resize" && typeof e.data.height === "number") {
-          setIframeHeight(e.data.height);
-        }
+      if (e.source !== iframeRef.current?.contentWindow) return;
+      if (typeof e.data?.event !== "string") return;
+      if (e.data.event.indexOf("calendly") !== 0) return;
+
+      if (e.data.event === "calendly.resize" && typeof e.data.height === "number") {
+        setIframeHeight(e.data.height);
+      }
+
+      if (e.data.event === "calendly.event_scheduled") {
+        window.dataLayer?.push({ event: "calendly_scheduled" });
       }
     };
+
     window.addEventListener("message", handleMessage);
     return () => window.removeEventListener("message", handleMessage);
   }, []);
