@@ -1,7 +1,7 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { clientEnv } from "@/config/client-env.config";
 
 const calendlyBaseUrl = clientEnv.NEXT_PUBLIC_CALENDLY_URL;
@@ -53,27 +53,29 @@ function CalendlySkeleton() {
 const CalendlyBookingCard = () => {
   const t = useTranslations("CalendlyBookingCard");
   const iframeRef = useRef<HTMLIFrameElement>(null);
-  const containerRef = useRef<HTMLDivElement>(null);
-  const [iframeHeight, setIframeHeight] = useState(920);
+  const [iframeHeight, setIframeHeight] = useState(() => {
+    if (typeof window !== "undefined") {
+      return estimateFrameHeight(window.innerWidth);
+    }
+    return 920;
+  });
   const [isLoaded, setIsLoaded] = useState(false);
   const [timedOut, setTimedOut] = useState(false);
-  const [embedUrl, setEmbedUrl] = useState("");
+  const [embedUrl, setEmbedUrl] = useState(() => {
+    if (typeof window !== "undefined" && calendlyBaseUrl) {
+      return buildEmbedUrl(calendlyBaseUrl);
+    }
+    return "";
+  });
   const hasCalendly = Boolean(calendlyBaseUrl);
 
-  useEffect(() => {
-    if (calendlyBaseUrl) {
-      setEmbedUrl(buildEmbedUrl(calendlyBaseUrl));
-    }
-  }, []);
-
-  useEffect(() => {
-    const el = containerRef.current;
-    if (!el) return;
+  const containerCallbackRef = useCallback((node: HTMLDivElement | null) => {
+    if (!node) return;
     const ro = new ResizeObserver((entries) => {
       const { width } = entries[0].contentRect;
       setIframeHeight(estimateFrameHeight(width));
     });
-    ro.observe(el);
+    ro.observe(node);
     return () => ro.disconnect();
   }, []);
 
@@ -105,7 +107,7 @@ const CalendlyBookingCard = () => {
   return (
     <div>
       {hasCalendly ? (
-        <div ref={containerRef} className="relative" style={{ minHeight: iframeHeight }}>
+        <div ref={containerCallbackRef} className="relative" style={{ minHeight: iframeHeight }}>
           {!isLoaded && (
             <div className="absolute inset-0 z-10 flex flex-col p-6 sm:p-8">
               <CalendlySkeleton />
@@ -125,7 +127,7 @@ const CalendlyBookingCard = () => {
               onLoad={() => setIsLoaded(true)}
               allow="camera; microphone; autoplay; fullscreen; display-capture"
               referrerPolicy="no-referrer-when-downgrade"
-              sandbox="allow-scripts allow-same-origin allow-popups allow-forms allow-popups-to-escape-sandbox"
+              sandbox="allow-scripts allow-popups allow-forms allow-popups-to-escape-sandbox"
             />
           )}
           {timedOut && !isLoaded && (
