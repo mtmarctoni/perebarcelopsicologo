@@ -116,6 +116,7 @@ const CalendlyBookingCard = () => {
               ref={iframeRef}
               src={embedUrl}
               title="Calendly booking"
+              loading="lazy"
               className="w-full transition-all duration-500"
               style={{
                 height: iframeHeight,
