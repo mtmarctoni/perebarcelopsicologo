@@ -25,7 +25,7 @@ const SuccessQuestion = ({ resetForm }: Props) => {
           animate={{ opacity: 1 }}
           transition={{ delay: 0.5 }}
           onClick={resetForm}
-          className="mt-8 px-6 py-2 bg-primary-dark text-white rounded-lg hover:bg-secondary-light transition-colors"
+          className="mt-8 px-6 py-2 bg-primary-dark text-white rounded-lg hover:bg-secondary-light hover:text-text-dark transition-colors"
         >
           {t("buttonReset")}
         </m.button>

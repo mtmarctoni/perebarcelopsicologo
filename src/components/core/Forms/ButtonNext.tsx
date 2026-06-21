@@ -13,7 +13,7 @@ const ButtonNext = ({ show, onClick }: Props) => {
       <button
         type="button"
         onClick={onClick}
-        className="px-6 py-2 bg-primary-dark text-white rounded-lg hover:bg-secondary-light transition-colors"
+        className="px-6 py-2 bg-primary-dark text-white rounded-lg hover:bg-secondary-light hover:text-text-dark transition-colors"
       >
         {t("buttonNext")}
       </button>

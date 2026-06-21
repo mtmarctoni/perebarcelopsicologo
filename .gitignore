@@ -52,3 +52,4 @@ AGENTS.md
 lighthouse-seo-report.report.*
 lighthouse-report.report.*
 lh-report.report.*
+*.swp

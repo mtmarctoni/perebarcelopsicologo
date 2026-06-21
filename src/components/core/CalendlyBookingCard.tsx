@@ -1,23 +1,25 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { clientEnv } from "@/config/client-env.config";
 
 const calendlyUrl = clientEnv.NEXT_PUBLIC_CALENDLY_URL;
 
 const CalendlyBookingCard = () => {
   const t = useTranslations("CalendlyBookingCard");
+  const iframeRef = useRef<HTMLIFrameElement>(null);
   const [iframeHeight, setIframeHeight] = useState(700);
   const hasCalendly = Boolean(calendlyUrl);
 
   useEffect(() => {
     const handleMessage = (e: MessageEvent) => {
       if (
-        e.origin === "https://calendly.com" &&
-        e.data?.event?.indexOf?.("calendly") === 0
+        e.source === iframeRef.current?.contentWindow &&
+        typeof e.data?.event === "string" &&
+        e.data.event.indexOf("calendly") === 0
       ) {
-        if (e.data.event === "calendly.resize" && e.data.height) {
+        if (e.data.event === "calendly.resize" && typeof e.data.height === "number") {
           setIframeHeight(e.data.height);
         }
       }
@@ -37,6 +39,7 @@ const CalendlyBookingCard = () => {
       {hasCalendly ? (
         <div className="mt-8 rounded-2xl overflow-hidden border border-secondary/20 bg-background-alt">
           <iframe
+            ref={iframeRef}
             src={calendlyUrl}
             title="Calendly booking"
             className="w-full"
@@ -44,7 +47,7 @@ const CalendlyBookingCard = () => {
             loading="lazy"
             allow="camera; microphone; autoplay; fullscreen; display-capture"
             referrerPolicy="no-referrer-when-downgrade"
-            sandbox="allow-scripts allow-forms allow-same-origin allow-popups"
+            sandbox="allow-scripts allow-forms allow-popups"
           />
         </div>
       ) : (
