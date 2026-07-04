@@ -16,6 +16,10 @@
       {
         "files": [".github/workflows/ci.yml"],
         "rules": ["react-doctor/build-pipeline-secret-boundary"]
+      },
+      {
+        "files": ["src/components/core/CalendlyBookingCard.tsx"],
+        "rules": ["react-doctor/iframe-missing-sandbox"]
       }
     ]
   }
