@@ -1,5 +1,7 @@
 import Link from "next/link";
 import { getLocale, getTranslations } from "next-intl/server";
+import CTAButton from "@/components/ui/CTAButton";
+import SocialLink from "@/components/ui/SocialLink";
 import { navRoutes } from "@/config/routes";
 import { email, phone, socialMediaLinksFooter } from "@/utils/data";
 import { EnvelopeIcon, WhatsappIcon } from "../composables/Icons";
@@ -57,18 +59,14 @@ const Footer = async () => {
               {socialMediaLinksFooter.map((social) => {
                 const Icon = social.Icon;
                 return (
-                  <a
+                  <SocialLink
                     key={social.name}
                     href={social.link}
-                    target={social.link.startsWith("mailto") ? undefined : "_blank"}
-                    rel={social.link.startsWith("mailto") ? undefined : "noopener noreferrer"}
-                    className="w-10 h-10 rounded-xl bg-card border border-border flex items-center justify-center
-                             hover:bg-secondary/10 hover:border-secondary/20 hover:text-primary
-                             text-text-dark opacity-40 hover:opacity-100 transition-all duration-300"
-                    aria-label={social.name}
+                    label={social.name}
+                    location="footer"
                   >
                     <Icon className="w-4 h-4" />
-                  </a>
+                  </SocialLink>
                 );
               })}
             </div>
@@ -80,13 +78,17 @@ const Footer = async () => {
             </h3>
             <ul className="space-y-3">
               {navItems.map((item) => {
+                const label = tn(item.labelKey);
                 return (
                   <li key={item.href}>
                     <Link
                       href={item.href}
+                      data-track="nav"
+                      data-track-location="footer"
+                      data-track-label={label}
                       className="text-text-inverse opacity-40 hover:opacity-100 hover:text-primary text-sm transition-all duration-300"
                     >
-                      {tn(item.labelKey)}
+                      {label}
                     </Link>
                   </li>
                 );
@@ -101,12 +103,9 @@ const Footer = async () => {
             <p className="text-text-inverse opacity-40 text-sm leading-relaxed mb-6">
               {t("ctaText")}
             </p>
-            <Link
-              href="/contact"
-              className="inline-flex items-center justify-center text-center bg-secondary text-text-dark dark:text-[#0f172a] text-sm font-bold px-6 py-3 rounded-full hover:bg-secondary-light hover:shadow-glow hover:-translate-y-0.5 transition-all duration-300"
-            >
+            <CTAButton href="/contact" size="sm" location="footer">
               {t("ctaButton")}
-            </Link>
+            </CTAButton>
           </div>
         </div>
 

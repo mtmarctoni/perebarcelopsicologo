@@ -1,13 +1,13 @@
 "use client";
 
 import { domAnimation, LazyMotion, m } from "framer-motion";
-import Link from "next/link";
 import { useTranslations } from "next-intl";
 
 import AnimatedSection from "@/components/composables/AnimatedSection";
 import CheckIcon from "@/components/composables/CheckIcon";
 import SectionLabel from "@/components/composables/SectionLabel";
 import { fadeInUp, staggerContainer } from "@/components/home/animations";
+import CTAButton from "@/components/ui/CTAButton";
 
 export default function BenefitsSection() {
   const t = useTranslations("BenefitsSection");
@@ -27,12 +27,9 @@ export default function BenefitsSection() {
                 {t("subtitle")}
               </p>
               <div className="mt-10 text-center">
-                <Link
-                  href="/contact"
-                  className="inline-flex items-center justify-center text-center bg-primary-dark text-text-inverse font-semibold px-8 py-4 rounded-full hover:bg-secondary hover:text-text-dark dark:hover:text-[#0f172a] hover:shadow-glow transition-all duration-300"
-                >
+                <CTAButton href="/contact" location="benefits" variant="secondary">
                   {t("cta")}
-                </Link>
+                </CTAButton>
               </div>
             </AnimatedSection>
 

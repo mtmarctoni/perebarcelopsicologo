@@ -46,6 +46,9 @@ export default function ContactSocialSection() {
                   target={social.link.startsWith("mailto") ? undefined : "_blank"}
                   rel={social.link.startsWith("mailto") ? undefined : "noopener noreferrer"}
                   variants={fadeInUp}
+                  data-track="social"
+                  data-track-location="contact-social"
+                  data-track-label={social.name}
                   className="group bg-background-alt border border-border rounded-2xl p-8 text-center hover:border-secondary/30 hover:-translate-y-2 hover:shadow-glow transition-all duration-500"
                 >
                   <div className="w-14 h-14 rounded-2xl bg-secondary/10 flex items-center justify-center mx-auto mb-6 group-hover:bg-secondary/15 transition-colors duration-300">
