@@ -1,7 +1,7 @@
-import Link from "next/link";
 import { getTranslations } from "next-intl/server";
 
 import AnimatedSection from "@/components/composables/AnimatedSection";
+import CTAButton from "@/components/ui/CTAButton";
 
 export default async function ServiciosCtaSection() {
   const t = await getTranslations("ServiciosCtaSection");
@@ -15,12 +15,9 @@ export default async function ServiciosCtaSection() {
             {t("heading")}
           </h2>
           <div className="mt-10">
-            <Link
-              href="/contact"
-              className="inline-flex items-center justify-center text-center bg-secondary text-text-dark dark:text-[#0f172a] text-lg font-bold px-10 py-5 rounded-full hover:bg-secondary-light hover:shadow-glow hover:-translate-y-1 transition-all duration-300"
-            >
+            <CTAButton href="/contact" size="lg" location="servicios-cta">
               {t("cta")}
-            </Link>
+            </CTAButton>
           </div>
           <p className="mt-4 text-text-dark opacity-30 text-sm">{t("finePrint")}</p>
         </AnimatedSection>

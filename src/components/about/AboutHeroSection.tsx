@@ -2,10 +2,10 @@
 
 import { domAnimation, LazyMotion, m } from "framer-motion";
 import Image from "next/image";
-import Link from "next/link";
 import { useTranslations } from "next-intl";
 import SectionLabel from "@/components/composables/SectionLabel";
 import { fadeInUp, staggerContainer } from "@/components/home/animations";
+import CTAButton from "@/components/ui/CTAButton";
 import { images } from "@/config/images";
 
 export default function AboutHeroSection() {
@@ -38,12 +38,9 @@ export default function AboutHeroSection() {
               </m.h1>
 
               <m.div variants={fadeInUp} className="mt-10 text-center">
-                <Link
-                  href="/contact"
-                  className="inline-flex items-center justify-center text-center bg-secondary text-text-dark dark:text-[#0f172a] font-bold text-base px-8 py-4 rounded-full hover:bg-secondary-light hover:shadow-glow hover:-translate-y-0.5 transition-all duration-300"
-                >
+                <CTAButton href="/contact" location="about-hero">
                   {t("cta")}
-                </Link>
+                </CTAButton>
               </m.div>
             </m.div>
 

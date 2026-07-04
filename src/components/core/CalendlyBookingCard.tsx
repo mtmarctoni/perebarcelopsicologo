@@ -3,6 +3,7 @@
 import { useTranslations } from "next-intl";
 import { useCallback, useEffect, useRef, useState, useSyncExternalStore } from "react";
 import { clientEnv } from "@/config/client-env.config";
+import { trackEvent } from "@/lib/tracking";
 
 const calendlyBaseUrl = clientEnv.NEXT_PUBLIC_CALENDLY_URL;
 
@@ -104,7 +105,7 @@ const CalendlyBookingCard = () => {
       }
 
       if (e.data.event === "calendly.event_scheduled") {
-        window.dataLayer?.push({ event: "calendly_scheduled" });
+        trackEvent({ event: "calendly_scheduled" });
       }
     };
 

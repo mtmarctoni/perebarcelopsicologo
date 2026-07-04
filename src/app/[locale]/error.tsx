@@ -2,6 +2,7 @@
 
 import { useTranslations } from "next-intl";
 import { useEffect } from "react";
+import Button from "@/components/ui/Button";
 
 type Props = {
   error: Error & { digest?: string };
@@ -38,13 +39,7 @@ export default function LocaleError({ error, reset }: Props) {
         {t("title")}
       </h1>
       <p className="text-text-light text-lg max-w-md mb-8">{t("description")}</p>
-      <button
-        type="button"
-        onClick={reset}
-        className="bg-secondary text-text-dark dark:text-[#0f172a] font-bold rounded-full px-8 py-4 hover:shadow-glow transition-all"
-      >
-        {t("retry")}
-      </button>
+      <Button onClick={reset}>{t("retry")}</Button>
     </main>
   );
 }
