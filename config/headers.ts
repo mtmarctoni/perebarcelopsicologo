@@ -1,5 +1,8 @@
 import type { Header } from "next/dist/lib/load-custom-routes";
-import { buildContentSecurityPolicy } from "./content-security-policy";
+
+// Content-Security-Policy is set per-request by middleware (proxy.ts) with a
+// nonce — it cannot be a static header because the nonce must be unique
+// per request. All other security headers live here.
 
 export function buildHeaders(): Header[] {
   return [
@@ -29,10 +32,6 @@ export function buildHeaders(): Header[] {
         {
           key: "Strict-Transport-Security",
           value: "max-age=31536000; includeSubDomains; preload",
-        },
-        {
-          key: "Content-Security-Policy",
-          value: buildContentSecurityPolicy(),
         },
       ],
     },
