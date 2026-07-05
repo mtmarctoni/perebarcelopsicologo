@@ -3,11 +3,11 @@ import { images } from "@/config/images";
 import { serverEnv } from "@/config/server-env.config";
 import { getCanonicalUrl, getRobotsMetadata } from "@/lib/site";
 
-export const siteName = "Pere Barceló - Psicólogo Deportivo";
+export const siteName = "Pere Barceló - Psicólogo Deportivo Online";
 const description =
-  "Pere Barceló Lambea - Psicólogo Deportivo en Mallorca. Especializado en psicología del deporte para deportistas, equipos y clubes deportivos.";
+  "Pere Barceló Lambea - Psicólogo Deportivo Online en Mallorca. Especializado en psicología del deporte con sesiones online para deportistas, equipos y clubes deportivos.";
 const keywords =
-  "psicología deportiva, psicólogo deportivo mallorca, rendimiento deportivo, psicología del deporte, entrenamiento mental, deporte mallorca, psicología deportiva baleares";
+  "psicología deportiva, psicólogo deportivo online, psicólogo deportivo mallorca, psicología deportiva online, rendimiento deportivo, psicología del deporte, entrenamiento mental, deporte mallorca, sesiones online psicología deportiva, psicología deportiva baleares, terapia online deportistas";
 const googleVerification = serverEnv.GOOGLE_SITE_VERIFICATION;
 
 const siteUrl = getCanonicalUrl();
