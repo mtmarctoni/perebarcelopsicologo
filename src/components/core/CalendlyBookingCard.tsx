@@ -25,6 +25,7 @@ function buildEmbedUrl(base: string): string {
   const url = new URL(base);
   url.searchParams.set("embed_domain", window.location.hostname);
   url.searchParams.set("embed_type", "Inline");
+  url.searchParams.set("lang", "es");
   return url.toString();
 }
 
