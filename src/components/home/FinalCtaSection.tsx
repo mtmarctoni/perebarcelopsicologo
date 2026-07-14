@@ -1,12 +1,10 @@
-"use client";
-
-import Link from "next/link";
-import { useTranslations } from "next-intl";
+import { getTranslations } from "next-intl/server";
 
 import AnimatedSection from "@/components/composables/AnimatedSection";
+import CTAButton from "@/components/ui/CTAButton";
 
-export default function FinalCtaSection() {
-  const t = useTranslations("FinalCtaSection");
+export default async function FinalCtaSection() {
+  const t = await getTranslations("FinalCtaSection");
   return (
     <section className="relative bg-background overflow-hidden">
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_50%,_rgba(185,216,235,0.08)_0%,_transparent_70%)]" />
@@ -18,12 +16,9 @@ export default function FinalCtaSection() {
           </h2>
           <p className="mt-8 text-xl text-text-light max-w-xl mx-auto">{t("subtitle")}</p>
           <div className="mt-10">
-            <Link
-              href="/contact"
-              className="inline-flex items-center justify-center text-center bg-secondary text-text-dark dark:text-[#0f172a] text-lg font-bold px-10 py-5 rounded-full hover:bg-secondary-light hover:shadow-glow hover:-translate-y-1 transition-all duration-300"
-            >
+            <CTAButton href="/contact" size="lg" location="final-cta">
               {t("cta")}
-            </Link>
+            </CTAButton>
           </div>
           <p className="mt-4 text-text-dark opacity-30 text-sm">{t("finePrint")}</p>
         </AnimatedSection>

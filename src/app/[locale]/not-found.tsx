@@ -1,5 +1,5 @@
-import Link from "next/link";
 import { getTranslations } from "next-intl/server";
+import CTAButton from "@/components/ui/CTAButton";
 import { routing } from "@/i18n/routing";
 
 export default async function LocaleNotFound() {
@@ -12,12 +12,9 @@ export default async function LocaleNotFound() {
         {t("title")}
       </h1>
       <p className="text-text-light text-lg max-w-md mb-8">{t("description")}</p>
-      <Link
-        href="/"
-        className="bg-secondary text-text-dark dark:text-[#0f172a] font-bold rounded-full px-8 py-4 hover:shadow-glow transition-all"
-      >
+      <CTAButton href="/" location="not-found">
         {t("goHome")}
-      </Link>
+      </CTAButton>
     </main>
   );
 }

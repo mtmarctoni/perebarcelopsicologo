@@ -1,11 +1,13 @@
 type DataLayerEvent = {
-  event: "generate_lead";
+  event: string;
+  label?: string;
+  location?: string;
   leadSource?: string;
 };
 
 declare global {
   interface Window {
-    dataLayer: Array<DataLayerEvent>;
+    dataLayer: DataLayerEvent[];
   }
 }
 

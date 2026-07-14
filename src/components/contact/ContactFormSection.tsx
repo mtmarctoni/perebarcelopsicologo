@@ -1,12 +1,10 @@
-"use client";
-
-import { useTranslations } from "next-intl";
+import { getTranslations } from "next-intl/server";
 import AnimatedSection from "@/components/composables/AnimatedSection";
 import SectionLabel from "@/components/composables/SectionLabel";
 import CalendlyBookingCard from "@/components/core/CalendlyBookingCard";
 
-export default function ContactFormSection() {
-  const t = useTranslations("ContactFormSection");
+export default async function ContactFormSection() {
+  const t = await getTranslations("ContactFormSection");
   return (
     <section className="relative bg-background overflow-hidden">
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_20%_50%,_rgba(185,216,235,0.04)_0%,_transparent_50%)]" />

@@ -12,7 +12,7 @@ export const WebsiteSchema = () => {
       code={{
         "@context": "https://schema.org",
         "@type": "WebSite",
-        name: "Pere Barceló - Psicólogo Deportivo",
+        name: "Pere Barceló - Psicólogo Deportivo Online",
         url: canonicalUrl,
       }}
     />
@@ -26,7 +26,7 @@ export const LocalBusinessSchema = () => {
       code={{
         "@context": "https://schema.org",
         "@type": "LocalBusiness",
-        name: "Pere Barceló - Psicólogo Deportivo",
+        name: "Pere Barceló - Psicólogo Deportivo Online",
         image: `${canonicalUrl}${images.ogDefault}`,
         "@id": canonicalUrl,
         url: canonicalUrl,

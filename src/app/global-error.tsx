@@ -1,5 +1,7 @@
 "use client";
 
+import Button from "@/components/ui/Button";
+
 export default function GlobalError({
   reset,
 }: {
@@ -31,13 +33,7 @@ export default function GlobalError({
         <p className="text-text-light text-lg max-w-md mb-8">
           Ha ocurrido un error inesperado. Por favor, intentalo de nuevo.
         </p>
-        <button
-          type="button"
-          onClick={reset}
-          className="bg-secondary text-text-dark dark:text-[#0f172a] font-bold rounded-full px-8 py-4 hover:shadow-glow transition-all"
-        >
-          Intentar de nuevo
-        </button>
+        <Button onClick={reset}>Intentar de nuevo</Button>
       </body>
     </html>
   );

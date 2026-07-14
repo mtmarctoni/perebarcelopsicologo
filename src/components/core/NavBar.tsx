@@ -1,11 +1,12 @@
 "use client";
 
-import Link from "next/link";
 import { useLocale, useTranslations } from "next-intl";
 import { useEffect, useRef, useState } from "react";
 import { useTheme } from "@/components/core/ThemeProvider";
+import CTAButton from "@/components/ui/CTAButton";
+import NavLink from "@/components/ui/NavLink";
 import { navRoutes } from "@/config/routes";
-import { useRouter } from "@/i18n/routing";
+import { Link, useRouter } from "@/i18n/routing";
 import { BarsIcon, CrossIcon } from "../composables/Icons";
 
 const navItems = navRoutes.filter((r) => r.href !== "/contact");
@@ -76,15 +77,9 @@ const Navbar = () => {
             <div className="hidden lg:flex items-center gap-1">
               {navItems.map((item) => {
                 return (
-                  <Link
-                    key={item.href}
-                    href={item.href}
-                    className="text-text-light px-4 py-2 text-sm font-medium tracking-wide
-                             hover:text-text-dark hover:bg-card-hover rounded-lg
-                             transition-all duration-300"
-                  >
+                  <NavLink key={item.href} href={item.href}>
                     {t(item.labelKey)}
-                  </Link>
+                  </NavLink>
                 );
               })}
 
@@ -140,21 +135,15 @@ const Navbar = () => {
                 {otherLocale}
               </button>
 
-              <Link
-                href="/contact"
-                className="ml-4 inline-flex items-center justify-center bg-secondary text-text-dark dark:text-[#0f172a] text-sm font-bold px-5 py-2.5 rounded-full hover:bg-secondary-light hover:shadow-glow hover:-translate-y-0.5 transition-all duration-300"
-              >
+              <CTAButton href="/contact" size="sm" location="navbar" className="ml-4">
                 {t("ctaDesktop")}
-              </Link>
+              </CTAButton>
             </div>
 
             <div className="flex items-center gap-3 lg:hidden">
-              <Link
-                href="/contact"
-                className="inline-flex items-center justify-center bg-secondary text-text-dark dark:text-[#0f172a] text-xs font-bold px-3 py-2 rounded-full whitespace-nowrap hover:bg-secondary-light transition-all duration-300"
-              >
+              <CTAButton href="/contact" size="xs" location="mobile-nav-bar">
                 {t("ctaMobile")}
-              </Link>
+              </CTAButton>
 
               <button
                 type="button"
@@ -188,16 +177,15 @@ const Navbar = () => {
 
           {navItems.map((item, index) => {
             return (
-              <div key={item.href}>
-                <Link
-                  href={item.href}
-                  onClick={() => setIsMenuOpen(false)}
-                  className="text-2xl font-bold text-text-dark opacity-80 hover:opacity-100 transition-all duration-300"
-                  style={{ transitionDelay: `${(index + 1) * 50}ms` }}
-                >
-                  {t(item.labelKey)}
-                </Link>
-              </div>
+              <NavLink
+                key={item.href}
+                href={item.href}
+                mobile
+                onClick={() => setIsMenuOpen(false)}
+                style={{ transitionDelay: `${(index + 1) * 50}ms` }}
+              >
+                {t(item.labelKey)}
+              </NavLink>
             );
           })}
 
@@ -253,13 +241,14 @@ const Navbar = () => {
             {otherLocale}
           </button>
 
-          <Link
+          <CTAButton
             href="/contact"
+            location="mobile-nav"
             onClick={() => setIsMenuOpen(false)}
-            className="mt-4 inline-flex items-center justify-center bg-secondary text-text-dark dark:text-[#0f172a] text-base font-bold px-8 py-4 rounded-full hover:bg-secondary-light hover:shadow-glow transition-all duration-300"
+            className="mt-4"
           >
             {t("ctaDesktop")}
-          </Link>
+          </CTAButton>
         </div>
       </div>
     </>

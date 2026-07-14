@@ -1,6 +1,7 @@
 import type { NextRequest } from "next/server";
 import { NextResponse } from "next/server";
 import createMiddleware from "next-intl/middleware";
+import { buildContentSecurityPolicy } from "../config/content-security-policy";
 import { routing } from "./i18n/routing";
 
 const intlMiddleware = createMiddleware(routing);
@@ -27,6 +28,31 @@ function getUnauthorizedResponse(): NextResponse {
       "X-Robots-Tag": "noindex, nofollow",
     },
   });
+}
+
+/**
+ * Generate a per-request nonce and attach the CSP header to the response.
+ *
+ * Next.js reads the nonce from the CSP response header and auto-applies it
+ * to every inline script it injects (hydration, flight data) and to all
+ * `next/script` components (GTM, Cookiebot). No manual nonce passing needed.
+ *
+ * Staging uses Content-Security-Policy-Report-Only so violations are logged
+ * to the console without breaking the page — useful for testing CSP changes
+ * before they reach production.
+ */
+function withCsp(request: NextRequest, response: NextResponse): NextResponse {
+  const isDev = process.env.NODE_ENV === "development";
+  const staging = isStaging(request);
+  const nonce = btoa(crypto.randomUUID());
+
+  const csp = buildContentSecurityPolicy({ nonce, isDev });
+
+  const headerName =
+    staging && !isDev ? "Content-Security-Policy-Report-Only" : "Content-Security-Policy";
+
+  response.headers.set(headerName, csp);
+  return response;
 }
 
 export function proxy(request: NextRequest) {
@@ -57,7 +83,7 @@ export function proxy(request: NextRequest) {
       ) {
         const response = intlMiddleware(request);
         response.headers.set("X-Robots-Tag", "noindex, nofollow");
-        return response;
+        return withCsp(request, response);
       }
     } catch {
       // Malformed auth header
@@ -94,7 +120,8 @@ export function proxy(request: NextRequest) {
   }
 
   // === INTL MIDDLEWARE ===
-  return intlMiddleware(request);
+  const response = intlMiddleware(request);
+  return withCsp(request, response);
 }
 
 export const config = {

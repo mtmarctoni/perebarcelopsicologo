@@ -1,12 +1,10 @@
-"use client";
-
-import Link from "next/link";
-import { useTranslations } from "next-intl";
+import { getTranslations } from "next-intl/server";
 import AnimatedSection from "@/components/composables/AnimatedSection";
 import SectionLabel from "@/components/composables/SectionLabel";
+import CTAButton from "@/components/ui/CTAButton";
 
-export default function AboutWhySection() {
-  const t = useTranslations("AboutWhySection");
+export default async function AboutWhySection() {
+  const t = await getTranslations("AboutWhySection");
   return (
     <section className="relative bg-background overflow-hidden">
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[20rem] font-bold text-text-dark opacity-[0.02] select-none pointer-events-none">
@@ -29,12 +27,9 @@ export default function AboutWhySection() {
               <p className="text-lg text-text leading-relaxed">{t("paragraph3")}</p>
               <p className="text-lg text-text-dark font-bold leading-relaxed">{t("highlight")}</p>
               <div className="mt-8 text-center">
-                <Link
-                  href="/contact"
-                  className="inline-flex items-center justify-center text-center bg-secondary text-text-dark dark:text-[#0f172a] font-bold px-8 py-4 rounded-full hover:bg-secondary-light hover:shadow-glow hover:-translate-y-0.5 transition-all duration-300"
-                >
+                <CTAButton href="/contact" location="about-why">
                   {t("cta")}
-                </Link>
+                </CTAButton>
               </div>
             </div>
           </AnimatedSection>
