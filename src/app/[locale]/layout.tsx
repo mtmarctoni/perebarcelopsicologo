@@ -4,7 +4,6 @@ import { cookies } from "next/headers";
 import { notFound } from "next/navigation";
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages, getTranslations } from "next-intl/server";
-import { Suspense } from "react";
 import "../globals.css";
 import Footer from "@/components/core/Footer";
 import Navbar from "@/components/core/NavBar";
@@ -85,11 +84,7 @@ export default async function LocaleLayout({ children, params }: Props) {
       <body
         className={`${geistSans.variable} ${geistMono.variable} min-h-screen bg-background font-sans antialiased`}
       >
-        {gtmId && (
-          <Suspense>
-            <GoogleTagManager gtmId={gtmId} />
-          </Suspense>
-        )}
+        {gtmId && <GoogleTagManager gtmId={gtmId} />}
         <Providers initialTheme={initialTheme}>
           <NextIntlClientProvider messages={messages}>
             <Navbar />
