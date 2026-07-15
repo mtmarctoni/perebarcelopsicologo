@@ -41,7 +41,8 @@ type ServiceOrigins = Partial<Record<DirectiveKey, string[]>>;
 const services: Record<string, ServiceOrigins> = {
   gtm: {
     script: ["https://www.googletagmanager.com"],
-    img: ["https://www.googletagmanager.com"],
+    style: ["https://www.googletagmanager.com", "https://fonts.googleapis.com"],
+    img: ["https://www.googletagmanager.com", "https://fonts.gstatic.com"],
     connect: ["https://www.googletagmanager.com"],
     frame: ["https://www.googletagmanager.com"],
   },
