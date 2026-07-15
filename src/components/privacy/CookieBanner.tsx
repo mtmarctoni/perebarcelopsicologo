@@ -24,10 +24,6 @@ function storeConsent(choice: ConsentChoice) {
   document.cookie = `${CONSENT_KEY}=${choice}; expires=${expires}; path=/; SameSite=Lax${isSecure ? "; Secure" : ""}`;
 }
 
-export function hasMarketingConsent(): boolean {
-  return getStoredConsent() === "accepted";
-}
-
 function CookieIcon({ className }: { className?: string }) {
   return (
     <svg
