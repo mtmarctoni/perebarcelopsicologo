@@ -330,7 +330,7 @@
     "section4Title": "4. Conservació de les dades",
     "section4Desc": "Conservem les teves dades durant el temps necessari per complir amb la finalitat per a la qual es van recollir i per complir amb obligacions legals.",
     "section5Title": "5. Destinataris de les dades",
-    "section5Desc": "Les teves dades poden ser compartides amb: Vercel (allotjament web), Resend (servei de correu electrònic), Google LLC (analítica), Cookiebot (gestió de consentiment de cookies). No realitzem transferències internacionals de dades.",
+    "section5Desc": "Les teves dades poden ser compartides amb: Vercel (allotjament web), Resend (servei de correu electrònic), Google LLC (analítica). No realitzem transferències internacionals de dades.",
     "section6Title": "6. Cookies",
     "section6Desc": "Utilitzem cookies tècniques necessàries per al funcionament del lloc i cookies d'anàlisi per entendre com s'utilitza el lloc. Pots gestionar les teves preferències de cookies en qualsevol moment.",
     "section7Title": "7. Drets dels usuaris",
@@ -425,5 +425,13 @@
     "title": "Pàgina no trobada",
     "description": "La pàgina que busques no existeix o ha estat moguda.",
     "goHome": "Tornar a l'inici"
+  },
+  "CookieBanner": {
+    "ariaLabel": "Consentiment de cookies",
+    "message": "Utilitzem cookies pròpies i de tercers per millorar la teva experiència i analitzar el trànsit del lloc web.",
+    "accept": "Acceptar totes",
+    "reject": "Només essencials",
+    "privacyLink": "Política de cookies",
+    "settings": "Configuració de cookies"
   }
 }

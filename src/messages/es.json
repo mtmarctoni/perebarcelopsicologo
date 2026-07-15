@@ -330,7 +330,7 @@
     "section4Title": "4. Conservación de los datos",
     "section4Desc": "Conservamos tus datos durante el tiempo necesario para cumplir con la finalidad para la que se recogieron y para cumplir con obligaciones legales.",
     "section5Title": "5. Destinatarios de los datos",
-    "section5Desc": "Tus datos pueden ser compartidos con: Vercel (alojamiento web), Resend (servicio de correo electrónico), Google LLC (analítica), Cookiebot (gestión de consentimiento de cookies). No realizamos transferencias internacionales de datos.",
+    "section5Desc": "Tus datos pueden ser compartidos con: Vercel (alojamiento web), Resend (servicio de correo electrónico), Google LLC (analítica). No realizamos transferencias internacionales de datos.",
     "section6Title": "6. Cookies",
     "section6Desc": "Utilizamos cookies técnicas necesarias para el funcionamiento del sitio y cookies de análisis para entender cómo se utiliza el sitio. Puedes gestionar tus preferencias de cookies en cualquier momento.",
     "section7Title": "7. Derechos de los usuarios",
@@ -425,5 +425,13 @@
     "title": "Página no encontrada",
     "description": "La página que buscas no existe o ha sido movida.",
     "goHome": "Volver al inicio"
+  },
+  "CookieBanner": {
+    "ariaLabel": "Consentimiento de cookies",
+    "message": "Utilizamos cookies propias y de terceros para mejorar tu experiencia y analizar el tráfico del sitio.",
+    "accept": "Aceptar todas",
+    "reject": "Solo esenciales",
+    "privacyLink": "Política de cookies",
+    "settings": "Configuración de cookies"
   }
 }
