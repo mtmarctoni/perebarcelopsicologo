@@ -43,6 +43,7 @@ const services: Record<string, ServiceOrigins> = {
     script: ["https://www.googletagmanager.com"],
     style: ["https://www.googletagmanager.com", "https://fonts.googleapis.com"],
     img: ["https://www.googletagmanager.com", "https://fonts.gstatic.com"],
+    font: ["https://fonts.gstatic.com"],
     connect: ["https://www.googletagmanager.com"],
     frame: ["https://www.googletagmanager.com"],
   },
