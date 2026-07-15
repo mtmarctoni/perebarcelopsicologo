@@ -67,24 +67,34 @@ html {
   color: inherit;
 }
 
-/* Cookiebot accessibility overrides */
-#CybotCookiebotDialog .CybotCookiebotDialogBodyLevelButtonSave {
-  background-color: #1c4761 !important;
-  color: #ffffff !important;
+@keyframes cookie-banner-in {
+  from {
+    opacity: 0;
+    transform: translateY(100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-#CybotCookiebotDialog a,
-#CybotCookiebotDialog .CybotCookiebotDialogBodyLevelDetailsButton {
-  font-size: 0.875rem !important;
-  padding: 0.5rem 1rem !important;
-  min-height: 44px !important;
-  display: inline-flex !important;
-  align-items: center !important;
+@keyframes cookie-banner-out {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(100%);
+  }
 }
 
-#CybotCookiebotDialog *:focus-visible {
-  outline: 2px solid #1c4761 !important;
-  outline-offset: 2px !important;
+.animate-cookie-banner-in {
+  animation: cookie-banner-in 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.animate-cookie-banner-out {
+  animation: cookie-banner-out 0.3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
 }
 
 @media (prefers-reduced-motion: reduce) {
