@@ -127,7 +127,7 @@ export function buildContentSecurityPolicy({ nonce, isDev = false }: CspOptions 
     "script-src": scriptSrc,
     "style-src": styleSrc,
     "img-src": [SELF, "data:", "blob:", ...collect("img"), ...(vercelLive.img ?? [])],
-    "font-src": [SELF, ...(vercelLive.font ?? [])],
+    "font-src": [SELF, ...collect("font"), ...(vercelLive.font ?? [])],
     "connect-src": [SELF, ...collect("connect"), ...(vercelLive.connect ?? [])],
     "frame-src": [SELF, ...collect("frame"), ...(vercelLive.frame ?? [])],
     "frame-ancestors": [NONE],
