@@ -68,6 +68,7 @@ export default async function LocaleLayout({ children, params }: Props) {
     <html
       lang={locale}
       className={`scroll-smooth bg-background ${initialTheme === "dark" ? "dark" : ""}`}
+      suppressHydrationWarning
     >
       <head>
         {gtmId && (
