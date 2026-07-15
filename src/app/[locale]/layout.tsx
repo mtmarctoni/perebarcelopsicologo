@@ -1,14 +1,15 @@
-import { GoogleTagManager } from "@next/third-parties/google";
 import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { cookies } from "next/headers";
 import { notFound } from "next/navigation";
-import Script from "next/script";
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages, getTranslations } from "next-intl/server";
+import { Suspense } from "react";
 import "../globals.css";
 import Footer from "@/components/core/Footer";
 import Navbar from "@/components/core/NavBar";
+import CookieBanner from "@/components/privacy/CookieBanner";
+import GoogleTagManager from "@/components/privacy/GoogleTagManager";
 import { clientEnv } from "@/config/client-env.config";
 import { routing } from "@/i18n/routing";
 import { createPageMetadata } from "../metadata";
@@ -25,17 +26,6 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
   display: "swap",
 });
-
-const CookiebotScript = ({ cbid }: { cbid: string }) => (
-  <Script
-    id="Cookiebot"
-    src="https://consent.cookiebot.com/uc.js"
-    data-cbid={cbid}
-    data-blockingmode="auto"
-    type="text/javascript"
-    strategy="lazyOnload"
-  />
-);
 
 type Props = {
   children: React.ReactNode;
@@ -70,7 +60,6 @@ export default async function LocaleLayout({ children, params }: Props) {
 
   const messages = await getMessages();
   const gtmId = clientEnv.NEXT_PUBLIC_GTM_ID;
-  const cookiebotCbid = clientEnv.NEXT_PUBLIC_COOKIEBOT_CBID;
 
   const cookieStore = await cookies();
   const themeCookie = cookieStore.get("theme")?.value;
@@ -82,19 +71,10 @@ export default async function LocaleLayout({ children, params }: Props) {
       className={`scroll-smooth bg-background ${initialTheme === "dark" ? "dark" : ""}`}
     >
       <head>
-        {/* Preconnect to critical third-party origins for faster resource loading.
-            Place preconnect hints before any preload/resource links to ensure the
-            browser initiates TCP/TLS handshakes early. */}
         {gtmId && (
           <>
             <link rel="preconnect" href="https://www.googletagmanager.com" />
             <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
-          </>
-        )}
-        {cookiebotCbid && (
-          <>
-            <link rel="preconnect" href="https://consent.cookiebot.com" />
-            <link rel="dns-prefetch" href="https://consent.cookiebot.com" />
           </>
         )}
         <link rel="preconnect" href="https://calendly.com" />
@@ -105,13 +85,17 @@ export default async function LocaleLayout({ children, params }: Props) {
       <body
         className={`${geistSans.variable} ${geistMono.variable} min-h-screen bg-background font-sans antialiased`}
       >
-        {cookiebotCbid && <CookiebotScript cbid={cookiebotCbid} />}
-        {gtmId && <GoogleTagManager gtmId={gtmId} />}
+        {gtmId && (
+          <Suspense>
+            <GoogleTagManager gtmId={gtmId} />
+          </Suspense>
+        )}
         <Providers initialTheme={initialTheme}>
           <NextIntlClientProvider messages={messages}>
             <Navbar />
             <div className="flex flex-col min-h-screen flex-grow">{children}</div>
             <Footer />
+            <CookieBanner />
           </NextIntlClientProvider>
         </Providers>
       </body>
