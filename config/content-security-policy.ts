@@ -7,8 +7,7 @@
  * ## Nonce mode (production)
  * A per-request nonce is injected via middleware. Next.js reads the nonce
  * from the CSP response header and auto-applies it to every inline script
- * it injects (hydration, flight data) and to all `next/script` components
- * (GTM, Cookiebot). `'strict-dynamic'` lets nonce'd scripts load their own
+ * it injects (hydration, flight data). `'strict-dynamic'` lets nonce'd scripts load their own
  * scripts transitively, so GTM can bootstrap without listing every child
  * script origin.
  *
@@ -40,13 +39,6 @@ type DirectiveKey = "script" | "style" | "img" | "font" | "connect" | "frame";
 type ServiceOrigins = Partial<Record<DirectiveKey, string[]>>;
 
 const services: Record<string, ServiceOrigins> = {
-  cookiebot: {
-    script: ["https://consent.cookiebot.com"],
-    style: ["https://consent.cookiebot.com"],
-    img: ["https://*.cookiebot.com"],
-    connect: ["https://consent.cookiebot.com"],
-    frame: ["https://consent.cookiebot.com"],
-  },
   gtm: {
     script: ["https://www.googletagmanager.com"],
     img: ["https://www.googletagmanager.com"],
@@ -54,9 +46,17 @@ const services: Record<string, ServiceOrigins> = {
     frame: ["https://www.googletagmanager.com"],
   },
   ga4: {
-    script: ["https://www.google-analytics.com", "https://ssl.google-analytics.com"],
-    img: ["https://www.google-analytics.com", "https://ssl.google-analytics.com"],
-    connect: ["https://*.google-analytics.com"],
+    script: [
+      "https://www.googletag.com",
+      "https://www.google-analytics.com",
+      "https://ssl.google-analytics.com",
+    ],
+    img: [
+      "https://www.googletag.com",
+      "https://www.google-analytics.com",
+      "https://ssl.google-analytics.com",
+    ],
+    connect: ["https://www.googletag.com", "https://*.google-analytics.com"],
     frame: ["https://www.google-analytics.com"],
   },
   googleAds: {

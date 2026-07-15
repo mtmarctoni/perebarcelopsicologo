@@ -9,14 +9,12 @@
 export interface ClientEnv {
   NEXT_PUBLIC_CALENDLY_URL?: string;
   NEXT_PUBLIC_GTM_ID?: string;
-  NEXT_PUBLIC_COOKIEBOT_CBID?: string;
 }
 
 function validateEnv(): ClientEnv {
   return {
     NEXT_PUBLIC_CALENDLY_URL: process.env.NEXT_PUBLIC_CALENDLY_URL?.trim() || undefined,
     NEXT_PUBLIC_GTM_ID: process.env.NEXT_PUBLIC_GTM_ID?.trim() || undefined,
-    NEXT_PUBLIC_COOKIEBOT_CBID: process.env.NEXT_PUBLIC_COOKIEBOT_CBID?.trim() || undefined,
   };
 }
 
