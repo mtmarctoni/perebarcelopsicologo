@@ -35,7 +35,7 @@ function getUnauthorizedResponse(): NextResponse {
  *
  * Next.js reads the nonce from the CSP response header and auto-applies it
  * to every inline script it injects (hydration, flight data) and to all
- * `next/script` components (GTM, Cookiebot). No manual nonce passing needed.
+ * `next/script` components. No manual nonce passing needed.
  *
  * Staging uses Content-Security-Policy-Report-Only so violations are logged
  * to the console without breaking the page — useful for testing CSP changes
