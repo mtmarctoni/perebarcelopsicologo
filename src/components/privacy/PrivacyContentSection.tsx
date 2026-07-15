@@ -94,15 +94,14 @@ export default function PrivacyContentSection() {
         { term: "Vercel, Inc.", detail: "(alojamiento web)" },
         { term: "Resend, Inc.", detail: "(envio de correos electronicos)" },
         { term: "Google LLC", detail: "(analisis web y publicidad, solo con tu consentimiento)" },
-        { term: "Cookiebot by Usercentrics", detail: "(gestion de consentimiento de cookies)" },
       ],
     },
     {
       title: t("section6Title"),
       icon: "\uD83C\uDF6A",
       content: [
-        "Este sitio web utiliza cookies propias y de terceros para mejorar la experiencia de navegacion, analizar el trafico y personalizar la publicidad. La gestion de cookies se realiza a traves de Cookiebot, una plataforma que te permite aceptar, rechazar o configurar el uso de cookies de forma granular.",
-        "Puedes modificar tu configuracion de cookies en cualquier momento haciendo clic en el banner de consentimiento o en el icono de configuracion de cookies que aparece en la parte inferior del sitio.",
+        "Este sitio web utiliza cookies propias y de terceros para mejorar la experiencia de navegacion, analizar el trafico y personalizar la publicidad. La gestion de cookies se realiza a traves de un banner de consentimiento integrado que te permite aceptar o rechazar las cookies no esenciales.",
+        "Puedes modificar tu preferencia de cookies en cualquier momento limpiando las cookies del navegador o haciendo clic en el enlace de politica de cookies del pie de pagina.",
       ],
     },
     {

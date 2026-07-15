@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { getLocale, getTranslations } from "next-intl/server";
+import CookieSettingsLink from "@/components/privacy/CookieSettingsLink";
 import CTAButton from "@/components/ui/CTAButton";
 import SocialLink from "@/components/ui/SocialLink";
 import { navRoutes } from "@/config/routes";
@@ -122,6 +123,7 @@ const Footer = async () => {
               >
                 {t("privacyLink")}
               </Link>
+              <CookieSettingsLink />
             </div>
           </div>
         </div>
