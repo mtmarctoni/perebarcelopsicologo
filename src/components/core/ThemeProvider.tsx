@@ -1,6 +1,13 @@
 "use client";
 
-import { createContext, type ReactNode, use, useCallback, useSyncExternalStore } from "react";
+import {
+  createContext,
+  type ReactNode,
+  use,
+  useCallback,
+  useMemo,
+  useSyncExternalStore,
+} from "react";
 
 type Theme = "light" | "dark";
 
@@ -92,7 +99,7 @@ export function ThemeProvider({
     themeStore.setTheme(newTheme);
   }, []);
 
-  const value = { theme, setTheme };
+  const value = useMemo(() => ({ theme, setTheme }), [theme, setTheme]);
 
   return <ThemeContext.Provider value={value}>{children}</ThemeContext.Provider>;
 }
