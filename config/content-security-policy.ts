@@ -1,38 +1,29 @@
 /**
- * Build the Content-Security-Policy header.
+ * Build the Content-Security-Policy header value.
  *
- * Origins are grouped by service so you can see at a glance which URLs
- * each third party needs. Scroll to `services` below.
- *
- * ## Nonce mode (production)
- * A per-request nonce is injected via middleware. Next.js reads the nonce
- * from the CSP response header and auto-applies it to every inline script
- * it injects (hydration, flight data). `'strict-dynamic'` lets nonce'd scripts load their own
- * scripts transitively, so GTM can bootstrap without listing every child
- * script origin.
- *
- * ## Dev mode
- * Next.js dev server needs `'unsafe-eval'` (HMR/source maps) and
- * `'unsafe-inline'` (quick eval). The nonce is skipped — dev is permissive.
- *
- * Vercel injects its Live Feedback toolbar on preview/dev deployments only.
- * We allow those origins outside production so the toolbar doesn't trip the
- * CSP and pollute the console (which fails Lighthouse best-practices).
+ * ## Environment behavior
+ * - **Production** (`VERCEL_ENV === "production"`): strict enforces.
+ * - **Preview / staging** (`VERCEL_ENV === "preview"`): same policy but
+ *   emitted as `Content-Security-Policy-Report-Only` so violations are
+ *   logged without breaking the page — lets us test policy changes
+ *   safely before they reach production.
+ * - **Local dev** (`NODE_ENV === "development"`): adds `'unsafe-eval'`
+ *   (HMR / source maps) and Vercel Live toolbar origins.
  */
 
 export type CspOptions = {
-  /** Per-request nonce (base64). Required for production; skipped when isDev. */
-  nonce?: string;
-  /** True in local development (NODE_ENV=development). */
   isDev?: boolean;
 };
+
+const isVercelPreview = process.env.VERCEL_ENV === "preview";
+const isVercelProduction = process.env.VERCEL_ENV === "production";
+export const cspReportOnly = !isVercelProduction;
 
 // CSP token constants — typo-proof.
 const SELF = "'self'" as const;
 const NONE = "'none'" as const;
 const UNSAFE_INLINE = "'unsafe-inline'" as const;
 const UNSAFE_EVAL = "'unsafe-eval'" as const;
-const STRICT_DYNAMIC = "'strict-dynamic'" as const;
 
 type DirectiveKey = "script" | "style" | "img" | "font" | "connect" | "frame";
 
@@ -62,7 +53,11 @@ const services: Record<string, ServiceOrigins> = {
     frame: ["https://www.google-analytics.com"],
   },
   googleAds: {
-    script: ["https://www.googleadservices.com", "https://googleads.g.doubleclick.net"],
+    script: [
+      "https://www.googleadservices.com",
+      "https://googleads.g.doubleclick.net",
+      "https://pagead2.googlesyndication.com",
+    ],
     img: [
       "https://www.googleadservices.com",
       "https://googleads.g.doubleclick.net",
@@ -81,53 +76,53 @@ const services: Record<string, ServiceOrigins> = {
     connect: ["https://*.calendly.com"],
     frame: ["https://calendly.com", "https://*.calendly.com"],
   },
-  vercelInsights: {
-    connect: ["https://vitals.vercel-insights.com"],
-  },
 };
 
-function collect(directive: DirectiveKey): string[] {
-  return Object.values(services).flatMap((s) => s[directive] ?? []);
+const vercelLive: ServiceOrigins = {
+  script: ["https://vercel.live"],
+  style: ["https://vercel.live"],
+  img: ["https://vercel.live", "https://vercel.com"],
+  font: ["https://vercel.live", "https://assets.vercel.com"],
+  connect: ["https://vercel.live", "wss://ws-us3.pusher.com", "https://*.pusher.com"],
+  frame: ["https://vercel.live"],
+};
+
+function collect(directive: DirectiveKey, envOrigins: ServiceOrigins = {}): string[] {
+  return [...Object.values(services), envOrigins].flatMap((s) => s[directive] ?? []);
 }
 
-export function buildContentSecurityPolicy({ nonce, isDev = false }: CspOptions = {}): string {
-  const allowVercelLive = process.env.VERCEL_ENV !== "production";
+/**
+ * Build the CSP directive string (the value to put in the
+ * `Content-Security-Policy` / `Content-Security-Policy-Report-Only` header).
+ */
+export function buildContentSecurityPolicy({ isDev = false }: CspOptions = {}): string {
+  // Vercel auto-injects its Live Feedback toolbar on preview / dev
+  // deployments — allow those origins anywhere except production so the
+  // toolbar doesn't trip the CSP and pollute the console (which fails
+  // Lighthouse best-practices).
+  const allowVercelLive = isDev || isVercelPreview;
 
-  const vercelLive: ServiceOrigins = {
-    script: allowVercelLive ? ["https://vercel.live"] : [],
-    style: allowVercelLive ? ["https://vercel.live"] : [],
-    img: allowVercelLive ? ["https://vercel.live", "https://vercel.com"] : [],
-    font: allowVercelLive ? ["https://vercel.live", "https://assets.vercel.com"] : [],
-    connect: allowVercelLive
-      ? ["https://vercel.live", "wss://ws-us3.pusher.com", "https://*.pusher.com"]
-      : [],
-    frame: allowVercelLive ? ["https://vercel.live"] : [],
-  };
+  const envOrigins: ServiceOrigins = allowVercelLive ? vercelLive : {};
 
-  // script-src: strict with nonce in prod, permissive in dev.
-  const scriptSrc = isDev
-    ? [SELF, UNSAFE_INLINE, UNSAFE_EVAL, ...collect("script"), ...(vercelLive.script ?? [])]
-    : [
-        SELF,
-        `'nonce-${nonce}'`,
-        STRICT_DYNAMIC,
-        ...collect("script"),
-        ...(vercelLive.script ?? []),
-      ];
+  // script-src: 'self' + 'unsafe-inline' (unavoidable without nonce).
+  // Dev adds 'unsafe-eval' for HMR / source maps.
+  const scriptSrc: string[] = [SELF, UNSAFE_INLINE];
+  if (isDev) scriptSrc.push(UNSAFE_EVAL);
+  scriptSrc.push(...collect("script", envOrigins));
 
   // style-src: always 'unsafe-inline' — Next.js injects inline styles
-  // (next/font, styled-jsx, Tailwind utilities). Noncing styles is fragile
-  // and the XSS risk of inline CSS is far lower than inline JS.
-  const styleSrc = [SELF, UNSAFE_INLINE, ...collect("style"), ...(vercelLive.style ?? [])];
+  // (next/font, styled-jsx, Tailwind utilities). The XSS risk of inline
+  // CSS is far lower than inline JS.
+  const styleSrc: string[] = [SELF, UNSAFE_INLINE, ...collect("style", envOrigins)];
 
   const directives: Record<string, string[]> = {
     "default-src": [SELF],
     "script-src": scriptSrc,
     "style-src": styleSrc,
-    "img-src": [SELF, "data:", "blob:", ...collect("img"), ...(vercelLive.img ?? [])],
-    "font-src": [SELF, ...collect("font"), ...(vercelLive.font ?? [])],
-    "connect-src": [SELF, ...collect("connect"), ...(vercelLive.connect ?? [])],
-    "frame-src": [SELF, ...collect("frame"), ...(vercelLive.frame ?? [])],
+    "img-src": [SELF, "data:", "blob:", ...collect("img", envOrigins)],
+    "font-src": [SELF, ...collect("font", envOrigins)],
+    "connect-src": [SELF, ...collect("connect", envOrigins)],
+    "frame-src": [SELF, ...collect("frame", envOrigins)],
     "frame-ancestors": [NONE],
     "base-uri": [SELF],
     "form-action": [SELF],
