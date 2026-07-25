@@ -92,7 +92,6 @@ export default function PrivacyContentSection() {
       ],
       list: [
         { term: "Vercel, Inc.", detail: "(alojamiento web)" },
-        { term: "Resend, Inc.", detail: "(envio de correos electronicos)" },
         { term: "Google LLC", detail: "(analisis web y publicidad, solo con tu consentimiento)" },
       ],
     },
