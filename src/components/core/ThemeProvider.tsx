@@ -1,6 +1,13 @@
 "use client";
 
-import { createContext, type ReactNode, use, useCallback, useSyncExternalStore } from "react";
+import {
+  createContext,
+  type ReactNode,
+  use,
+  useCallback,
+  useMemo,
+  useSyncExternalStore,
+} from "react";
 
 type Theme = "light" | "dark";
 
@@ -12,13 +19,13 @@ interface ThemeContextValue {
 const ThemeContext = createContext<ThemeContextValue | null>(null);
 
 function getSystemTheme(): Theme {
-  if (typeof window === "undefined") return "light";
+  if (typeof window === "undefined") return "dark";
   if (window.matchMedia("(prefers-color-scheme: dark)").matches) return "dark";
-  return "light";
+  return "dark";
 }
 
 function getStoredTheme(): Theme {
-  if (typeof window === "undefined") return "light";
+  if (typeof window === "undefined") return "dark";
   const saved = localStorage.getItem("theme") as Theme | null;
   if (saved === "light" || saved === "dark") return saved;
   return getSystemTheme();
@@ -92,7 +99,7 @@ export function ThemeProvider({
     themeStore.setTheme(newTheme);
   }, []);
 
-  const value = { theme, setTheme };
+  const value = useMemo(() => ({ theme, setTheme }), [theme, setTheme]);
 
   return <ThemeContext.Provider value={value}>{children}</ThemeContext.Provider>;
 }

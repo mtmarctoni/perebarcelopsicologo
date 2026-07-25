@@ -9,7 +9,7 @@ export default function CookieSettingsLink() {
     <button
       type="button"
       onClick={() => window.dispatchEvent(new Event("open-cookie-banner"))}
-      className="text-text-inverse opacity-25 hover:opacity-50 text-xs transition-all duration-300"
+      className="text-text-inverse opacity-25 hover:opacity-50 text-xs transition-opacity duration-300"
     >
       {t("settings")}
     </button>

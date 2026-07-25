@@ -67,8 +67,9 @@ const services: Record<string, ServiceOrigins> = {
       "https://www.googleadservices.com",
       "https://googleads.g.doubleclick.net",
       "https://www.google.com",
+      "https://pagead2.googlesyndication.com",
     ],
-    connect: ["https://googleads.g.doubleclick.net"],
+    connect: ["https://googleads.g.doubleclick.net", "https://pagead2.googlesyndication.com"],
     frame: [
       "https://www.googleadservices.com",
       "https://googleads.g.doubleclick.net",
@@ -79,9 +80,6 @@ const services: Record<string, ServiceOrigins> = {
     img: ["https://*.calendly.com"],
     connect: ["https://*.calendly.com"],
     frame: ["https://calendly.com", "https://*.calendly.com"],
-  },
-  resend: {
-    connect: ["https://*.resend.com"],
   },
   vercelInsights: {
     connect: ["https://vitals.vercel-insights.com"],

@@ -47,7 +47,7 @@ export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
   maximumScale: 5,
-  themeColor: "#f8fafc",
+  themeColor: "#070b14",
 };
 
 export default async function LocaleLayout({ children, params }: Props) {
@@ -62,7 +62,7 @@ export default async function LocaleLayout({ children, params }: Props) {
 
   const cookieStore = await cookies();
   const themeCookie = cookieStore.get("theme")?.value;
-  const initialTheme = themeCookie === "dark" ? "dark" : "light";
+  const initialTheme = themeCookie === "light" ? "light" : "dark";
 
   return (
     <html

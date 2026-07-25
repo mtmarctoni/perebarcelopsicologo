@@ -8,7 +8,6 @@ cd "$PROJECT_DIR"
 REPORT_BASE="lighthouse-report"
 export APP_ENV=production
 export SITE_URL=https://perebarcelopsicologo.com
-export RESEND_API_KEY=dummy_lighthouse_key
 
 cleanup() {
   if [ -n "${SERVER_PID:-}" ]; then
