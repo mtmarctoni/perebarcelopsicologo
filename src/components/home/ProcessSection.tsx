@@ -1,11 +1,7 @@
-"use client";
-
-import { domAnimation, LazyMotion, m } from "framer-motion";
 import { useTranslations } from "next-intl";
 
-import AnimatedSection from "@/components/composables/AnimatedSection";
+import Reveal from "@/components/composables/Reveal";
 import SectionLabel from "@/components/composables/SectionLabel";
-import { fadeInUp, staggerContainer } from "@/components/home/animations";
 
 export default function ProcessSection() {
   const t = useTranslations("ProcessSection");
@@ -16,55 +12,40 @@ export default function ProcessSection() {
     { step: "4", title: t("step4Title"), desc: t("step4Desc") },
   ];
   return (
-    <LazyMotion features={domAnimation}>
-      <section className="relative bg-background overflow-hidden">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_30%_50%,rgba(28,71,97,0.2)_0%,transparent_60%)]" />
+    <section className="relative bg-background overflow-hidden">
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_30%_50%,rgba(28,71,97,0.2)_0%,transparent_60%)]" />
 
-        <div className="relative z-10 max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 py-24 lg:py-32">
-          <AnimatedSection className="text-center mb-20">
-            <SectionLabel text={t("sectionLabel")} />
-            <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-text-dark tracking-tight">
-              {t("heading")}
-            </h2>
-          </AnimatedSection>
+      <div className="relative z-10 max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 py-24 lg:py-32">
+        <Reveal className="text-center mb-20">
+          <SectionLabel text={t("sectionLabel")} />
+          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-text-dark tracking-tight">
+            {t("heading")}
+          </h2>
+        </Reveal>
 
-          <div className="relative">
-            {/* Connecting line (desktop) */}
-            <div className="absolute top-[3.25rem] left-0 right-0 h-px bg-linear-to-r from-transparent via-secondary/30 to-transparent hidden lg:block" />
+        <div className="relative">
+          <div className="absolute top-[3.25rem] left-0 right-0 h-px bg-linear-to-r from-transparent via-secondary/30 to-transparent hidden lg:block" />
 
-            <m.div
-              className="grid sm:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-8"
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, margin: "-60px" }}
-              variants={staggerContainer}
-            >
-              {steps.map((item) => (
-                <m.div
-                  key={item.step}
-                  variants={fadeInUp}
-                  className="relative text-center lg:text-left"
-                >
-                  <div className="flex flex-col lg:flex-row items-center lg:items-start gap-4">
-                    <div className="relative">
-                      <div className="w-16 h-16 rounded-2xl bg-secondary/10 border border-secondary/20 flex items-center justify-center text-primary font-bold text-xl z-10 relative">
-                        {item.step}
-                      </div>
-                      <div className="absolute inset-0 bg-secondary/20 rounded-2xl blur-lg" />
+          <Reveal stagger={0.12} className="grid sm:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-8">
+            {steps.map((item) => (
+              <div key={item.step} className="relative text-center lg:text-left">
+                <div className="flex flex-col lg:flex-row items-center lg:items-start gap-4">
+                  <div className="relative">
+                    <div className="w-16 h-16 rounded-2xl bg-secondary/10 border border-secondary/20 flex items-center justify-center text-primary font-bold text-xl z-10 relative">
+                      {item.step}
                     </div>
-                    <div className="flex-1">
-                      <h3 className="text-xl font-bold text-text-dark mt-1 lg:mt-0">
-                        {item.title}
-                      </h3>
-                      <p className="text-text-light mt-2 leading-relaxed">{item.desc}</p>
-                    </div>
+                    <div className="absolute inset-0 bg-secondary/20 rounded-2xl blur-lg" />
                   </div>
-                </m.div>
-              ))}
-            </m.div>
-          </div>
+                  <div className="flex-1">
+                    <h3 className="text-xl font-bold text-text-dark mt-1 lg:mt-0">{item.title}</h3>
+                    <p className="text-text-light mt-2 leading-relaxed">{item.desc}</p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </Reveal>
         </div>
-      </section>
-    </LazyMotion>
+      </div>
+    </section>
   );
 }

@@ -20,7 +20,7 @@ export default function SocialLink({
   const classes = [
     "w-10 h-10 rounded-xl bg-card border border-border flex items-center justify-center",
     "hover:bg-secondary/10 hover:border-secondary/20 hover:text-primary",
-    "text-text-dark opacity-40 hover:opacity-100 transition-all duration-300",
+    "text-text-dark opacity-40 hover:opacity-100 transition-[opacity,color,border-color,background-color] duration-300",
     className,
   ].join(" ");
 

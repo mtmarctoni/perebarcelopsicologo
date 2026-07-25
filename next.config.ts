@@ -7,9 +7,6 @@ import { configureSvgLoader, turbopackSvgRule } from "./config/svg";
 const withNextIntl = createNextIntlPlugin();
 
 const nextConfig: NextConfig = {
-  experimental: {
-    optimizePackageImports: ["framer-motion"],
-  },
   webpack: configureSvgLoader,
   turbopack: turbopackSvgRule,
   images: {
