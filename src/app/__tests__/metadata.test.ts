@@ -181,10 +181,12 @@ describe("createPageMetadata", () => {
       path: "/test",
       locale: "es",
     });
-    expect(meta.openGraph?.images).toHaveLength(1);
-    const img = (
-      meta.openGraph?.images as Array<{ url: string; width: number; height: number }>
-    )[0];
+    const images = meta.openGraph?.images;
+    if (!images) {
+      throw new Error("Expected openGraph.images to be defined");
+    }
+    expect(images).toHaveLength(1);
+    const img = (images as Array<{ url: string; width: number; height: number }>)[0];
     expect(img).toHaveProperty("url");
     expect(img).toHaveProperty("width", 1200);
     expect(img).toHaveProperty("height", 630);
