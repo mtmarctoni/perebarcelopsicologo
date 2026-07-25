@@ -13,12 +13,13 @@
     "type-check": "tsc --noEmit",
     "test": "vitest run",
     "knip": "knip",
+    "dep-cruise": "depcruise -c .dependency-cruiser.mjs src",
     "doctor": "npx react-doctor@latest",
     "seo:check": "./scripts/seo-check.sh",
     "lighthouse:check": "./scripts/lighthouse-check.sh",
     "env:pull": "vercel env pull .env.local",
     "env:push": "./scripts/vercel-env-push.sh",
-    "check": "pnpm lint:fix && pnpm type-check && pnpm knip && pnpm test && pnpm build",
+    "check": "pnpm lint:fix && pnpm type-check && pnpm dep-cruise && pnpm knip && pnpm test && pnpm build",
     "verify": "pnpm check && pnpm seo:check && pnpm lighthouse:check"
   },
   "dependencies": {
@@ -36,6 +37,7 @@
     "@types/node": "^20",
     "@types/react": "19.2.2",
     "@types/react-dom": "19.2.2",
+    "dependency-cruiser": "^18.1.0",
     "knip": "^6.16.0",
     "lighthouse": "^13.4.0",
     "postcss": "^8.5.15",
