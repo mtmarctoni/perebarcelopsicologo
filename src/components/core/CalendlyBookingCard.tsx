@@ -148,7 +148,7 @@ const CalendlyBookingCard = () => {
             />
           )}
           {timedOut && !isLoaded && (
-            <div className="absolute inset-0 z-20 flex flex-col items-center justify-center gap-4 bg-background-alt/90 backdrop-blur-sm p-8">
+            <div className="absolute inset-0 z-20 flex flex-col items-center justify-center gap-4 bg-background-alt/90 backdrop-blur-xs p-8">
               <button
                 type="button"
                 onClick={() => {

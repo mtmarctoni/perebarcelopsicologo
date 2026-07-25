@@ -89,7 +89,7 @@ export default async function LocaleLayout({ children, params }: Props) {
         <Providers initialTheme={initialTheme}>
           <NextIntlClientProvider messages={messages}>
             <Navbar />
-            <div className="flex flex-col min-h-screen flex-grow">{children}</div>
+            <div className="flex flex-col min-h-screen grow">{children}</div>
             <Footer />
             <CookieBanner />
           </NextIntlClientProvider>

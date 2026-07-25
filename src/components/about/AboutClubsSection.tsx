@@ -14,7 +14,7 @@ export default function AboutClubsSection() {
   return (
     <LazyMotion features={domAnimation}>
       <section className="relative bg-background-alt overflow-hidden">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_0%,_rgba(185,216,235,0.06)_0%,_transparent_60%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_0%,rgba(185,216,235,0.06)_0%,transparent_60%)]" />
 
         <div className="relative z-10 max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 py-24 lg:py-32">
           <AnimatedSection className="text-center mb-16 max-w-3xl mx-auto">
@@ -35,7 +35,7 @@ export default function AboutClubsSection() {
               <m.div
                 key={club.name}
                 variants={fadeInUp}
-                className="group flex flex-col items-center p-4 sm:p-5 bg-card backdrop-blur-sm rounded-2xl border border-border hover:border-secondary/30 hover:bg-card-hover hover:-translate-y-1 transition-all duration-500"
+                className="group flex flex-col items-center p-4 sm:p-5 bg-card backdrop-blur-xs rounded-2xl border border-border hover:border-secondary/30 hover:bg-card-hover hover:-translate-y-1 transition-all duration-500"
               >
                 <div className="relative w-16 h-16 sm:w-20 sm:h-20 mb-2 transition-transform duration-500 group-hover:scale-110">
                   <Image

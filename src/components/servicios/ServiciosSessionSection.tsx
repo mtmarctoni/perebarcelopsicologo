@@ -18,7 +18,7 @@ export default function ServiciosSessionSection() {
   return (
     <LazyMotion features={domAnimation}>
       <section className="relative bg-background-alt overflow-hidden">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_40%_60%,_rgba(28,71,97,0.15)_0%,_transparent_60%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_40%_60%,rgba(28,71,97,0.15)_0%,transparent_60%)]" />
 
         <div className="relative z-10 max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 py-24 lg:py-32">
           <AnimatedSection className="text-center mb-16">

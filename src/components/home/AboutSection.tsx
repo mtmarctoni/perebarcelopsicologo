@@ -27,7 +27,7 @@ export default function AboutSection() {
                 <div className="absolute -bottom-4 -right-4 w-full h-full rounded-[2rem] border-2 border-secondary/30" />
                 <div className="absolute -top-4 -left-4 w-24 h-24 border-l-2 border-t-2 border-secondary/20 rounded-tl-3xl" />
 
-                <div className="relative aspect-[4/5] rounded-[2rem] overflow-hidden shadow-2xl">
+                <div className="relative aspect-4/5 rounded-[2rem] overflow-hidden shadow-2xl">
                   <Image
                     src={images.profileMaroon}
                     alt={t("imageAlt")}

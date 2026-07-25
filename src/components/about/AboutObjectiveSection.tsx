@@ -35,7 +35,7 @@ export default function AboutObjectiveSection() {
                 <m.div
                   key={text}
                   variants={fadeInUp}
-                  className="flex items-start gap-4 p-5 rounded-xl bg-background-alt border border-border shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-300 group"
+                  className="flex items-start gap-4 p-5 rounded-xl bg-background-alt border border-border shadow-xs hover:shadow-md hover:-translate-y-0.5 transition-all duration-300 group"
                 >
                   <div className="w-8 h-8 rounded-full bg-secondary/15 flex items-center justify-center shrink-0 group-hover:bg-secondary transition-colors duration-300">
                     <svg
