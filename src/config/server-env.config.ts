@@ -8,8 +8,6 @@ import { z } from "zod";
  */
 
 const serverEnvSchema = z.object({
-  RESEND_API_KEY: z.string().min(1, "RESEND_API_KEY is required and cannot be empty."),
-
   GOOGLE_SITE_VERIFICATION: z
     .string()
     .optional()

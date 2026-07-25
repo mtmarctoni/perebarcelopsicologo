@@ -81,9 +81,6 @@ const services: Record<string, ServiceOrigins> = {
     connect: ["https://*.calendly.com"],
     frame: ["https://calendly.com", "https://*.calendly.com"],
   },
-  resend: {
-    connect: ["https://*.resend.com"],
-  },
   vercelInsights: {
     connect: ["https://vitals.vercel-insights.com"],
   },
