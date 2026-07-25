@@ -1,12 +1,6 @@
 {
   "$schema": "https://unpkg.com/knip@6/schema.json",
-  "entry": [
-    "src/app/**/page.tsx",
-    "src/app/providers.tsx",
-    "src/app/metadata.ts",
-    "src/config/**",
-    "src/services/**"
-  ],
+  "entry": ["src/app/**/page.tsx", "src/app/providers.tsx", "src/app/metadata.ts", "src/config/**"],
   "project": ["src/**/*.{ts,tsx}", "*.config.{ts,js}"],
   "ignore": [],
   "ignoreDependencies": ["@svgr/webpack", "postcss-load-config", "@swc/helpers"],
