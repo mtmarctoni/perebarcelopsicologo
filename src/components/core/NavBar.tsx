@@ -56,7 +56,7 @@ const Navbar = () => {
   return (
     <>
       <nav
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+        className={`fixed top-0 left-0 right-0 z-50 transition-[background-color,backdrop-filter,border-color,box-shadow] duration-500 ${
           isScrolled
             ? "bg-background-navbar backdrop-blur-xl border-b border-border shadow-[0_4px_30px_rgba(0,0,0,0.3)]"
             : "bg-transparent"
@@ -86,7 +86,7 @@ const Navbar = () => {
               <button
                 type="button"
                 onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-                className="ml-3 p-2 rounded-xl text-text-light hover:text-primary hover:bg-card-hover transition-all duration-300"
+                className="ml-3 p-2 rounded-xl text-text-light hover:text-primary hover:bg-card-hover transition-colors duration-300"
                 aria-label={theme === "dark" ? tc("themeLight") : tc("themeDark")}
               >
                 {theme === "dark" ? (
@@ -129,7 +129,7 @@ const Navbar = () => {
                 onClick={switchLocale}
                 className="ml-2 px-3 py-1.5 text-xs font-semibold uppercase tracking-widest rounded-lg
                           text-text-light hover:text-primary hover:bg-card-hover
-                          transition-all duration-300 border border-border"
+                          transition-colors duration-300 border border-border"
                 aria-label={tc("localeSwitcherAria")}
               >
                 {otherLocale}
@@ -148,7 +148,7 @@ const Navbar = () => {
               <button
                 type="button"
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
-                className="text-text-dark hover:text-primary p-2 rounded-xl hover:bg-card-hover transition-all duration-300"
+                className="text-text-dark hover:text-primary p-2 rounded-xl hover:bg-card-hover transition-colors duration-300"
                 aria-label={isMenuOpen ? t("closeMenu") : t("openMenu")}
               >
                 {isMenuOpen ? <CrossIcon className="w-6 h-6" /> : <BarsIcon className="w-6 h-6" />}
@@ -159,7 +159,7 @@ const Navbar = () => {
       </nav>
 
       <div
-        className={`fixed inset-0 z-40 bg-background backdrop-blur-xl transition-all duration-500 lg:hidden ${
+        className={`fixed inset-0 z-40 bg-background backdrop-blur-xl transition-[opacity,visibility] duration-500 lg:hidden ${
           isMenuOpen ? "opacity-100 visible" : "opacity-0 invisible"
         }`}
       >
@@ -168,7 +168,7 @@ const Navbar = () => {
             <button
               type="button"
               onClick={() => setIsMenuOpen(false)}
-              className="text-text-dark hover:text-primary p-2 rounded-xl hover:bg-card-hover transition-all duration-300"
+              className="text-text-dark hover:text-primary p-2 rounded-xl hover:bg-card-hover transition-colors duration-300"
               aria-label={t("closeMenu")}
             >
               <CrossIcon className="w-7 h-7" />
@@ -192,7 +192,7 @@ const Navbar = () => {
           <button
             type="button"
             onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-            className="mt-4 p-3 rounded-xl text-text-light hover:text-primary hover:bg-card-hover transition-all duration-300"
+            className="mt-4 p-3 rounded-xl text-text-light hover:text-primary hover:bg-card-hover transition-colors duration-300"
             aria-label={theme === "dark" ? tc("themeLight") : tc("themeDark")}
           >
             {theme === "dark" ? (
@@ -235,7 +235,7 @@ const Navbar = () => {
             onClick={switchLocale}
             className="px-4 py-2 text-sm font-semibold uppercase tracking-widest rounded-xl
                      text-text-light hover:text-primary hover:bg-card-hover
-                     transition-all duration-300 border border-border"
+                     transition-colors duration-300 border border-border"
             aria-label={tc("localeSwitcherAria")}
           >
             {otherLocale}

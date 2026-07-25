@@ -40,7 +40,7 @@ const Footer = async () => {
             <div className="mt-6 flex items-center gap-4">
               <a
                 href={`mailto:${email}`}
-                className="flex items-center gap-2 text-text-inverse opacity-40 hover:opacity-100 hover:text-primary transition-all duration-300 text-sm"
+                className="flex items-center gap-2 text-text-inverse opacity-40 hover:opacity-100 hover:text-primary transition-[opacity,color] duration-300 text-sm"
               >
                 <EnvelopeIcon className="w-4 h-4" />
                 <span>{email}</span>
@@ -49,7 +49,7 @@ const Footer = async () => {
             <div className="mt-2 flex items-center gap-4">
               <a
                 href={`tel:${phone}`}
-                className="flex items-center gap-2 text-text-inverse opacity-40 hover:opacity-100 hover:text-primary transition-all duration-300 text-sm"
+                className="flex items-center gap-2 text-text-inverse opacity-40 hover:opacity-100 hover:text-primary transition-[opacity,color] duration-300 text-sm"
               >
                 <WhatsappIcon className="w-4 h-4" />
                 <span>{phone}</span>
@@ -87,7 +87,7 @@ const Footer = async () => {
                       data-track="nav"
                       data-track-location="footer"
                       data-track-label={label}
-                      className="text-text-inverse opacity-40 hover:opacity-100 hover:text-primary text-sm transition-all duration-300"
+                      className="text-text-inverse opacity-40 hover:opacity-100 hover:text-primary text-sm transition-[opacity,color] duration-300"
                     >
                       {label}
                     </Link>
@@ -119,7 +119,7 @@ const Footer = async () => {
             <div className="flex items-center gap-6">
               <Link
                 href="/privacy"
-                className="text-text-inverse opacity-25 hover:opacity-50 text-xs transition-all duration-300"
+                className="text-text-inverse opacity-25 hover:opacity-50 text-xs transition-opacity duration-300"
               >
                 {t("privacyLink")}
               </Link>
