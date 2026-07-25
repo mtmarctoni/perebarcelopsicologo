@@ -1,14 +1,21 @@
 import type { Header } from "next/dist/lib/load-custom-routes";
+import { buildContentSecurityPolicy, cspReportOnly } from "./content-security-policy";
 
-// Content-Security-Policy is set per-request by middleware (proxy.ts) with a
-// nonce — it cannot be a static header because the nonce must be unique
-// per request. All other security headers live here.
+const CSP_HEADER_NAME = cspReportOnly
+  ? "Content-Security-Policy-Report-Only"
+  : "Content-Security-Policy";
 
 export function buildHeaders(): Header[] {
+  const isDev = process.env.NODE_ENV === "development";
+
   return [
     {
       source: "/(.*)",
       headers: [
+        {
+          key: CSP_HEADER_NAME,
+          value: buildContentSecurityPolicy({ isDev }),
+        },
         {
           key: "X-Content-Type-Options",
           value: "nosniff",
