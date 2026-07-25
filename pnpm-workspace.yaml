@@ -1,7 +1,9 @@
-onlyBuiltDependencies:
-  - sharp
-  - "@biomejs/biome"
-  - esbuild
-  - "@swc/core"
 minimumReleaseAge: 10080
 trustPolicy: no-downgrade
+trustPolicyIgnoreAfter: 525600
+allowBuilds:
+  sharp: true
+  "@biomejs/biome": true
+  esbuild: true
+  "@swc/core": true
+  "@parcel/watcher": true

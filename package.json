@@ -2,7 +2,11 @@
   "name": "perebarcelopsicologo",
   "version": "0.1.0",
   "private": true,
-  "packageManager": "pnpm@10.25.0",
+  "packageManager": "pnpm@11.17.0",
+  "engines": {
+    "node": ">=24",
+    "pnpm": ">=11.17.0"
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -34,7 +38,7 @@
   "devDependencies": {
     "@biomejs/biome": "^2.4.13",
     "@svgr/webpack": "^8.1.0",
-    "@types/node": "^20",
+    "@types/node": "^24",
     "@types/react": "19.2.2",
     "@types/react-dom": "19.2.2",
     "dependency-cruiser": "^18.1.0",
