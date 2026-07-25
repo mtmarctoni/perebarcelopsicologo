@@ -19,7 +19,7 @@ const Footer = async () => {
 
   return (
     <footer className="relative bg-background-footer overflow-hidden">
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_30%_50%,_rgba(185,216,235,0.04)_0%,_transparent_60%)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_30%_50%,rgba(185,216,235,0.04)_0%,transparent_60%)]" />
 
       <div className="relative z-10 max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 pt-16 pb-8">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 lg:gap-8">

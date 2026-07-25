@@ -11,7 +11,7 @@ export default function AboutBioSection() {
   return (
     <LazyMotion features={domAnimation}>
       <section className="relative bg-background-alt overflow-hidden">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_20%_50%,_rgba(185,216,235,0.05)_0%,_transparent_60%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_20%_50%,rgba(185,216,235,0.05)_0%,transparent_60%)]" />
 
         <div className="relative z-10 max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 py-24 lg:py-32">
           <div className="grid lg:grid-cols-12 gap-12 lg:gap-16 items-center">
@@ -26,7 +26,7 @@ export default function AboutBioSection() {
                 <div className="absolute -bottom-4 -right-4 w-full h-full rounded-[2rem] border-2 border-secondary/30" />
                 <div className="absolute -top-4 -left-4 w-24 h-24 border-l-2 border-t-2 border-secondary/20 rounded-tl-3xl" />
 
-                <div className="relative aspect-[4/5] rounded-[2rem] overflow-hidden shadow-2xl">
+                <div className="relative aspect-4/5 rounded-[2rem] overflow-hidden shadow-2xl">
                   <Image
                     src={images.heroTransparent}
                     alt={t("imageAlt")}

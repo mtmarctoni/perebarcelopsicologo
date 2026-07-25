@@ -46,7 +46,7 @@ const shapeStyles: Record<ButtonShape, string> = {
 };
 
 const baseStyles =
-  "inline-flex items-center justify-center text-center transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-secondary focus-visible:ring-offset-2 focus-visible:ring-offset-background disabled:opacity-50 disabled:pointer-events-none";
+  "inline-flex items-center justify-center text-center transition-all duration-300 focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-secondary focus-visible:ring-offset-2 focus-visible:ring-offset-background disabled:opacity-50 disabled:pointer-events-none";
 
 export function buildDataAttrs(track?: string, trackLocation?: string, trackLabel?: string) {
   const attrs: Record<string, string | undefined> = {};

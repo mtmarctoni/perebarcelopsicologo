@@ -34,7 +34,7 @@ export default function ServiciosFaqSection() {
               <m.div
                 key={faq.question}
                 variants={fadeInUp}
-                className="p-8 rounded-2xl bg-background-alt border border-border shadow-sm"
+                className="p-8 rounded-2xl bg-background-alt border border-border shadow-xs"
               >
                 <h3 className="text-xl font-bold text-text-dark">{faq.question}</h3>
                 <p className="text-lg text-text mt-3 leading-relaxed">{faq.answer}</p>

@@ -19,11 +19,11 @@ export default function HeroSection() {
         {/* Background layers */}
         <div
           aria-hidden="true"
-          className="absolute inset-0 bg-[radial-gradient(ellipse_at_80%_20%,_rgba(185,216,235,0.08)_0%,_transparent_50%)]"
+          className="absolute inset-0 bg-[radial-gradient(ellipse_at_80%_20%,rgba(185,216,235,0.08)_0%,transparent_50%)]"
         />
         <div
           aria-hidden="true"
-          className="absolute inset-0 bg-[radial-gradient(ellipse_at_20%_80%,_rgba(28,71,97,0.25)_0%,_transparent_60%)]"
+          className="absolute inset-0 bg-[radial-gradient(ellipse_at_20%_80%,rgba(28,71,97,0.25)_0%,transparent_60%)]"
         />
 
         {/* Subtle noise texture overlay */}
@@ -39,11 +39,11 @@ export default function HeroSection() {
         {/* Decorative diagonal lines */}
         <div
           aria-hidden="true"
-          className="absolute top-0 right-[15%] w-px h-full bg-gradient-to-b from-transparent via-border to-transparent"
+          className="absolute top-0 right-[15%] w-px h-full bg-linear-to-b from-transparent via-border to-transparent"
         />
         <div
           aria-hidden="true"
-          className="absolute top-0 right-[35%] w-px h-full bg-gradient-to-b from-transparent via-card to-transparent hidden lg:block"
+          className="absolute top-0 right-[35%] w-px h-full bg-linear-to-b from-transparent via-card to-transparent hidden lg:block"
         />
 
         <div className="relative z-10 w-full max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 py-28 lg:pt-24 lg:pb-10">
@@ -140,7 +140,7 @@ export default function HeroSection() {
                 />
 
                 {/* Main image container with asymmetric frame */}
-                <div className="relative aspect-[3/4] rounded-[2rem] overflow-hidden shadow-2xl shadow-black/40 border border-border">
+                <div className="relative aspect-3/4 rounded-[2rem] overflow-hidden shadow-2xl shadow-black/40 border border-border">
                   <Image
                     src={images.heroHome}
                     alt={t("heroImageAlt")}
@@ -154,7 +154,7 @@ export default function HeroSection() {
                   {/* Bottom gradient overlay on image */}
                   <div
                     aria-hidden="true"
-                    className="absolute inset-0 bg-gradient-to-t from-[#070b14]/60 via-transparent to-transparent"
+                    className="absolute inset-0 bg-linear-to-t from-[#070b14]/60 via-transparent to-transparent"
                   />
                 </div>
 
@@ -176,7 +176,7 @@ export default function HeroSection() {
 
                 {/* Floating badge */}
                 <m.div
-                  className="absolute -right-4 sm:-right-6 top-4 sm:top-6 bg-secondary/90 backdrop-blur-sm rounded-full px-4 py-2 shadow-lg"
+                  className="absolute -right-4 sm:-right-6 top-4 sm:top-6 bg-secondary/90 backdrop-blur-xs rounded-full px-4 py-2 shadow-lg"
                   initial={{ opacity: 0, x: 20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: 1, duration: 0.6 }}
