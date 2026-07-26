@@ -1,6 +1,6 @@
 import { getTranslations } from "next-intl/server";
 
-import AnimatedSection from "@/components/composables/AnimatedSection";
+import Reveal from "@/components/composables/Reveal";
 import CTAButton from "@/components/ui/CTAButton";
 
 export default async function FinalCtaSection() {
@@ -10,7 +10,7 @@ export default async function FinalCtaSection() {
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_50%,rgba(185,216,235,0.08)_0%,transparent_70%)]" />
 
       <div className="relative z-10 max-w-4xl mx-auto px-5 sm:px-8 lg:px-12 py-24 lg:py-32 text-center">
-        <AnimatedSection>
+        <Reveal>
           <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-text-dark tracking-tight leading-[1.1]">
             {t("heading")}
           </h2>
@@ -21,7 +21,7 @@ export default async function FinalCtaSection() {
             </CTAButton>
           </div>
           <p className="mt-4 text-text-dark opacity-30 text-sm">{t("finePrint")}</p>
-        </AnimatedSection>
+        </Reveal>
       </div>
     </section>
   );

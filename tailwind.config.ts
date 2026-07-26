@@ -84,6 +84,40 @@ export default {
       transitionTimingFunction: {
         smooth: "cubic-bezier(0.4, 0, 0.2, 1)",
       },
+      keyframes: {
+        "fade-in-up": {
+          from: { opacity: "0", transform: "translateY(0.75rem)" },
+          to: { opacity: "1", transform: "translateY(0)" },
+        },
+        "fade-in-left": {
+          from: { opacity: "0", transform: "translateX(-0.5rem)" },
+          to: { opacity: "1", transform: "translateX(0)" },
+        },
+        "fade-in-right": {
+          from: { opacity: "0", transform: "translateX(0.5rem)" },
+          to: { opacity: "1", transform: "translateX(0)" },
+        },
+        "fade-in-scale": {
+          from: { opacity: "0", transform: "scale(0.98)" },
+          to: { opacity: "1", transform: "scale(1)" },
+        },
+        "fade-in": {
+          from: { opacity: "0" },
+          to: { opacity: "1" },
+        },
+        "scroll-bounce": {
+          "0%, 100%": { transform: "translateY(0)" },
+          "50%": { transform: "translateY(0.25rem)" },
+        },
+      },
+      animation: {
+        "fade-in-up": "fade-in-up 1s cubic-bezier(0.16, 1, 0.3, 1) forwards",
+        "fade-in-left": "fade-in-left 1s cubic-bezier(0.16, 1, 0.3, 1) forwards",
+        "fade-in-right": "fade-in-right 1s cubic-bezier(0.16, 1, 0.3, 1) forwards",
+        "fade-in-scale": "fade-in-scale 1s cubic-bezier(0.16, 1, 0.3, 1) forwards",
+        "fade-in": "fade-in 0.8s ease forwards",
+        "scroll-bounce": "scroll-bounce 2.5s ease-in-out infinite",
+      },
     },
   },
   plugins: [],
