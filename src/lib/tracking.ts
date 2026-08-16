@@ -1,3 +1,11 @@
+export function buildDataAttrs(track?: string, trackLocation?: string, trackLabel?: string) {
+  const attrs: Record<string, string | undefined> = {};
+  if (track) attrs["data-track"] = track;
+  if (trackLocation) attrs["data-track-location"] = trackLocation;
+  if (trackLabel) attrs["data-track-label"] = trackLabel;
+  return attrs as Record<string, string>;
+}
+
 export type TrackEvent = {
   event: string;
   label?: string;
