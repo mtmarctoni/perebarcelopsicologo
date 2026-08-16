@@ -1,7 +1,7 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { Link } from "@/i18n/routing";
 
 export type ConsentChoice = "accepted" | "rejected";
@@ -48,7 +48,6 @@ function CookieIcon({ className }: { className?: string }) {
 export default function CookieBanner() {
   const [visible, setVisible] = useState(false);
   const [closing, setClosing] = useState(false);
-  const dialogRef = useRef<HTMLDivElement>(null);
   const t = useTranslations("CookieBanner");
 
   useEffect(() => {
@@ -69,7 +68,6 @@ export default function CookieBanner() {
 
   const handleChoice = useCallback((choice: ConsentChoice) => {
     storeConsent(choice);
-    window.dispatchEvent(new Event("consent-updated"));
     if (choice === "accepted" && typeof window.gtag === "function") {
       window.gtag("consent", "update", {
         ad_storage: "granted",
@@ -103,7 +101,6 @@ export default function CookieBanner() {
       aria-label={t("ariaLabel")}
     >
       <div
-        ref={dialogRef}
         className={`w-full max-w-2xl rounded-2xl border border-border bg-card shadow-2xl ${
           closing ? "animate-cookie-banner-out" : "animate-cookie-banner-in"
         }`}
