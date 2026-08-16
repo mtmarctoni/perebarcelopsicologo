@@ -67,6 +67,8 @@ export default function Reveal({
 
   const animClass = animationClass[animation];
 
+  const hiddenStyle: CSSProperties = visible ? {} : { opacity: 0 };
+
   if (stagger > 0) {
     const items = Children.toArray(children);
     return (
@@ -76,8 +78,13 @@ export default function Reveal({
           return (
             <div
               key={childKey ?? `${id}-${i}`}
-              className={visible ? animClass : "opacity-0 -translate-y-3"}
-              style={{ animationDelay: `${delay + i * stagger}s` } as CSSProperties}
+              className={visible ? animClass : undefined}
+              style={
+                {
+                  ...(visible ? {} : { opacity: 0 }),
+                  animationDelay: `${delay + i * stagger}s`,
+                } as CSSProperties
+              }
             >
               {child}
             </div>
@@ -90,8 +97,8 @@ export default function Reveal({
   return (
     <div
       ref={ref}
-      className={`${className} ${visible ? animClass : "opacity-0 -translate-y-3"}`}
-      style={{ animationDelay: `${delay}s` } as CSSProperties}
+      className={`${className} ${visible ? animClass : ""}`}
+      style={{ ...hiddenStyle, animationDelay: `${delay}s` } as CSSProperties}
     >
       {children}
     </div>
