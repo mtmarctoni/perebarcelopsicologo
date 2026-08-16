@@ -1,5 +1,7 @@
 import Link from "next/link";
 
+import { buildDataAttrs } from "@/lib/tracking";
+
 type ButtonVariant = "primary" | "secondary" | "ghost" | "outline";
 type ButtonSize = "xs" | "sm" | "md" | "lg";
 type ButtonShape = "pill" | "rounded";
@@ -47,14 +49,6 @@ const shapeStyles: Record<ButtonShape, string> = {
 
 const baseStyles =
   "inline-flex items-center justify-center text-center transition-[background-color,color,box-shadow,transform] duration-300 focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-secondary focus-visible:ring-offset-2 focus-visible:ring-offset-background disabled:opacity-50 disabled:pointer-events-none";
-
-function buildDataAttrs(track?: string, trackLocation?: string, trackLabel?: string) {
-  const attrs: Record<string, string | undefined> = {};
-  if (track) attrs["data-track"] = track;
-  if (trackLocation) attrs["data-track-location"] = trackLocation;
-  if (trackLabel) attrs["data-track-label"] = trackLabel;
-  return attrs as Record<string, string>;
-}
 
 export default function Button({
   variant = "primary",

@@ -1,6 +1,5 @@
 import { beforeEach, describe, expect, it, vi } from "vitest";
-import { buildDataAttrs } from "@/components/ui/Button";
-import { trackEvent } from "@/lib/tracking";
+import { buildDataAttrs, trackEvent } from "@/lib/tracking";
 
 describe("buildDataAttrs", () => {
   it("returns empty object when no tracking props are given", () => {
