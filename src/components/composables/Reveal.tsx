@@ -74,10 +74,11 @@ export default function Reveal({
     return (
       <div ref={ref} className={className}>
         {items.map((child, i) => {
-          const childKey = isValidElement(child) ? child.key : undefined;
+          const childKey =
+            isValidElement(child) && child.key != null ? child.key : `${id}-${child}`;
           return (
             <div
-              key={childKey ?? `${id}-${i}`}
+              key={childKey}
               className={visible ? animClass : undefined}
               style={
                 {
