@@ -3,7 +3,15 @@
   "entry": ["src/app/**/page.tsx", "src/app/providers.tsx", "src/app/metadata.ts", "src/config/**"],
   "project": ["src/**/*.{ts,tsx}", "*.config.{ts,js}"],
   "ignore": [],
-  "ignoreDependencies": ["@svgr/webpack", "postcss-load-config", "@swc/helpers"],
+  "ignoreDependencies": [
+    "@svgr/webpack",
+    "postcss-load-config",
+    "@swc/helpers",
+    "@semantic-release/commit-analyzer",
+    "@semantic-release/github",
+    "@semantic-release/release-notes-generator",
+    "conventional-changelog-conventionalcommits"
+  ],
   "ignoreBinaries": ["vercel"],
   "ignoreExportsUsedInFile": {
     "interface": true,
