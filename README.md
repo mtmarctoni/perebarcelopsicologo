@@ -87,6 +87,29 @@ You can see the status of these checks in the PR checks section on GitHub.
 - **Preview**: Auto-deploys for every Pull Request
 - This is handled by the native GitHub ↔ Vercel integration (free plan)
 
+### Release tracking
+
+Pushes to `main` also run semantic-release, which creates `vX.Y.Z` Git tags and
+[GitHub Releases](https://github.com/mtmarctoni/perebarcelopsicologo/releases)
+with generated release notes. Conventional commit messages determine the bump:
+`feat` is minor; `fix`, `perf`, and `revert` are patch; breaking changes are major.
+Housekeeping commits do not produce releases. `develop` and PR previews do not
+publish releases.
+
+Git tags are the source of truth; `package.json` uses a fixed
+`0.0.0-development` placeholder. The first qualifying run establishes `v1.0.0`
+from existing history, preserving the older pre-WordPress-removal checkpoint tag.
+No version-bump commits or npm packages are published.
+
+Release creation is independent of Vercel deployment. Use the Vercel deployment
+record and commit SHA to confirm what is live or select a rollback. For client
+handovers, a short plain-language summary can accompany the generated notes.
+
+See [AGENTS.md](./AGENTS.md#release-versioning) for commit examples, website-specific
+classification, and merge conventions. `pnpm release:dry` previews a release on
+`main` with GitHub credentials; the Release workflow can be manually dispatched
+on `main` to retry a failed run.
+
 ## 🔐 Environment Variables
 
 > ⚠️ **Never commit `.env` files to git.** They are already gitignored.
