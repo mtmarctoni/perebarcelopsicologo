@@ -1,6 +1,6 @@
 {
   "name": "perebarcelopsicologo",
-  "version": "0.1.0",
+  "version": "0.0.0-development",
   "private": true,
   "packageManager": "pnpm@11.17.0",
   "engines": {
@@ -16,6 +16,8 @@
     "lint:fix": "biome check --write .",
     "type-check": "tsc --noEmit",
     "test": "vitest run",
+    "release": "semantic-release",
+    "release:dry": "semantic-release --dry-run",
     "knip": "knip",
     "dep-cruise": "depcruise -c .dependency-cruiser.mjs src",
     "doctor": "npx react-doctor@latest",
@@ -36,15 +38,20 @@
   },
   "devDependencies": {
     "@biomejs/biome": "^2.5.4",
+    "@semantic-release/commit-analyzer": "^13.0.1",
+    "@semantic-release/github": "^12.0.10",
+    "@semantic-release/release-notes-generator": "^14.1.1",
     "@svgr/webpack": "^8.1.0",
     "@tailwindcss/postcss": "^4.3.3",
     "@types/node": "^26.1.1",
     "@types/react": "19.2.17",
     "@types/react-dom": "19.2.3",
+    "conventional-changelog-conventionalcommits": "^9.3.1",
     "dependency-cruiser": "^18.1.0",
     "knip": "^6.27.0",
     "lighthouse": "^13.4.0",
     "postcss": "^8.5.19",
+    "semantic-release": "^25.0.9",
     "tailwindcss": "^4.3.3",
     "typescript": "^6.0.3",
     "vitest": "^4.1.10"
