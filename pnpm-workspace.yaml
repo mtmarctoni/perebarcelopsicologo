@@ -7,3 +7,10 @@ allowBuilds:
   esbuild: true
   "@swc/core": true
   "@parcel/watcher": true
+overrides:
+  # 2026-10-25: vite comes only from vitest (a dependency and peer, not
+  # declared here), and vitest accepts any vite 8, so `pnpm update` keeps the
+  # vulnerable 8.0.16. 8.1.6 fixes GHSA-587h-7wmj-h5pm and four other
+  # vite/launch-editor advisories. Dev only. Remove once vitest resolves
+  # vite >= 8.1.6 on its own.
+  "vite@8": ^8.1.6
