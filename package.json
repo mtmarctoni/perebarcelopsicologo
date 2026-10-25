@@ -30,11 +30,11 @@
   },
   "dependencies": {
     "@swc/helpers": "^0.5.23",
-    "next": "^16.2.10",
+    "next": "^16.4.1",
     "next-intl": "^4.13.2",
     "react": "19.2.7",
     "react-dom": "19.2.7",
-    "zod": "^4.4.3"
+    "zod": "^4.6.7"
   },
   "devDependencies": {
     "@biomejs/biome": "^2.5.4",
@@ -50,10 +50,10 @@
     "dependency-cruiser": "^18.1.0",
     "knip": "^6.27.0",
     "lighthouse": "^13.4.0",
-    "postcss": "^8.5.19",
+    "postcss": "^8.5.23",
     "semantic-release": "^25.0.9",
     "tailwindcss": "^4.3.3",
     "typescript": "^6.0.3",
-    "vitest": "^4.1.10"
+    "vitest": "^4.1.12"
   }
 }
