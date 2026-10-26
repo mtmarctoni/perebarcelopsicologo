@@ -409,6 +409,8 @@
     "goHome": "Volver al inicio"
   },
   "CookieBanner": {
+    "title": "Tu privacidad",
+    "close": "Cerrar",
     "ariaLabel": "Consentimiento de cookies",
     "message": "Utilizamos cookies propias y de terceros para mejorar tu experiencia y analizar el tráfico del sitio.",
     "accept": "Aceptar todas",

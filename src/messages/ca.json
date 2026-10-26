@@ -409,6 +409,8 @@
     "goHome": "Tornar a l'inici"
   },
   "CookieBanner": {
+    "title": "La teva privacitat",
+    "close": "Tancar",
     "ariaLabel": "Consentiment de cookies",
     "message": "Utilitzem cookies pròpies i de tercers per millorar la teva experiència i analitzar el trànsit del lloc web.",
     "accept": "Acceptar totes",

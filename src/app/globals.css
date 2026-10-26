@@ -13,6 +13,9 @@
 
   --card: #ffffff;
   --card-hover: #f1f5f9;
+  --cookie-surface-solid: #ffffff;
+  --cookie-surface-glass: rgba(255, 255, 255, 0.88);
+  --cookie-border: #64748b;
 
   --secondary-rgb: 185 216 235;
   --secondary-light-rgb: 211 233 245;
@@ -43,6 +46,9 @@
 
   --card: rgba(255, 255, 255, 0.03);
   --card-hover: rgba(255, 255, 255, 0.06);
+  --cookie-surface-solid: #0f172a;
+  --cookie-surface-glass: rgba(15, 23, 42, 0.88);
+  --cookie-border: #94a3b8;
 
   --secondary-rgb: 185 216 235;
   --secondary-light-rgb: 211 233 245;
@@ -64,6 +70,23 @@ html {
 ::selection {
   background-color: rgba(185, 216, 235, 0.3);
   color: inherit;
+}
+
+.cookie-banner-surface {
+  background: var(--cookie-surface-solid);
+  border-color: var(--cookie-border);
+}
+
+.cookie-banner-choice {
+  border-color: var(--cookie-border);
+}
+
+@supports ((backdrop-filter: blur(24px)) or (-webkit-backdrop-filter: blur(24px))) {
+  .cookie-banner-surface {
+    background: var(--cookie-surface-glass);
+    -webkit-backdrop-filter: blur(24px) saturate(140%);
+    backdrop-filter: blur(24px) saturate(140%);
+  }
 }
 
 @keyframes cookie-banner-in {
