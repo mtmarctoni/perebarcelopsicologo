@@ -14,3 +14,7 @@ overrides:
   # vite/launch-editor advisories. Dev only. Remove once vitest resolves
   # vite >= 8.1.6 on its own.
   "vite@8": ^8.1.6
+  # Within Lighthouse 13.5's supported ^25.9.0 range. Newer Puppeteer releases
+  # select a Chromium BiDi prerelease rejected by pnpm's publisher-trust policy.
+  # Revisit once the newer dependency chain passes the same trust checks.
+  "lighthouse>puppeteer-core": "25.12.0"

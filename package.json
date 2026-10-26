@@ -52,7 +52,7 @@
     "conventional-changelog-conventionalcommits": "^9.3.1",
     "dependency-cruiser": "^18.1.0",
     "knip": "^6.27.0",
-    "lighthouse": "^13.4.0",
+    "lighthouse": "^13.5.0",
     "postcss": "^8.5.23",
     "semantic-release": "^25.0.9",
     "tailwindcss": "^4.3.3",
