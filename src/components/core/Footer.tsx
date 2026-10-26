@@ -110,17 +110,12 @@ const Footer = async () => {
           </div>
         </div>
 
-        <div className="mt-16 pt-8 border-t border-border">
+        <div className="footer-legal mt-16 pt-8 border-t border-border text-xs">
           <div className="flex flex-col sm:flex-row justify-between items-center gap-4">
             {/* react-doctor-disable-next-line react-doctor/rendering-hydration-mismatch-time */}
-            <p className="text-text-inverse opacity-25 text-xs">
-              {tc("copyright", { year: new Date().getFullYear() })}
-            </p>
-            <div className="flex items-center gap-6">
-              <Link
-                href="/privacy"
-                className="text-text-inverse opacity-25 hover:opacity-50 text-xs transition-opacity duration-300"
-              >
+            <p>{tc("copyright", { year: new Date().getFullYear() })}</p>
+            <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-1">
+              <Link href="/privacy" className="footer-legal-link">
                 {t("privacyLink")}
               </Link>
               <CookieSettingsLink />
