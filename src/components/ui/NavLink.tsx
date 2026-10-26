@@ -26,7 +26,7 @@ export default function NavLink({
   const isActive = pathname === href || (href !== "/" && pathname.startsWith(href));
 
   const activeClasses = isActive
-    ? "bg-card-hover text-text-dark font-medium"
+    ? "bg-card-hover text-text-dark! font-medium"
     : "text-text-light hover:text-text-dark hover:bg-card-hover";
 
   return (

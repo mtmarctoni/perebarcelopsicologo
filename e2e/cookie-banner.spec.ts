@@ -185,3 +185,14 @@ test("reduced motion and a narrow viewport retain accessible controls and readab
   await closeButton(page).click();
   await expect(banner(page)).toHaveCount(0);
 });
+
+test("light-theme active desktop navigation has sufficient contrast", async ({ page }) => {
+  await page.setViewportSize({ width: 1440, height: 900 });
+  await page.evaluate(() => document.documentElement.classList.remove("dark"));
+  await page.waitForTimeout(350);
+  const results = await new AxeBuilder({ page })
+    .include("nav")
+    .withRules(["color-contrast"])
+    .analyze();
+  expect(results.violations).toEqual([]);
+});
