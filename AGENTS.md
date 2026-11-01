@@ -7,6 +7,13 @@
 - Always work on a feature or bugfix branch and deliver changes through a PR; never commit directly to `main`.
 - Never merge a PR without explicit user approval.
 
+## Local Verification Before Every Push
+
+- Read the current `.github/workflows/` and run all applicable locally executable checks before pushing; do not use GitHub Actions as the first verification run.
+- Include frozen-lockfile installation, lint, type-check, unit tests, Knip, dependency-cruiser, production build, dependency audit, React Doctor, and relevant browser tests. Do not omit Knip when rendering changes remove imports or exports.
+- Check tracked files for forbidden secret-file patterns. Do not scan ignored local environment files as if they were committed.
+- Report failures and unavailable GitHub-only checks explicitly. Do not claim full CI parity or push a known failure without the user's approval.
+
 ## Release Versioning
 
 Every push to `main` runs `.github/workflows/release.yml` with semantic-release.
