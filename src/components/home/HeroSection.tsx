@@ -42,11 +42,7 @@ export default function HeroSection() {
 
       <div className="relative z-10 w-full max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 py-28 lg:pt-24 lg:pb-10">
         <div className="grid lg:grid-cols-12 gap-10 lg:gap-8 items-center min-h-[85vh]">
-          <Reveal
-            trigger="load"
-            stagger={0.12}
-            className="lg:col-span-6 xl:col-span-5 order-2 lg:order-1"
-          >
+          <Reveal trigger="load" className="lg:col-span-6 xl:col-span-5 order-2 lg:order-1">
             <SectionLabel text={t("sectionLabel")} />
 
             <h1 className="text-[2.6rem] sm:text-5xl lg:text-[3.5rem] xl:text-[4rem] font-bold text-text-dark leading-[1.1] tracking-tight mt-2">
@@ -98,7 +94,6 @@ export default function HeroSection() {
           <Reveal
             trigger="load"
             animation="fade-scale"
-            delay={0.2}
             className="lg:col-span-6 xl:col-span-7 order-1 lg:order-2 flex justify-center lg:justify-end"
           >
             <div className="relative w-[280px] sm:w-[340px] lg:w-[420px] xl:w-[480px]">

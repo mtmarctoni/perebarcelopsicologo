@@ -1,25 +1,6 @@
-"use client";
-
-import {
-  Children,
-  type CSSProperties,
-  isValidElement,
-  type ReactNode,
-  useEffect,
-  useId,
-  useRef,
-  useState,
-} from "react";
+import { Children, type CSSProperties, type ReactNode } from "react";
 
 type AnimationType = "fade-up" | "fade-left" | "fade-right" | "fade-scale" | "fade";
-
-const animationClass: Record<AnimationType, string> = {
-  "fade-up": "animate-fade-in-up",
-  "fade-left": "animate-fade-in-left",
-  "fade-right": "animate-fade-in-right",
-  "fade-scale": "animate-fade-in-scale",
-  fade: "animate-fade-in",
-};
 
 interface RevealProps {
   children: ReactNode;
@@ -30,6 +11,7 @@ interface RevealProps {
   trigger?: "scroll" | "load";
 }
 
+// Only markup and stagger values are generated here; CSS owns all motion.
 export default function Reveal({
   children,
   className = "",
@@ -38,69 +20,32 @@ export default function Reveal({
   stagger = 0,
   trigger = "scroll",
 }: RevealProps) {
-  const ref = useRef<HTMLDivElement>(null);
-  const id = useId();
-  const [visible, setVisible] = useState(false);
-
-  useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-
-    if (trigger === "load") {
-      requestAnimationFrame(() => setVisible(true));
-      return;
-    }
-
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          requestAnimationFrame(() => setVisible(true));
-          observer.unobserve(el);
-        }
-      },
-      { threshold: 0.1, rootMargin: "-60px" },
-    );
-
-    observer.observe(el);
-    return () => observer.disconnect();
-  }, [trigger]);
-
-  const animClass = animationClass[animation];
-
-  const hiddenStyle: CSSProperties = visible ? {} : { opacity: 0 };
+  function motionProps(seconds: number) {
+    const time = Math.max(0, Math.round(seconds * 1000) / 1000);
+    return {
+      "data-reveal": trigger,
+      "data-reveal-variant": animation,
+      style: {
+        "--reveal-delay": `${time}s`,
+        "--reveal-start": `${Math.min(20, Math.round(time * 20))}%`,
+      } as CSSProperties,
+    };
+  }
 
   if (stagger > 0) {
-    const items = Children.toArray(children);
     return (
-      <div ref={ref} className={className}>
-        {items.map((child, i) => {
-          const childKey =
-            isValidElement(child) && child.key != null ? child.key : `${id}-${child}`;
-          return (
-            <div
-              key={childKey}
-              className={visible ? animClass : undefined}
-              style={
-                {
-                  ...(visible ? {} : { opacity: 0 }),
-                  animationDelay: `${delay + i * stagger}s`,
-                } as CSSProperties
-              }
-            >
-              {child}
-            </div>
-          );
-        })}
+      <div className={className}>
+        {Children.map(Children.toArray(children), (child, index) => (
+          <div className="reveal" {...motionProps(delay + index * stagger)}>
+            {child}
+          </div>
+        ))}
       </div>
     );
   }
 
   return (
-    <div
-      ref={ref}
-      className={`${className} ${visible ? animClass : ""}`}
-      style={{ ...hiddenStyle, animationDelay: `${delay}s` } as CSSProperties}
-    >
+    <div className={`${className} reveal`} {...motionProps(delay)}>
       {children}
     </div>
   );
