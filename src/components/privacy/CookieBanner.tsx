@@ -166,7 +166,7 @@ export default function CookieBanner() {
           }
         }}
         className={`cookie-banner-surface pointer-events-auto relative max-h-[calc(100dvh-2rem)] w-full max-w-2xl overflow-y-auto rounded-2xl border shadow-2xl ${
-          closing ? "animate-cookie-banner-out" : "animate-cookie-banner-in"
+          closing ? "animate-cookie-banner-out" : ""
         }`}
       >
         <div className="flex items-start gap-4 p-5 sm:p-6">
