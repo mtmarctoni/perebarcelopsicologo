@@ -144,7 +144,75 @@ html {
   animation: cookie-banner-out 0.3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
 }
 
+/* Visible by default, including browsers without CSS view timelines. */
+.reveal {
+  --reveal-x: 0px;
+  --reveal-y: 0.75rem;
+  --reveal-scale: 1;
+}
+
+.reveal[data-reveal-variant="fade-left"] {
+  --reveal-x: -0.5rem;
+  --reveal-y: 0px;
+}
+
+.reveal[data-reveal-variant="fade-right"] {
+  --reveal-x: 0.5rem;
+  --reveal-y: 0px;
+}
+
+.reveal[data-reveal-variant="fade-scale"] {
+  --reveal-y: 0px;
+  --reveal-scale: 0.98;
+}
+
+.reveal[data-reveal-variant="fade"] {
+  --reveal-y: 0px;
+}
+
+@keyframes reveal-load {
+  from {
+    transform: translate(var(--reveal-x), var(--reveal-y)) scale(var(--reveal-scale));
+  }
+  to {
+    transform: translate(0, 0) scale(1);
+  }
+}
+
+@keyframes reveal-scroll {
+  from {
+    opacity: 0;
+    transform: translate(var(--reveal-x), var(--reveal-y)) scale(var(--reveal-scale));
+  }
+  to {
+    opacity: 1;
+    transform: translate(0, 0) scale(1);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  /* Load content is never transparent, even during a stagger delay. */
+  .reveal[data-reveal="load"] {
+    animation: reveal-load 0.65s cubic-bezier(0.16, 1, 0.3, 1) var(--reveal-delay, 0s) both;
+  }
+
+  @supports (animation-timeline: view()) {
+    .reveal[data-reveal="scroll"] {
+      animation-name: reveal-scroll;
+      animation-duration: 1s;
+      animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+      animation-fill-mode: both;
+      animation-timeline: view();
+      animation-range: entry var(--reveal-start, 0%) cover calc(30% + var(--reveal-start, 0%));
+    }
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
+  .reveal {
+    animation: none !important;
+  }
+
   *,
   *::before,
   *::after {
