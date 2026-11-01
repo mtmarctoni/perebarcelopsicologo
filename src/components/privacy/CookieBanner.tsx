@@ -158,7 +158,7 @@ export default function CookieBanner() {
         role="dialog"
         aria-modal="false"
         aria-label={t("ariaLabel")}
-        aria-describedby="cookie-banner-message"
+        aria-describedby="privacy-consent-description"
         onKeyDown={(event) => {
           if (event.key === "Escape") {
             event.stopPropagation();
@@ -196,7 +196,7 @@ export default function CookieBanner() {
                 </svg>
               </button>
             </div>
-            <p id="cookie-banner-message" className="text-sm leading-relaxed text-text">
+            <p id="privacy-consent-description" className="text-sm leading-relaxed text-text">
               {t("message")}{" "}
               <Link
                 href="/privacy"
