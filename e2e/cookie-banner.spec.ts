@@ -14,6 +14,10 @@ test("names the panel with a visible heading and keeps all controls within the v
   page,
 }) => {
   await expect(banner(page).getByRole("heading", { name: "Tu privacidad" })).toBeVisible();
+  await expect(banner(page)).toHaveAttribute("aria-describedby", "privacy-consent-description");
+  await expect(banner(page).locator("#privacy-consent-description")).toBeVisible();
+  await expect(banner(page)).toHaveAccessibleDescription(/Utilizamos cookies propias/);
+  await expect(banner(page).getByRole("link", { name: "Política de cookies" })).toBeVisible();
   await expect(banner(page).getByRole("button", { name: "Solo esenciales" })).toBeVisible();
   await expect(banner(page).getByRole("button", { name: "Aceptar todas" })).toBeVisible();
   for (const control of await banner(page).getByRole("button").all()) {
