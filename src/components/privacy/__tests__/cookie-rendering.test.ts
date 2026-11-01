@@ -12,4 +12,15 @@ describe("cookie banner rendering", () => {
     expect(paragraphId).toBe(descriptionId);
     expect(source.includes("cookie-banner-message")).toBe(false);
   });
+
+  it("does not delay presentation with an entrance animation", () => {
+    expect(source.includes("animate-cookie-banner-in")).toBe(false);
+  });
+
+  it("preserves dismissal, both choices and the reopening event", () => {
+    expect(source).toContain("animate-cookie-banner-out");
+    expect(source).toContain('handleChoice("accepted")');
+    expect(source).toContain('handleChoice("rejected")');
+    expect(source).toContain('window.addEventListener("open-cookie-banner", handleReopen)');
+  });
 });
