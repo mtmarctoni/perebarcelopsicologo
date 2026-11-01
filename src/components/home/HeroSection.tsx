@@ -111,7 +111,8 @@ export default function HeroSection() {
                   src={images.heroHome}
                   alt={t("heroImageAlt")}
                   fill
-                  sizes="(max-width: 768px) 80vw, 480px"
+                  // At lg, half of (viewport - 96px padding - 32px gap) reaches 420px at 968px.
+                  sizes="(min-width: 1440px) 480px, (min-width: 968px) 420px, (min-width: 890px) calc(50vw - 64px), (min-width: 480px) 340px, 280px"
                   className="object-cover object-top"
                   priority
                   fetchPriority="high"
