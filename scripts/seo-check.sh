@@ -54,5 +54,6 @@ echo "=== SEO Score: $SCORE / 100 ==="
 echo "Report: ${REPORT_BASE}.report.html"
 
 if [ "$SCORE" -lt 100 ]; then
-  echo "WARNING: SEO score is not 100. Check the report for details."
+  echo "ERROR: SEO score is not 100. Check the report for details."
+  exit 1
 fi
