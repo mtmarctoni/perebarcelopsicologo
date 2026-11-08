@@ -17,6 +17,7 @@
     "type-check": "tsc --noEmit",
     "test": "vitest run",
     "test:e2e": "playwright test",
+    "test:seo": "playwright test --config=playwright.seo.config.ts",
     "release": "semantic-release",
     "release:dry": "semantic-release --dry-run",
     "knip": "knip",
