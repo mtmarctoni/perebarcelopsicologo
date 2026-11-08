@@ -13,61 +13,52 @@ import sitemap from "@/app/sitemap";
 import { getCanonicalUrl, isProduction } from "@/lib/site";
 
 describe("sitemap.xml", () => {
-  it("returns all routes on production", () => {
+  it("lists every indexable locale URL exactly once, excluding privacy", () => {
     vi.mocked(isProduction).mockReturnValue(true);
     vi.mocked(getCanonicalUrl).mockReturnValue("https://perebarcelopsicologo.com");
+    expect(
+      sitemap()
+        .map((entry) => entry.url)
+        .sort(),
+    ).toEqual([
+      "https://perebarcelopsicologo.com",
+      "https://perebarcelopsicologo.com/about",
+      "https://perebarcelopsicologo.com/ca",
+      "https://perebarcelopsicologo.com/ca/about",
+      "https://perebarcelopsicologo.com/ca/contact",
+      "https://perebarcelopsicologo.com/ca/servicios",
+      "https://perebarcelopsicologo.com/contact",
+      "https://perebarcelopsicologo.com/servicios",
+    ]);
+  });
 
-    const entries = sitemap();
-    const urls = entries.map((e) => e.url);
-
-    expect(urls).toContain("https://perebarcelopsicologo.com");
-    expect(urls).toContain("https://perebarcelopsicologo.com/about");
-    expect(urls).toContain("https://perebarcelopsicologo.com/contact");
-    expect(urls).toContain("https://perebarcelopsicologo.com/privacy");
-    expect(urls).toContain("https://perebarcelopsicologo.com/servicios");
-    expect(urls).toHaveLength(10);
-    expect(new Set(urls).size).toBe(10);
-    for (const path of ["", "/about", "/contact", "/privacy", "/servicios"]) {
-      expect(urls).toContain(`https://perebarcelopsicologo.com/ca${path}`);
+  it.each(["", "/about", "/contact", "/servicios"])("has reciprocal alternates for %s", (path) => {
+    vi.mocked(isProduction).mockReturnValue(true);
+    vi.mocked(getCanonicalUrl).mockReturnValue("https://perebarcelopsicologo.com");
+    const es = `https://perebarcelopsicologo.com${path}`;
+    const ca = `https://perebarcelopsicologo.com/ca${path}`;
+    for (const url of [es, ca]) {
+      expect(sitemap().find((entry) => entry.url === url)?.alternates?.languages).toEqual({
+        "x-default": es,
+        es,
+        ca,
+      });
     }
   });
 
-  it("has root route with priority 1", () => {
+  it("omits unverified modification dates and ignored crawl hints", () => {
     vi.mocked(isProduction).mockReturnValue(true);
     vi.mocked(getCanonicalUrl).mockReturnValue("https://perebarcelopsicologo.com");
-
-    const entries = sitemap();
-    const root = entries.find((e) => e.url === "https://perebarcelopsicologo.com");
-    expect(root?.priority).toBe(1);
-  });
-
-  it("has hreflang alternates for each route", () => {
-    vi.mocked(isProduction).mockReturnValue(true);
-    vi.mocked(getCanonicalUrl).mockReturnValue("https://perebarcelopsicologo.com");
-
-    const entries = sitemap();
-    for (const entry of entries) {
-      expect(entry.alternates?.languages).toBeDefined();
-      expect(entry.alternates?.languages).toHaveProperty("x-default");
-      expect(entry.alternates?.languages).toHaveProperty("es");
-      expect(entry.alternates?.languages).toHaveProperty("ca");
+    for (const entry of sitemap()) {
+      expect(entry.lastModified).toBeUndefined();
+      expect(entry.priority).toBeUndefined();
+      expect(entry.changeFrequency).toBeUndefined();
     }
   });
 
-  it("has correct Catalan alternates", () => {
-    vi.mocked(isProduction).mockReturnValue(true);
-    vi.mocked(getCanonicalUrl).mockReturnValue("https://perebarcelopsicologo.com");
-
-    const entries = sitemap();
-    const about = entries.find((e) => e.url === "https://perebarcelopsicologo.com/about");
-    expect(about?.alternates?.languages?.ca).toBe("https://perebarcelopsicologo.com/ca/about");
-  });
-
-  it("returns empty array on non-production", () => {
+  it("returns no URLs outside production", () => {
     vi.mocked(isProduction).mockReturnValue(false);
-
-    const entries = sitemap();
-    expect(entries).toEqual([]);
+    expect(sitemap()).toEqual([]);
   });
 
   it("has reciprocal alternates with matching canonical sitemap entries", () => {
@@ -82,7 +73,7 @@ describe("sitemap.xml", () => {
         expect(alternate?.alternates).toEqual(entry.alternates);
       }
     }
-    for (const path of ["/", "/about", "/contact", "/privacy", "/servicios"]) {
+    for (const path of ["/", "/about", "/contact", "/servicios"]) {
       for (const locale of ["es", "ca"]) {
         const metadata = createPageMetadata({ title: "Test", description: "Test", path, locale });
         const entry = entries.find((candidate) => candidate.url === metadata.alternates?.canonical);
