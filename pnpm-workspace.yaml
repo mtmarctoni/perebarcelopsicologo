@@ -16,5 +16,6 @@ overrides:
   "vite@8": ^8.1.6
   # Within Lighthouse 13.5's supported ^25.9.0 range. Newer Puppeteer releases
   # select a Chromium BiDi prerelease rejected by pnpm's publisher-trust policy.
-  # Revisit once the newer dependency chain passes the same trust checks.
+  # Rechecked 2026-11-08: 25.14.0 still fails ERR_PNPM_TRUST_DOWNGRADE;
+  # Lighthouse 13.6 also requires an unavailable tldts-icann version.
   "lighthouse>puppeteer-core": "25.12.0"
