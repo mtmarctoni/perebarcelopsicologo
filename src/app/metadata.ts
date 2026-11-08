@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { images } from "@/config/images";
+import { pageRoutes } from "@/config/routes";
 import { serverEnv } from "@/config/server-env.config";
 import { getLocalizedPageUrl, getPageAlternates } from "@/lib/seo-urls";
 import { getCanonicalUrl, getRobotsMetadata } from "@/lib/site";
@@ -81,6 +82,7 @@ export function createPageMetadata({
   keywords,
 }: PageMetadataOptions): Metadata {
   const canonical = getLocalizedPageUrl(siteUrl, path, locale);
+  const robots = getRobotsMetadata();
   const resolvedImageUrl = imageUrl || (imagePath ? `${siteUrl}${imagePath}` : defaultOgImage.url);
   const images = [
     {
@@ -93,6 +95,10 @@ export function createPageMetadata({
 
   return {
     ...defaultMetadata,
+    ...(pageRoutes.find((route) => route.path === path)?.indexable === false && {
+      // Do not inherit Google's production index directive on excluded pages.
+      robots: { index: false, follow: typeof robots === "object" && robots?.follow === true },
+    }),
     title,
     description,
     keywords: keywords || defaultMetadata.keywords,

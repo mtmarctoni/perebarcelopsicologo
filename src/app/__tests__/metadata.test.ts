@@ -74,6 +74,27 @@ describe("defaultMetadata", () => {
 });
 
 describe("createPageMetadata", () => {
+  it.each(["es", "ca"])("excludes %s privacy from all search indexes", (locale) => {
+    const meta = createPageMetadata({
+      title: "Privacy",
+      description: "Privacy",
+      path: "/privacy",
+      locale,
+    });
+    expect(meta.robots).toEqual({ index: false, follow: true });
+  });
+
+  it("preserves preview follow restrictions on privacy", async () => {
+    const { getRobotsMetadata } = await import("@/lib/site");
+    vi.mocked(getRobotsMetadata).mockReturnValueOnce({ index: false, follow: false });
+    const meta = createPageMetadata({
+      title: "Privacy",
+      description: "Privacy",
+      path: "/privacy",
+      locale: "es",
+    });
+    expect(meta.robots).toEqual({ index: false, follow: false });
+  });
   it("returns correct canonical for root path", () => {
     const meta = createPageMetadata({
       title: "Home",
