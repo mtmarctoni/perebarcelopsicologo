@@ -34,7 +34,13 @@ for (const locale of ["es", "ca"]) {
         const target = await request.get(new URL(url).pathname, { maxRedirects: 0 });
         expect(target.status()).toBe(200);
       }
-      await expect(page.locator('meta[name="robots"]')).toHaveAttribute("content", "index, follow");
+      await expect(page.locator('meta[name="robots"]')).toHaveAttribute(
+        "content",
+        route === "/privacy" ? "noindex, follow" : "index, follow",
+      );
+      if (route === "/privacy") {
+        await expect(page.locator('meta[name="googlebot"]')).toHaveCount(0);
+      }
       const html = await response?.text();
       expect(html).toContain(`href="${canonical}"`);
       expect(html).toContain("<h1");
@@ -48,16 +54,17 @@ for (const locale of ["es", "ca"]) {
   }
 }
 
-test("sitemap includes every localized canonical with reciprocal alternates", async ({
+test("sitemap includes only indexable localized canonicals with reciprocal alternates", async ({
   request,
 }) => {
   const response = await request.get("/sitemap.xml");
   expect(response.status()).toBe(200);
   const xml = await response.text();
   const entries = [...xml.matchAll(/<url>([\s\S]*?)<\/url>/g)].map((match) => match[1]);
-  expect(entries).toHaveLength(10);
+  expect(entries).toHaveLength(8);
+  expect(xml).not.toContain("/privacy");
   expect(xml).not.toContain("<lastmod>");
-  for (const route of routes) {
+  for (const route of ["", "/about", "/contact", "/servicios"]) {
     for (const locale of ["es", "ca"]) {
       const url = `${origin}${locale === "ca" ? "/ca" : ""}${route}`;
       const entry = entries.find((value) => value.includes(`<loc>${url}</loc>`));
