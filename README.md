@@ -74,6 +74,7 @@ npm run type-check
 ## 🔄 CI / CD
 
 ### GitHub Actions CI
+
 Every Pull Request and every push to `main` automatically runs:
 1. `npm run type-check` — TypeScript type checking
 2. `npm run build` — Next.js production build
@@ -83,6 +84,7 @@ Every Pull Request and every push to `main` automatically runs:
 You can see the status of these checks in the PR checks section on GitHub.
 
 ### Vercel Deployment
+
 - **Production**: Auto-deploys when `main` branch changes
 - **Preview**: Auto-deploys for every Pull Request
 - This is handled by the native GitHub ↔ Vercel integration (free plan)
