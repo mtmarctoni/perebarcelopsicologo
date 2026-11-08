@@ -19,37 +19,18 @@ export const WebsiteSchema = () => {
   );
 };
 
-export const LocalBusinessSchema = () => {
+export const PersonSchema = () => {
   return (
     <JsonLd
-      id="local-business-schema"
+      id="person-schema"
       code={{
         "@context": "https://schema.org",
-        "@type": "LocalBusiness",
-        name: "Pere Barceló - Psicólogo Deportivo Online",
+        "@type": "Person",
+        name: "Pere Barceló Lambea",
         image: `${canonicalUrl}${images.ogDefault}`,
-        "@id": canonicalUrl,
+        "@id": `${canonicalUrl}#person`,
         url: canonicalUrl,
         telephone: "+34636674759",
-        priceRange: "€€",
-        address: {
-          "@type": "PostalAddress",
-          streetAddress: "Carrer de la Indústria, 12",
-          addressLocality: "Palma",
-          postalCode: "07013",
-          addressCountry: "ES",
-        },
-        geo: {
-          "@type": "GeoCoordinates",
-          latitude: 39.5742,
-          longitude: 2.6549,
-        },
-        openingHoursSpecification: {
-          "@type": "OpeningHoursSpecification",
-          dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-          opens: "09:00",
-          closes: "20:00",
-        },
         sameAs: [
           "https://www.linkedin.com/in/pere-barcel%C3%B3-lambea-6b5255192/",
           "https://www.instagram.com/perebarcelopsico/",
