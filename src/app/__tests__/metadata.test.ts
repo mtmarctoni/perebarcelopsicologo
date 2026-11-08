@@ -52,10 +52,10 @@ describe("defaultMetadata", () => {
   it("has alternates with canonical and hreflang", () => {
     expect(defaultMetadata.alternates?.canonical).toBe("https://perebarcelopsicologo.com");
     expect(defaultMetadata.alternates?.languages?.["x-default"]).toBe(
-      "https://perebarcelopsicologo.com/",
+      "https://perebarcelopsicologo.com",
     );
-    expect(defaultMetadata.alternates?.languages?.es).toBe("https://perebarcelopsicologo.com/");
-    expect(defaultMetadata.alternates?.languages?.ca).toBe("https://perebarcelopsicologo.com/ca/");
+    expect(defaultMetadata.alternates?.languages?.es).toBe("https://perebarcelopsicologo.com");
+    expect(defaultMetadata.alternates?.languages?.ca).toBe("https://perebarcelopsicologo.com/ca");
   });
 
   it("has robots allowing indexing", () => {
@@ -170,8 +170,8 @@ describe("createPageMetadata", () => {
       path: "/",
       locale: "ca",
     });
-    expect(meta.alternates?.canonical).toBe("https://perebarcelopsicologo.com/ca/");
-    expect(meta.alternates?.languages?.ca).toBe("https://perebarcelopsicologo.com/ca/");
+    expect(meta.alternates?.canonical).toBe("https://perebarcelopsicologo.com/ca");
+    expect(meta.alternates?.languages?.ca).toBe("https://perebarcelopsicologo.com/ca");
   });
 
   it("has OG images array", () => {

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { images } from "@/config/images";
 import { serverEnv } from "@/config/server-env.config";
+import { getLocalizedPageUrl, getPageAlternates } from "@/lib/seo-urls";
 import { getCanonicalUrl, getRobotsMetadata } from "@/lib/site";
 
 export const siteName = "Pere Barceló - Psicólogo Deportivo Online";
@@ -47,11 +48,7 @@ export const defaultMetadata: Metadata = {
   ...(googleVerification ? { verification: { google: googleVerification } } : {}),
   alternates: {
     canonical: siteUrl,
-    languages: {
-      "x-default": `${siteUrl}/`,
-      es: `${siteUrl}/`,
-      ca: `${siteUrl}/ca/`,
-    },
+    languages: getPageAlternates(siteUrl, "/"),
   },
   icons: {
     icon: [
@@ -74,12 +71,6 @@ interface PageMetadataOptions {
   keywords?: string | string[];
 }
 
-/** Build a canonical URL that includes the locale prefix for non-default locales. */
-function buildCanonicalUrl(path: string, locale: string): string {
-  const localePath = locale === "es" ? path : `/ca${path}`;
-  return path === "/" && locale === "es" ? siteUrl : `${siteUrl}${localePath}`;
-}
-
 export function createPageMetadata({
   title,
   description,
@@ -89,7 +80,7 @@ export function createPageMetadata({
   imageUrl,
   keywords,
 }: PageMetadataOptions): Metadata {
-  const canonical = buildCanonicalUrl(path, locale);
+  const canonical = getLocalizedPageUrl(siteUrl, path, locale);
   const resolvedImageUrl = imageUrl || (imagePath ? `${siteUrl}${imagePath}` : defaultOgImage.url);
   const images = [
     {
@@ -100,10 +91,6 @@ export function createPageMetadata({
     },
   ];
 
-  // Build hreflang URLs - each language points to its own version
-  const esPath = path === "/" ? "" : path;
-  const caPath = `/ca${path}`;
-
   return {
     ...defaultMetadata,
     title,
@@ -112,11 +99,7 @@ export function createPageMetadata({
     alternates: {
       ...defaultMetadata.alternates,
       canonical,
-      languages: {
-        "x-default": `${siteUrl}${esPath}`,
-        es: `${siteUrl}${esPath}`,
-        ca: `${siteUrl}${caPath}`,
-      },
+      languages: getPageAlternates(siteUrl, path),
     },
     openGraph: {
       ...defaultMetadata.openGraph,
