@@ -1,9 +1,9 @@
-import Link from "next/link";
 import { getLocale, getTranslations } from "next-intl/server";
 import CookieSettingsLink from "@/components/privacy/CookieSettingsLink";
 import CTAButton from "@/components/ui/CTAButton";
 import SocialLink from "@/components/ui/SocialLink";
 import { navRoutes } from "@/config/routes";
+import { Link } from "@/i18n/routing";
 import { email, phone, socialMediaLinksFooter } from "@/utils/data";
 import { EnvelopeIcon, WhatsappIcon } from "../composables/Icons";
 

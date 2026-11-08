@@ -1,5 +1,4 @@
-import Link from "next/link";
-
+import { Link } from "@/i18n/routing";
 import { buildDataAttrs } from "@/lib/tracking";
 
 type ButtonVariant = "primary" | "secondary" | "ghost" | "outline";
