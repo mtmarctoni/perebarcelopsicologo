@@ -1,11 +1,10 @@
-name: Lighthouse Post-Deply Check
+name: Lighthouse Post-Deploy Check
 
 on:
-  push:
-    branches: [main]
+  deployment_status:
 
 concurrency:
-  group: ${{ github.workflow }}-${{ github.ref }}
+  group: ${{ github.workflow }}-${{ github.event.deployment.id }}
   cancel-in-progress: true
 
 permissions:
@@ -14,10 +13,31 @@ permissions:
 jobs:
   lighthouse:
     name: Lighthouse Audit
+    if: >-
+      github.event.deployment_status.state == 'success' &&
+      github.event.deployment.environment == 'Production'
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
       - uses: actions/checkout@v7
+        with:
+          ref: ${{ github.event.deployment.sha }}
+
+      - name: Validate public production audit target
+        env:
+          DEPLOYMENT_URL: ${{ github.event.deployment_status.environment_url }}
+          DEPLOYMENT_SHA: ${{ github.event.deployment.sha }}
+        run: |
+          node --input-type=module <<'NODE'
+          import { appendFileSync } from 'node:fs';
+          import { resolveAuditUrl, verifyAuditPage } from './scripts/seo-deployment-target.mjs';
+          const url = resolveAuditUrl(process.env.DEPLOYMENT_URL);
+          await verifyAuditPage();
+          appendFileSync(process.env.GITHUB_ENV, `LIGHTHOUSE_URL=${url}\n`);
+          appendFileSync(process.env.GITHUB_STEP_SUMMARY,
+            `Triggering deployment SHA: ${process.env.DEPLOYMENT_SHA}\n\nAudited public URL: ${url}\n\n` +
+            'The public alias is mutable; these scores do not verify the exact deployed SHA.\n\n');
+          NODE
 
       - name: Install pnpm
         uses: pnpm/action-setup@v6
@@ -34,7 +54,7 @@ jobs:
       - name: Run Lighthouse audit against production
         id: lighthouse
         run: |
-          pnpm exec lighthouse https://perebarcelopsicologo.com \
+          pnpm exec lighthouse "$LIGHTHOUSE_URL" \
             --output=json \
             --output=html \
             --output-path=./lh-report \
@@ -46,12 +66,14 @@ jobs:
           echo "### Lighthouse Scores" >> $GITHUB_STEP_SUMMARY
           node -e "
             const r = require('./lh-report.report.json');
+            if (r.finalDisplayedUrl !== process.env.LIGHTHOUSE_URL) {
+              throw new Error('Lighthouse left the expected public production URL');
+            }
             const cats = r.categories || {};
             let summary = '| Category | Score |\n|---|---|\n';
             for (const [name, cat] of Object.entries(cats)) {
               const score = Math.round(cat.score * 100);
-              const icon = score >= 90 ? ':green_circle:' : score >= 50 ? ':yellow_circle:' : ':red_circle:';
-              summary += '| ' + icon + ' ' + cat.title + ' | ' + score + '/100 |\n';
+              summary += '| ' + cat.title + ' | ' + score + '/100 |\n';
             }
             console.log(summary);
           " >> $GITHUB_STEP_SUMMARY
